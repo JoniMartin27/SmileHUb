@@ -119,27 +119,34 @@ public class Inicio_Panel_Administrador extends JFrame {
         		System.out.println("El combo vale:" + combo.size());
         		if(combo.size()>1) {
         			
+        			
         		
         			if((e.getKeyCode()==KeyEvent.VK_P)&&combo.contains(17)) {
         				System.out.print("Has entrado en crear Paciente");
         				Panel_PacienteCrear pacienteCrear=new Panel_PacienteCrear();
         				pacienteCrear.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
-        			
         				miDesktopPane.add(pacienteCrear);
         				((BasicInternalFrameUI) pacienteCrear.getUI()).setNorthPane(null);
         				pacienteCrear.setLocation(0, 0);
         				pacienteCrear.show();
         				pacienteCrear.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
         				contentPane.requestFocus();
+        				combo.clear();
         				
         			}
         			
-        			
+        
         			
         			else if((e.getKeyCode()==KeyEvent.VK_M)&&combo.contains(17)) {
         				Jdialog_Ficha_Crear_Proveedor proveedorCrear=new Jdialog_Ficha_Crear_Proveedor();
         				proveedorCrear.setVisible(true);
+        				proveedorCrear.setVisible(true);
+        				proveedorCrear.setLocation(200, 200);
+        				proveedorCrear.setModal(true);
+        				
+        				
         				contentPane.requestFocus();
+        				dispose();
         			}
         			
         			
@@ -148,13 +155,13 @@ public class Inicio_Panel_Administrador extends JFrame {
         				System.out.print("Has entrado en crear Paciente");
         				Panel_admin_usuario_paciente_consultarCita citaConsultarr=new Panel_admin_usuario_paciente_consultarCita();
         				citaConsultarr.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
-        			
         				miDesktopPane.add(citaConsultarr);
         				((BasicInternalFrameUI) citaConsultarr.getUI()).setNorthPane(null);
         				citaConsultarr.setLocation(0, 0);
         				citaConsultarr.show();
         				citaConsultarr.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth()); 
         				contentPane.requestFocus();
+        				combo.clear();
         			}
         			
         			
