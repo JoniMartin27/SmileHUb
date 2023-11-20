@@ -79,16 +79,7 @@ public class Panel_Admin_Usuario_Doctor extends JInternalFrame {
 		
 			}
 		});
-		btn_CrearPerfil.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-							Jdialog_Ficha_Crear_Doctor newDoctor =new Jdialog_Ficha_Crear_Doctor();
-							newDoctor.setVisible(true);
-							newDoctor.setLocation(200, 200);
-							newDoctor.setModal(true);
-							newDoctor.setUndecorated(true);
-							dispose();
-			}
-		});
+	
 		btn_CambiarContrasena.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JDialog_admin_Cambiar_Contrasena contrasena=new JDialog_admin_Cambiar_Contrasena();

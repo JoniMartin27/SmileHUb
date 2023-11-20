@@ -150,20 +150,26 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
         btn_modificar = new JButton("Modificar cita");
         btn_modificar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		int id=Integer.parseInt(tf_buscarCita.getText());
+        		if(id==0) {
+        			System.out.println("aqui esta el error");
+        		}else {
+        			try {
+            			ConexionMySQL.conectar();
+    					obtenerDatosFilaSeleccionada(id);
+    				} catch (SQLException | ClassNotFoundException e1) {
+    					// TODO Auto-generated catch block
+    					e1.printStackTrace();
+    				}
+        		}
         		
-        		try {
-					obtenerDatosFilaSeleccionada();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
         		
         	}
         });
         btn_modificar.setBounds(116, 43, 117, 23);
         getContentPane().add(btn_modificar);
 
-        // Resto del código...
+       
     }
 
     // Método para simular la obtención de ConsultaCita desde la base de datos
@@ -190,7 +196,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
             JOptionPane.showMessageDialog(this, "id no encontrado en la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    private void obtenerDatosFilaSeleccionada() throws SQLException {
+    private void obtenerDatosFilaSeleccionada(int id) throws SQLException {
         // Obtener el índice de la fila seleccionada
         int filaSeleccionada = table.getSelectedRow();
 
@@ -210,10 +216,10 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
             cita.setId_tratamiento(idTratamiento);
             cita.setId_historial(idHistorial);
             cita.setObservaciones(observaciones);
-            cita.setFecha(hora);
+            cita.setFecha(fecha);
             cita.setHora(hora);
             ConexionMySQL.modificarCita(cita);
-            // Hacer lo que necesites con el objeto Cita
+            
             // Puedes imprimir los valores, pasarlo a un formulario de edición, etc.
             System.out.println("Datos de la fila seleccionada:");
             System.out.println("ID Doctor: " + cita.getId_doctor());
@@ -223,11 +229,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
             JOptionPane.showMessageDialog(null, "Seleccione una fila primero", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    private void modificacionCita(ConsultaCita cita) {
-    	
-    	
-    	
-    }
+
     // Método para limpiar la tabla
     private void limpiarTabla() {
         modeloTabla.setRowCount(0);

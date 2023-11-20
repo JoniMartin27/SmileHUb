@@ -8,8 +8,6 @@ import javax.swing.JDesktopPane;
 import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
-import Vista.Usuario.JDialog_Ficha_Creado_Proveedor;
-import Vista.Usuario.Jdialog_Ficha_Crear_Proveedor;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -99,33 +97,7 @@ public class Panel_Admin_Material_Proveedores extends JInternalFrame {
 				dispose();
 			}
 		});
-		btn_modificarproveedor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				JDialog_Ficha_Creado_Proveedor proveedor =new JDialog_Ficha_Creado_Proveedor();
-				proveedor.setVisible(true);
-				proveedor.setLocation(200, 200);
-				proveedor.setModal(true);
-				proveedor.setUndecorated(true);
-				dispose();
-				
-				
-				
-			}
-		});
-		btn_crearproveedor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				Jdialog_Ficha_Crear_Proveedor crearProveedor =new Jdialog_Ficha_Crear_Proveedor();
-				crearProveedor.setVisible(true);
-				crearProveedor.setLocation(200, 200);
-				crearProveedor.setModal(true);
-				crearProveedor.setUndecorated(true);
-				dispose();
-				
-				
-			}
-		});
-
+		
+		
 	}
 }

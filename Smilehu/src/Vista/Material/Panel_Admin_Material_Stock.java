@@ -6,9 +6,6 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-
-import Vista.Usuario.Jdialog_Ficha_Crear_Proveedor;
-
 import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
