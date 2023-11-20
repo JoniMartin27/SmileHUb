@@ -22,6 +22,8 @@ import Vista.Usuario.Panel_ProveedorCreado;
 import Vista.Usuario.Panel_ProveedorCrear;
 import Vista.Usuario.Panel_admin_usuario_generarInforme;
 import Vista.Usuario.Panel_admin_usuario_paciente_consultarCita;
+import Vista.gestionEconomica.JDialog_Admin_Gestion_Economica_Fraccionado;
+import Vista.gestionEconomica.JDialog_admin_gestionEconomica_tipoPago;
 import Vista.gestionEconomica.Panel_admin_gestionEconomica;
 import Vista.gestionMedica.Panel_admin_gestionMedica_Inicio;
 import ayudas.Panel_Admin_Usuario_Paciente;
@@ -119,7 +121,7 @@ public class Inicio_Panel_Administrador extends JFrame {
         		if(combo.size()>1) {
         			
         			
-        		
+        		//Paciente
         			if((e.getKeyCode()==KeyEvent.VK_P)&&combo.contains(17)) {
         				System.out.print("Has entrado en crear Paciente");
         				Panel_PacienteCrear pacienteCrear=new Panel_PacienteCrear();
@@ -131,38 +133,70 @@ public class Inicio_Panel_Administrador extends JFrame {
         				pacienteCrear.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
         				contentPane.requestFocus();
         				combo.clear();
-        				
         			}
-        			
-        
-        			
-        			else if((e.getKeyCode()==KeyEvent.VK_M)&&combo.contains(17)) {
-        				Jdialog_Ficha_Crear_Proveedor proveedorCrear=new Jdialog_Ficha_Crear_Proveedor();
-        			
-        				proveedorCrear.setVisible(true);
-        				proveedorCrear.setLocation(200, 200);
-        				proveedorCrear.setModal(true);
-        				
-        				
-        				contentPane.requestFocus();
-        				dispose();
-        			}
-        			
-        			
-        			
         			else if((e.getKeyCode()==KeyEvent.VK_C)&&combo.contains(17)) {
-        				System.out.print("Has entrado en crear Paciente");
-        				Panel_admin_usuario_paciente_consultarCita citaConsultarr=new Panel_admin_usuario_paciente_consultarCita();
-        				citaConsultarr.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
-        				miDesktopPane.add(citaConsultarr);
-        				((BasicInternalFrameUI) citaConsultarr.getUI()).setNorthPane(null);
-        				citaConsultarr.setLocation(0, 0);
-        				citaConsultarr.show();
-        				citaConsultarr.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth()); 
+        				System.out.print("Has entrado en consultar Cita");
+        				Panel_admin_usuario_paciente_consultarCita consultarCita=new Panel_admin_usuario_paciente_consultarCita();
+        				consultarCita.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+        				miDesktopPane.add(consultarCita);
+        				((BasicInternalFrameUI) consultarCita.getUI()).setNorthPane(null);
+        				consultarCita.setLocation(0, 0);
+        				consultarCita.show();
+        				consultarCita.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
+        				contentPane.requestFocus();
+        				combo.clear();
+        			}
+        			else if((e.getKeyCode()==KeyEvent.VK_J)&&combo.contains(17)) {
+        				System.out.print("Has entrado en ver paciente Perfil");
+        				Panel_PacienteCreado pacienteCreado=new Panel_PacienteCreado();
+        				pacienteCreado.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+        				miDesktopPane.add(pacienteCreado);
+        				((BasicInternalFrameUI) pacienteCreado.getUI()).setNorthPane(null);
+        				pacienteCreado.setLocation(0, 0);
+        				pacienteCreado.show();
+        				pacienteCreado.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
         				contentPane.requestFocus();
         				combo.clear();
         			}
         			
+        			
+        			
+        			//Proveedores
+        			else if((e.getKeyCode()==KeyEvent.VK_V)&&combo.contains(17)) {
+        				System.out.print("Has entrado en ver Proveedor");
+        				Panel_ProveedorCreado verProveedor=new Panel_ProveedorCreado();
+        				verProveedor.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+        				miDesktopPane.add(verProveedor);
+        				((BasicInternalFrameUI) verProveedor.getUI()).setNorthPane(null);
+        				verProveedor.setLocation(0, 0);
+        				verProveedor.show();
+        				verProveedor.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth()); 
+        				contentPane.requestFocus();
+        				combo.clear();
+        			}
+        			else if((e.getKeyCode()==KeyEvent.VK_Z)&&combo.contains(17)) {
+        				System.out.print("Has entrado en crer Proveedor");
+        				Panel_ProveedorCrear crearProveedor=new Panel_ProveedorCrear();
+        				crearProveedor.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+        				miDesktopPane.add(crearProveedor);
+        				((BasicInternalFrameUI) crearProveedor.getUI()).setNorthPane(null);
+        				crearProveedor.setLocation(0, 0);
+        				crearProveedor.show();
+        				crearProveedor.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth()); 
+        				contentPane.requestFocus();
+        				combo.clear();
+        			}
+        			
+        			//Tipos de Pago
+        			if(combo.contains(KeyEvent.VK_T)&&(combo.contains(KeyEvent.VK_P)&&combo.contains(17))) {
+        				JDialog_admin_gestionEconomica_tipoPago tipoPago=new JDialog_admin_gestionEconomica_tipoPago();
+        				tipoPago.setVisible(true);
+        				tipoPago.setLocation(200, 200);
+        				tipoPago.setModal(true);
+        				contentPane.requestFocus();
+        				combo.clear();
+        				
+        			}
         			
         		}}			
         		

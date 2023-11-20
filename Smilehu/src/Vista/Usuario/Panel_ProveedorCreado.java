@@ -29,6 +29,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 	private JTextField tf_correo;
 	private JTextField textField;
 	private JTextField tf_buscarProveedor;
+	private JDesktopPane miDesktopPane_1;
 	
 	/**
 	 * Launch the application.
@@ -46,6 +47,10 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		});
 	}
 
+	
+	public void setDesktopPane(JDesktopPane desktopPane) {
+	    this.miDesktopPane_1 = desktopPane;
+	}
 	/**
 	 * Create the frame.
 	 */
