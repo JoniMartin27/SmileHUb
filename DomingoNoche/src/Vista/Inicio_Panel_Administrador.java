@@ -135,7 +135,7 @@ public class Inicio_Panel_Administrador extends JFrame {
         				proveedorCrear.setVisible(true);
         			}
         			
-        			if(combo.contains(KeyEvent.VK_P)&&combo.contains(17)) {
+        			if(combo.contains(KeyEvent.VK_C)&&combo.contains(17)) {
         				System.out.print("Has entrado en crear Paciente");
         				Panel_admin_usuario_paciente_consultarCita citaConsultarr=new Panel_admin_usuario_paciente_consultarCita();
         				citaConsultarr.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
@@ -144,7 +144,7 @@ public class Inicio_Panel_Administrador extends JFrame {
         				((BasicInternalFrameUI) citaConsultarr.getUI()).setNorthPane(null);
         				citaConsultarr.setLocation(0, 0);
         				citaConsultarr.show();
-        				citaConsultarr.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
+        				citaConsultarr.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth()); //tgjhrfvjk
         			}
         			
         			
