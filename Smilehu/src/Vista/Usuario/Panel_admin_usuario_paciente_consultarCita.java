@@ -39,6 +39,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 	private JDesktopPane miDesktopPane;
 	DefaultTableModel modeloTabla = new DefaultTableModel();
 	private JButton btn_modificar;
+	private JButton btn_insertarCita;
 
 	/**
 	 * Launch the application.
@@ -156,7 +157,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
         		}else {
         			try {
             			ConexionMySQL.conectar();
-    					obtenerDatosFilaSeleccionada(id);
+    					obtenerDatosFilaSeleccionada();
     				} catch (SQLException | ClassNotFoundException e1) {
     					// TODO Auto-generated catch block
     					e1.printStackTrace();
@@ -168,6 +169,17 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
         });
         btn_modificar.setBounds(116, 43, 117, 23);
         getContentPane().add(btn_modificar);
+        
+        btn_insertarCita = new JButton("Insertar cita");
+        btn_insertarCita.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		
+        		
+        	}
+        });
+        btn_insertarCita.setBounds(243, 43, 122, 23);
+        getContentPane().add(btn_insertarCita);
 
        
     }
@@ -196,7 +208,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
             JOptionPane.showMessageDialog(this, "id no encontrado en la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    private void obtenerDatosFilaSeleccionada(int id) throws SQLException {
+    private void obtenerDatosFilaSeleccionada() throws SQLException {
         // Obtener el índice de la fila seleccionada
         int filaSeleccionada = table.getSelectedRow();
 
@@ -218,7 +230,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
             cita.setObservaciones(observaciones);
             cita.setFecha(fecha);
             cita.setHora(hora);
-            ConexionMySQL.modificarCita(cita);
+            ConexionMySQL.insertarCita(cita);
             
             // Puedes imprimir los valores, pasarlo a un formulario de edición, etc.
             System.out.println("Datos de la fila seleccionada:");

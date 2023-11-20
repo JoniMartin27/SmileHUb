@@ -169,6 +169,15 @@ public class ConexionMySQL {
 		    Statement stmt = connection.createStatement();
 		    stmt.executeUpdate(query);
 		}
+     public static void insertarCita(ConsultaCita cita) throws SQLException {
+		    String query = "INSERT INTO consulta_cita (id_doctor, id_tratamiento, id_historial, observaciones, fecha, hora) " +
+		                   "VALUES ('" + cita.getId_doctor() + "', '" + cita.getId_tratamiento() + "', '" +
+		                   cita.getId_historial() + "', '" + cita.getObservaciones() + "', '" + cita.getFecha() + "', '" + 
+		                   cita.getHora() + "')";
+		    
+		    Statement stmt = connection.createStatement();
+		    stmt.executeUpdate(query);
+		}
      
      
      

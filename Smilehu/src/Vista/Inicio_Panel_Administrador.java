@@ -25,6 +25,7 @@ import Vista.Usuario.Panel_admin_usuario_paciente_consultarCita;
 import Vista.gestionEconomica.JDialog_Admin_Gestion_Economica_Fraccionado;
 import Vista.gestionEconomica.JDialog_admin_gestionEconomica_tipoPago;
 import Vista.gestionEconomica.Panel_admin_gestionEconomica;
+import Vista.gestionEconomica.Panel_admin_gestionEconomica_GenerarInforme;
 import Vista.gestionMedica.Panel_admin_gestionMedica_Inicio;
 import ayudas.Panel_Admin_Usuario_Paciente;
 import ayudas.Panel_admin_GestEconomica;
@@ -236,7 +237,6 @@ public class Inicio_Panel_Administrador extends JFrame {
 		Menu_DNI.add(Item_cerrar);
 
 //DesktopPane el cual cambia por internalFrames
-
 		
 
 		JPanel panel = new JPanel();
@@ -244,9 +244,40 @@ public class Inicio_Panel_Administrador extends JFrame {
 		panel.setBounds(0, 46, 220, 485);
 		contentPane.add(panel);
 		panel.setLayout(null);
-
-	
-		
+		JButton btn_realizarpago=new JButton();
+		btn_realizarpago.setText("Registrar Pago");
+		btn_realizarpago.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JDialog_admin_gestionEconomica_tipoPago tipoPago=new JDialog_admin_gestionEconomica_tipoPago();
+				
+				tipoPago.setVisible(true);
+				tipoPago.setLocation(200, 200);
+				tipoPago.setModal(true);
+				tipoPago.setUndecorated(true);
+				dispose();
+			}
+		});
+		JButton btn_realizarinformes=new JButton();
+		btn_realizarinformes.setText("Realizar informe Economico");
+		btn_realizarinformes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Panel_admin_gestionEconomica_GenerarInforme generarInforme = new Panel_admin_gestionEconomica_GenerarInforme(); 
+				generarInforme.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+				miDesktopPane.removeAll();
+				miDesktopPane.add(generarInforme);
+				generarInforme.setBorder(null);
+				((BasicInternalFrameUI) generarInforme.getUI()).setNorthPane(null);
+				generarInforme.setLocation(0,0);
+				generarInforme.show();
+				generarInforme.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
+				
+			}
+			
+		});
+		panel.add(btn_realizarinformes);
+		btn_realizarinformes.setBounds(23,289,164,23);
+		panel.add(btn_realizarpago);
+		btn_realizarpago.setBounds(23, 255, 164, 23);
 		// Boton Gestion Medica
 
 		JButton btn_GestionMedica = new JButton("Gestion Medica");
@@ -264,7 +295,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 				
 			}
 		});
-		btn_proveedor.setBounds(33, 69, 119, 23);
+		btn_proveedor.setBounds(23, 85, 164, 23);
 		panel.add(btn_proveedor);
 
 		JButton btn_paciente = new JButton("Pacientes");
@@ -276,7 +307,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 			}
 		});
 
-		btn_paciente.setBounds(33, 48, 119, 23);
+		btn_paciente.setBounds(23, 51, 164, 23);
 		panel.add(btn_paciente);
 
 		JButton btn_Doctores = new JButton("Doctores");
@@ -287,15 +318,15 @@ public class Inicio_Panel_Administrador extends JFrame {
 			}
 		});
 
-		btn_Doctores.setBounds(33, 90, 119, 23);
+		btn_Doctores.setBounds(23, 119, 164, 23);
 		panel.add(btn_Doctores);
 		
 		JButton btn_pedidos = new JButton("Pedidos");
-		btn_pedidos.setBounds(33, 260, 119, 23);
+		btn_pedidos.setBounds(23, 187, 164, 23);
 		panel.add(btn_pedidos);
 		
 		JButton btn_material = new JButton("Material");
-		btn_material.setBounds(33, 284, 119, 23);
+		btn_material.setBounds(23, 221, 164, 23);
 		panel.add(btn_material);
 
 		btn_GestionEconomica.addActionListener(new ActionListener() {
