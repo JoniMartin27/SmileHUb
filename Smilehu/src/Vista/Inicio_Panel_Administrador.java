@@ -14,6 +14,7 @@ import Vista.Material.Panel_Admin_Material_Inicio;
 import Vista.Usuario.JDialog_Admin_Usuario_inicio;
 import Vista.Usuario.Panel_Admin_Usuario_Doctor;
 import Vista.Usuario.Panel_Admin_Usuario_Proveedores;
+import Vista.Usuario.Panel_DoctorCreado;
 import Vista.Usuario.Panel_DoctorCrear;
 import Vista.Usuario.Panel_PacienteCreado;
 import Vista.Usuario.Panel_PacienteCrear;
@@ -431,7 +432,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 					try {
-						abrirPanelCrearDoctor(desktopPane);
+						abrirPanelVerDoctor(desktopPane);
 					} catch (PropertyVetoException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -476,6 +477,20 @@ public class Inicio_Panel_Administrador extends JFrame {
 		DoctorCrear.setVisible(true);
 		desktopPane.add(DoctorCrear); // Usar el parámetro en lugar de la variable local
 		DoctorCrear.setSelected(true);
+		
+		
+	}
+	private static void abrirPanelVerDoctor(JDesktopPane desktopPane) throws PropertyVetoException {
+		Panel_DoctorCreado DoctorCreado = new Panel_DoctorCreado();
+
+		DoctorCreado.setBorder(null);
+		((BasicInternalFrameUI) DoctorCreado.getUI()).setNorthPane(null);
+		DoctorCreado.setLocation(0, 0);
+		DoctorCreado.show();
+		DoctorCreado.setSize(desktopPane.getWidth(), desktopPane.getWidth());
+		DoctorCreado.setVisible(true);
+		desktopPane.add(DoctorCreado); // Usar el parámetro en lugar de la variable local
+		DoctorCreado.setSelected(true);
 		
 		
 	}
