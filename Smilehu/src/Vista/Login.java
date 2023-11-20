@@ -91,7 +91,7 @@ public class Login extends JFrame {
 		JButton btn_Help = new JButton("");
 		btn_Help.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(btn_Help, "Introduce un DNI válido.");
+				JOptionPane.showMessageDialog(btn_Help, "Introduce un NOMBRE válido.");
 			}
 		});
 				btn_Help.setBounds(606, 334, 34, 34);

@@ -7,6 +7,7 @@ import java.awt.Font;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,6 +24,7 @@ public class Panel_PacienteCrear extends JInternalFrame {
 	private JTextField tf_nombre;
 	private JTextField tf_dni;
 	private JTextField tf_fnacimiento;
+	private JDesktopPane miDesktopPane_1;
 	/**
 	 * Launch the application.
 	 */
@@ -38,7 +40,9 @@ public class Panel_PacienteCrear extends JInternalFrame {
 			}
 		});
 	}
-
+	public void setDesktopPane(JDesktopPane desktopPane) {
+	    this.miDesktopPane_1 = desktopPane;
+	}
 	/**
 	 * Create the frame.
 	 */

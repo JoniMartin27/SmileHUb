@@ -6,12 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import Vista.Material.Panel_Admin_Material_Inicio;
 import Vista.Usuario.JDialog_Admin_Usuario_inicio;
 import Vista.Usuario.Jdialog_Ficha_Crear_Doctor;
+import Vista.Usuario.Jdialog_Ficha_Crear_Proveedor;
 import Vista.Usuario.Panel_Admin_Usuario_Doctor;
 import Vista.Usuario.Panel_Admin_Usuario_Proveedores;
 import Vista.Usuario.Panel_PacienteCreado;
@@ -38,9 +40,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JMenuBar;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyVetoException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
 
@@ -71,7 +76,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 	}
 
 	public void setDesktopPane(JDesktopPane desktopPane) {
-		this.miDesktopPane_1 = desktopPane;
+	    this.miDesktopPane_1 = desktopPane;
 	}
 
 	public void agregarInternalFrame(JInternalFrame internalFrame) {
@@ -85,7 +90,9 @@ public class Inicio_Panel_Administrador extends JFrame {
 	 * Create the frame.
 	 */
 	public Inicio_Panel_Administrador() {
-
+		JDesktopPane miDesktopPane = new JDesktopPane();
+		miDesktopPane.setBounds(219, 44, 799, 487);
+		
 		// Atributos Frame Principal
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,9 +101,57 @@ public class Inicio_Panel_Administrador extends JFrame {
 		contentPane.setBackground(new Color(60, 129, 170));
 		contentPane.setForeground(new Color(4, 20, 36));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
+		contentPane.setFocusable(true);
+		
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		contentPane.add(miDesktopPane);
+		miDesktopPane.setBackground(new Color(4, 20, 36));
+		
+		ArrayList<Integer> combo;
+		combo = new ArrayList<>();
+		contentPane.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyPressed(KeyEvent e) {
+        		combo.add(e.getKeyCode());
+        		if(combo.size()>1) {
+        			
+        			if(combo.contains(KeyEvent.VK_P)&&combo.contains(17)) {
+        				System.out.print("Has entrado en crear Paciente");
+        				Panel_PacienteCrear pacienteCrear=new Panel_PacienteCrear();
+        				pacienteCrear.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+        			
+        				miDesktopPane.add(pacienteCrear);
+        				((BasicInternalFrameUI) pacienteCrear.getUI()).setNorthPane(null);
+        				pacienteCrear.setLocation(0, 0);
+        				pacienteCrear.show();
+        				pacienteCrear.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
+        			}
+        			
+        			
+        			
+        			else if(combo.contains(KeyEvent.VK_M)&&combo.contains(17)) {
+        				Jdialog_Ficha_Crear_Proveedor proveedorCrear=new Jdialog_Ficha_Crear_Proveedor();
+        				proveedorCrear.setVisible(true);
+        			}
+        			
+        			else if(combo.contains(KeyEvent.VK_C)&&combo.contains(17)) {
+        				System.out.print("Has entrado en crear Paciente");
+        				Panel_admin_usuario_paciente_consultarCita citaConsultarr=new Panel_admin_usuario_paciente_consultarCita();
+        				citaConsultarr.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+        			
+        				miDesktopPane.add(citaConsultarr);
+        				((BasicInternalFrameUI) citaConsultarr.getUI()).setNorthPane(null);
+        				citaConsultarr.setLocation(0, 0);
+        				citaConsultarr.show();
+        				citaConsultarr.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth()); 
+        			}
+        			
+        			
+        		}}});
+		
+		
+		
 
 //Titulo del Frame
 
@@ -130,10 +185,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 
 //DesktopPane el cual cambia por internalFrames
 
-		JDesktopPane miDesktopPane_1 = new JDesktopPane();
-		miDesktopPane_1.setBounds(219, 44, 799, 487);
-		contentPane.add(miDesktopPane_1);
-		miDesktopPane_1.setBackground(new Color(4, 20, 36));
+		
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(60, 129, 170));
@@ -161,13 +213,13 @@ public class Inicio_Panel_Administrador extends JFrame {
 		btn_proveedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_Admin_Usuario_Proveedores usuario_proveedores = new Panel_Admin_Usuario_Proveedores();
-				usuario_proveedores.setDesktopPane(miDesktopPane_1); // Asigna la referencia del DesktopPane
-				miDesktopPane_1.removeAll();
-				miDesktopPane_1.add(usuario_proveedores);
+				usuario_proveedores.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+				miDesktopPane.removeAll();
+				miDesktopPane.add(usuario_proveedores);
 				((BasicInternalFrameUI) usuario_proveedores.getUI()).setNorthPane(null);
 				usuario_proveedores.setLocation(0, 0);
 				usuario_proveedores.show();
-				usuario_proveedores.setSize(miDesktopPane_1.getWidth(), miDesktopPane_1.getWidth());
+				usuario_proveedores.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
 
 			}
 		});
@@ -178,7 +230,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 		btn_paciente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				mostrarMenuPaciente(btn_paciente, miDesktopPane_1);
+				mostrarMenuPaciente(btn_paciente, miDesktopPane);
 
 			}
 		});
@@ -191,13 +243,13 @@ public class Inicio_Panel_Administrador extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				Panel_Admin_Usuario_Doctor usuario_doctor = new Panel_Admin_Usuario_Doctor();
-				usuario_doctor.setDesktopPane(miDesktopPane_1); // Asigna la referencia del DesktopPane
-				miDesktopPane_1.removeAll();
-				miDesktopPane_1.add(usuario_doctor);
+				usuario_doctor.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+				miDesktopPane.removeAll();
+				miDesktopPane.add(usuario_doctor);
 				((BasicInternalFrameUI) usuario_doctor.getUI()).setNorthPane(null);
 				usuario_doctor.setLocation(0, 0);
 				usuario_doctor.show();
-				usuario_doctor.setSize(miDesktopPane_1.getWidth(), miDesktopPane_1.getWidth());
+				usuario_doctor.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
 			}
 		});
 
@@ -207,14 +259,14 @@ public class Inicio_Panel_Administrador extends JFrame {
 		btn_GestionEconomica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_admin_gestionEconomica gestion_economica = new Panel_admin_gestionEconomica();
-				gestion_economica.setDesktopPane(miDesktopPane_1); // Asigna la referencia del DesktopPane
-				miDesktopPane_1.removeAll();
-				miDesktopPane_1.add(gestion_economica);
+				gestion_economica.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+				miDesktopPane.removeAll();
+				miDesktopPane.add(gestion_economica);
 				gestion_economica.setBorder(null);
 				((BasicInternalFrameUI) gestion_economica.getUI()).setNorthPane(null);
 				gestion_economica.setLocation(0, 0);
 				gestion_economica.show();
-				gestion_economica.setSize(miDesktopPane_1.getWidth(), miDesktopPane_1.getWidth());
+				gestion_economica.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
 
 			}
 		});
@@ -222,8 +274,8 @@ public class Inicio_Panel_Administrador extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				Panel_Admin_Material_Inicio pag_Material = new Panel_Admin_Material_Inicio();
-				miDesktopPane_1.removeAll();
-				miDesktopPane_1.add(pag_Material);
+				miDesktopPane.removeAll();
+				miDesktopPane.add(pag_Material);
 				pag_Material.setBorder(null);
 				((BasicInternalFrameUI) pag_Material.getUI()).setNorthPane(null);
 
@@ -235,14 +287,14 @@ public class Inicio_Panel_Administrador extends JFrame {
 		btn_GestionMedica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_admin_gestionMedica_Inicio gestion_medica = new Panel_admin_gestionMedica_Inicio();
-				gestion_medica.setDesktopPane(miDesktopPane_1); // Asigna la referencia del DesktopPane
-				miDesktopPane_1.removeAll();
-				miDesktopPane_1.add(gestion_medica);
+				gestion_medica.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+				miDesktopPane.removeAll();
+				miDesktopPane.add(gestion_medica);
 				gestion_medica.setBorder(null);
 				((BasicInternalFrameUI) gestion_medica.getUI()).setNorthPane(null);
 				gestion_medica.setLocation(0, 0);
 				gestion_medica.show();
-				gestion_medica.setSize(miDesktopPane_1.getWidth(), miDesktopPane_1.getWidth());
+				gestion_medica.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
 
 			}
 		});
