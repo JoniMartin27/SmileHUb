@@ -97,12 +97,12 @@ public class Panel_admin_gestionEconomica extends JInternalFrame {
 				Panel_admin_gestionEconomica_consultarPaciente ConsultarPaciente = new Panel_admin_gestionEconomica_consultarPaciente(); 
 				ConsultarPaciente.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
 				miDesktopPane.removeAll();
-				miDesktopPane.add(ConsultarPaciente);
+				ConsultarPaciente.setBorder(null);
 				((BasicInternalFrameUI) ConsultarPaciente.getUI()).setNorthPane(null);
 				ConsultarPaciente.setLocation(0,0);
 				ConsultarPaciente.show();
 				ConsultarPaciente.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
-				
+				miDesktopPane.add(ConsultarPaciente);
 				
 			}
 		});
@@ -112,6 +112,7 @@ public class Panel_admin_gestionEconomica extends JInternalFrame {
 				generarInforme.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
 				miDesktopPane.removeAll();
 				miDesktopPane.add(generarInforme);
+				generarInforme.setBorder(null);
 				((BasicInternalFrameUI) generarInforme.getUI()).setNorthPane(null);
 				generarInforme.setLocation(0,0);
 				generarInforme.show();

@@ -58,21 +58,11 @@ public class ConexionMySQL {
 	   return null;
 	   
    }
-   
-   
-   
-   
+ 
    
    }
    
-   
-   
-   
-   
-   
-   
-   
-   
+ 
     
     public void desconectar()throws SQLException{
         if(connection!=null && connection.isClosed()){
@@ -107,22 +97,7 @@ public class ConexionMySQL {
          stmt.close();
          }
      
-     
-     
 
- 
-     
-     
-     
-     
-    
-     
-     
-     
-     
-     
-     
-     
      
     /* public static Proveedor consultaProveedor(int idProveedor) throws SQLException {
 

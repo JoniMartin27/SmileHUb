@@ -139,7 +139,7 @@ public class Inicio_Panel_Administrador extends JFrame {
         			
         			else if((e.getKeyCode()==KeyEvent.VK_M)&&combo.contains(17)) {
         				Jdialog_Ficha_Crear_Proveedor proveedorCrear=new Jdialog_Ficha_Crear_Proveedor();
-        				proveedorCrear.setVisible(true);
+        			
         				proveedorCrear.setVisible(true);
         				proveedorCrear.setLocation(200, 200);
         				proveedorCrear.setModal(true);
@@ -239,7 +239,8 @@ public class Inicio_Panel_Administrador extends JFrame {
 				usuario_proveedores.setLocation(0, 0);
 				usuario_proveedores.show();
 				usuario_proveedores.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
-
+		combo.clear();
+		
 			}
 		});
 		btn_proveedor.setBounds(33, 67, 119, 23);
@@ -297,7 +298,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 				miDesktopPane.add(pag_Material);
 				pag_Material.setBorder(null);
 				((BasicInternalFrameUI) pag_Material.getUI()).setNorthPane(null);
-
+				pag_Material.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
 				pag_Material.setLocation(0, 0);
 				pag_Material.setVisible(true);
 
