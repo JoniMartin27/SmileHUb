@@ -160,7 +160,8 @@ public class ConexionMySQL {
      public static ConsultaCita consultaCita(int idCita) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("Select * from consulta_cita where id_cita = " + idCita);//consulta
+         ResultSet rset=stmt.executeQuery("SELECT id_doctor,id_tratamiento,id_historial,observaciones, fecha,hora"+
+        		   " from consulta_cita where id_cita  = "+ idCita);//consulta
 
          ConsultaCita consultaCita=null;
          if (rset.next()) {
@@ -182,7 +183,22 @@ public class ConexionMySQL {
     }
      
      
-     
+     public void modificarCita(ConsultaCita cita) throws SQLException {
+    	 String query = "UPDATE consultacita SET " +
+    	            "id_doctor = '" + cita.getId_doctor() + "', " +
+    	            "id_historial = '" + cita.getId_historial() + "', " +
+    	            "id_tratamiento = '" + cita.getId_tratamiento() + "', " +
+    	            "observaciones = '" + cita.getObservaciones() + "', " +
+    	            "fecha = '" + cita.getFecha() + "', " +
+    	            "hora = '" + cita.getHora() + "' " +
+    	            "WHERE id_cita = " + cita.getId_cita();
+
+    	    Statement stmt = connection.createStatement();
+    	    stmt.executeUpdate(query);
+
+    	    System.out.println("Actualización exitosa");
+    	    stmt.close();
+    	}
      
      
      

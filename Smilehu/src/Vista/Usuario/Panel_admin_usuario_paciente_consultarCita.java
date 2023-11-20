@@ -38,6 +38,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 	private JTable table;
 	private JDesktopPane miDesktopPane;
 	DefaultTableModel modeloTabla = new DefaultTableModel();
+	private JButton btn_modificar;
 
 	/**
 	 * Launch the application.
@@ -145,6 +146,22 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
         });
         btn_buscarcita.setBounds(370, 119, 97, 23);
         getContentPane().add(btn_buscarcita);
+        
+        btn_modificar = new JButton("Modificar cita");
+        btn_modificar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		try {
+					obtenerDatosFilaSeleccionada();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+        		
+        	}
+        });
+        btn_modificar.setBounds(116, 43, 117, 23);
+        getContentPane().add(btn_modificar);
 
         // Resto del código...
     }
@@ -156,7 +173,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
         // Asegurarse de que la consultaCita no sea null antes de agregar la fila
         if (consultaCita != null) {
             Object[] fila = {
-
+            		consultaCita.getId_doctor(),
                     consultaCita.getId_tratamiento(),
                     consultaCita.getId_historial(),
                     consultaCita.getObservaciones(),
@@ -173,7 +190,44 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
             JOptionPane.showMessageDialog(this, "id no encontrado en la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    private void obtenerDatosFilaSeleccionada() throws SQLException {
+        // Obtener el índice de la fila seleccionada
+        int filaSeleccionada = table.getSelectedRow();
 
+        // Verificar si se ha seleccionado alguna fila
+        if (filaSeleccionada != -1) {
+            // Obtener los valores de las celdas en la fila seleccionada
+            int idDoctor = (int) table.getValueAt(filaSeleccionada, 0);
+            int idTratamiento = (int) table.getValueAt(filaSeleccionada, 1);
+            int idHistorial = (int) table.getValueAt(filaSeleccionada, 2);
+            String observaciones = (String) table.getValueAt(filaSeleccionada, 3);
+            String fecha = (String) table.getValueAt(filaSeleccionada, 4);
+            String hora = (String) table.getValueAt(filaSeleccionada, 5);
+
+            // Crear un objeto Cita con los valores obtenidos
+            ConsultaCita cita=new ConsultaCita();
+            cita.setId_doctor(idDoctor);
+            cita.setId_tratamiento(idTratamiento);
+            cita.setId_historial(idHistorial);
+            cita.setObservaciones(observaciones);
+            cita.setFecha(hora);
+            cita.setHora(hora);
+            ConexionMySQL.modificarCita(cita);
+            // Hacer lo que necesites con el objeto Cita
+            // Puedes imprimir los valores, pasarlo a un formulario de edición, etc.
+            System.out.println("Datos de la fila seleccionada:");
+            System.out.println("ID Doctor: " + cita.getId_doctor());
+            System.out.println("ID Tratamiento: " + cita.getId_tratamiento());
+           
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila primero", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    private void modificacionCita(ConsultaCita cita) {
+    	
+    	
+    	
+    }
     // Método para limpiar la tabla
     private void limpiarTabla() {
         modeloTabla.setRowCount(0);
