@@ -35,6 +35,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JMenu;
@@ -87,6 +88,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 	 * Create the frame.
 	 */
 	public Inicio_Panel_Administrador() {
+		setIconImage(new ImageIcon(getClass().getResource("/img/SmileHub.png")).getImage());
 		JDesktopPane miDesktopPane = new JDesktopPane();
 		miDesktopPane.setBounds(219, 44, 799, 487);
 		
