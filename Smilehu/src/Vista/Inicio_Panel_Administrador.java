@@ -121,6 +121,7 @@ public class Inicio_Panel_Administrador extends JFrame {
         		if(combo.size()>1) {
         			
         			
+        			
         		//Paciente
         			if((e.getKeyCode()==KeyEvent.VK_P)&&combo.contains(17)) {
         				System.out.print("Has entrado en crear Paciente");
@@ -187,6 +188,8 @@ public class Inicio_Panel_Administrador extends JFrame {
         				combo.clear();
         			}
         			
+        			
+        			
         			//Tipos de Pago
         			if(combo.contains(KeyEvent.VK_T)&&(combo.contains(KeyEvent.VK_P)&&combo.contains(17))) {
         				JDialog_admin_gestionEconomica_tipoPago tipoPago=new JDialog_admin_gestionEconomica_tipoPago();
@@ -195,7 +198,6 @@ public class Inicio_Panel_Administrador extends JFrame {
         				tipoPago.setModal(true);
         				contentPane.requestFocus();
         				combo.clear();
-        				
         			}
         			
         		}}			
