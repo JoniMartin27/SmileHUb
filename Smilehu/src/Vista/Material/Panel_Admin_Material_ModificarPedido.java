@@ -45,7 +45,7 @@ public class Panel_Admin_Material_ModificarPedido extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Panel_Admin_Material_ModificarPedido() {
-		setBounds(177, 0, 398, 427);
+		setBounds(190, 43, 593, 414);
 		getContentPane().setBackground(new Color(159, 232, 223));
 		getContentPane().setLayout(null);
 		
@@ -55,7 +55,7 @@ public class Panel_Admin_Material_ModificarPedido extends JInternalFrame {
 		lbl_preciototal.setBounds(181, 106, 174, 14);
 		getContentPane().add(lbl_preciototal);
 		
-		JLabel lbl_crearpedido_1 = new JLabel("Crear Pedido");
+		JLabel lbl_crearpedido_1 = new JLabel("Modificar Pedido");
 		lbl_crearpedido_1.setForeground(new Color(0, 0, 0));
 		lbl_crearpedido_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lbl_crearpedido_1.setBounds(25, 11, 136, 14);

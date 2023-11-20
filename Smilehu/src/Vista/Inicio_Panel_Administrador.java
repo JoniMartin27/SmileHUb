@@ -228,7 +228,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 		btn_GestionEconomica.setBounds(23, 385, 164, 23);
 		panel.add(btn_GestionEconomica);
 
-		JButton btn_proveedor = new JButton("proveedores");
+		JButton btn_proveedor = new JButton("Proveedores");
 		btn_proveedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_Admin_Usuario_Proveedores usuario_proveedores = new Panel_Admin_Usuario_Proveedores();

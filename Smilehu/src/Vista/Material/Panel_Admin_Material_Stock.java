@@ -49,17 +49,17 @@ public class Panel_Admin_Material_Stock extends JInternalFrame {
 	 */
 	public Panel_Admin_Material_Stock() {
 		getContentPane().setBackground(new Color(159, 232, 223));
-		setBounds(177, 0, 398, 427);
+		setBounds(190, 43, 593, 414);
 		getContentPane().setLayout(null);
 		
 		JLabel lbl_actualizarstock = new JLabel("Control de Stock");
 		lbl_actualizarstock.setForeground(new Color(0, 0, 0));
-		lbl_actualizarstock.setBounds(10, 11, 115, 14);
+		lbl_actualizarstock.setBounds(10, 11, 165, 14);
 		getContentPane().add(lbl_actualizarstock);
 		
 		JLabel lbl_material = new JLabel("Material");
 		lbl_material.setForeground(new Color(0, 0, 0));
-		lbl_material.setBounds(10, 47, 54, 14);
+		lbl_material.setBounds(10, 47, 86, 14);
 		getContentPane().add(lbl_material);
 		
 		tf_material = new JTextField();
@@ -69,7 +69,7 @@ public class Panel_Admin_Material_Stock extends JInternalFrame {
 		
 		JLabel lbl_preciounitario = new JLabel("Precio Unitario");
 		lbl_preciounitario.setForeground(new Color(0, 0, 0));
-		lbl_preciounitario.setBounds(154, 47, 86, 14);
+		lbl_preciounitario.setBounds(154, 47, 139, 14);
 		getContentPane().add(lbl_preciounitario);
 		
 		tf_preciounitario = new JTextField();
@@ -79,12 +79,12 @@ public class Panel_Admin_Material_Stock extends JInternalFrame {
 		
 		JLabel lbl_cantidadmaterial = new JLabel("Cantidad Material");
 		lbl_cantidadmaterial.setForeground(new Color(0, 0, 0));
-		lbl_cantidadmaterial.setBounds(154, 114, 86, 14);
+		lbl_cantidadmaterial.setBounds(154, 114, 150, 14);
 		getContentPane().add(lbl_cantidadmaterial);
 		
 		JLabel lbl_preciototal = new JLabel("Precio Total");
 		lbl_preciototal.setForeground(new Color(0, 0, 0));
-		lbl_preciototal.setBounds(10, 114, 86, 14);
+		lbl_preciototal.setBounds(10, 114, 95, 14);
 		getContentPane().add(lbl_preciototal);
 		
 		tf_cantidadmaterial = new JTextField();
@@ -132,11 +132,11 @@ public class Panel_Admin_Material_Stock extends JInternalFrame {
 				
 			}
 		});
-		btn_bajamaterial.setBounds(154, 183, 95, 23);
+		btn_bajamaterial.setBounds(154, 183, 115, 23);
 		getContentPane().add(btn_bajamaterial);
 		
 		JButton btn_actualizarmaterial = new JButton("Actualizar Material");
-		btn_actualizarmaterial.setBounds(131, 352, 121, 23);
+		btn_actualizarmaterial.setBounds(131, 334, 138, 23);
 		getContentPane().add(btn_actualizarmaterial);
 
 	}
