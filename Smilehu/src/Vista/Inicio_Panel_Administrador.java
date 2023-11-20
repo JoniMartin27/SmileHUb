@@ -18,6 +18,8 @@ import Vista.Usuario.Panel_Admin_Usuario_Doctor;
 import Vista.Usuario.Panel_Admin_Usuario_Proveedores;
 import Vista.Usuario.Panel_PacienteCreado;
 import Vista.Usuario.Panel_PacienteCrear;
+import Vista.Usuario.Panel_ProveedorCreado;
+import Vista.Usuario.Panel_ProveedorCrear;
 import Vista.Usuario.Panel_admin_usuario_generarInforme;
 import Vista.Usuario.Panel_admin_usuario_paciente_consultarCita;
 import Vista.gestionEconomica.Panel_admin_gestionEconomica;
@@ -54,7 +56,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtSmilehub;
-	private static JDesktopPane miDesktopPane_1;
+	private JDesktopPane miDesktopPane_1;
 	private JFrame Frame;
 
 	/**
@@ -79,12 +81,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 	    this.miDesktopPane_1 = desktopPane;
 	}
 
-	public void agregarInternalFrame(JInternalFrame internalFrame) {
-		miDesktopPane_1.add(internalFrame);
-		internalFrame.setVisible(true);
-		internalFrame.setLocation(0, 0);
-		((BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
-	}
+
 
 	/**
 	 * Create the frame.
@@ -219,10 +216,6 @@ public class Inicio_Panel_Administrador extends JFrame {
 		JButton btn_GestionMedica = new JButton("Gestion Medica");
 		btn_GestionMedica.setBounds(23, 153, 164, 23);
 		panel.add(btn_GestionMedica);
-		// Boton Materiales
-		JButton btn_Material = new JButton("Material");
-		btn_Material.setBounds(23, 261, 164, 23);
-		panel.add(btn_Material);
 		// Boton Gestion Economica
 		JButton btn_GestionEconomica = new JButton("Gestion Economica");
 		btn_GestionEconomica.setBounds(23, 385, 164, 23);
@@ -231,19 +224,11 @@ public class Inicio_Panel_Administrador extends JFrame {
 		JButton btn_proveedor = new JButton("Proveedores");
 		btn_proveedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Panel_Admin_Usuario_Proveedores usuario_proveedores = new Panel_Admin_Usuario_Proveedores();
-				usuario_proveedores.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
-				miDesktopPane.removeAll();
-				miDesktopPane.add(usuario_proveedores);
-				((BasicInternalFrameUI) usuario_proveedores.getUI()).setNorthPane(null);
-				usuario_proveedores.setLocation(0, 0);
-				usuario_proveedores.show();
-				usuario_proveedores.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
-		combo.clear();
-		
+				mostrarMenuProveedor(btn_proveedor,miDesktopPane);
+				
 			}
 		});
-		btn_proveedor.setBounds(33, 67, 119, 23);
+		btn_proveedor.setBounds(33, 69, 119, 23);
 		panel.add(btn_proveedor);
 
 		JButton btn_paciente = new JButton("Pacientes");
@@ -275,6 +260,14 @@ public class Inicio_Panel_Administrador extends JFrame {
 
 		btn_Doctores.setBounds(33, 90, 119, 23);
 		panel.add(btn_Doctores);
+		
+		JButton btn_pedidos = new JButton("Pedidos");
+		btn_pedidos.setBounds(33, 260, 119, 23);
+		panel.add(btn_pedidos);
+		
+		JButton btn_material = new JButton("Material");
+		btn_material.setBounds(33, 284, 119, 23);
+		panel.add(btn_material);
 
 		btn_GestionEconomica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -287,20 +280,6 @@ public class Inicio_Panel_Administrador extends JFrame {
 				gestion_economica.setLocation(0, 0);
 				gestion_economica.show();
 				gestion_economica.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
-
-			}
-		});
-		btn_Material.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				Panel_Admin_Material_Inicio pag_Material = new Panel_Admin_Material_Inicio();
-				miDesktopPane.removeAll();
-				miDesktopPane.add(pag_Material);
-				pag_Material.setBorder(null);
-				((BasicInternalFrameUI) pag_Material.getUI()).setNorthPane(null);
-				pag_Material.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
-				pag_Material.setLocation(0, 0);
-				pag_Material.setVisible(true);
 
 			}
 		});
@@ -415,7 +394,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 	}
 	
 	private static void abrirPanelCrearProveedor(JDesktopPane desktopPane) throws PropertyVetoException {
-		Panel_PacienteCrear PacienteCrear = new Panel_PacienteCrear();
+		Panel_ProveedorCrear PacienteCrear = new Panel_ProveedorCrear();
 
 		PacienteCrear.setBorder(null);
 		((BasicInternalFrameUI) PacienteCrear.getUI()).setNorthPane(null);
@@ -429,16 +408,16 @@ public class Inicio_Panel_Administrador extends JFrame {
 	}
 	
 	private static void abrirPanelVerProveedor(JDesktopPane desktopPane) throws PropertyVetoException {
-		Panel_PacienteCrear PacienteCrear = new Panel_PacienteCrear();
+		Panel_ProveedorCreado PacienteCreado = new Panel_ProveedorCreado();
 
-		PacienteCrear.setBorder(null);
-		((BasicInternalFrameUI) PacienteCrear.getUI()).setNorthPane(null);
-		PacienteCrear.setLocation(0, 0);
-		PacienteCrear.show();
-		PacienteCrear.setSize(desktopPane.getWidth(), desktopPane.getWidth());
-		PacienteCrear.setVisible(true);
-		desktopPane.add(PacienteCrear); // Usar el parámetro en lugar de la variable local
-		PacienteCrear.setSelected(true);
+		PacienteCreado.setBorder(null);
+		((BasicInternalFrameUI) PacienteCreado.getUI()).setNorthPane(null);
+		PacienteCreado.setLocation(0, 0);
+		PacienteCreado.show();
+		PacienteCreado.setSize(desktopPane.getWidth(), desktopPane.getWidth());
+		PacienteCreado.setVisible(true);
+		desktopPane.add(PacienteCreado); // Usar el parámetro en lugar de la variable local
+		PacienteCreado.setSelected(true);
 		
 		
 	}	

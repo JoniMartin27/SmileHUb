@@ -50,7 +50,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
-				//setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("./img/SmileHub.png")));
+				setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("./img/SmileHub.png")));
 				
 				setResizable(true);
 				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,17 +96,17 @@ public class Login extends JFrame {
 		});
 				btn_Help.setBounds(606, 334, 34, 34);
 		
-		//ImageIcon icoHelp = new ImageIcon(getClass().getResource("img/ayuda.png"));
+		ImageIcon icoHelp = new ImageIcon(getClass().getResource("img/ayuda.png"));
 				//btn_Help.setIcon(icoHelp);
 				contentPane.add(btn_Help);
 		
-		//JLabel lbl_Icon = new JLabel("");
+		JLabel lbl_Icon = new JLabel("");
 				//lbl_Icon.setBounds(344, 11, 270, 271);
 
 				//ImageIcon icoLogo = new ImageIcon(getClass().getResource("img/SmileHub.png"));
 				//ImageIcon imgLogo = new ImageIcon(icoLogo.getImage().getScaledInstance(lbl_Icon.getWidth(), lbl_Icon.getHeight(), Image.SCALE_SMOOTH));
 
-		//lbl_Icon.setIcon(new ImageIcon(Login.class.getResource("/img/SmileHub.png")));
+		lbl_Icon.setIcon(new ImageIcon(Login.class.getResource("/img/SmileHub.png")));
 				//contentPane.add(lbl_Icon);
 
 		
@@ -115,15 +115,15 @@ public class Login extends JFrame {
 				btn_ocultarCont.setBounds(606, 441, 34, 34);
 
 		JButton btn_verCont = new JButton("");
-		//ImageIcon icoOjo = new ImageIcon(getClass().getResource("img/ojo.png"));
+		ImageIcon icoOjo = new ImageIcon(getClass().getResource("img/ojo.png"));
 		
 
 
-				//btn_verCont.setIcon(icoOjo);
+				btn_verCont.setIcon(icoOjo);
 				btn_verCont.setBounds(606, 441, 34, 34);
 				contentPane.add(btn_verCont);
 		
-		//ImageIcon icoVisible = new ImageIcon(getClass().getResource("img/visible.png"));
+		ImageIcon icoVisible = new ImageIcon(getClass().getResource("img/visible.png"));
 				//btn_ocultarCont.setIcon(icoVisible);
 				contentPane.add(btn_ocultarCont);
 		
