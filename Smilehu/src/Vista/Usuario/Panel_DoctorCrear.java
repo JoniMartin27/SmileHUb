@@ -1,22 +1,22 @@
 package Vista.Usuario;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class Jdialog_Ficha_Crear_Doctor extends JDialog {
+public class Panel_DoctorCrear extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
@@ -31,24 +31,23 @@ public class Jdialog_Ficha_Crear_Doctor extends JDialog {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		try {
-			Jdialog_Ficha_Crear_Doctor dialog = new Jdialog_Ficha_Crear_Doctor();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Panel_DoctorCrear frame = new Panel_DoctorCrear();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
-	
-	public Jdialog_Ficha_Crear_Doctor(JFrame parentFrame, JDesktopPane desktopPane) {
-        super(parentFrame, "Mi JDialog", true);
-        this.desktopPane = desktopPane;}
 
 	/**
-	 * Create the dialog.
+	 * Create the frame.
 	 */
-	public Jdialog_Ficha_Crear_Doctor() {
-		
+	public Panel_DoctorCrear() {
+		setBounds(100, 100, 450, 300);
 		setBounds(100, 100, 584, 389);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(159, 232, 223));
@@ -201,38 +200,6 @@ public class Jdialog_Ficha_Crear_Doctor extends JDialog {
 		g1.add(rdbtn_baja);
 		g1.add(rdbtn_alta);
 		
-		
-		
-	
-		
-		
-		
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		/*Bonotes abajo del JDialog*/
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setBackground(new Color(159, 232, 223));
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
-		}
 	}
+
 }

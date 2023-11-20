@@ -96,7 +96,22 @@ public class ConexionMySQL {
          System.out.println("hola");
          stmt.close();
          }
-     
+     public void modificarCita(ConsultaCita cita,int id) throws SQLException {
+    	 String query = "UPDATE consulta_cita SET " +
+    	            "id_doctor = " + cita.getId_doctor() + ", " +
+    	            "id_tratamiento = " + cita.getId_tratamiento() + ", " +
+    	            "id_historial = " + cita.getId_historial() + ", " +
+    	            "observaciones = '" + cita.getObservaciones() + "', " +
+    	            "fecha = '" + cita.getFecha() + "', " +
+    	            "hora = '" + cita.getHora() + "' " +
+    	            "WHERE id_cita = " + id;
+    	 	System.out.println(query);
+    	    Statement stmt = connection.createStatement();
+    	    stmt.executeUpdate(query);
+
+    	    System.out.println("Actualización exitosa");
+    	    stmt.close();
+    	}
 
      
     /* public static Proveedor consultaProveedor(int idProveedor) throws SQLException {
@@ -183,22 +198,7 @@ public class ConexionMySQL {
     }
      
      
-     public void modificarCita(ConsultaCita cita) throws SQLException {
-    	 String query = "UPDATE consultacita SET " +
-    	            "id_doctor = '" + cita.getId_doctor() + "', " +
-    	            "id_historial = '" + cita.getId_historial() + "', " +
-    	            "id_tratamiento = '" + cita.getId_tratamiento() + "', " +
-    	            "observaciones = '" + cita.getObservaciones() + "', " +
-    	            "fecha = '" + cita.getFecha() + "', " +
-    	            "hora = '" + cita.getHora() + "' " +
-    	            "WHERE id_cita = " + cita.getId_cita();
-
-    	    Statement stmt = connection.createStatement();
-    	    stmt.executeUpdate(query);
-
-    	    System.out.println("Actualización exitosa");
-    	    stmt.close();
-    	}
+    
      
      
      

@@ -12,10 +12,9 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import Vista.Material.Panel_Admin_Material_Inicio;
 import Vista.Usuario.JDialog_Admin_Usuario_inicio;
-import Vista.Usuario.Jdialog_Ficha_Crear_Doctor;
-import Vista.Usuario.Jdialog_Ficha_Crear_Proveedor;
 import Vista.Usuario.Panel_Admin_Usuario_Doctor;
 import Vista.Usuario.Panel_Admin_Usuario_Proveedores;
+import Vista.Usuario.Panel_DoctorCrear;
 import Vista.Usuario.Panel_PacienteCreado;
 import Vista.Usuario.Panel_PacienteCrear;
 import Vista.Usuario.Panel_ProveedorCreado;
@@ -283,14 +282,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 		btn_Doctores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Panel_Admin_Usuario_Doctor usuario_doctor = new Panel_Admin_Usuario_Doctor();
-				usuario_doctor.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
-				miDesktopPane.removeAll();
-				miDesktopPane.add(usuario_doctor);
-				((BasicInternalFrameUI) usuario_doctor.getUI()).setNorthPane(null);
-				usuario_doctor.setLocation(0, 0);
-				usuario_doctor.show();
-				usuario_doctor.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
+				mostrarMenuDoctor(btn_Doctores, miDesktopPane);
 			}
 		});
 
@@ -427,6 +419,65 @@ public class Inicio_Panel_Administrador extends JFrame {
 
 		// Mostrar el menú desplegable en la posición del componente invocador
 		menu.show(invoker, 0, invoker.getHeight());
+	}
+	
+	private static void mostrarMenuDoctor(Component invoker, JDesktopPane desktopPane) {
+		JPopupMenu menu = new JPopupMenu();
+
+		// Agregar elementos al menú desplegable
+		JMenuItem perfilDoctor = new JMenuItem("Ver perfil doctor");
+		perfilDoctor.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+					try {
+						abrirPanelCrearDoctor(desktopPane);
+					} catch (PropertyVetoException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				
+			}
+
+		
+
+		});
+		JMenuItem CrearDoctor = new JMenuItem("Crear perfil Doctor");
+		CrearDoctor.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			
+			try {
+				abrirPanelCrearPaciente(desktopPane);
+			} catch (PropertyVetoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	});
+		
+		
+
+		menu.add(perfilDoctor);
+		menu.add(CrearDoctor);
+	
+
+		// Mostrar el menú desplegable en la posición del componente invocador
+		menu.show(invoker, 0, invoker.getHeight());
+	}
+	
+	private static void abrirPanelCrearDoctor(JDesktopPane desktopPane) throws PropertyVetoException {
+		Panel_DoctorCrear DoctorCrear = new Panel_DoctorCrear();
+
+		DoctorCrear.setBorder(null);
+		((BasicInternalFrameUI) DoctorCrear.getUI()).setNorthPane(null);
+		DoctorCrear.setLocation(0, 0);
+		DoctorCrear.show();
+		DoctorCrear.setSize(desktopPane.getWidth(), desktopPane.getWidth());
+		DoctorCrear.setVisible(true);
+		desktopPane.add(DoctorCrear); // Usar el parámetro en lugar de la variable local
+		DoctorCrear.setSelected(true);
+		
+		
 	}
 	
 	private static void abrirPanelCrearProveedor(JDesktopPane desktopPane) throws PropertyVetoException {
