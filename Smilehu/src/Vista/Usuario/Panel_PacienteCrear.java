@@ -15,16 +15,25 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import Conexion.ConexionMySQL;
+import Modelo.Paciente;
+
+import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
+
 public class Panel_PacienteCrear extends JInternalFrame {
 
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	private JTextField tf_apellidos;
-	private JTextField tf_nombre;
-	private JTextField tf_dni;
-	private JTextField tf_fnacimiento;
 	private JDesktopPane miDesktopPane_1;
+	private JTextField tf_nombre;
+	private JTextField tf_fechaNacimiento;
+	private JTextField tf_apellidos;
+	private JTextField tf_telefono;
+	private JTextField tf_direccion;
 	/**
 	 * Launch the application.
 	 */
@@ -62,90 +71,21 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		
 
 		
-		JButton btn_modificardatos = new JButton("Modificar Datos");
-		btn_modificardatos.setBounds(23, 199, 173, 23);
-		contentPanel.add(btn_modificardatos);
-		
-		JButton btn_consultarpagos = new JButton("Consultar Pagos");
-		btn_consultarpagos.setBounds(23, 221, 173, 23);
-		contentPanel.add(btn_consultarpagos);
-		
-		JButton btn_odontograma = new JButton("Odontograma");
-		btn_odontograma.setBounds(23, 244, 173, 23);
-		contentPanel.add(btn_odontograma);
-
-		
-		/*DNI*/
-		JLabel lbl_dni = new JLabel("DNI:");
-		lbl_dni.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lbl_dni.setForeground(new Color(0, 0, 0));
-		lbl_dni.setBounds(23, 36, 61, 14);
-		contentPanel.add(lbl_dni);
-		
-		tf_dni = new JTextField();
-		tf_dni.setBounds(242, 35, 126, 20);
-		contentPanel.add(tf_dni);
-		tf_dni.setColumns(10);
-
-		
-		/*Nombre*/
-		JLabel lbl_nombre = new JLabel("Nombre:");
-		lbl_nombre.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lbl_nombre.setForeground(new Color(0, 0, 0));
-		lbl_nombre.setBounds(23, 61, 90, 14);
-		contentPanel.add(lbl_nombre);
-		
-		tf_nombre = new JTextField();
-		tf_nombre.setBounds(242, 60, 126, 20);
-		contentPanel.add(tf_nombre);
-		tf_nombre.setColumns(10);
-		
-
-		
-		/*Apellidos*/
-		JLabel lbl_apellidos = new JLabel("Apellidos:");
-		lbl_apellidos.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lbl_apellidos.setForeground(new Color(0, 0, 0));
-		lbl_apellidos.setBounds(23, 86, 102, 14);
-		contentPanel.add(lbl_apellidos);
-		
-		tf_apellidos = new JTextField();
-		tf_apellidos.setBounds(242, 85, 126, 20);
-		contentPanel.add(tf_apellidos);
-		tf_apellidos.setColumns(10);
-		
-		
-		
-		
-		/*Fecha de nacimiento*/
-		JLabel lbl_fechanacimiento = new JLabel("Fecha de nacimiento:");
-		lbl_fechanacimiento.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lbl_fechanacimiento.setForeground(new Color(0, 0, 0));
-		lbl_fechanacimiento.setBounds(23, 111, 173, 14);
-		contentPanel.add(lbl_fechanacimiento);
-		
-		tf_fnacimiento = new JTextField();
-		tf_fnacimiento.setBounds(242, 110, 126, 20);
-		contentPanel.add(tf_fnacimiento);
-		tf_fnacimiento.setColumns(10);
-		
-
-		
 		
 		/*Botones Sexo*/
 		JLabel lbl_sexo = new JLabel("Sexo");
 		lbl_sexo.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lbl_sexo.setForeground(new Color(0, 0, 0));
-		lbl_sexo.setBounds(23, 139, 48, 21);
+		lbl_sexo.setBounds(258, 194, 48, 21);
 		contentPanel.add(lbl_sexo);
 		
 		JRadioButton rdbtn_masculino = new JRadioButton("Masculino");
-		rdbtn_masculino.setBounds(241, 140, 109, 23);
+		rdbtn_masculino.setBounds(161, 222, 109, 23);
 		contentPanel.add(rdbtn_masculino);
 		
 		
 		JRadioButton rdbtn_femenino = new JRadioButton("Femenino");
-		rdbtn_femenino.setBounds(379, 140, 109, 23);
+		rdbtn_femenino.setBounds(293, 222, 109, 23);
 		contentPanel.add(rdbtn_femenino);
 		
 		
@@ -153,27 +93,104 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		g1.add(rdbtn_masculino);
 		g1.add(rdbtn_femenino);
 		
-
-		/*Botones Alta/Baja*/
-		JLabel lbl_altabaja = new JLabel("Dar de alta o baja");
-		lbl_altabaja.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lbl_altabaja.setForeground(new Color(0, 0, 0));
-		lbl_altabaja.setBounds(23, 174, 173, 14);
-		contentPanel.add(lbl_altabaja);
-		
-		JRadioButton rdbtn_alta = new JRadioButton("Alta");
-		rdbtn_alta.setBounds(242, 172, 68, 23);
-		contentPanel.add(rdbtn_alta);
-		
-		JRadioButton rdbtn_baja = new JRadioButton("Baja");
-		rdbtn_baja.setBounds(342, 172, 68, 23);
-		contentPanel.add(rdbtn_baja);
-		
 		ButtonGroup g2 = new ButtonGroup();
-		g1.add(rdbtn_baja);
-		g1.add(rdbtn_alta);
+		
+		JLabel lbl_dni_1 = new JLabel("Nombre");
+		lbl_dni_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lbl_dni_1.setForeground(Color.BLACK);
+		lbl_dni_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_dni_1.setBounds(183, 22, 46, 14);
+		contentPanel.add(lbl_dni_1);
+		
+		tf_nombre = new JTextField();
+		tf_nombre.setColumns(10);
+		tf_nombre.setBounds(144, 54, 126, 20);
+		contentPanel.add(tf_nombre);
+		
+		tf_fechaNacimiento = new JTextField();
+		tf_fechaNacimiento.setColumns(10);
+		tf_fechaNacimiento.setBounds(144, 112, 126, 20);
+		contentPanel.add(tf_fechaNacimiento);
+		
+		JLabel lbl_nombre_1 = new JLabel("fecha nacimiento");
+		lbl_nombre_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lbl_nombre_1.setForeground(Color.BLACK);
+		lbl_nombre_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_nombre_1.setBounds(161, 97, 92, 14);
+		contentPanel.add(lbl_nombre_1);
+		
+		tf_apellidos = new JTextField();
+		tf_apellidos.setColumns(10);
+		tf_apellidos.setBounds(293, 54, 126, 20);
+		contentPanel.add(tf_apellidos);
+		
+		JLabel lbl_nombre_2 = new JLabel("Apellidos");
+		lbl_nombre_2.setHorizontalAlignment(SwingConstants.LEFT);
+		lbl_nombre_2.setForeground(Color.BLACK);
+		lbl_nombre_2.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_nombre_2.setBounds(336, 22, 48, 14);
+		contentPanel.add(lbl_nombre_2);
+		
+		JLabel lbl_apellidos_1 = new JLabel("direccion");
+		lbl_apellidos_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lbl_apellidos_1.setForeground(Color.BLACK);
+		lbl_apellidos_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_apellidos_1.setBounds(336, 97, 48, 14);
+		contentPanel.add(lbl_apellidos_1);
+		
+		JLabel lbl_sexo_1 = new JLabel("telefono");
+		lbl_sexo_1.setHorizontalAlignment(SwingConstants.LEFT);
+		lbl_sexo_1.setForeground(Color.BLACK);
+		lbl_sexo_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_sexo_1.setBounds(258, 139, 48, 14);
+		contentPanel.add(lbl_sexo_1);
+		
+		tf_telefono = new JTextField();
+		tf_telefono.setColumns(10);
+		tf_telefono.setBounds(221, 164, 126, 20);
+		contentPanel.add(tf_telefono);
+		
+		tf_direccion = new JTextField();
+		tf_direccion.setColumns(10);
+		tf_direccion.setBounds(293, 112, 126, 20);
+		contentPanel.add(tf_direccion);
+		
+		JButton btn_CrearPaciente = new JButton("Crear Paciente");
+		btn_CrearPaciente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String genero="";
+				if(rdbtn_femenino.isSelected()) {
+					genero="Mujer";
+					
+				}else if(rdbtn_masculino.isSelected()) {
+					genero="Hombre";
+					
+				}else {
+					
+				}
+				
+				try {
+					ConexionMySQL.conectar();
+					Paciente paciente = new Paciente( tf_nombre.getText(), tf_apellidos.getText(),
+							tf_direccion.getText(), genero, tf_telefono.getText(),
+							tf_fechaNacimiento.getText());
+					
+					
+					ConexionMySQL.insertarPaciente(paciente);
+					
+					
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				
+				
+				
+			}
+		});
+		btn_CrearPaciente.setBounds(221, 276, 126, 23);
+		contentPanel.add(btn_CrearPaciente);
 	}
-
-
-
 }

@@ -29,11 +29,11 @@ public class Paciente extends Usuario{
 	public Paciente(String nombre,String apellidos, String direccion, String genero,String telefono, String fechaDeAlta, String fechaNacimiento) {
 		// TODO Auto-generated constructor stub
 		super(nombre, apellidos, direccion, genero, telefono, fechaDeAlta, fechaNacimiento);
-	}{
-	
-
 	}
-
+	public Paciente(String nombre,String apellidos, String direccion, String genero,String telefono,String fechaNacimiento) {
+		// TODO Auto-generated constructor stub
+		super(nombre, apellidos, direccion, genero, telefono,fechaNacimiento);
+	}
 	
 
 
