@@ -24,7 +24,16 @@ public abstract class  Usuario {
 	}
 
 	
-	
+	public Usuario(String nombre,String apellidos, String direccion, String genero,String telefono,  String fechaNacimiento) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.nombre=nombre;
+		this.apellidos=apellidos;
+		this.direccion=direccion;
+		this.genero=genero;
+		this.telefono=telefono;
+		this.fechaNacimiento=fechaNacimiento;
+	}
 
 	public Usuario(String nombre, String apellidos, String direccion, String genero, String telefono,
 			String fechaDeAlta, String fechaNacimiento) {
