@@ -113,15 +113,13 @@ public class Inicio_Panel_Administrador extends JFrame {
 		contentPane.addKeyListener(new KeyAdapter() {
         	@Override
         	public void keyPressed(KeyEvent e) {
-        		System.out.println("PRESED " + e.getKeyCode());
         		combo.add(e.getKeyCode());
-        		
-        		System.out.println("El combo vale:" + combo.size());
         		if(combo.size()>1) {
         			
         		
         			if((e.getKeyCode()==KeyEvent.VK_P)&&combo.contains(17)) {
         				System.out.print("Has entrado en crear Paciente");
+        				
         				Panel_PacienteCrear pacienteCrear=new Panel_PacienteCrear();
         				pacienteCrear.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
         			
@@ -132,20 +130,24 @@ public class Inicio_Panel_Administrador extends JFrame {
         				pacienteCrear.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
         				contentPane.requestFocus();
         				
+        				
         			}
         			
         			
         			
         			else if((e.getKeyCode()==KeyEvent.VK_M)&&combo.contains(17)) {
+        				
         				Jdialog_Ficha_Crear_Proveedor proveedorCrear=new Jdialog_Ficha_Crear_Proveedor();
         				proveedorCrear.setVisible(true);
         				contentPane.requestFocus();
+        				
         			}
         			
         			
         			
         			else if((e.getKeyCode()==KeyEvent.VK_C)&&combo.contains(17)) {
         				System.out.print("Has entrado en crear Paciente");
+        				
         				Panel_admin_usuario_paciente_consultarCita citaConsultarr=new Panel_admin_usuario_paciente_consultarCita();
         				citaConsultarr.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
         			
@@ -155,11 +157,16 @@ public class Inicio_Panel_Administrador extends JFrame {
         				citaConsultarr.show();
         				citaConsultarr.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth()); 
         				contentPane.requestFocus();
+        			
         			}
         			
         			
         		}}			
         		
+			@Override
+			public void keyReleased(KeyEvent e) {
+			
+			}
 });
 		
 		
