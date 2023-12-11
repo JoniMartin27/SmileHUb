@@ -190,19 +190,11 @@ public class Login extends JFrame {
 				            e1.printStackTrace();
 				        }
 				    
-			
-						
-						
-						
-						
 						
 						
 					}
 
-					private void setVisible(boolean b) {
-						// TODO Auto-generated method stub
-						
-					}
+				
 				});
 						btn_Acceder.setBounds(426, 513, 107, 34);
 						contentPane.add(btn_Acceder);

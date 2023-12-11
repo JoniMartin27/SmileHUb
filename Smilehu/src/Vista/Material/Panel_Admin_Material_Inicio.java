@@ -64,20 +64,7 @@ public class Panel_Admin_Material_Inicio extends JInternalFrame {
 		JButton btn_proveedores = new JButton("Proveedores");
 		btn_proveedores.setBounds(47, 311, 113, 23);
 		panel.add(btn_proveedores);
-		btn_proveedores.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Panel_Admin_Material_Proveedores proveedores =new Panel_Admin_Material_Proveedores();
-				
-				proveedores.setDesktopPane(desktopPane2); // Asigna la referencia del DesktopPane
-				desktopPane2.removeAll();
-				desktopPane2.add(proveedores);
-				((BasicInternalFrameUI) proveedores.getUI()).setNorthPane(null);
-				proveedores.setLocation(0,0);
-				proveedores.setVisible(true);
-				proveedores.setSize(desktopPane2.getWidth(), desktopPane2.getWidth());
-				
-			}
-		});
+		
 		btn_pedidos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Panel_Admin_Material_Pedidos pedidos=new Panel_Admin_Material_Pedidos(); 

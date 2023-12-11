@@ -51,7 +51,7 @@ public class Panel_ProveedorCrear extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Panel_ProveedorCrear() {
-		setBounds(100, 100, 550, 353);
+		setBounds(100, 100, 862, 531);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(159, 232, 223));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -69,7 +69,7 @@ public class JDialog_Admin_Usuario_inicio extends JDialog {
 			contentPanel.add(txtVolver);
 			txtVolver.setColumns(10);
 		}
-		{
+		
 			JPanel panel = new JPanel();
 			panel.setBackground(new Color(42, 61, 80));
 			panel.setBounds(87, 81, 517, 176);
@@ -95,53 +95,28 @@ public class JDialog_Admin_Usuario_inicio extends JDialog {
 				btn_pacientes.setBounds(31, 31, 108, 23);
 				panel.add(btn_pacientes);
 			}
-			{
-				JButton btn_doctores = new JButton("Doctores");
-				btn_doctores.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						Panel_Admin_Usuario_Doctor usuario_doctor =new Panel_Admin_Usuario_Doctor();
-						agregarInternalFrame(usuario_doctor);
-						dispose();
-						
-				
-						
-						
-						
-					}
-				});
-				btn_doctores.setBounds(31, 82, 108, 23);
-				panel.add(btn_doctores);
-			}
-			{
-				JButton btn_proveedores = new JButton("Proveedores");
-				btn_proveedores.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						Panel_Admin_Usuario_Proveedores usuario_proveedor = new Panel_Admin_Usuario_Proveedores();
-						agregarInternalFrame(usuario_proveedor);
-						dispose();
-					}
-				});
-				btn_proveedores.setBounds(31, 129, 108, 23);
-				panel.add(btn_proveedores);
-			}
-		}
-		{
+
 			JPanel buttonPane = new JPanel();
 			buttonPane.setBackground(new Color(4, 20, 36));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
+			
 				JButton okButton = new JButton("OK");
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
-			}
-			{
+			
+			
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
-			}
-		}
-	}
-
+			
+		
+		
+	
 }
+	
+}
+	
+
+

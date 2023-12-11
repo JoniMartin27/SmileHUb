@@ -98,19 +98,28 @@ public class ConexionMySQL {
          }
      public void modificarCita(ConsultaCita cita,int id) throws SQLException {
     	 String query = "UPDATE consulta_cita SET " +
-    	            "id_doctor = " + cita.getId_doctor() + ", " +
-    	            "id_tratamiento = " + cita.getId_tratamiento() + ", " +
-    	            "id_historial = " + cita.getId_historial() + ", " +
-    	            "observaciones = '" + cita.getObservaciones() + "', " +
-    	            "fecha = '" + cita.getFecha() + "', " +
-    	            "hora = '" + cita.getHora() + "' " +
-    	            "WHERE id_cita = " + id;
-    	 	System.out.println(query);
-    	    Statement stmt = connection.createStatement();
-    	    stmt.executeUpdate(query);
+                 "id_doctor = ?, " +
+                 "id_tratamiento = ?, " +
+                 "id_historial = ?, " +
+                 "observaciones = ?, " +
+                 "fecha = ?, " +
+                 "hora = ? " +
+                 "WHERE id_cita = ?";
 
-    	    System.out.println("Actualización exitosa");
-    	    stmt.close();
+  try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+      pstmt.setInt(1, cita.getId_doctor());
+      pstmt.setInt(2, cita.getId_tratamiento());
+      pstmt.setInt(3, cita.getId_historial());
+      pstmt.setString(4, cita.getObservaciones());
+      pstmt.setString(5, cita.getFecha());
+      pstmt.setString(6, cita.getHora());
+      pstmt.setInt(7, id);
+
+      int rowsAffected = pstmt.executeUpdate();
+      System.out.println("Actualización exitosa. Filas afectadas: " + rowsAffected);
+  } catch (SQLException e) {
+      e.printStackTrace();
+  }
     	}
 
      

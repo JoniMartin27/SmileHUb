@@ -66,17 +66,17 @@ public class Panel_Admin_Material_Stock extends JInternalFrame {
 		
 		JLabel lbl_preciounitario = new JLabel("Precio Unitario");
 		lbl_preciounitario.setForeground(new Color(0, 0, 0));
-		lbl_preciounitario.setBounds(154, 47, 139, 14);
+		lbl_preciounitario.setBounds(177, 47, 139, 14);
 		getContentPane().add(lbl_preciounitario);
 		
 		tf_preciounitario = new JTextField();
-		tf_preciounitario.setBounds(154, 72, 86, 20);
+		tf_preciounitario.setBounds(177, 72, 86, 20);
 		getContentPane().add(tf_preciounitario);
 		tf_preciounitario.setColumns(10);
 		
 		JLabel lbl_cantidadmaterial = new JLabel("Cantidad Material");
 		lbl_cantidadmaterial.setForeground(new Color(0, 0, 0));
-		lbl_cantidadmaterial.setBounds(154, 114, 150, 14);
+		lbl_cantidadmaterial.setBounds(177, 114, 150, 14);
 		getContentPane().add(lbl_cantidadmaterial);
 		
 		JLabel lbl_preciototal = new JLabel("Precio Total");
@@ -86,7 +86,7 @@ public class Panel_Admin_Material_Stock extends JInternalFrame {
 		
 		tf_cantidadmaterial = new JTextField();
 		tf_cantidadmaterial.setColumns(10);
-		tf_cantidadmaterial.setBounds(154, 139, 86, 20);
+		tf_cantidadmaterial.setBounds(177, 139, 86, 20);
 		getContentPane().add(tf_cantidadmaterial);
 		
 		tf_preciototal = new JTextField();
@@ -111,7 +111,7 @@ public class Panel_Admin_Material_Stock extends JInternalFrame {
 				
 			}
 		});
-		btn_nuevomaterial.setBounds(10, 183, 115, 23);
+		btn_nuevomaterial.setBounds(10, 183, 134, 23);
 		getContentPane().add(btn_nuevomaterial);
 		
 		JButton btn_bajamaterial = new JButton("Baja Material");
@@ -129,11 +129,11 @@ public class Panel_Admin_Material_Stock extends JInternalFrame {
 				
 			}
 		});
-		btn_bajamaterial.setBounds(154, 183, 115, 23);
+		btn_bajamaterial.setBounds(154, 183, 139, 23);
 		getContentPane().add(btn_bajamaterial);
 		
 		JButton btn_actualizarmaterial = new JButton("Actualizar Material");
-		btn_actualizarmaterial.setBounds(131, 334, 138, 23);
+		btn_actualizarmaterial.setBounds(99, 334, 150, 23);
 		getContentPane().add(btn_actualizarmaterial);
 
 	}
