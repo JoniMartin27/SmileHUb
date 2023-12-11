@@ -1,29 +1,23 @@
 package Vista.Usuario;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import Controlador.ConexionMySQL;
-import Modelo.Proveedor;
-
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
-
-public class JDialog_Ficha_Creado_Proveedor extends JDialog {
+public class Panel_ProveedorCreado extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
@@ -35,28 +29,33 @@ public class JDialog_Ficha_Creado_Proveedor extends JDialog {
 	private JTextField tf_correo;
 	private JTextField textField;
 	private JTextField tf_buscarProveedor;
+	private JDesktopPane miDesktopPane_1;
 	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		try {
-			JDialog_Ficha_Creado_Proveedor dialog = new JDialog_Ficha_Creado_Proveedor();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Panel_ProveedorCreado frame = new Panel_ProveedorCreado();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
-	
-	public JDialog_Ficha_Creado_Proveedor(JFrame parentFrame, JDesktopPane desktopPane) {
-        super(parentFrame, "Mi JDialog", true);
-        this.desktopPane = desktopPane;}
 
+	
+	public void setDesktopPane(JDesktopPane desktopPane) {
+	    this.miDesktopPane_1 = desktopPane;
+	}
 	/**
-	 * Create the dialog.
+	 * Create the frame.
 	 */
-	public JDialog_Ficha_Creado_Proveedor() {
+	public Panel_ProveedorCreado() {
+
 		setBounds(100, 100, 550, 353);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setForeground(new Color(42, 61, 80));
@@ -117,7 +116,7 @@ public class JDialog_Ficha_Creado_Proveedor extends JDialog {
 		
 		JTextField tf_direccion = new JTextField();
 		tf_direccion.setBounds(347, 69, 126, 20);
-		contentPanel.add(tf_apellidos);
+		
 		tf_direccion.setColumns(10);
 		
 		
@@ -201,35 +200,6 @@ public class JDialog_Ficha_Creado_Proveedor extends JDialog {
 		
 		
 	
-		
-		
-		
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		/*Bonotes abajo del JDialog*/
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setBackground(new Color(159, 232, 223));
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
-		}
 	}
+
 }

@@ -10,6 +10,9 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.UIManager;
+import java.awt.Rectangle;
+import java.awt.Component;
 
 public class Panel_Admin_Material_Pedidos extends JInternalFrame {
 
@@ -57,6 +60,7 @@ public class Panel_Admin_Material_Pedidos extends JInternalFrame {
 		panel.add(btn_modificarpedido);
 		
 				JButton btn_crearpedido = new JButton("Crear Pedido");
+				btn_crearpedido.setBorder(UIManager.getBorder("RadioButton.border"));
 				btn_crearpedido.setBounds(28, 84, 140, 23);
 				panel.add(btn_crearpedido);
 				

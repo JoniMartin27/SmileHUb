@@ -12,14 +12,18 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import Vista.Material.Panel_Admin_Material_Inicio;
 import Vista.Usuario.JDialog_Admin_Usuario_inicio;
-import Vista.Usuario.Jdialog_Ficha_Crear_Doctor;
-import Vista.Usuario.Jdialog_Ficha_Crear_Proveedor;
 import Vista.Usuario.Panel_Admin_Usuario_Doctor;
 import Vista.Usuario.Panel_Admin_Usuario_Proveedores;
+import Vista.Usuario.Panel_DoctorCreado;
+import Vista.Usuario.Panel_DoctorCrear;
 import Vista.Usuario.Panel_PacienteCreado;
 import Vista.Usuario.Panel_PacienteCrear;
+import Vista.Usuario.Panel_ProveedorCreado;
+import Vista.Usuario.Panel_ProveedorCrear;
 import Vista.Usuario.Panel_admin_usuario_generarInforme;
 import Vista.Usuario.Panel_admin_usuario_paciente_consultarCita;
+import Vista.gestionEconomica.JDialog_Admin_Gestion_Economica_Fraccionado;
+import Vista.gestionEconomica.JDialog_admin_gestionEconomica_tipoPago;
 import Vista.gestionEconomica.Panel_admin_gestionEconomica;
 import Vista.gestionMedica.Panel_admin_gestionMedica_Inicio;
 import ayudas.Panel_Admin_Usuario_Paciente;
@@ -33,6 +37,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JMenu;
@@ -54,7 +59,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtSmilehub;
-	private static JDesktopPane miDesktopPane_1;
+	private JDesktopPane miDesktopPane_1;
 	private JFrame Frame;
 
 	/**
@@ -79,17 +84,13 @@ public class Inicio_Panel_Administrador extends JFrame {
 	    this.miDesktopPane_1 = desktopPane;
 	}
 
-	public void agregarInternalFrame(JInternalFrame internalFrame) {
-		miDesktopPane_1.add(internalFrame);
-		internalFrame.setVisible(true);
-		internalFrame.setLocation(0, 0);
-		((BasicInternalFrameUI) internalFrame.getUI()).setNorthPane(null);
-	}
+
 
 	/**
 	 * Create the frame.
 	 */
 	public Inicio_Panel_Administrador() {
+		setIconImage(new ImageIcon(getClass().getResource("/img/SmileHub.png")).getImage());
 		JDesktopPane miDesktopPane = new JDesktopPane();
 		miDesktopPane.setBounds(219, 44, 799, 487);
 		
@@ -116,19 +117,21 @@ public class Inicio_Panel_Administrador extends JFrame {
         		combo.add(e.getKeyCode());
         		if(combo.size()>1) {
         			
-        		
+        			
+        			
+        		//Paciente
         			if((e.getKeyCode()==KeyEvent.VK_P)&&combo.contains(17)) {
         				System.out.print("Has entrado en crear Paciente");
         				
         				Panel_PacienteCrear pacienteCrear=new Panel_PacienteCrear();
         				pacienteCrear.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
-        			
         				miDesktopPane.add(pacienteCrear);
         				((BasicInternalFrameUI) pacienteCrear.getUI()).setNorthPane(null);
         				pacienteCrear.setLocation(0, 0);
         				pacienteCrear.show();
         				pacienteCrear.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
         				contentPane.requestFocus();
+<<<<<<< HEAD
         				
         				
         			}
@@ -158,8 +161,74 @@ public class Inicio_Panel_Administrador extends JFrame {
         				citaConsultarr.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth()); 
         				contentPane.requestFocus();
         			
+=======
+        				combo.clear();
+        			}
+        			else if((e.getKeyCode()==KeyEvent.VK_C)&&combo.contains(17)) {
+        				System.out.print("Has entrado en consultar Cita");
+        				Panel_admin_usuario_paciente_consultarCita consultarCita=new Panel_admin_usuario_paciente_consultarCita();
+        				consultarCita.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+        				miDesktopPane.add(consultarCita);
+        				((BasicInternalFrameUI) consultarCita.getUI()).setNorthPane(null);
+        				consultarCita.setLocation(0, 0);
+        				consultarCita.show();
+        				consultarCita.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
+        				contentPane.requestFocus();
+        				combo.clear();
+        			}
+        			else if((e.getKeyCode()==KeyEvent.VK_J)&&combo.contains(17)) {
+        				System.out.print("Has entrado en ver paciente Perfil");
+        				Panel_PacienteCreado pacienteCreado=new Panel_PacienteCreado();
+        				pacienteCreado.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+        				miDesktopPane.add(pacienteCreado);
+        				((BasicInternalFrameUI) pacienteCreado.getUI()).setNorthPane(null);
+        				pacienteCreado.setLocation(0, 0);
+        				pacienteCreado.show();
+        				pacienteCreado.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
+        				contentPane.requestFocus();
+        				combo.clear();
+>>>>>>> 992b705c2d4cc4bd449464f2c4479e47bd32dca1
         			}
         			
+        			
+        			
+        			//Proveedores
+        			else if((e.getKeyCode()==KeyEvent.VK_V)&&combo.contains(17)) {
+        				System.out.print("Has entrado en ver Proveedor");
+        				Panel_ProveedorCreado verProveedor=new Panel_ProveedorCreado();
+        				verProveedor.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+        				miDesktopPane.add(verProveedor);
+        				((BasicInternalFrameUI) verProveedor.getUI()).setNorthPane(null);
+        				verProveedor.setLocation(0, 0);
+        				verProveedor.show();
+        				verProveedor.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth()); 
+        				contentPane.requestFocus();
+        				combo.clear();
+        			}
+        			else if((e.getKeyCode()==KeyEvent.VK_Z)&&combo.contains(17)) {
+        				System.out.print("Has entrado en crer Proveedor");
+        				Panel_ProveedorCrear crearProveedor=new Panel_ProveedorCrear();
+        				crearProveedor.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+        				miDesktopPane.add(crearProveedor);
+        				((BasicInternalFrameUI) crearProveedor.getUI()).setNorthPane(null);
+        				crearProveedor.setLocation(0, 0);
+        				crearProveedor.show();
+        				crearProveedor.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth()); 
+        				contentPane.requestFocus();
+        				combo.clear();
+        			}
+        			
+        			
+        			
+        			//Tipos de Pago
+        			if(combo.contains(KeyEvent.VK_T)&&(combo.contains(KeyEvent.VK_P)&&combo.contains(17))) {
+        				JDialog_admin_gestionEconomica_tipoPago tipoPago=new JDialog_admin_gestionEconomica_tipoPago();
+        				tipoPago.setVisible(true);
+        				tipoPago.setLocation(200, 200);
+        				tipoPago.setModal(true);
+        				contentPane.requestFocus();
+        				combo.clear();
+        			}
         			
         		}}			
         		
@@ -219,30 +288,19 @@ public class Inicio_Panel_Administrador extends JFrame {
 		JButton btn_GestionMedica = new JButton("Gestion Medica");
 		btn_GestionMedica.setBounds(23, 153, 164, 23);
 		panel.add(btn_GestionMedica);
-		// Boton Materiales
-		JButton btn_Material = new JButton("Material");
-		btn_Material.setBounds(23, 261, 164, 23);
-		panel.add(btn_Material);
 		// Boton Gestion Economica
 		JButton btn_GestionEconomica = new JButton("Gestion Economica");
 		btn_GestionEconomica.setBounds(23, 385, 164, 23);
 		panel.add(btn_GestionEconomica);
 
-		JButton btn_proveedor = new JButton("proveedores");
+		JButton btn_proveedor = new JButton("Proveedores");
 		btn_proveedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Panel_Admin_Usuario_Proveedores usuario_proveedores = new Panel_Admin_Usuario_Proveedores();
-				usuario_proveedores.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
-				miDesktopPane.removeAll();
-				miDesktopPane.add(usuario_proveedores);
-				((BasicInternalFrameUI) usuario_proveedores.getUI()).setNorthPane(null);
-				usuario_proveedores.setLocation(0, 0);
-				usuario_proveedores.show();
-				usuario_proveedores.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
-
+				mostrarMenuProveedor(btn_proveedor,miDesktopPane);
+				
 			}
 		});
-		btn_proveedor.setBounds(33, 67, 119, 23);
+		btn_proveedor.setBounds(33, 69, 119, 23);
 		panel.add(btn_proveedor);
 
 		JButton btn_paciente = new JButton("Pacientes");
@@ -261,19 +319,20 @@ public class Inicio_Panel_Administrador extends JFrame {
 		btn_Doctores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Panel_Admin_Usuario_Doctor usuario_doctor = new Panel_Admin_Usuario_Doctor();
-				usuario_doctor.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
-				miDesktopPane.removeAll();
-				miDesktopPane.add(usuario_doctor);
-				((BasicInternalFrameUI) usuario_doctor.getUI()).setNorthPane(null);
-				usuario_doctor.setLocation(0, 0);
-				usuario_doctor.show();
-				usuario_doctor.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
+				mostrarMenuDoctor(btn_Doctores, miDesktopPane);
 			}
 		});
 
 		btn_Doctores.setBounds(33, 90, 119, 23);
 		panel.add(btn_Doctores);
+		
+		JButton btn_pedidos = new JButton("Pedidos");
+		btn_pedidos.setBounds(33, 260, 119, 23);
+		panel.add(btn_pedidos);
+		
+		JButton btn_material = new JButton("Material");
+		btn_material.setBounds(33, 284, 119, 23);
+		panel.add(btn_material);
 
 		btn_GestionEconomica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -286,20 +345,6 @@ public class Inicio_Panel_Administrador extends JFrame {
 				gestion_economica.setLocation(0, 0);
 				gestion_economica.show();
 				gestion_economica.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
-
-			}
-		});
-		btn_Material.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				Panel_Admin_Material_Inicio pag_Material = new Panel_Admin_Material_Inicio();
-				miDesktopPane.removeAll();
-				miDesktopPane.add(pag_Material);
-				pag_Material.setBorder(null);
-				((BasicInternalFrameUI) pag_Material.getUI()).setNorthPane(null);
-
-				pag_Material.setLocation(0, 0);
-				pag_Material.setVisible(true);
 
 			}
 		});
@@ -413,8 +458,81 @@ public class Inicio_Panel_Administrador extends JFrame {
 		menu.show(invoker, 0, invoker.getHeight());
 	}
 	
+	private static void mostrarMenuDoctor(Component invoker, JDesktopPane desktopPane) {
+		JPopupMenu menu = new JPopupMenu();
+
+		// Agregar elementos al menú desplegable
+		JMenuItem perfilDoctor = new JMenuItem("Ver perfil doctor");
+		perfilDoctor.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+					try {
+						abrirPanelVerDoctor(desktopPane);
+					} catch (PropertyVetoException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				
+			}
+
+		
+
+		});
+		JMenuItem CrearDoctor = new JMenuItem("Crear perfil Doctor");
+		CrearDoctor.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			
+			try {
+				abrirPanelCrearPaciente(desktopPane);
+			} catch (PropertyVetoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	});
+		
+		
+
+		menu.add(perfilDoctor);
+		menu.add(CrearDoctor);
+	
+
+		// Mostrar el menú desplegable en la posición del componente invocador
+		menu.show(invoker, 0, invoker.getHeight());
+	}
+	
+	private static void abrirPanelCrearDoctor(JDesktopPane desktopPane) throws PropertyVetoException {
+		Panel_DoctorCrear DoctorCrear = new Panel_DoctorCrear();
+
+		DoctorCrear.setBorder(null);
+		((BasicInternalFrameUI) DoctorCrear.getUI()).setNorthPane(null);
+		DoctorCrear.setLocation(0, 0);
+		DoctorCrear.show();
+		DoctorCrear.setSize(desktopPane.getWidth(), desktopPane.getWidth());
+		DoctorCrear.setVisible(true);
+		desktopPane.add(DoctorCrear); // Usar el parámetro en lugar de la variable local
+		DoctorCrear.setSelected(true);
+		
+		
+	}
+	private static void abrirPanelVerDoctor(JDesktopPane desktopPane) throws PropertyVetoException {
+		Panel_DoctorCreado DoctorCreado = new Panel_DoctorCreado();
+
+		DoctorCreado.setBorder(null);
+		((BasicInternalFrameUI) DoctorCreado.getUI()).setNorthPane(null);
+		DoctorCreado.setLocation(0, 0);
+		DoctorCreado.show();
+		DoctorCreado.setSize(desktopPane.getWidth(), desktopPane.getWidth());
+		DoctorCreado.setVisible(true);
+		desktopPane.add(DoctorCreado); // Usar el parámetro en lugar de la variable local
+		DoctorCreado.setSelected(true);
+		
+		
+	}
+	
 	private static void abrirPanelCrearProveedor(JDesktopPane desktopPane) throws PropertyVetoException {
-		Panel_PacienteCrear PacienteCrear = new Panel_PacienteCrear();
+		Panel_ProveedorCrear PacienteCrear = new Panel_ProveedorCrear();
 
 		PacienteCrear.setBorder(null);
 		((BasicInternalFrameUI) PacienteCrear.getUI()).setNorthPane(null);
@@ -428,16 +546,16 @@ public class Inicio_Panel_Administrador extends JFrame {
 	}
 	
 	private static void abrirPanelVerProveedor(JDesktopPane desktopPane) throws PropertyVetoException {
-		Panel_PacienteCrear PacienteCrear = new Panel_PacienteCrear();
+		Panel_ProveedorCreado PacienteCreado = new Panel_ProveedorCreado();
 
-		PacienteCrear.setBorder(null);
-		((BasicInternalFrameUI) PacienteCrear.getUI()).setNorthPane(null);
-		PacienteCrear.setLocation(0, 0);
-		PacienteCrear.show();
-		PacienteCrear.setSize(desktopPane.getWidth(), desktopPane.getWidth());
-		PacienteCrear.setVisible(true);
-		desktopPane.add(PacienteCrear); // Usar el parámetro en lugar de la variable local
-		PacienteCrear.setSelected(true);
+		PacienteCreado.setBorder(null);
+		((BasicInternalFrameUI) PacienteCreado.getUI()).setNorthPane(null);
+		PacienteCreado.setLocation(0, 0);
+		PacienteCreado.show();
+		PacienteCreado.setSize(desktopPane.getWidth(), desktopPane.getWidth());
+		PacienteCreado.setVisible(true);
+		desktopPane.add(PacienteCreado); // Usar el parámetro en lugar de la variable local
+		PacienteCreado.setSelected(true);
 		
 		
 	}	

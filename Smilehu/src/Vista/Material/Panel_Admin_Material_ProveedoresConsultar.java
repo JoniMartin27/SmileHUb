@@ -38,7 +38,7 @@ public class Panel_Admin_Material_ProveedoresConsultar extends JInternalFrame {
 	 */
 	public Panel_Admin_Material_ProveedoresConsultar() {
 		getContentPane().setBackground(new Color(159, 232, 223));
-		setBounds(192, 0, 383, 427);
+		setBounds(190, 43, 593, 414);
 		getContentPane().setLayout(null);
 		
 		JButton btn_consultarproveedor = new JButton("Consultar Proveedor");
@@ -46,11 +46,11 @@ public class Panel_Admin_Material_ProveedoresConsultar extends JInternalFrame {
 		getContentPane().add(btn_consultarproveedor);
 		
 		table = new JTable();
-		table.setBounds(14, 159, 316, 150);
+		table.setBounds(14, 159, 357, 150);
 		getContentPane().add(table);
 		
 		tf_nombreProveedor = new JTextField();
-		tf_nombreProveedor.setBounds(184, 70, 146, 22);
+		tf_nombreProveedor.setBounds(184, 70, 187, 22);
 		getContentPane().add(tf_nombreProveedor);
 		tf_nombreProveedor.setColumns(10);
 

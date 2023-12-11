@@ -42,7 +42,7 @@ public class Panel_admin_Material_CrearPedido extends JInternalFrame {
 	 */
 	public Panel_admin_Material_CrearPedido() {
 		getContentPane().setBackground(new Color(159, 232, 223));
-		setBounds(177, 0, 398, 427);
+		setBounds(190, 43, 593, 414);
 		getContentPane().setLayout(null);
 		
 		JLabel lbl_crearpedido = new JLabel("Crear Pedido");
@@ -95,7 +95,7 @@ public class Panel_admin_Material_CrearPedido extends JInternalFrame {
 		getContentPane().add(table);
 		
 		JButton btn_enviarpedido = new JButton("Enviar Pedido");
-		btn_enviarpedido.setBounds(395, 201, 105, 23);
+		btn_enviarpedido.setBounds(357, 322, 105, 23);
 		getContentPane().add(btn_enviarpedido);
 		
 		JButton btn_seleccionarmaterial = new JButton("Seleccionar Material");

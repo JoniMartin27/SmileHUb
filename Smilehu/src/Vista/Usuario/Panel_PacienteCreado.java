@@ -39,6 +39,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 	private JTextField tf_fechaAlta;
 	private JTextField tf_fechaNacimiento;
 	private JTextField tf_nombre;
+	private JDesktopPane miDesktopPane_1;
 	/**
 	 * Launch the application.
 	 */
@@ -53,6 +54,11 @@ public class Panel_PacienteCreado extends JInternalFrame {
 				}
 			}
 		});
+	}
+
+	
+	public void setDesktopPane(JDesktopPane desktopPane) {
+	    this.miDesktopPane_1 = desktopPane;
 	}
 
 	/**

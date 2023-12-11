@@ -206,6 +206,23 @@ public class ConexionMySQL {
         return consultaCita;
     }
      
+     public static void modificarCita(ConsultaCita cita) throws SQLException {
+    	 String query = "UPDATE consulta_cita SET " +
+    	            "nombre = '" + cita.getId_doctor() + "', " +
+    	            "apellidos = '" + cita.getId_historial() + "', " +
+    	            "direccion = '" + cita.getId_tratamiento() + "', " +
+    	            "genero = '" + cita.getObservaciones() + "', " +
+    	            "telefono = '" + cita.getFecha() + "', " +
+    	            "fecha_alta = '" + cita.getHora() + "', " +
+    	            
+    	            "WHERE id_cita = " + cita.getId_cita();
+         
+         Statement stmt = connection.createStatement();
+         stmt.executeUpdate(query);
+        
+         System.out.println("hola");
+         stmt.close();
+         }
      
      
      
@@ -244,5 +261,8 @@ public static Proveedor consultaProveedor(int idProveedor) throws SQLException {
 
    return proveedor;
 }
+
+
+
 
 }

@@ -58,21 +58,11 @@ public class ConexionMySQL {
 	   return null;
 	   
    }
-   
-   
-   
-   
+ 
    
    }
    
-   
-   
-   
-   
-   
-   
-   
-   
+ 
     
     public void desconectar()throws SQLException{
         if(connection!=null && connection.isClosed()){
@@ -106,23 +96,23 @@ public class ConexionMySQL {
          System.out.println("hola");
          stmt.close();
          }
-     
-     
-     
+     public void modificarCita(ConsultaCita cita,int id) throws SQLException {
+    	 String query = "UPDATE consulta_cita SET " +
+    	            "id_doctor = " + cita.getId_doctor() + ", " +
+    	            "id_tratamiento = " + cita.getId_tratamiento() + ", " +
+    	            "id_historial = " + cita.getId_historial() + ", " +
+    	            "observaciones = '" + cita.getObservaciones() + "', " +
+    	            "fecha = '" + cita.getFecha() + "', " +
+    	            "hora = '" + cita.getHora() + "' " +
+    	            "WHERE id_cita = " + id;
+    	 	System.out.println(query);
+    	    Statement stmt = connection.createStatement();
+    	    stmt.executeUpdate(query);
 
- 
-     
-     
-     
-     
-    
-     
-     
-     
-     
-     
-     
-     
+    	    System.out.println("Actualización exitosa");
+    	    stmt.close();
+    	}
+
      
     /* public static Proveedor consultaProveedor(int idProveedor) throws SQLException {
 
@@ -185,7 +175,8 @@ public class ConexionMySQL {
      public static ConsultaCita consultaCita(int idCita) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("Select * from consulta_cita where id_cita = " + idCita);//consulta
+         ResultSet rset=stmt.executeQuery("SELECT id_doctor,id_tratamiento,id_historial,observaciones, fecha,hora"+
+        		   " from consulta_cita where id_cita  = "+ idCita);//consulta
 
          ConsultaCita consultaCita=null;
          if (rset.next()) {
@@ -207,7 +198,7 @@ public class ConexionMySQL {
     }
      
      
-     
+    
      
      
      
