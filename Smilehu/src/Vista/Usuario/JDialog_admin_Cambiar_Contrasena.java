@@ -44,7 +44,7 @@ public class JDialog_admin_Cambiar_Contrasena extends JDialog {
 	 * Create the dialog.
 	 */
 	public JDialog_admin_Cambiar_Contrasena() {
-		setBounds(100, 100, 510, 233);
+		setBounds(100, 100, 862, 531);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(159, 232, 223));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

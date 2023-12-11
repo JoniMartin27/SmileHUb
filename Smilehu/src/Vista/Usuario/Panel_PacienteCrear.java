@@ -112,7 +112,7 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		tf_fechaNacimiento.setBounds(144, 112, 126, 20);
 		contentPanel.add(tf_fechaNacimiento);
 		
-		JLabel lbl_nombre_1 = new JLabel("fecha nacimiento");
+		JLabel lbl_nombre_1 = new JLabel("Fecha nacimiento");
 		lbl_nombre_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_nombre_1.setForeground(Color.BLACK);
 		lbl_nombre_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -131,14 +131,14 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		lbl_nombre_2.setBounds(336, 22, 48, 14);
 		contentPanel.add(lbl_nombre_2);
 		
-		JLabel lbl_apellidos_1 = new JLabel("direccion");
+		JLabel lbl_apellidos_1 = new JLabel("Direccion");
 		lbl_apellidos_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_apellidos_1.setForeground(Color.BLACK);
 		lbl_apellidos_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lbl_apellidos_1.setBounds(336, 97, 48, 14);
 		contentPanel.add(lbl_apellidos_1);
 		
-		JLabel lbl_sexo_1 = new JLabel("telefono");
+		JLabel lbl_sexo_1 = new JLabel("Teléfono");
 		lbl_sexo_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_sexo_1.setForeground(Color.BLACK);
 		lbl_sexo_1.setFont(new Font("Tahoma", Font.PLAIN, 11));

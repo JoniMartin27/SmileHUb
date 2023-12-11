@@ -30,6 +30,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 
 public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 
@@ -39,6 +41,8 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 	private JDesktopPane miDesktopPane;
 	DefaultTableModel modeloTabla = new DefaultTableModel();
 	private JButton btn_modificar;
+	private JButton btn_insertarCita;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -62,92 +66,118 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Panel_admin_usuario_paciente_consultarCita() {
-		// Inicializar la tabla y el modelo
-        this.table = new JTable();
         this.modeloTabla = new DefaultTableModel();
-
-        // Establecer el modelo en la tabla
-        table.setModel(modeloTabla);
-
-        // Configurar las columnas del modelo
+        
+// Configurar las columnas del modelo
         String[] columnas = {"ID Doctor", "ID Tratamiento", "ID Historial", "Observaciones", "Fecha", "Hora"};
         modeloTabla.setColumnIdentifiers(columnas);
 
-        getContentPane().setBackground(new Color(159, 232, 223));
-        setBounds(100, 100, 652, 381);
+        getContentPane().setBackground(new Color(148, 213, 248));
+        setBounds(100, 100, 862, 531);
         getContentPane().setLayout(null);
+        
+        JPanel panel = new JPanel();
+        panel.setBounds(0, 0, 862, 531);
+        getContentPane().add(panel);
+        panel.setLayout(null);
+        
+//BOTON MODIFICAR CITA
+        
+        btn_modificar = new JButton("Modificar cita");
+        btn_modificar.setBounds(285, 366, 137, 23);
+        panel.add(btn_modificar);
+        panel.setOpaque(false);
+                tf_buscarCita = new JTextField();
+                tf_buscarCita.setBounds(438, 115, 143, 20);
+                panel.add(tf_buscarCita);
+                tf_buscarCita.addFocusListener(new FocusListener() {
+                    @Override
+                    public void focusGained(FocusEvent e) {
+                        // Al obtener el foco, se elimina el texto predeterminado
+                        if (tf_buscarCita.getText().equals("Insertar ID cita")) {
+                        	tf_buscarCita.setText("");
+                        }
+                    }
 
-        // Configurar la posición y el tamaño de la tabla
-        JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(20, 153, 600, 150);
-        getContentPane().add(scrollPane);
-
-        tf_buscarCita = new JTextField();
-        tf_buscarCita.addFocusListener(new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                // Al obtener el foco, se elimina el texto predeterminado
-                if (tf_buscarCita.getText().equals("Insertar ID cita")) {
-                	tf_buscarCita.setText("");
-                }
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                // Al perder el foco, si el campo está vacío, se vuelve a establecer el texto predeterminado
-                if (tf_buscarCita.getText().isEmpty()) {
-                    tf_buscarCita.setText("Insertar ID cita");
-                }
-            }
-        });
-    
-        tf_buscarCita.setBounds(99, 122, 185, 20);
-        getContentPane().add(tf_buscarCita);
-        tf_buscarCita.setColumns(10);
-
-        JButton btn_buscarcita = new JButton("Buscar");
-        btn_buscarcita.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	
+                    @Override
+                    public void focusLost(FocusEvent e) {
+                        // Al perder el foco, si el campo está vacío, se vuelve a establecer el texto predeterminado
+                        if (tf_buscarCita.getText().isEmpty()) {
+                            tf_buscarCita.setText("Insertar ID cita");
+                        }
+                    }
+                });
+                tf_buscarCita.setColumns(10);
+                // Inicializar la tabla y el modelo
+                        this.table = new JTable();
+                        
+                                
+                                
+                        // Establecer el modelo en la tabla
+                                table.setModel(modeloTabla);
+                                
+                                // Configurar la posición y el tamaño de la tabla
+                                        JScrollPane scrollPane = new JScrollPane(table);
+                                        scrollPane.setBounds(110, 156, 616, 199);
+                                        panel.add(scrollPane);
+        
+                JButton btn_buscarcita = new JButton("Buscar Cita");
+                btn_buscarcita.setBounds(279, 114, 137, 23);
+                panel.add(btn_buscarcita);
+                btn_buscarcita.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                    	
 //Comprobamos que no haya dejado en blanco el textField del id    
-                if(!tf_buscarCita.getText().equals("Insertar ID cita")) {
-                	try {
-                		 int id = Integer.parseInt(tf_buscarCita.getText());
-                		 	ConexionMySQL.conectar();
-                		 	ConsultaCita cita;
-                		 
+                        if(!tf_buscarCita.getText().equals("Insertar ID cita")) {
+                        	try {
+                        		 int id = Integer.parseInt(tf_buscarCita.getText());
+                        		 	ConexionMySQL.conectar();
+                        		 	ConsultaCita cita;
+                        		 
      					cita = ConexionMySQL.consultaCita(id);
 // Limpiar la tabla antes de agregar nuevas filas
      	                limpiarTabla();
- // Agregar la fila a la tabla
+// Agregar la fila a la tabla
      	                agregarFilaConsultaCita(cita);
-                	}catch(NumberFormatException ex) {
-                		ex.getLocalizedMessage();
-                		System.out.println("Fallo al insertar String");
-                		JOptionPane.showMessageDialog(tf_buscarCita, "Introduce únicamente números","Error", JOptionPane.ERROR_MESSAGE);
-                        
-                	}catch (ClassNotFoundException | SQLException e1) {
+                        	}catch(NumberFormatException ex) {
+                        		ex.getLocalizedMessage();
+                        		System.out.println("Fallo al insertar String");
+                        		JOptionPane.showMessageDialog(tf_buscarCita, "Introduce únicamente números","Error", JOptionPane.ERROR_MESSAGE);
+                                
+                        	}catch (ClassNotFoundException | SQLException e1) {
     				
     					e1.printStackTrace();
     				}
-                	
+                        	
 
-                    
-                   
+                            
+                           
     				
-                }else {
-                	JOptionPane.showMessageDialog(tf_buscarCita, "Inserta un id ","Error", JOptionPane.ERROR_MESSAGE);
-                    
-                }
-               
+                        }else {
+                        	JOptionPane.showMessageDialog(tf_buscarCita, "Inserta un id ","Error", JOptionPane.ERROR_MESSAGE);
+                            
+                        }
+                       
 			
-               
-            }
-        });
-        btn_buscarcita.setBounds(370, 119, 97, 23);
-        getContentPane().add(btn_buscarcita);
+                       
+                    }
+                });
         
-        btn_modificar = new JButton("Modificar cita");
+        btn_insertarCita = new JButton("Insertar cita");
+        btn_insertarCita.setBounds(444, 366, 137, 23);
+        panel.add(btn_insertarCita);
+        
+        lblNewLabel = new JLabel("");
+        lblNewLabel.setBounds(0, 0, 862, 531);
+        panel.add(lblNewLabel);
+        lblNewLabel.setIcon(new ImageIcon(Panel_admin_usuario_paciente_consultarCita.class.getResource("/img/fondoDientes.jpg")));
+        btn_insertarCita.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		
+        		
+        	}
+        });
         btn_modificar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		int id=Integer.parseInt(tf_buscarCita.getText());
@@ -156,7 +186,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
         		}else {
         			try {
             			ConexionMySQL.conectar();
-    					obtenerDatosFilaSeleccionada(id);
+    					obtenerDatosFilaSeleccionada();
     				} catch (SQLException | ClassNotFoundException e1) {
     					// TODO Auto-generated catch block
     					e1.printStackTrace();
@@ -166,8 +196,6 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
         		
         	}
         });
-        btn_modificar.setBounds(116, 43, 117, 23);
-        getContentPane().add(btn_modificar);
 
        
     }
@@ -196,25 +224,32 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
             JOptionPane.showMessageDialog(this, "id no encontrado en la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    private void obtenerDatosFilaSeleccionada(int id) throws SQLException {
+    private void obtenerDatosFilaSeleccionada() throws SQLException {
         // Obtener el índice de la fila seleccionada
         int filaSeleccionada = table.getSelectedRow();
 
         // Verificar si se ha seleccionado alguna fila
         if (filaSeleccionada != -1) {
-            // Obtener los valores de las celdas en la fila seleccionada
-            int idDoctor = (int) table.getValueAt(filaSeleccionada, 0);
-            int idTratamiento = (int) table.getValueAt(filaSeleccionada, 1);
-            int idHistorial = (int) table.getValueAt(filaSeleccionada, 2);
-            String observaciones = (String) table.getValueAt(filaSeleccionada, 3);
-            String fecha = (String) table.getValueAt(filaSeleccionada, 4);
-            String hora = (String) table.getValueAt(filaSeleccionada, 5);
+        	// Obtener los valores de las celdas en la fila seleccionada
+            String idDoctor = String.valueOf(table.getValueAt(filaSeleccionada, 0));
+            String idTratamiento = String.valueOf(table.getValueAt(filaSeleccionada, 1));
+            String idHistorial = String.valueOf(table.getValueAt(filaSeleccionada, 2));
+            String observaciones = String.valueOf(table.getValueAt(filaSeleccionada, 3));
+            String fecha = String.valueOf(table.getValueAt(filaSeleccionada, 4));
+            String hora = String.valueOf(table.getValueAt(filaSeleccionada, 5));
+
+            // Convertir los valores a int después de verificar si no son nulos o vacíos
+            int IDDoctor = (idDoctor != null && !idDoctor.isEmpty()) ? Integer.valueOf(idDoctor) : 0;
+            int IDTratamiento = (idTratamiento != null && !idTratamiento.isEmpty()) ? Integer.valueOf(idTratamiento) : 0;
+            int IDHistorial = (idHistorial != null && !idHistorial.isEmpty()) ? Integer.valueOf(idHistorial) : 0;
+            int IDCita = (tf_buscarCita.getText() != null && !tf_buscarCita.getText().isEmpty()) ? Integer.valueOf(tf_buscarCita.getText()) : 0;
 
             // Crear un objeto Cita con los valores obtenidos
             ConsultaCita cita=new ConsultaCita();
-            cita.setId_doctor(idDoctor);
-            cita.setId_tratamiento(idTratamiento);
-            cita.setId_historial(idHistorial);
+            cita.setId_cita(IDCita);
+            cita.setId_doctor(IDDoctor);
+            cita.setId_tratamiento(IDTratamiento);
+            cita.setId_historial(IDHistorial);
             cita.setObservaciones(observaciones);
             cita.setFecha(fecha);
             cita.setHora(hora);

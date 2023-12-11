@@ -45,12 +45,12 @@ public class JDialog_admin_Material_nuevoMaterial extends JDialog {
 		
 		JLabel lbl_añadirmaterial = new JLabel("Añadir Material");
 		lbl_añadirmaterial.setForeground(new Color(0, 0, 0));
-		lbl_añadirmaterial.setBounds(22, 11, 80, 14);
+		lbl_añadirmaterial.setBounds(22, 11, 105, 14);
 		getContentPane().add(lbl_añadirmaterial);
 		
 		JLabel lbl_material = new JLabel("Material");
 		lbl_material.setForeground(new Color(0, 0, 0));
-		lbl_material.setBounds(22, 36, 46, 14);
+		lbl_material.setBounds(22, 36, 64, 14);
 		getContentPane().add(lbl_material);
 		
 		JTextField tf_material = new JTextField();
@@ -60,7 +60,7 @@ public class JDialog_admin_Material_nuevoMaterial extends JDialog {
 		
 		JLabel lbl_preciounitario = new JLabel("Precio Unitario");
 		lbl_preciounitario.setForeground(new Color(0, 0, 0));
-		lbl_preciounitario.setBounds(142, 36, 80, 14);
+		lbl_preciounitario.setBounds(142, 36, 86, 14);
 		getContentPane().add(lbl_preciounitario);
 		
 		JTextField tf_preciounitario = new JTextField();
@@ -70,7 +70,7 @@ public class JDialog_admin_Material_nuevoMaterial extends JDialog {
 		
 		JLabel lbl_proveedor = new JLabel("Proveedor");
 		lbl_proveedor.setForeground(new Color(0, 0, 0));
-		lbl_proveedor.setBounds(266, 36, 64, 14);
+		lbl_proveedor.setBounds(266, 36, 74, 14);
 		getContentPane().add(lbl_proveedor);
 		
 		JTextField tf_proveedor = new JTextField();
@@ -88,7 +88,7 @@ public class JDialog_admin_Material_nuevoMaterial extends JDialog {
 		getContentPane().add(list);
 		
 		JButton btn_añadirmaterial = new JButton("Añadir Material");
-		btn_añadirmaterial.setBounds(103, 215, 105, 23);
+		btn_añadirmaterial.setBounds(103, 215, 124, 23);
 		getContentPane().add(btn_añadirmaterial);
 
 	}

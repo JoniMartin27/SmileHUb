@@ -49,8 +49,8 @@ public class Panel_DoctorCrear extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Panel_DoctorCrear() {
-		setBounds(100, 100, 450, 300);
-		setBounds(100, 100, 584, 389);
+		setBounds(100, 100, 862, 531);
+
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(159, 232, 223));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -73,11 +73,11 @@ public class Panel_DoctorCrear extends JInternalFrame {
 		
 		
 		/*DNI*/
-		JLabel lbl_id = new JLabel("ID:");
-		lbl_id.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lbl_id.setForeground(new Color(0, 0, 0));
-		lbl_id.setBounds(23, 36, 61, 14);
-		contentPanel.add(lbl_id);
+		JLabel lbl_idDoctor = new JLabel("ID Doctor:");
+		lbl_idDoctor.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_idDoctor.setForeground(new Color(0, 0, 0));
+		lbl_idDoctor.setBounds(23, 36, 61, 14);
+		contentPanel.add(lbl_idDoctor);
 		
 		tf_iddoctor = new JTextField();
 		tf_iddoctor.setBounds(235, 35, 116, 20);
@@ -119,7 +119,7 @@ public class Panel_DoctorCrear extends JInternalFrame {
 		
 		
 		/*Fecha de nacimiento*/
-		JLabel lbl_direccion = new JLabel("Dirección");
+		JLabel lbl_direccion = new JLabel("Direccion");
 		lbl_direccion.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lbl_direccion.setForeground(new Color(0, 0, 0));
 		lbl_direccion.setBounds(23, 136, 173, 14);
