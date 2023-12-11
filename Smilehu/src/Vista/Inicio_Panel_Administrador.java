@@ -479,7 +479,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			
 			try {
-				abrirPanelCrearPaciente(desktopPane);
+				abrirPanelCrearDoctor(desktopPane);
 			} catch (PropertyVetoException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
