@@ -321,6 +321,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 
 	private void cargarPacientesAlComboBox(String nombre, JComboBox<String> comboBox) {
 		// Limpiar ComboBox antes de cargar nuevos datos
+		comboBox.removeAllItems();
 
 		try {
 
