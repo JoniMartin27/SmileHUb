@@ -222,6 +222,18 @@ public class ConexionMySQL {
     	    return null;
     	}
   
+     
+     public static ResultSet ejecutarSelect(String consulta)throws SQLException{
+         Statement stmt=connection.createStatement();
+         ResultSet rset=stmt.executeQuery(consulta);
+         
+         return rset;
+     }
+     
+     
+     
+     
+     
      public static List<Paciente> buscarPacientes(String nombrePaciente) throws SQLException {
     	    List<Paciente> pacientes = new ArrayList<>();
     	    String query = "SELECT * FROM paciente WHERE nombre = ?";

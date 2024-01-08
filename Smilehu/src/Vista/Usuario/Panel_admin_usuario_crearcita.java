@@ -77,7 +77,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		cB_especialista.setBounds(284, 254, 176, 23);
 		panel.setLayout(null);
 		
-		JComboBox<String> cB_nombrePaciente = new JComboBox<>();
+		JComboBox cB_nombrePaciente = new JComboBox<>();
 		cB_nombrePaciente.setBounds(201, 69, 176, 23);
 		panel.add(cB_nombrePaciente);
 		
@@ -85,8 +85,8 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		btn_BuscarPaciente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				cB_nombrePaciente.removeAllItems();
-				cargarPacientesAlComboBox(tf_nombrePaciente.getText(), cB_nombrePaciente);
+				
+				cargarPacientesAlComboBox(textField.getText(), cB_nombrePaciente);
 				
 	
 			}
@@ -157,6 +157,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 	}
 	private void cargarPacientesAlComboBox(String nombre, JComboBox<String> comboBox) {
 		// Limpiar ComboBox antes de cargar nuevos datos
+		comboBox.removeAllItems();
 
 		try {
 
