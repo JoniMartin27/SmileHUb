@@ -9,6 +9,7 @@ import javax.swing.JScrollPane;
 import java.awt.Color;
 import javax.swing.JTable;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import Conexion.ConexionMySQL;
@@ -70,18 +71,20 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
 
         table = new JTable();
         table.setBounds(30, 58, 300, 178);
+        table.setAutoCreateRowSorter(true); // Esto permite ordenar las filas haciendo clic en los encabezados
+        table.getTableHeader().setReorderingAllowed(false); // Esto evita que las columnas se reorganicen mediante arrastrar y soltar
         panel.add(table);
 
         table_1 = new JTable();
         table_1.setBounds(468, 58, 300, 183);
-        panel.add(table_1);
-
-        table.setAutoCreateRowSorter(true); // Esto permite ordenar las filas haciendo clic en los encabezados
-        table.getTableHeader().setReorderingAllowed(false); // Esto evita que las columnas se reorganicen mediante arrastrar y soltar
-        
         table_1.setAutoCreateRowSorter(true); // Esto permite ordenar las filas haciendo clic en los encabezados
         table_1.getTableHeader().setReorderingAllowed(false); // Esto evita que las columnas se reorganicen mediante arrastrar y soltar
+     
+        panel.add(table_1);
+
+      
         
+
         
         
         JScrollPane scrollPane = new JScrollPane(table);
@@ -91,20 +94,26 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         panel.add(scrollPane);
         panel.add(specialityScrollPane);
 
-        String[] columnasTratamiento = {"id_especialidad", "nombre", "precio" };
+        String[] columnasTratamiento = {"tratamiento", "precio", "especialidad" };
 
         modelTratamiento = new DefaultTableModel();
         modelTratamiento.setColumnIdentifiers(columnasTratamiento);
 
-        String[] columnasEspecialidad = { "id_especialidad", "nombre" };
+        String[] columnasEspecialidad = { "nombre especialidad" };
 
         modelEspecialidad = new DefaultTableModel();
         modelEspecialidad.setColumnIdentifiers(columnasEspecialidad);
 
         try {
             ConexionMySQL.conectar();
-            contruirTablaTratamiento(ConexionMySQL.ejecutarSelect("SELECT id_especialidad,nombre,precio FROM tratamiento"));
-            contruirTablaEspecialidad(ConexionMySQL.ejecutarSelect("SELECT * FROM especialidad "));
+            
+           
+            
+            contruirTablaTratamiento(ConexionMySQL.ejecutarSelect("SELECT tratamiento.Nombre,tratamiento.precio, especialidad.nombre_especialidad\r\n"
+            		+ "FROM tratamiento\r\n"
+            		+ "JOIN especialidad ON tratamiento.id_especialidad  = especialidad.id_especialidad;"));
+            
+            contruirTablaEspecialidad(ConexionMySQL.ejecutarSelect("SELECT nombre_especialidad FROM especialidad "));
         } catch (SQLException | ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -183,8 +192,18 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         });
         btn_Modificar.setBounds(117, 326, 125, 23);
         panel.add(btn_Modificar);
+        // Configurar la tabla para ajustar automáticamente el tamaño de las celdas
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        table.getColumnModel().getColumn(0).setPreferredWidth(100); // Ajustar el ancho de la primera columna
+        table_1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        table_1.getColumnModel().getColumn(0).setPreferredWidth(150); // Ajustar el ancho de la primera columna
 
-       
+        // Centrar el texto en todas las celdas de la tabla
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        table.setDefaultRenderer(Object.class, centerRenderer);
+        table_1.setDefaultRenderer(Object.class, centerRenderer);
+        
 
         JLabel lblNewLabel = new JLabel("New label");
         lblNewLabel.setIcon(new ImageIcon(Panel_admin_gestionMedica_Inicio.class.getResource("/img/fondoDientes.jpg")));
@@ -196,9 +215,9 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
     private void contruirTablaEspecialidad(ResultSet rs) {
         try {
             while (rs.next()) {
-                Object[] fila = new Object[2]; // Solo hay dos columnas en el modelo de especialidad
-                fila[0] = rs.getInt(1);
-                fila[1] = rs.getString(2);
+                Object[] fila = new Object[1]; // Hay 1 columna que mostrar
+            
+                fila[0] = rs.getString(1);
 
                 modelEspecialidad.addRow(fila);
             }
@@ -213,14 +232,17 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         }
     }
 
+    
+    
+    
     private void contruirTablaTratamiento(ResultSet rs) {
         try {
             while (rs.next()) {
-                Object[] fila = new Object[4]; // Hay cuatro columnas en el modelo de tratamiento
+                Object[] fila = new Object[4]; // Hay 3 que mostrar
                
-                fila[0] = rs.getInt(1);
-                fila[1] = rs.getString(2); // Corregido para obtener la columna 3
-                fila[2] = rs.getDouble(3); // Corregido para obtener la columna 4
+                fila[0] = rs.getString(1);
+                fila[1] = rs.getDouble(2); 
+                fila[2] = rs.getString(3); 
 
                 modelTratamiento.addRow(fila);
             }
