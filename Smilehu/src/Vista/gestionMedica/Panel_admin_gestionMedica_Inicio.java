@@ -66,7 +66,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         panel.setLayout(null);
 
         JButton btn_BorrarEspecialidad = new JButton("Borrar");
-        btn_BorrarEspecialidad.setBounds(552, 391, 125, 23);
+        btn_BorrarEspecialidad.setBounds(106, 391, 125, 23);
         panel.add(btn_BorrarEspecialidad);
 
         table = new JTable();
@@ -99,7 +99,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         modelTratamiento = new DefaultTableModel();
         modelTratamiento.setColumnIdentifiers(columnasTratamiento);
 
-        String[] columnasEspecialidad = { "nombre especialidad" };
+        String[] columnasEspecialidad = { "nombre especialidad","Doctor" };
 
         modelEspecialidad = new DefaultTableModel();
         modelEspecialidad.setColumnIdentifiers(columnasEspecialidad);
@@ -113,7 +113,8 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
             		+ "FROM tratamiento\r\n"
             		+ "JOIN especialidad ON tratamiento.id_especialidad  = especialidad.id_especialidad;"));
             
-            contruirTablaEspecialidad(ConexionMySQL.ejecutarSelect("SELECT nombre_especialidad FROM especialidad "));
+            contruirTablaEspecialidad(ConexionMySQL.ejecutarSelect("SELECT nombre_especialidad , doctor_administrador.nombre  FROM especialidad\r\n"
+            		+ "JOIN doctor_administrador ON doctor_administrador.id_especialidad  = especialidad.id_especialidad;"));
         } catch (SQLException | ClassNotFoundException e1) {
             e1.printStackTrace();
         }
@@ -133,11 +134,15 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
                 ModEspecialidad.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
             }
         });
-        btn_ModificarEspecialidad.setBounds(552, 326, 125, 23);
+        btn_ModificarEspecialidad.setBounds(106, 326, 125, 23);
         panel.add(btn_ModificarEspecialidad);
 
         JButton btn_Borrar = new JButton("Borrar");
-        btn_Borrar.setBounds(117, 391, 125, 23);
+        btn_Borrar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        btn_Borrar.setBounds(565, 391, 125, 23);
         panel.add(btn_Borrar);
 
         JButton btn_CrearEspecialidad = new JButton("Crear");
@@ -154,7 +159,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
                 CrearEspecialidad.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
             }
         });
-        btn_CrearEspecialidad.setBounds(552, 258, 125, 23);
+        btn_CrearEspecialidad.setBounds(106, 258, 125, 23);
         panel.add(btn_CrearEspecialidad);
 
         JButton btn_Crear = new JButton("Crear");
@@ -173,7 +178,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
             }
         });
 
-        btn_Crear.setBounds(117, 258, 125, 23);
+        btn_Crear.setBounds(565, 258, 125, 23);
         panel.add(btn_Crear);
 
         JButton btn_Modificar = new JButton("Modificar");
@@ -190,7 +195,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
                 ModTratamiento.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
             }
         });
-        btn_Modificar.setBounds(117, 326, 125, 23);
+        btn_Modificar.setBounds(565, 326, 125, 23);
         panel.add(btn_Modificar);
         // Configurar la tabla para ajustar automáticamente el tamaño de las celdas
         table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -215,9 +220,10 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
     private void contruirTablaEspecialidad(ResultSet rs) {
         try {
             while (rs.next()) {
-                Object[] fila = new Object[1]; // Hay 1 columna que mostrar
+                Object[] fila = new Object[2]; // Hay 2 columna que mostrar
             
                 fila[0] = rs.getString(1);
+                fila[1] = rs.getString(2);
 
                 modelEspecialidad.addRow(fila);
             }

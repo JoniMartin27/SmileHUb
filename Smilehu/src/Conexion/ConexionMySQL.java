@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.TimeZone;
 
 import Modelo.ConsultaCita;
+import Modelo.Doctor_administrador;
+import Modelo.Especialidad;
 import Modelo.Paciente;
 import Modelo.Proveedor;
 
@@ -291,6 +293,82 @@ public class ConexionMySQL {
 		    Statement stmt = connection.createStatement();
 		    stmt.executeUpdate(query);
 		}
+     
+     
+     
+     
+     
+     
+     
+     public static void insertarEspecialidad(String nombre) throws SQLException {
+		    String query = "INSERT INTO especialidad ( nombre_especialidad ) " +
+		                   "VALUES ('" + nombre  + "')";
+		    
+		    Statement stmt = connection.createStatement(); 
+		    stmt.executeUpdate(query);
+		}
+     public static Especialidad buscarEspecialidad(String nombre) throws SQLException {
+
+         Statement stmt=connection.createStatement();
+         ResultSet rset=stmt.executeQuery("SELECT * from ESPECIALIDAD where nombre  =" +nombre);//consulta
+
+         Especialidad especialidad=null;
+         if (rset.next()) {
+       
+        int id_especialidad=rset.getInt("id_especialidad");
+       
+
+        
+        
+        
+        
+        
+        especialidad=new Especialidad(id_especialidad,nombre);
+         }
+         stmt.close();
+  
+ 	
+
+
+        return especialidad;
+    }
+     
+     public static Doctor_administrador buscarDoctor(String nombre,String apellidos) throws SQLException {
+
+         Statement stmt=connection.createStatement();
+         ResultSet rset=stmt.executeQuery("SELECT * from doctor_administrador where nombre  =" +nombre+ " and apellidos = " + apellidos + "and tipo_usuario = 1");//consulta
+
+         Doctor_administrador doctor=null;
+         if (rset.next()) {
+       
+        int id_doctor_administrador=rset.getInt("id_doctor_administrador");
+        int id_especialidad=rset.getInt("id_especialidad");
+        String direccion=rset.getString("direccion");
+        String fecha_alta=rset.getString("fecha_alta");
+        int estado_baja=rset.getInt("estado_baja");
+        String genero=rset.getString("genero");
+        String pass=rset.getString("pass");
+        String tipo_usuario=rset.getString("tipo_usuario");
+        String teléfono=rset.getString("teléfono");
+        String fecha_nacimiento=rset.getString("fecha_nacimiento");
+        int activo=rset.getInt("activo");
+
+        
+        
+        
+        
+        
+         doctor=new Doctor_administrador(id_doctor_administrador,id_especialidad,nombre,apellidos,direccion,fecha_alta,estado_baja,genero,pass,tipo_usuario,teléfono,fecha_nacimiento,activo);
+         }
+         stmt.close();
+  
+ 	
+
+
+        return doctor;
+    }
+     
+
      public static void insertarCita(ConsultaCita cita) throws SQLException {
 		    String query = "INSERT INTO consulta_cita (id_doctor, id_tratamiento, id_historial, observaciones, fecha, hora) " +
 		                   "VALUES ('" + cita.getId_doctor() + "', '" + cita.getId_tratamiento() + "', '" +

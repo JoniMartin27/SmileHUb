@@ -209,7 +209,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 		}
 	}
 
-	private void obtenerDatosFilaSeleccionada() throws SQLException {
+	private void obtenerDatosFilaSeleccionada() throws SQLException, ClassNotFoundException {
 		// Obtener el índice de la fila seleccionada
 		int filaSeleccionada = table.getSelectedRow();
 
@@ -231,7 +231,9 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 			cita.setObservaciones(observaciones);
 			cita.setFecha(fecha);
 			cita.setHora(hora);
-			Conexion.ConexionMySQL.insertarCita(cita);
+			
+			ConexionMySQL.conectar();
+			ConexionMySQL.insertarCita(cita);
 
 			// Puedes imprimir los valores, pasarlo a un formulario de edición, etc.
 			System.out.println("Datos de la fila seleccionada:");
