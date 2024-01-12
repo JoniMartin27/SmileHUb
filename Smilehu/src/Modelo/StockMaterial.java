@@ -2,20 +2,39 @@ package Modelo;
 
 public class StockMaterial {
 
-	String idMaterial;
-	int idProveedor,disponible,solicitado,bajoPedido;
-	public StockMaterial(String idMaterial, int idProveedor, int disponible, int solicitado, int bajoPedido) {
+	String nombre;
+	int idProveedor,idMaterial,disponible,solicitado,bajoPedido,precio;
+	public StockMaterial(int idMaterial, int idProveedor,String nombre, int disponible, int solicitado, int bajoPedido,int precio) {
 		super();
 		this.idMaterial = idMaterial;
+		this.nombre=nombre;
 		this.idProveedor = idProveedor;
 		this.disponible = disponible;
 		this.solicitado = solicitado;
 		this.bajoPedido = bajoPedido;
+		this.precio =precio;
 	}
-	public String getIdMaterial() {
+	
+	
+	public StockMaterial() {
+		super();
+	}
+	
+	
+	
+	
+	
+	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public int getIdMaterial() {
 		return idMaterial;
 	}
-	public void setIdMaterial(String idMaterial) {
+	public void setIdMaterial(int idMaterial) {
 		this.idMaterial = idMaterial;
 	}
 	public int getIdProveedor() {

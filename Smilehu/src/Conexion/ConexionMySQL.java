@@ -19,6 +19,8 @@ import Modelo.Doctor_administrador;
 import Modelo.Especialidad;
 import Modelo.Paciente;
 import Modelo.Proveedor;
+import Modelo.StockMaterial;
+import Modelo.Tratamiento;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -129,7 +131,7 @@ public class ConexionMySQL {
      }
      
      
-     public static void modificarCita(ConsultaCita cita) throws SQLException {
+    /* public static void modificarCita(ConsultaCita cita) throws SQLException {
     	 String query = "UPDATE consulta_cita SET " +
     	            "nombre = '" + cita.getId_doctor() + "', " +
     	            "apellidos = '" + cita.getId_historial() + "', " +
@@ -145,7 +147,7 @@ public class ConexionMySQL {
         
          System.out.println("hola");
          stmt.close();
-         }
+         }*/
      
      
      
@@ -153,34 +155,38 @@ public class ConexionMySQL {
      
      
      
-     public void modificarCita1(ConsultaCita cita,int id) throws SQLException {
+    /* public void modificarCita1(ConsultaCita cita,int id) throws SQLException {
     	 String query = "UPDATE consulta_cita SET " +
-                 "id_doctor = ?, " +
                  "id_tratamiento = ?, " +
-                 "id_historial = ?, " +
                  "observaciones = ?, " +
                  "fecha = ?, " +
                  "hora = ? " +
                  "WHERE id_cita = ?";
 
   try (PreparedStatement pstmt = connection.prepareStatement(query)) {
-      pstmt.setInt(1, cita.getId_doctor());
-      pstmt.setInt(2, cita.getId_tratamiento());
-      pstmt.setInt(3, cita.getId_historial());
-      pstmt.setString(4, cita.getObservaciones());
-      pstmt.setString(5, cita.getFecha());
-      pstmt.setString(6, cita.getHora());
-      pstmt.setInt(7, id);
+	  
+      pstmt.setInt(1, cita.getId_tratamiento());
+      pstmt.setString(2, cita.getObservaciones());
+      pstmt.setString(3, cita.getFecha());
+      pstmt.setString(4, cita.getHora());
+      pstmt.setInt(5, id);
 
       int rowsAffected = pstmt.executeUpdate();
       System.out.println("Actualización exitosa. Filas afectadas: " + rowsAffected);
   } catch (SQLException e) {
       e.printStackTrace();
   }
-    	}
+    	}*/
 
      
     /* public static Proveedor consultaProveedor(int idProveedor) throws SQLException {
+
+
+
+
+
+
+
 
          Statement stmt=connection.createStatement();
          ResultSet rset=stmt.executeQuery("Select * from paciente where id_paciente = " + idProveedor);//consulta
@@ -200,6 +206,10 @@ public class ConexionMySQL {
 
         return proveedor;
     }*/
+     
+     
+     
+     
      public static Paciente buscarPacientes(String nombrePaciente, String apellidoPaciente) throws SQLException {
     	    String query = "SELECT * FROM Paciente WHERE nombre = ? AND apellidos = ?";
     	    
@@ -408,6 +418,62 @@ public class ConexionMySQL {
     	    return doctor;
     	}
      
+     
+     
+     
+     public static Tratamiento buscarTratamiento(String nombre) throws SQLException {
+
+         Statement stmt=connection.createStatement();
+         ResultSet rset=stmt.executeQuery("SELECT * from tratamiento where nombre  ='"+nombre+"'");//consulta
+
+         Tratamiento tratamiento=null;
+         if (rset.next()) {
+       
+        int id_tratamiento=rset.getInt("id_tratamiento");
+        int id_especialidad=rset.getInt("id_especialidad");
+        String precio=rset.getString("precio");
+       
+
+        
+        
+        
+        
+        
+        tratamiento=new Tratamiento(id_tratamiento,id_especialidad,nombre,precio);
+         }
+         stmt.close();
+  
+ 	
+
+
+        return tratamiento;
+    }
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
      //COMBOBOX Doctores gestion medica crear especialidad
      
      public static List<Doctor_administrador> buscarDoctor() throws SQLException {
@@ -441,11 +507,78 @@ public class ConexionMySQL {
     	 return combo;
      }
      
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+//COMBOBOX Citas tratamiento 
+     
+     public static List<Tratamiento> buscarTratamiento() throws SQLException {
+    	 List<Tratamiento> combo = new ArrayList<>();
+    	 String query = "SELECT * FROM tratamiento";
+    	 
+    	 try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+    		
+    		 ResultSet rset = pstmt.executeQuery();
+    		 
+    		 while (rset.next()) {
+    			 int id_tratamiento=rset.getInt("id_tratamiento");
+    		        int id_especialidad=rset.getInt("id_especialidad");
+    		        String nombre=rset.getString("nombre");
+    		        String precio=rset.getString("precio");
+    			 
+    		        Tratamiento doctor=new Tratamiento(id_tratamiento,id_especialidad,nombre,precio);
+    		        combo.add(doctor);
+    		 }
+    	 }
+    	 
+    	 return combo;
+     }
+//COMBOBOX Citas material
+     
+     public static List<StockMaterial> buscarMaterial() throws SQLException {
+    	 List<StockMaterial> combo = new ArrayList<>();
+    	 String query = "SELECT * FROM stock_material";
+    	 
+    	 try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+    		
+    		 ResultSet rset = pstmt.executeQuery();
+    		 
+    		 while (rset.next()) {
+    			 
+    			 
+    			 	int id_material=rset.getInt("id_material");
+    		        int id_proveedor=rset.getInt("id_proveedor");
+    		        String nombre=rset.getString("nombre");
+    		        int disponible=rset.getInt("disponible");
+    		        int solicitado=rset.getInt("solicitado");
+    		        int bajo_pedido=rset.getInt("bajo_pedido");
+    		        int precio=rset.getInt("precio");
+    			 
+    		        StockMaterial material=new StockMaterial(id_material,id_proveedor,nombre,disponible,solicitado,bajo_pedido,precio);
+    		        combo.add(material);
+    		 }
+    	 }
+    	 
+    	 return combo;
+     }
+     
+     
+     
+     
+     
 
      public static void insertarCita(ConsultaCita cita) throws SQLException {
-		    String query = "INSERT INTO consulta_cita (id_doctor, id_tratamiento, id_historial, observaciones, fecha, hora) " +
-		                   "VALUES ('" + cita.getId_doctor() + "', '" + cita.getId_tratamiento() + "', '" +
-		                   cita.getId_historial() + "', '" + cita.getObservaciones() + "', '" + cita.getFecha() + "', '" + 
+		    String query = "INSERT INTO consulta_cita (id_tratamiento, observaciones, fecha, hora) " +
+		                   "VALUES ( '" + cita.getId_tratamiento() + "'', '" + cita.getObservaciones() 
+		                   + "', '" + cita.getFecha() + "', '" + 
 		                   cita.getHora() + "')";
 		    
 		    Statement stmt = connection.createStatement();
@@ -457,19 +590,18 @@ public class ConexionMySQL {
      public static ConsultaCita consultaCita(int idCita) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("SELECT id_doctor,id_tratamiento,id_historial,observaciones, fecha,hora"+
+         ResultSet rset=stmt.executeQuery("SELECT id_tratamiento,observaciones, fecha,hora"+
         		   " from consulta_cita where id_cita  = "+ idCita);//consulta
 
          ConsultaCita consultaCita=null;
          if (rset.next()) {
        
-        int id_doctor=rset.getInt("id_doctor");
         int id_tratamiento=rset.getInt("id_tratamiento");
         int id_historial=rset.getInt("id_historial");
         String observaciones=rset.getString("observaciones");
         String fecha=rset.getString("fecha");
         String hora=rset.getString("hora");
-        consultaCita=new ConsultaCita(idCita,id_doctor,id_tratamiento,id_historial,observaciones,fecha,hora);
+        consultaCita=new ConsultaCita(idCita,id_tratamiento,id_historial,observaciones,fecha,hora);
          }
          stmt.close();
   
@@ -481,16 +613,6 @@ public class ConexionMySQL {
      
      
     
-
-     
-     
-     
-     
-     
-     
-     
-     
-     
      
      
      

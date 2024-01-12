@@ -3,13 +3,29 @@ package Modelo;
 public class Tratamiento {
 
 	int idTratamiento;
-	int precio;
+	String precio;
 	int id_especialidad;
-	public Tratamiento(int idTratamiento, int precio, int id_especialidad) {
+	String nombre;
+	
+	
+	
+	public Tratamiento(int idTratamiento, int id_especialidad, String nombre, String precio) {
 		super();
 		this.idTratamiento = idTratamiento;
 		this.precio = precio;
 		this.id_especialidad = id_especialidad;
+		this.nombre = nombre;
+	}
+	
+	
+	
+	
+	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	public int getIdTratamiento() {
 		return idTratamiento;
@@ -17,10 +33,10 @@ public class Tratamiento {
 	public void setIdTratamiento(int idTratamiento) {
 		this.idTratamiento = idTratamiento;
 	}
-	public int getPrecio() {
+	public String getPrecio() {
 		return precio;
 	}
-	public void setPrecio(int precio) {
+	public void setPrecio(String precio) {
 		this.precio = precio;
 	}
 	public int getId_especialidad() {
