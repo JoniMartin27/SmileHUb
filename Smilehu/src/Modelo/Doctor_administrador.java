@@ -45,6 +45,18 @@ public class Doctor_administrador {
 
 
 
+	public Doctor_administrador() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+
+
+
+
+
 	public int getId_doctor_administrador() {
 		return id_doctor_administrador;
 	}

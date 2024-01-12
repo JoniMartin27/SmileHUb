@@ -300,17 +300,22 @@ public class ConexionMySQL {
      
      
      
+     
      public static void insertarEspecialidad(String nombre) throws SQLException {
-		    String query = "INSERT INTO especialidad ( nombre_especialidad ) " +
-		                   "VALUES ('" + nombre  + "')";
+		    String query = "INSERT INTO especialidad (nombre_especialidad) VALUES ('"+nombre+"')";
 		    
 		    Statement stmt = connection.createStatement(); 
 		    stmt.executeUpdate(query);
 		}
+     
+     
+     
+    
+     
      public static Especialidad buscarEspecialidad(String nombre) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("SELECT * from ESPECIALIDAD where nombre  =" +nombre);//consulta
+         ResultSet rset=stmt.executeQuery("SELECT * from especialidad where nombre_especialidad  ='"+nombre+"'");//consulta
 
          Especialidad especialidad=null;
          if (rset.next()) {
@@ -333,40 +338,108 @@ public class ConexionMySQL {
         return especialidad;
     }
      
-     public static Doctor_administrador buscarDoctor(String nombre,String apellidos) throws SQLException {
-
-         Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("SELECT * from doctor_administrador where nombre  =" +nombre+ " and apellidos = " + apellidos + "and tipo_usuario = 1");//consulta
-
-         Doctor_administrador doctor=null;
-         if (rset.next()) {
-       
-        int id_doctor_administrador=rset.getInt("id_doctor_administrador");
-        int id_especialidad=rset.getInt("id_especialidad");
-        String direccion=rset.getString("direccion");
-        String fecha_alta=rset.getString("fecha_alta");
-        int estado_baja=rset.getInt("estado_baja");
-        String genero=rset.getString("genero");
-        String pass=rset.getString("pass");
-        String tipo_usuario=rset.getString("tipo_usuario");
-        String teléfono=rset.getString("teléfono");
-        String fecha_nacimiento=rset.getString("fecha_nacimiento");
-        int activo=rset.getInt("activo");
-
-        
-        
-        
-        
-        
-         doctor=new Doctor_administrador(id_doctor_administrador,id_especialidad,nombre,apellidos,direccion,fecha_alta,estado_baja,genero,pass,tipo_usuario,teléfono,fecha_nacimiento,activo);
+     
+     
+     
+     
+     
+     
+     
+     public static Connection getConnection() throws SQLException {
+         if (connection == null || connection.isClosed()) {
+             // Si la conexión no está establecida o está cerrada, crea una nueva conexión
+             try {
+                 Class.forName("com.mysql.cj.jdbc.Driver");
+                 connection = DriverManager.getConnection(HOST, USUARIO, PASS);
+             } catch (ClassNotFoundException e) {
+                 // Manejo de excepciones en caso de que el controlador no se encuentre
+                 throw new SQLException("Controlador MySQL no encontrado", e);
+             }
          }
-         stmt.close();
-  
- 	
+         return connection;
+     }
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     public static Doctor_administrador buscarDoctor(String nombre, String apellidos) throws SQLException {
+    	    // Utilizar PreparedStatement para manejar la consulta con parámetros
+    	    String sql = "SELECT * FROM doctor_administrador WHERE nombre = ? AND apellidos = ? AND tipo_usuario = ?";
+    	    Doctor_administrador doctor = null;
 
+    	    try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+    	        pstmt.setString(1, nombre);
+    	        pstmt.setString(2, apellidos);
+    	        pstmt.setString(3, "1");
 
-        return doctor;
-    }
+    	        try (ResultSet rset = pstmt.executeQuery()) {
+    	            if (rset.next()) {
+    	                // Obtener los datos del ResultSet
+    	                int id_doctor_administrador = rset.getInt("id_doctor_administrador");
+    	                int id_especialidad = rset.getInt("id_especialidad");
+    	                String direccion = rset.getString("direccion");
+    	                String fecha_alta = rset.getString("fecha_alta");
+    	                int estado_baja = rset.getInt("estado_baja");
+    	                String genero = rset.getString("genero");
+    	                String pass = rset.getString("pass");
+    	                String tipo_usuario = rset.getString("tipo_usuario");
+    	                String telefono = rset.getString("telefono");
+    	                String fecha_nacimiento = rset.getString("fecha_nacimiento");
+    	                int activo = rset.getInt("activo");
+
+    	                // Crear y retornar el objeto Doctor_administrador
+    	                doctor = new Doctor_administrador(id_doctor_administrador, id_especialidad, nombre, apellidos,
+    	                        direccion, fecha_alta, estado_baja, genero, pass, tipo_usuario, telefono,
+    	                        fecha_nacimiento, activo);
+    	            }
+    	        }
+    	    } catch (SQLException e) {
+    	      
+    	        e.printStackTrace();
+    	        
+    	        throw e;
+    	    }
+
+    	    return doctor;
+    	}
+     
+     //COMBOBOX Doctores gestion medica crear especialidad
+     
+     public static List<Doctor_administrador> buscarDoctor() throws SQLException {
+    	 List<Doctor_administrador> combo = new ArrayList<>();
+    	 String query = "SELECT * FROM doctor_administrador WHERE tipo_usuario='1'";
+    	 
+    	 try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+    		
+    		 ResultSet rset = pstmt.executeQuery();
+    		 
+    		 while (rset.next()) {
+    			 int id_doctor_administrador=rset.getInt("id_doctor_administrador");
+    		        int id_especialidad=rset.getInt("id_especialidad");
+    		        String direccion=rset.getString("direccion");
+    		        String nombre=rset.getString("nombre");
+    		        String apellidos=rset.getString("apellidos");
+    		        String fecha_alta=rset.getString("fecha_alta");
+    		        int estado_baja=rset.getInt("estado_baja");
+    		        String genero=rset.getString("genero");
+    		        String pass=rset.getString("pass");
+    		        String tipo_usuario=rset.getString("tipo_usuario");
+    		        String teléfono=rset.getString("telefono");
+    		        String fecha_nacimiento=rset.getString("fecha_nacimiento");
+    		        int activo=rset.getInt("activo");
+    			 
+    		        Doctor_administrador doctor=new Doctor_administrador(id_doctor_administrador,id_especialidad,nombre,apellidos,direccion,fecha_alta,estado_baja,genero,pass,tipo_usuario,teléfono,fecha_nacimiento,activo);
+    		        combo.add(doctor);
+    		 }
+    	 }
+    	 
+    	 return combo;
+     }
      
 
      public static void insertarCita(ConsultaCita cita) throws SQLException {
@@ -408,8 +481,7 @@ public class ConexionMySQL {
      
      
     
-     
-     
+
      
      
      

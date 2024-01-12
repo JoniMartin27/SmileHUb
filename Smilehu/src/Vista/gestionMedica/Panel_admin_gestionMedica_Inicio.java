@@ -91,8 +91,8 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         scrollPane.setBounds(25,33,300,200);
         JScrollPane specialityScrollPane = new JScrollPane(table_1);
         specialityScrollPane.setBounds(467,33,300,200);
-        panel.add(scrollPane);
         panel.add(specialityScrollPane);
+        panel.add(scrollPane);
 
         String[] columnasTratamiento = {"tratamiento", "precio", "especialidad" };
 
