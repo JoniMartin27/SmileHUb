@@ -87,9 +87,7 @@ public class Panel_admin_gestionMedica_CrearEspecialidad extends JInternalFrame 
         JScrollPane specialityScrollPane = new JScrollPane(table);
         specialityScrollPane.setBounds(467,33,300,200);
         panel.add(specialityScrollPane);
-        String[] columnasEspecialidad = { "nombre especialidad","Doctor" };
-        this.modelEspecialidad = new DefaultTableModel();
-        this.modelEspecialidad.setColumnIdentifiers(columnasEspecialidad);
+       
 	    
       
         
@@ -97,6 +95,7 @@ public class Panel_admin_gestionMedica_CrearEspecialidad extends JInternalFrame 
 		
 		try {
 			ConexionMySQL.conectar();
+			
 			contruirTablaEspecialidad(ConexionMySQL.ejecutarSelect("SELECT nombre_especialidad , doctor_administrador.nombre  FROM especialidad JOIN doctor_administrador ON doctor_administrador.id_especialidad  = especialidad.id_especialidad "));
 		} catch (SQLException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -170,7 +169,7 @@ public class Panel_admin_gestionMedica_CrearEspecialidad extends JInternalFrame 
 		        try {
 					ConexionMySQL.conectar();
 					table.removeAll();
-					contruirTablaEspecialidad(ConexionMySQL.ejecutarSelect("SELECT nombre_especialidad , doctor_administrador.nombre  FROM especialidad JOIN doctor_administrador ON doctor_administrador.id_especialidad  = especialidad.id_especialidad "));
+					contruirTablaEspecialidad(ConexionMySQL.ejecutarSelect("SELECT especialidad.nombre_especialidad , doctor_administrador.nombre  FROM doctor_administrador RIGHT JOIN especialidad ON especialidad.id_especialidad  = doctor_administrador.id_especialidad "));
 				} catch (SQLException | ClassNotFoundException ex) {
 					// TODO Auto-generated catch block
 					ex.printStackTrace();
@@ -196,14 +195,19 @@ public class Panel_admin_gestionMedica_CrearEspecialidad extends JInternalFrame 
 	}
 	
 	  private void contruirTablaEspecialidad(ResultSet rs) {
+		  String[] columnasEspecialidad = { "nombre especialidad","Doctor" };
+	        this.modelEspecialidad = new DefaultTableModel();
+	        this.modelEspecialidad.setColumnIdentifiers(columnasEspecialidad);
+	        this.modelEspecialidad.setRowCount(0);
 	        try {
+	        	this.table.removeAll();
 	            while (rs.next()) {
 	                Object[] fila = new Object[2]; // Hay 2 columna que mostrar
 	            
 	                fila[0] = rs.getString(1);
 	                fila[1] = rs.getString(2);
 
-	                modelEspecialidad.addRow(fila);
+	                this.modelEspecialidad.addRow(fila);
 	                
 	            }
 	            this.table.setModel(modelEspecialidad);
