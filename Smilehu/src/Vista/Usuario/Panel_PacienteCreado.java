@@ -134,141 +134,146 @@ public class Panel_PacienteCreado extends JInternalFrame {
 			};
 		});
 		
+		JLabel lblNewLabel_1 = new JLabel("FICHA PACIENTE ");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
+		lblNewLabel_1.setBounds(10, 11, 228, 14);
+		panel.add(lblNewLabel_1);
+		
 		tf_id = new JTextField();
 		tf_id.setEditable(false);
 		tf_id.setColumns(10);
-		tf_id.setBounds(259, 112, 73, 20);
+		tf_id.setBounds(315, 161, 73, 20);
 		panel.add(tf_id);
 		
 		JLabel lbl_id = new JLabel("ID");
 		lbl_id.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_id.setBounds(164, 115, 46, 14);
+		lbl_id.setBounds(220, 164, 46, 14);
 		panel.add(lbl_id);
-		comboBox.setBounds(370, 51, 126, 22);
+		comboBox.setBounds(425, 56, 126, 22);
 		panel.add(comboBox);
 
 		tf_telefono = new JTextField();
-		tf_telefono.setBounds(259, 239, 126, 20);
+		tf_telefono.setBounds(315, 288, 126, 20);
 		panel.add(tf_telefono);
 		tf_telefono.setColumns(10);
 
 		tf_genero = new JTextField();
-		tf_genero.setBounds(259, 216, 126, 20);
+		tf_genero.setBounds(315, 265, 126, 20);
 		panel.add(tf_genero);
 		tf_genero.setColumns(10);
 
 		tf_direccion = new JTextField();
-		tf_direccion.setBounds(259, 191, 126, 20);
+		tf_direccion.setBounds(315, 240, 126, 20);
 		panel.add(tf_direccion);
 		tf_direccion.setColumns(10);
 
 		tf_apellidos = new JTextField();
-		tf_apellidos.setBounds(259, 166, 126, 20);
+		tf_apellidos.setBounds(315, 215, 126, 20);
 		panel.add(tf_apellidos);
 		tf_apellidos.setColumns(10);
 
 		tf_nombre = new JTextField();
-		tf_nombre.setBounds(259, 140, 126, 20);
+		tf_nombre.setBounds(315, 189, 126, 20);
 		panel.add(tf_nombre);
 		tf_nombre.setColumns(10);
 
 		JLabel lbl_buscar = new JLabel("Buscar paciente:");
-		lbl_buscar.setBounds(164, 14, 126, 14);
+		lbl_buscar.setBounds(288, 28, 126, 14);
 		panel.add(lbl_buscar);
 		lbl_buscar.setForeground(new Color(0, 0, 0));
 		lbl_buscar.setFont(new Font("Tahoma", Font.BOLD, 11));
 
 		tf_buscaPaciente = new JTextField();
-		tf_buscaPaciente.setBounds(301, 11, 126, 20);
+		tf_buscaPaciente.setBounds(425, 25, 126, 20);
 		panel.add(tf_buscaPaciente);
 		tf_buscaPaciente.setColumns(10);
 
 		JButton btn_BuscarPaciente = new JButton("Buscar");
-		btn_BuscarPaciente.setBounds(437, 10, 109, 23);
+		btn_BuscarPaciente.setBounds(561, 24, 109, 23);
 		panel.add(btn_BuscarPaciente);
 
 		JLabel lbl_dni_1 = new JLabel("Fecha alta");
-		lbl_dni_1.setBounds(396, 141, 91, 14);
+		lbl_dni_1.setBounds(452, 190, 91, 14);
 		panel.add(lbl_dni_1);
 		lbl_dni_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_dni_1.setForeground(Color.BLACK);
 		lbl_dni_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 
 		tf_fechaAlta = new JTextField();
-		tf_fechaAlta.setBounds(533, 140, 126, 20);
+		tf_fechaAlta.setBounds(589, 189, 126, 20);
 		panel.add(tf_fechaAlta);
 		tf_fechaAlta.setEditable(false);
 		tf_fechaAlta.setColumns(10);
 
 		JLabel lbl_nombre_1 = new JLabel("Fecha nacimiento");
-		lbl_nombre_1.setBounds(396, 166, 127, 14);
+		lbl_nombre_1.setBounds(452, 215, 127, 14);
 		panel.add(lbl_nombre_1);
 		lbl_nombre_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_nombre_1.setForeground(Color.BLACK);
 		lbl_nombre_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 
 		tf_fechaNacimiento = new JTextField();
-		tf_fechaNacimiento.setBounds(533, 166, 126, 20);
+		tf_fechaNacimiento.setBounds(589, 215, 126, 20);
 		panel.add(tf_fechaNacimiento);
 		tf_fechaNacimiento.setEditable(false);
 		tf_fechaNacimiento.setColumns(10);
 		JLabel lbl_dni = new JLabel("Nombre");
-		lbl_dni.setBounds(164, 140, 85, 14);
+		lbl_dni.setBounds(220, 189, 85, 14);
 		panel.add(lbl_dni);
 		lbl_dni.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_dni.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_dni.setForeground(new Color(0, 0, 0));
 		JLabel lbl_nombre = new JLabel("Apellidos");
-		lbl_nombre.setBounds(164, 165, 85, 14);
+		lbl_nombre.setBounds(220, 214, 85, 14);
 		panel.add(lbl_nombre);
 		lbl_nombre.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_nombre.setForeground(new Color(0, 0, 0));
 		JLabel lbl_apellidos = new JLabel("Direccion");
-		lbl_apellidos.setBounds(164, 190, 85, 14);
+		lbl_apellidos.setBounds(220, 239, 85, 14);
 		panel.add(lbl_apellidos);
 		lbl_apellidos.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_apellidos.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_apellidos.setForeground(new Color(0, 0, 0));
 		JLabel lbl_fechanacimiento = new JLabel("Genero");
-		lbl_fechanacimiento.setBounds(164, 215, 85, 14);
+		lbl_fechanacimiento.setBounds(220, 264, 85, 14);
 		panel.add(lbl_fechanacimiento);
 		lbl_fechanacimiento.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_fechanacimiento.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_fechanacimiento.setForeground(new Color(0, 0, 0));
 		JLabel lbl_sexo = new JLabel("Telefono");
-		lbl_sexo.setBounds(164, 240, 85, 14);
+		lbl_sexo.setBounds(220, 289, 85, 14);
 		panel.add(lbl_sexo);
 		lbl_sexo.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_sexo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_sexo.setForeground(new Color(0, 0, 0));
 		JLabel lbl_altabaja = new JLabel("Dar de alta o baja:");
-		lbl_altabaja.setBounds(212, 288, 173, 14);
+		lbl_altabaja.setBounds(268, 337, 173, 14);
 		panel.add(lbl_altabaja);
 		lbl_altabaja.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_altabaja.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_altabaja.setForeground(new Color(0, 0, 0));
 
 		JRadioButton rdbtn_alta = new JRadioButton("Alta");
-		rdbtn_alta.setBounds(400, 284, 68, 23);
+		rdbtn_alta.setBounds(456, 333, 68, 23);
 		panel.add(rdbtn_alta);
 		g1.add(rdbtn_alta);
 
 		JRadioButton rdbtn_baja = new JRadioButton("Baja");
-		rdbtn_baja.setBounds(500, 284, 68, 23);
+		rdbtn_baja.setBounds(556, 333, 68, 23);
 		panel.add(rdbtn_baja);
 		g1.add(rdbtn_baja);
 
 		JButton btn_consultarpagos = new JButton("Consultar Pagos");
-		btn_consultarpagos.setBounds(193, 350, 173, 23);
+		btn_consultarpagos.setBounds(249, 399, 173, 23);
 		panel.add(btn_consultarpagos);
 
 		JButton btn_odontograma = new JButton("Odontograma");
-		btn_odontograma.setBounds(193, 372, 173, 23);
+		btn_odontograma.setBounds(249, 421, 173, 23);
 		panel.add(btn_odontograma);
 
 		JButton btn_modificar = new JButton("Modificar Paciente");
-		btn_modificar.setBounds(193, 396, 173, 23);
+		btn_modificar.setBounds(249, 445, 173, 23);
 		panel.add(btn_modificar);
 		
 		JLabel lblNewLabel = new JLabel("New label");
@@ -379,5 +384,4 @@ public class Panel_PacienteCreado extends JInternalFrame {
 			}
 		}
 	}
-	
 }

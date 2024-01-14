@@ -9,6 +9,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
@@ -18,6 +19,8 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 
 import Conexion.ConexionMySQL;
+import Modelo.ConsultaCita;
+import Modelo.StockMaterial;
 import Vista.gestionMedica.Odontograma;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,7 +29,7 @@ public class InicioMaterial extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JTable table;
-	private JTextField textField;
+	private JTextField tf_buscar;
 	private JDesktopPane miDesktopPane;
 	private DefaultTableModel modelMaterial;
 	private JScrollPane scrollPane;
@@ -63,10 +66,10 @@ public class InicioMaterial extends JInternalFrame {
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(82, 154, 117, 23);
-		panel.add(textField);
-		textField.setColumns(10);
+		tf_buscar = new JTextField();
+		tf_buscar.setBounds(82, 154, 117, 23);
+		panel.add(tf_buscar);
+		tf_buscar.setColumns(10);
 		
 		table = new JTable();
 		table.setBounds(82, 185, 711, 208);
@@ -124,6 +127,42 @@ public class InicioMaterial extends JInternalFrame {
 		panel.add(btn_solicitudes);
 		
 		JButton btn_buscar = new JButton("buscar");
+		btn_buscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					ConexionMySQL.conectar();
+					StockMaterial material =ConexionMySQL.consultarMaterial(tf_buscar.getText());
+					
+
+			    
+			     
+			        // Limpiar la tabla antes de agregar nuevas filas
+			        limpiarTabla();
+
+			        // Agregar filas a la tabla
+			        if (material != null) {
+			        	agregarFilaConsultaMaterial(material); 
+			        } else {
+			            JOptionPane.showMessageDialog(tf_buscar, "No se encontró ninguna cita con ese Nombre", "Información",
+			                    JOptionPane.INFORMATION_MESSAGE);
+			        }
+				} catch (SQLException | ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			}
+		});
 		btn_buscar.setBounds(237, 154, 117, 23);
 		panel.add(btn_buscar);
 		
@@ -147,9 +186,26 @@ public class InicioMaterial extends JInternalFrame {
 		panel.add(lblNewLabel);
 
 	}
+	
+	private void agregarFilaConsultaMaterial(StockMaterial material) {
+		// Asegurarse de que la consultaCita no sea null antes de agregar la fila
+		if (material != null) {
+			Object[] fila = { material.getIdMaterial(),material.getNombreProveedor(), material.getNombre(),
+					material.getDisponible(), material.getSolicitado(),material.getBajoPedido(),material.getPrecio() };
+			modelMaterial.addRow(fila);
+		}
+
+		else {
+
+			// Aquí puedes manejar el caso en que no se encuentra la consultaCita
+			JOptionPane.showMessageDialog(this, "id no encontrado en la base de datos", "Error",
+					JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
 	private static void abrirSolicitudes(JDesktopPane desktopPane) throws PropertyVetoException {
 
-		material_pedidos pedidos = new material_pedidos();
+		material_Solicitudes pedidos = new material_Solicitudes();
 		pedidos.setBorder(null);
 		((BasicInternalFrameUI) pedidos.getUI()).setNorthPane(null);
 		pedidos.setLocation(0, 0);
@@ -197,5 +253,7 @@ public class InicioMaterial extends JInternalFrame {
 	            e.printStackTrace();
 	        }
 	    }
-	
+	  private void limpiarTabla() {
+			modelMaterial.setRowCount(0);
+		}
 }

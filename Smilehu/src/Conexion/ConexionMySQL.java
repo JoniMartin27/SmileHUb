@@ -634,6 +634,43 @@ public class ConexionMySQL {
         return consultaCita;
     }
      
+     
+     
+     
+     public static StockMaterial consultarMaterial(String nombre) throws SQLException {
+
+    	    String query = "SELECT sm.id_material, p.nombre AS nombre_proveedor, sm.nombre, sm.disponible, sm.solicitado, sm.bajo_pedido, sm.precio " +
+    	            "FROM stock_material sm " +
+    	            "JOIN proveedor p ON sm.id_proveedor = p.id_proveedor " +
+    	            "WHERE sm.nombre = ?";
+
+    	    StockMaterial material = null;
+
+    	    try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+    	        // Configurar el parámetro en lugar de concatenar directamente en la cadena SQL
+    	        pstmt.setString(1, nombre);
+
+    	        try (ResultSet rset = pstmt.executeQuery()) {
+    	            if (rset.next()) {
+    	                int id_material = rset.getInt("id_material");
+    	                String nombre_proveedor = rset.getString("nombre_proveedor");
+    	                int disponible = rset.getInt("disponible");
+    	                int solicitado = rset.getInt("solicitado");
+    	                int bajo_pedido = rset.getInt("bajo_pedido");
+    	                Double precio = rset.getDouble("precio");
+
+    	                material = new StockMaterial(nombre_proveedor, nombre, id_material, disponible, solicitado, bajo_pedido, precio);
+    	            }
+    	        }
+    	    }
+
+    	    return material;
+    	}
+        	 
+        	 
+     
+     
+     
      public static List<StockMaterial> obtenerStockMaterial() {
          List<StockMaterial> stockMateriales = new ArrayList<>();
 

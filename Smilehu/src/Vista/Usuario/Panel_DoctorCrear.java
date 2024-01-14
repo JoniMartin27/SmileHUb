@@ -70,11 +70,11 @@ public class Panel_DoctorCrear extends JInternalFrame {
 		
 		
 		
-		JLabel lbl_ficha = new JLabel("Ficha crear Doctor");
+		JLabel lbl_ficha = new JLabel("FICHA CREAR DOCTOR");
 		lbl_ficha.setBounds(30, 11, 173, 14);
 		panel.add(lbl_ficha);
 		lbl_ficha.setForeground(new Color(0, 0, 0));
-		lbl_ficha.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_ficha.setFont(new Font("Tahoma", Font.BOLD, 15));
 		JLabel lbl_idDoctor = new JLabel("ID Doctor");
 		lbl_idDoctor.setBounds(214, 108, 61, 14);
 		panel.add(lbl_idDoctor);

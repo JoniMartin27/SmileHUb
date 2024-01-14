@@ -82,6 +82,11 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		JComboBox<String> cB_especialista = new JComboBox<>();
 		cB_especialista.setBounds(284, 254, 176, 23);
 		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("CREAR CITA");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
+		lblNewLabel.setBounds(10, 11, 193, 14);
+		panel.add(lblNewLabel);
 
 		JComboBox<String> cb_hora = new JComboBox<>(getAvailableTimes());
 		cb_hora.setBounds(516, 162, 114, 28);

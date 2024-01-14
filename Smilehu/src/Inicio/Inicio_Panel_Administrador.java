@@ -379,7 +379,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 		cerrarPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				  
-
+				
 			
 			}
 		});

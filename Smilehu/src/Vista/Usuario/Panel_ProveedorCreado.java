@@ -66,9 +66,9 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JLabel lbl_ficha = new JLabel("Ficha de Proveedor");
+		JLabel lbl_ficha = new JLabel("FICHA PROVEEDOR");
 		lbl_ficha.setForeground(new Color(0, 0, 0));
-		lbl_ficha.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_ficha.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		lbl_ficha.setBounds(23, 11, 173, 14);
 		contentPanel.add(lbl_ficha);
 		

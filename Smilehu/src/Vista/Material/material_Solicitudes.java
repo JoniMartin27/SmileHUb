@@ -7,8 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
+import javax.swing.JTable;
 
-public class material_pedidos extends JInternalFrame {
+public class material_Solicitudes extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 
@@ -19,7 +20,7 @@ public class material_pedidos extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					material_pedidos frame = new material_pedidos();
+					material_Solicitudes frame = new material_Solicitudes();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +35,7 @@ public class material_pedidos extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public material_pedidos() {
+	public material_Solicitudes() {
 		setBounds(100, 100, 1018, 476);
 		getContentPane().setLayout(null);
 		
@@ -44,7 +45,7 @@ public class material_pedidos extends JInternalFrame {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(material_pedidos.class.getResource("/img/fondoDientes.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(material_Solicitudes.class.getResource("/img/fondoDientes.jpg")));
 		lblNewLabel.setBounds(0, 0, 1018, 476);
 		panel.add(lblNewLabel);
 

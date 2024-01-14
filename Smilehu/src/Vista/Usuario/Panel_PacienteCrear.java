@@ -161,11 +161,11 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		lbl_dni_1.setForeground(Color.BLACK);
 		lbl_dni_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lbl_ficha = new JLabel("Ficha de Paciente");
-		lbl_ficha.setBounds(25, 11, 173, 14);
+		JLabel lbl_ficha = new JLabel("FICHA PACIENTE CREAR");
+		lbl_ficha.setBounds(25, 11, 274, 14);
 		panel.add(lbl_ficha);
 		lbl_ficha.setForeground(new Color(0, 0, 0));
-		lbl_ficha.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_ficha.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Panel_PacienteCrear.class.getResource("/img/fondoDientes.jpg")));

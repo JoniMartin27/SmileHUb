@@ -86,9 +86,9 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lbl_citas = new JLabel("Citas");
-		lbl_citas.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_citas.setBounds(10, 11, 46, 14);
+		JLabel lbl_citas = new JLabel("CONSULTAR CITAS");
+		lbl_citas.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
+		lbl_citas.setBounds(10, 11, 159, 14);
 		panel.add(lbl_citas);
 
 		tf_buscarCita = new JTextField();

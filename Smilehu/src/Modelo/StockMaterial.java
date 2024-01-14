@@ -2,7 +2,7 @@ package Modelo;
 
 public class StockMaterial {
 
-	private String nombre;
+	private String nombre,nombreProveedor;
 	private int idProveedor,idMaterial,disponible,solicitado,bajoPedido;
 	private double precio;
 	public StockMaterial(int idMaterial, int idProveedor,String nombre, int disponible, int solicitado, int bajoPedido,double precio) {
@@ -17,6 +17,19 @@ public class StockMaterial {
 	}
 	
 	
+	public StockMaterial(String nombre, String nombreProveedor, int idMaterial, int disponible, int solicitado,
+			int bajoPedido, double precio) {
+		super();
+		this.nombre = nombre;
+		this.nombreProveedor = nombreProveedor;
+		this.idMaterial = idMaterial;
+		this.disponible = disponible;
+		this.solicitado = solicitado;
+		this.bajoPedido = bajoPedido;
+		this.precio = precio;
+	}
+
+
 	public StockMaterial() {
 		super();
 	}
@@ -26,6 +39,16 @@ public class StockMaterial {
 	
 	
 	
+	public String getNombreProveedor() {
+		return nombreProveedor;
+	}
+
+
+	public void setNombreProveedor(String nombreProveedor) {
+		this.nombreProveedor = nombreProveedor;
+	}
+
+
 	public double getPrecio() {
 		return precio;
 	}
