@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyVetoException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -16,7 +17,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
+import Vista.Material.material_Solicitudes;
 import Vista.Usuario.Panel_PacienteCreado;
 
 import java.awt.Font;
@@ -30,7 +33,7 @@ public class Odontograma extends JInternalFrame {
     private JTextField tf_nombre;
     private JTextField tf_estado;
     private ButtonGroup btn = new ButtonGroup();
-	private JDesktopPane miDesktopPane;
+	private static JDesktopPane miDesktopPane;
 
 	/**
 	 * Launch the application.
@@ -86,22 +89,26 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.addMouseListener(new MouseAdapter() {
+		JLabel lbl_back = new JLabel("");
+		lbl_back.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				try {
+					setDesktopPane(getDesktopPane());
+					volver();
+				} catch (PropertyVetoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
-				Odontograma odontograma = new Odontograma();
-				odontograma.setVisible(false);
-				Panel_PacienteCreado panel_PacienteCreado = new Panel_PacienteCreado();
-				panel_PacienteCreado.setVisible(true);
-				
-				
+		
+		
+			
 			}
 		});
-		lblNewLabel_3.setIcon(new ImageIcon(Odontograma.class.getResource("/img/diente.png")));
-		lblNewLabel_3.setBounds(41, 30, 39, 32);
-		panel.add(lblNewLabel_3);
+		lbl_back.setIcon(new ImageIcon(Odontograma.class.getResource("/img/diente.png")));
+		lbl_back.setBounds(41, 30, 39, 32);
+		panel.add(lbl_back);
 		
 		
 		
@@ -519,4 +526,28 @@ public class Odontograma extends JInternalFrame {
 		
 		
 	}
+	private static void volver() throws PropertyVetoException {
+		
+		
+		
+		JInternalFrame[] frames = miDesktopPane.getAllFrames();
+
+		// Verifica si hay al menos una ventana interna
+		if (frames.length > 0) {
+		    // Recupera la última ventana interna
+		    JInternalFrame ultimaVentana = frames[frames.length - 1];
+
+		    // Restaura la ventana si está minimizada
+		    if (ultimaVentana.isIcon()) {
+		        try {
+		            ultimaVentana.setIcon(false);
+		        } catch (PropertyVetoException e) {
+		            e.printStackTrace();
+		        }
+		    }
+
+		    // Activa la última ventana
+		    miDesktopPane.getDesktopManager().activateFrame(ultimaVentana);
+	}
+		}
 }
