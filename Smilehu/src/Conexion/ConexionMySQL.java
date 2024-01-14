@@ -634,7 +634,34 @@ public class ConexionMySQL {
         return consultaCita;
     }
      
-     
+     public static List<StockMaterial> obtenerStockMaterial() {
+         List<StockMaterial> stockMateriales = new ArrayList<>();
+
+         String query = "SELECT * FROM stock_material";
+
+         try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+             try (ResultSet resultSet = pstmt.executeQuery()) {
+                 while (resultSet.next()) {
+                     int idMaterial = resultSet.getInt("id_material");
+                     int idProveedor = resultSet.getInt("id_proveedor");
+                     String nombreMaterial = resultSet.getString("nombre");
+                     int disponible = resultSet.getInt("disponible");
+                     int solicitado = resultSet.getInt("solicitado");
+                     int bajoPedido = resultSet.getInt("bajo_pedido");
+                     double precio = resultSet.getDouble("precio");
+
+                     StockMaterial stockMaterial = new StockMaterial(idMaterial, idProveedor, nombreMaterial,
+                             disponible, solicitado, bajoPedido, precio);
+
+                     stockMateriales.add(stockMaterial);
+                 }
+             }
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+
+         return stockMateriales;
+     }
     
      
      

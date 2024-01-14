@@ -16,6 +16,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import java.awt.Font;
 
 public class Odontograma extends JInternalFrame {
 
@@ -48,6 +49,7 @@ public class Odontograma extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Odontograma() {
+		setBorder(null);
 		setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1018, 476);
 		JPanel contentPane = new JPanel();
@@ -57,7 +59,7 @@ public class Odontograma extends JInternalFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 1002, 437);
+		panel.setBounds(0, 0, 1018, 476);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -429,6 +431,7 @@ public class Odontograma extends JInternalFrame {
 		panel.add(ta_observaciones);
 		
 		JLabel lbl_nombre = new JLabel("Nombre");
+		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_nombre.setBounds(609, 36, 86, 14);
 		panel.add(lbl_nombre);
 		
@@ -438,30 +441,38 @@ public class Odontograma extends JInternalFrame {
 		tf_estado.setColumns(10);
 		
 		JLabel lbl_estado = new JLabel("Estado");
+		lbl_estado.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_estado.setBounds(751, 36, 72, 14);
 		panel.add(lbl_estado);
 		
 		JLabel lbl_protesis = new JLabel("Prótesis");
-		lbl_protesis.setBounds(609, 102, 46, 14);
+		lbl_protesis.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_protesis.setBounds(609, 102, 72, 14);
 		panel.add(lbl_protesis);
 		
 		
 		
 		
 		JRadioButton rdbtn_si = new JRadioButton("Si");
-		rdbtn_si.setBounds(669, 98, 60, 23);
+		rdbtn_si.setBounds(700, 98, 60, 23);
 		panel.add(rdbtn_si);
 		
 		JRadioButton rdbtn_no = new JRadioButton("No");
-		rdbtn_no.setBounds(713, 98, 72, 23);
+		rdbtn_no.setBounds(787, 98, 72, 23);
 		panel.add(rdbtn_no);
 		
         btn.add(rdbtn_si);
         btn.add(rdbtn_no);
         
         JLabel lbl_observaciones = new JLabel("Observaciones");
+        lbl_observaciones.setFont(new Font("Tahoma", Font.BOLD, 11));
         lbl_observaciones.setBounds(609, 200, 132, 14);
         panel.add(lbl_observaciones);
+        
+        JLabel lblNewLabel = new JLabel("New label");
+        lblNewLabel.setIcon(new ImageIcon(Odontograma.class.getResource("/img/fondoDientes.jpg")));
+        lblNewLabel.setBounds(0, 0, 1018, 476);
+        panel.add(lblNewLabel);
 		
 		
 		

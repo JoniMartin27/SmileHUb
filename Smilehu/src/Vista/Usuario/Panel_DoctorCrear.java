@@ -58,52 +58,9 @@ public class Panel_DoctorCrear extends JInternalFrame {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		
-		
-		
-		
-		
-		
-		/*DNI*/
-		
 	
-
-
-		
-		/*Nombre*/
-		
-		
-		
-		
-		/*Apellidos*/
-		
-		
-		
-		
-		/*Fecha de nacimiento*/
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*Botones Sexo*/
-		
-		
 		ButtonGroup g1 = new ButtonGroup();
-		
-		
-		
-		
-		/*Botones Alta/Baja*/
-		
-		ButtonGroup g2 = new ButtonGroup();
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 1018, 546);
 		contentPanel.add(panel);
@@ -118,7 +75,7 @@ public class Panel_DoctorCrear extends JInternalFrame {
 		panel.add(lbl_ficha);
 		lbl_ficha.setForeground(new Color(0, 0, 0));
 		lbl_ficha.setFont(new Font("Tahoma", Font.BOLD, 11));
-		JLabel lbl_idDoctor = new JLabel("ID Doctor:");
+		JLabel lbl_idDoctor = new JLabel("ID Doctor");
 		lbl_idDoctor.setBounds(214, 108, 61, 14);
 		panel.add(lbl_idDoctor);
 		lbl_idDoctor.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -144,12 +101,12 @@ public class Panel_DoctorCrear extends JInternalFrame {
 		tf_nombre.setBounds(365, 156, 116, 20);
 		panel.add(tf_nombre);
 		tf_nombre.setColumns(10);
-		JLabel lbl_nombre = new JLabel("Nombre:");
+		JLabel lbl_nombre = new JLabel("Nombre");
 		lbl_nombre.setBounds(214, 158, 90, 14);
 		panel.add(lbl_nombre);
 		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_nombre.setForeground(new Color(0, 0, 0));
-		JLabel lbl_apellidos = new JLabel("Apellidos:");
+		JLabel lbl_apellidos = new JLabel("Apellidos");
 		lbl_apellidos.setBounds(214, 183, 102, 14);
 		panel.add(lbl_apellidos);
 		lbl_apellidos.setFont(new Font("Tahoma", Font.BOLD, 11));

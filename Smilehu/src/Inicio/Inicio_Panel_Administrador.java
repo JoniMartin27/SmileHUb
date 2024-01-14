@@ -10,6 +10,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
+import Vista.Material.InicioMaterial;
 import Vista.Material.Panel_Admin_Material_Inicio;
 import Vista.Usuario.JDialog_Admin_Usuario_inicio;
 import Vista.Usuario.Panel_DoctorCreado;
@@ -143,7 +144,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 								lblNewLabel_1.setBounds(954, 0, 64, 55);
 								panel.add(lblNewLabel_1);
 
-								JButton btn_paciente = new JButton("Pacientes");
+								JButton btn_paciente = new JButton("PACIENTES");
 								btn_paciente.setBounds(0, 0, 159, 55);
 								panel.add(btn_paciente);
 								btn_paciente.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -161,7 +162,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 								
 								
 								
-								JButton btn_material = new JButton("Material");
+								JButton btn_material = new JButton("MATERIAL");
 								btn_material.setBounds(159, 0, 159, 55);
 								panel.add(btn_material);
 								btn_material.setForeground(new Color(255, 255, 255));
@@ -170,7 +171,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 								
 	
 								
-										JButton btn_proveedor = new JButton("Proveedores");
+										JButton btn_proveedor = new JButton("PROVEEDORES");
 										btn_proveedor.setBounds(477, 0, 159, 55);
 										panel.add(btn_proveedor);
 										btn_proveedor.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -178,7 +179,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 										btn_proveedor.setBackground(new Color(0, 64, 128));
 										
 
-												JButton btn_Doctores = new JButton("Doctores");
+												JButton btn_Doctores = new JButton("DOCTORES");
 												btn_Doctores.setBounds(636, 0, 159, 55);
 												panel.add(btn_Doctores);
 												btn_Doctores.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -188,7 +189,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 												
 												// Boton Gestion Medica
 
-												JButton btn_GestionMedica = new JButton("Gestión Medica");
+												JButton btn_GestionMedica = new JButton("GESTIÓN MÉDICA");
 												btn_GestionMedica.setBounds(318, 0, 159, 55);
 												panel.add(btn_GestionMedica);
 												btn_GestionMedica.setForeground(new Color(255, 255, 255));
@@ -197,7 +198,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 												
 
 												// Boton Gestion Economica
-												JButton btn_Citas = new JButton("Citas");
+												JButton btn_Citas = new JButton("CITAS");
 												btn_Citas.setBounds(795, 0, 159, 55);
 												panel.add(btn_Citas);
 												btn_Citas.setForeground(new Color(255, 255, 255));
@@ -263,6 +264,12 @@ public class Inicio_Panel_Administrador extends JFrame {
 														});
 														btn_material.addActionListener(new ActionListener() {
 															public void actionPerformed(ActionEvent e) {
+																try {
+																	abrirPanelMaterial(miDesktopPane);
+																} catch (PropertyVetoException e1) {
+																	// TODO Auto-generated catch block
+																	e1.printStackTrace();
+																}
 															}
 														});
 		
@@ -603,6 +610,19 @@ public class Inicio_Panel_Administrador extends JFrame {
 			
 
 	
+	}
+	private static void abrirPanelMaterial(JDesktopPane desktopPane) throws PropertyVetoException {
+
+		InicioMaterial material = new InicioMaterial();
+
+		material.setBorder(null);
+		((BasicInternalFrameUI) material.getUI()).setNorthPane(null);
+		material.setLocation(0, 0);
+		material.show();
+		material.setSize(desktopPane.getWidth(), desktopPane.getWidth());
+		material.setVisible(true);
+		desktopPane.add(material); // Usar el parámetro en lugar de la variable local
+		material.setSelected(true);
 	}
 	private static void abrirPanelVerPaciente(JDesktopPane desktopPane) throws PropertyVetoException {
 

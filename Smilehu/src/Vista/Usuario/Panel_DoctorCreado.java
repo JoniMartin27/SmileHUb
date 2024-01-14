@@ -78,9 +78,16 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
+		JLabel lbl_ficha = new JLabel("FICHA DOCTOR");
+		lbl_ficha.setBackground(new Color(192, 192, 192));
+		lbl_ficha.setForeground(new Color(0, 0, 0));
+		lbl_ficha.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
+		lbl_ficha.setBounds(10, 11, 173, 14);
+		panel.add(lbl_ficha);
+		
 		JLabel lbl_altabaja = new JLabel("Dar de alta o baja");
 		lbl_altabaja.setForeground(Color.BLACK);
-		lbl_altabaja.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_altabaja.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_altabaja.setBounds(120, 304, 173, 14);
 		panel.add(lbl_altabaja);
 		
@@ -102,49 +109,44 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		
 		JLabel lbl_sexo = new JLabel("Sexo");
 		lbl_sexo.setForeground(Color.BLACK);
-		lbl_sexo.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_sexo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_sexo.setBounds(120, 267, 48, 14);
 		panel.add(lbl_sexo);
 		
 		JLabel lbl_direccion = new JLabel("Direccion");
 		lbl_direccion.setForeground(Color.BLACK);
-		lbl_direccion.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_direccion.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_direccion.setBounds(120, 239, 173, 14);
 		panel.add(lbl_direccion);
 		
-		JLabel lbl_apellidos = new JLabel("Apellidos:");
+		JLabel lbl_apellidos = new JLabel("Apellidos");
 		lbl_apellidos.setForeground(Color.BLACK);
-		lbl_apellidos.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_apellidos.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_apellidos.setBounds(120, 211, 102, 14);
 		panel.add(lbl_apellidos);
 		
-		JLabel lbl_nombre = new JLabel("Nombre:");
+		JLabel lbl_nombre = new JLabel("Nombre");
 		lbl_nombre.setForeground(Color.BLACK);
-		lbl_nombre.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_nombre.setBounds(119, 186, 90, 14);
 		panel.add(lbl_nombre);
 		
 		JLabel lbl_idespecialidad = new JLabel("ID Especialidad");
 		lbl_idespecialidad.setForeground(Color.BLACK);
-		lbl_idespecialidad.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_idespecialidad.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_idespecialidad.setBounds(120, 155, 173, 14);
 		panel.add(lbl_idespecialidad);
 		
-		JLabel lbl_iddoctor = new JLabel("DNI:");
+		JLabel lbl_iddoctor = new JLabel("DNI");
 		lbl_iddoctor.setForeground(Color.BLACK);
-		lbl_iddoctor.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_iddoctor.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_iddoctor.setBounds(120, 130, 61, 14);
 		panel.add(lbl_iddoctor);
 		
-		JLabel lbl_BuscarId = new JLabel("Ponga el ID del doctor:");
+		JLabel lbl_BuscarId = new JLabel("Ponga el ID del doctor");
+		lbl_BuscarId.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_BuscarId.setBounds(120, 43, 142, 14);
 		panel.add(lbl_BuscarId);
-		
-		JLabel lbl_ficha = new JLabel("Ficha de Doctor");
-		lbl_ficha.setForeground(Color.BLACK);
-		lbl_ficha.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_ficha.setBounds(10, 11, 173, 14);
-		panel.add(lbl_ficha);
 		
 		textField = new JTextField();
 		textField.setColumns(10);

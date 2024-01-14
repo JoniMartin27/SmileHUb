@@ -2,9 +2,10 @@ package Modelo;
 
 public class StockMaterial {
 
-	String nombre;
-	int idProveedor,idMaterial,disponible,solicitado,bajoPedido,precio;
-	public StockMaterial(int idMaterial, int idProveedor,String nombre, int disponible, int solicitado, int bajoPedido,int precio) {
+	private String nombre;
+	private int idProveedor,idMaterial,disponible,solicitado,bajoPedido;
+	private double precio;
+	public StockMaterial(int idMaterial, int idProveedor,String nombre, int disponible, int solicitado, int bajoPedido,double precio) {
 		super();
 		this.idMaterial = idMaterial;
 		this.nombre=nombre;
@@ -25,6 +26,16 @@ public class StockMaterial {
 	
 	
 	
+	public double getPrecio() {
+		return precio;
+	}
+
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+
 	public String getNombre() {
 		return nombre;
 	}

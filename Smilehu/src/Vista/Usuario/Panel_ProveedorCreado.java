@@ -95,7 +95,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 
 		
 		/*Nombre*/
-		JLabel lbl_nombre = new JLabel("Nombre:");
+		JLabel lbl_nombre = new JLabel("Nombre");
 		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_nombre.setForeground(new Color(0, 0, 0));
 		lbl_nombre.setBounds(228, 107, 90, 14);
@@ -110,7 +110,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		
 		
 		/*Apellidos*/
-		JLabel lbl_direccion = new JLabel("Dirección:");
+		JLabel lbl_direccion = new JLabel("Dirección");
 		lbl_direccion.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_direccion.setForeground(new Color(0, 0, 0));
 		lbl_direccion.setBounds(228, 136, 102, 14);
@@ -125,7 +125,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		
 		
 		/*Fecha de nacimiento*/
-		JLabel lbl_telefono = new JLabel("Telefono:");
+		JLabel lbl_telefono = new JLabel("Telefono");
 		lbl_telefono.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_telefono.setForeground(new Color(0, 0, 0));
 		lbl_telefono.setBounds(228, 171, 102, 14);
@@ -141,7 +141,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		contentPanel.add(tf_correo);
 		tf_correo.setColumns(10);
 		
-		JLabel lbl_correo = new JLabel("Correo:");
+		JLabel lbl_correo = new JLabel("Correo");
 		lbl_correo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_correo.setForeground(new Color(0, 0, 0));
 		lbl_correo.setBounds(228, 203, 75, 14);
@@ -189,7 +189,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		tf_buscarProveedor.setBounds(407, 239, 126, 20);
 		contentPanel.add(tf_buscarProveedor);
 		
-		JLabel lbl_buscar = new JLabel("Buscar proveedor:");
+		JLabel lbl_buscar = new JLabel("Buscar proveedor");
 		lbl_buscar.setForeground(new Color(0, 0, 0));
 		lbl_buscar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_buscar.setBounds(228, 240, 167, 14);
