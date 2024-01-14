@@ -26,6 +26,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
@@ -46,7 +47,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 				try {
 					Panel_admin_usuario_crearcita frame = new Panel_admin_usuario_crearcita();
 					frame.setVisible(true);
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -60,20 +61,20 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 	public void setDesktopPane(JDesktopPane desktopPane) {
 		this.miDesktopPane = desktopPane;
 	}
+
 	public Panel_admin_usuario_crearcita() {
-		
-		
+		setBorder(null);
+		setBounds(100, 100, 1018, 570);
 		getContentPane().setForeground(new Color(159, 232, 223));
-		setBounds(100, 100, 862, 531);
-		getContentPane().setLayout(null);
 		
+		getContentPane().setLayout(null);
+
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 846, 501);
 		getContentPane().add(panel);
-		
+
 		setBounds(100, 100, 862, 531);
 
-		
 		JTextField tf_nombrePaciente = new JTextField();
 		tf_nombrePaciente.setColumns(10);
 		tf_nombrePaciente.setBounds(284, 11, 176, 20);
@@ -81,139 +82,123 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		JComboBox<String> cB_especialista = new JComboBox<>();
 		cB_especialista.setBounds(284, 254, 176, 23);
 		panel.setLayout(null);
-		
-		
-		
-		
 
-		 
-			
-		
 		JComboBox<String> cb_hora = new JComboBox<>(getAvailableTimes());
 		cb_hora.setBounds(515, 150, 114, 28);
 		panel.add(cb_hora);
-		
+
 		JLabel lbl_observaciones = new JLabel("Observaciones");
 		lbl_observaciones.setBounds(64, 314, 105, 14);
 		panel.add(lbl_observaciones);
-		
+
 		JTextArea tA_Observaciones = new JTextArea();
 		tA_Observaciones.setBounds(74, 339, 253, 103);
 		panel.add(tA_Observaciones);
-		
+
 		JComboBox<String> cb_material = new JComboBox<>();
 		cb_material.setBounds(201, 254, 176, 23);
 		panel.add(cb_material);
-		
+
 		JLabel lbl_material = new JLabel("Material");
 		lbl_material.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_material.setBounds(64, 254, 105, 23);
 		panel.add(lbl_material);
-		
+
 		JComboBox<String> cB_nombrePaciente = new JComboBox<>();
 		cB_nombrePaciente.setBounds(201, 69, 176, 23);
 		panel.add(cB_nombrePaciente);
-		
+
 		JButton btn_BuscarPaciente = new JButton("Buscar");
 		btn_BuscarPaciente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+
 				cargarPacientes(textField.getText(), cB_nombrePaciente);
-				
-	
+
 			}
 		});
 		btn_BuscarPaciente.setBounds(406, 37, 109, 23);
 		panel.add(btn_BuscarPaciente);
-		
-	
+
 		JLabel lbl_hora = new JLabel("Hora");
 		lbl_hora.setForeground(Color.BLACK);
 		lbl_hora.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_hora.setBounds(558, 91, 46, 14);
 		panel.add(lbl_hora);
-		
+
 		textField = new JTextField();
 		textField.setColumns(10);
 		textField.setBounds(201, 38, 176, 20);
 		panel.add(textField);
-		
+
 		JLabel lbl_tratamiento = new JLabel("Tratamiento");
 		lbl_tratamiento.setForeground(Color.BLACK);
 		lbl_tratamiento.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_tratamiento.setBounds(64, 169, 105, 14);
 		panel.add(lbl_tratamiento);
-		
+
 		JLabel lbl_nombrepaciente = new JLabel("Nombre Paciente");
 		lbl_nombrepaciente.setForeground(Color.BLACK);
 		lbl_nombrepaciente.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_nombrepaciente.setBounds(64, 41, 105, 14);
 		panel.add(lbl_nombrepaciente);
-		
+
 		JLabel lbl_fecha_1 = new JLabel("Fecha");
 		lbl_fecha_1.setForeground(Color.BLACK);
 		lbl_fecha_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_fecha_1.setBounds(670, 91, 46, 14);
 		panel.add(lbl_fecha_1);
-		
+
 		JComboBox<String> cb_Tratamiento = new JComboBox<>();
 		cb_Tratamiento.setBounds(201, 165, 176, 23);
 		panel.add(cb_Tratamiento);
-		
-		
+
 		JLabel lbl_fecha = new JLabel("Fecha");
 		lbl_fecha.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_fecha.setForeground(Color.BLACK);
 		lbl_fecha.setBounds(413, -137, 29, 14);
 		panel.add(lbl_fecha);
 		cargarTratamientos(cb_Tratamiento);
-		cargarMateriales( cb_material);
-		
+		cargarMateriales(cb_material);
+
 		JDateChooser dateChooser = new JDateChooser();
 		dateChooser.setBounds(656, 163, 148, 20);
 		panel.add(dateChooser);
-		
+
 		JButton btn_crearcita = new JButton("Crear Cita");
 		btn_crearcita.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-					String selectedDate = dateChooser.getDateFormatString();
-		            String selectedTime = (String) cb_hora.getSelectedItem();
 
-		            if (!existeCita(selectedDate, selectedTime)) {
-		            	try {
-		            	String nombre= (String) cb_Tratamiento.getSelectedItem();
-		            	Tratamiento tratamiento =ConexionMySQL.buscarTratamiento(nombre);
-		            	int id =tratamiento.getIdTratamiento();
-		            	
-		            	
-		            	
-		            	ConsultaCita cita =new ConsultaCita(id,tA_Observaciones.getText(),selectedDate, selectedTime);
-		            	
-		            	
-		                
-							ConexionMySQL.insertarCita(cita);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-		                JOptionPane.showMessageDialog(null, "Cita guardada correctamente.");
-		            } else {
-		                JOptionPane.showMessageDialog(null, "Ya hay una cita programada a esa hora en ese día.");
-		            }
-		        }
-				
-				
-				
-				
-				
-		
-				
-				
-				
-			
+				Date selectedDate = dateChooser.getDate();
+
+
+				// usar SimpleDateFormat para convertir a String
+
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+				String formattedDate = dateFormat.format(selectedDate);
+
+				System.out.println(formattedDate);
+				String selectedTime = (String) cb_hora.getSelectedItem();
+
+				if (!existeCita(formattedDate, selectedTime)) {
+					try {
+						String nombre = (String) cb_Tratamiento.getSelectedItem();
+						Tratamiento tratamiento = ConexionMySQL.buscarTratamiento(nombre);
+						int id = tratamiento.getIdTratamiento();
+						System.out.println(formattedDate);
+						ConsultaCita cita = new ConsultaCita(id,tA_Observaciones.getText(),formattedDate,
+								selectedTime);
+						
+						ConexionMySQL.insertarCita(cita);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					JOptionPane.showMessageDialog(null, "Cita guardada correctamente.");
+				} else {
+					JOptionPane.showMessageDialog(null, "Ya hay una cita programada a esa hora en ese día.");
+				}
+			}
+
 		});
 		btn_crearcita.setBounds(374, 436, 128, 23);
 		panel.add(btn_crearcita);
@@ -221,54 +206,46 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		icon.setIcon(new ImageIcon(Panel_admin_usuario_crearcita.class.getResource("/img/fondoDientes.jpg")));
 		icon.setBounds(0, 0, 912, 531);
 		panel.add(icon);
-			
-		
-		
-		
-		
-		
-		
+
 	}
-	
-	
-	 private static String[] getAvailableTimes() {
-	        // Obtener las horas disponibles desde la base de datos o definirlas manualmente
-	        return new String[]{"9:00 AM", "10:00 AM", "11:00 AM","12:00 AM", "2:00 PM", "3:00 PM"};
-	    }
 
-	 private static boolean existeCita(String date, String time) {
-		    boolean exists = false;
-		    Connection connection = null;
-		    PreparedStatement statement = null;
-		    ResultSet resultSet = null;
+	private static String[] getAvailableTimes() {
+		// Obtener las horas disponibles desde la base de datos o definirlas manualmente
+		return new String[] { "9:00 AM", "10:00 AM", "11:00 AM", "12:00 AM", "2:00 PM", "3:00 PM" };
+	}
 
-		    try {
-		        ConexionMySQL.conectar();
-		        String query = "SELECT * FROM consulta_cita WHERE fecha = ? AND hora = ?";
-		        statement = (PreparedStatement) ConexionMySQL.ejecutarSelect(query);
-		        statement.setString(1, date); // No necesitas formatear la fecha si ya está almacenada como cadena
-		        statement.setString(2, time);
-		        resultSet = statement.executeQuery();
-		        exists = resultSet.next();
-		    } catch (SQLException | ClassNotFoundException ex) {
-		        ex.printStackTrace();
-		    } finally {
-		        try {
-		            if (resultSet != null) resultSet.close();
-		            if (statement != null) statement.close();
-		            ConexionMySQL.desconectar();
-		        } catch (SQLException ex) {
-		            ex.printStackTrace();
-		        }
-		    }
+	private static boolean existeCita(String date, String time) {
+		boolean exists = false;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
 
-		    return exists;
+		try {
+			ConexionMySQL.conectar();
+			String query = "SELECT * FROM consulta_cita WHERE fecha = ? AND hora = ?";
+			statement = ConexionMySQL.getConnection().prepareStatement(query);
+			statement.setString(1, date);
+			statement.setString(2, time);
+
+			resultSet = statement.executeQuery();
+			exists = resultSet.next();
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (statement != null)
+					statement.close();
+				ConexionMySQL.desconectar();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
 		}
-	
-	
-	
-	
-	private void cargarMateriales( JComboBox<String> comboBox) {
+
+		return exists;
+	}
+
+	private void cargarMateriales(JComboBox<String> comboBox) {
 		// Limpiar ComboBox antes de cargar nuevos datos
 		comboBox.removeAllItems();
 
@@ -281,8 +258,8 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 			List<StockMaterial> materiales = ConexionMySQL.buscarMaterial();
 
 			// Agregar nombre y apellidos de cada paciente al ComboBox
-			for (StockMaterial  material: materiales) {
-				
+			for (StockMaterial material : materiales) {
+
 				comboBox.addItem(material.getNombre());
 			}
 
@@ -297,9 +274,8 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 			}
 		}
 	}
-	
-	
-	private void cargarTratamientos( JComboBox<String> comboBox) {
+
+	private void cargarTratamientos(JComboBox<String> comboBox) {
 		// Limpiar ComboBox antes de cargar nuevos datos
 		comboBox.removeAllItems();
 
@@ -312,8 +288,8 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 			List<Tratamiento> tratamientos = ConexionMySQL.buscarTratamiento();
 
 			// Agregar nombre y apellidos de cada paciente al ComboBox
-			for (Tratamiento  tratamiento: tratamientos) {
-				
+			for (Tratamiento tratamiento : tratamientos) {
+
 				comboBox.addItem(tratamiento.getNombre());
 			}
 
@@ -328,8 +304,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 			}
 		}
 	}
-	
-	
+
 	private void cargarPacientes(String nombre, JComboBox<String> comboBox) {
 		// Limpiar ComboBox antes de cargar nuevos datos
 		comboBox.removeAllItems();
@@ -360,5 +335,3 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		}
 	}
 }
-
-

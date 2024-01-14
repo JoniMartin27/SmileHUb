@@ -64,7 +64,7 @@ public class Panel_DoctorCreado extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Panel_DoctorCreado() {
-		setBounds(100, 100, 862, 562);
+		setBounds(100, 100, 1018, 576);
 
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(159, 232, 223));
@@ -73,7 +73,7 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		contentPanel.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 846, 562);
+		panel.setBounds(0, 0, 1002, 546);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
@@ -198,7 +198,7 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Panel_DoctorCreado.class.getResource("/img/fondoDientes.jpg")));
-		lblNewLabel.setBounds(0, 0, 846, 531);
+		lblNewLabel.setBounds(0, 0, 1002, 546);
 		panel.add(lblNewLabel);
 		
 		

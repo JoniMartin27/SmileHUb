@@ -105,8 +105,6 @@ public class Inicio_Panel_Administrador extends JFrame {
 	 */
 	public Inicio_Panel_Administrador() {
 		setIconImage(new ImageIcon(getClass().getResource("/img/SmileHub.png")).getImage());
-		JDesktopPane miDesktopPane = new JDesktopPane();
-		miDesktopPane.setBounds(219, 0, 799, 531);
 		
 		// Atributos Frame Principal
 		setResizable(false);
@@ -120,13 +118,157 @@ public class Inicio_Panel_Administrador extends JFrame {
 		
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		contentPane.add(miDesktopPane);
-		miDesktopPane.setBackground(new Color(4, 20, 36));
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon(Inicio_Panel_Administrador.class.getResource("/img/fondoDientes.jpg")));
-		lblNewLabel_1.setBounds(0, 0, 799, 531);
-		miDesktopPane.add(lblNewLabel_1);
+						//Menu DNI		
+								JMenuBar BarraMenu_DNI = new JMenuBar();
+								BarraMenu_DNI.setBounds(907, 200, 101, 22);
+								contentPane.add(BarraMenu_DNI);
+								
+										JMenu Menu_DNI = new JMenu("DNI");
+										Menu_DNI.setBounds(907, 11, 101, 22);
+										BarraMenu_DNI.add(Menu_DNI);
+										
+												JMenuItem Item_perfil = new JMenuItem("Editar Perfil");
+												Menu_DNI.add(Item_perfil);
+												
+														JMenuItem Item_ayuda = new JMenuItem("Ayuda");
+														Menu_DNI.add(Item_ayuda);
+														
+																JMenuItem Item_cerrar = new JMenuItem("Cerrar Perfil");
+																Menu_DNI.add(Item_cerrar);
+				
+				//DesktopPane el cual cambia por internalFrames
+						
+				
+						JPanel panel = new JPanel();
+						panel.setBounds(0, 0, 1018, 55);
+						contentPane.add(panel);
+						panel.setBackground(new Color(0, 0, 0));
+						panel.setLayout(null);
+						JDesktopPane miDesktopPane = new JDesktopPane();
+						miDesktopPane.setBounds(0, 55, 1018, 476);
+						contentPane.add(miDesktopPane);
+						miDesktopPane.setBackground(new Color(4, 20, 36));
+						
+						JLabel lblNewLabel = new JLabel("New label");
+						lblNewLabel.setIcon(new ImageIcon(Inicio_Panel_Administrador.class.getResource("/img/fondoDientes.jpg")));
+						lblNewLabel.setBounds(0, 0, 1018, 476);
+						miDesktopPane.add(lblNewLabel);
+
+								JButton btn_paciente = new JButton("Pacientes");
+								btn_paciente.setBounds(0, 0, 169, 55);
+								panel.add(btn_paciente);
+								btn_paciente.setFont(new Font("Tahoma", Font.BOLD, 11));
+								btn_paciente.setForeground(new Color(255, 255, 255));
+								btn_paciente.setBackground(new Color(0, 0, 40));
+								btn_paciente.setSelectedIcon(new ImageIcon(Inicio_Panel_Administrador.class.getResource("/img/boton.png")));
+								btn_paciente.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent e) {
+
+										mostrarMenuPaciente(btn_paciente, miDesktopPane);
+
+									}
+								});
+								
+								JLabel label_40 = new JLabel("");
+								label_40.setBounds(15, 156, 0, 0);
+								panel.add(label_40);
+								
+								
+								
+								JButton btn_material = new JButton("Material");
+								btn_material.setBounds(169, 0, 169, 55);
+								panel.add(btn_material);
+								btn_material.setForeground(new Color(255, 255, 255));
+								btn_material.setFont(new Font("Tahoma", Font.BOLD, 11));
+								btn_material.setBackground(new Color(0, 0, 40));
+								
+	
+								
+										JButton btn_proveedor = new JButton("Proveedores");
+										btn_proveedor.setBounds(507, 0, 169, 55);
+										panel.add(btn_proveedor);
+										btn_proveedor.setFont(new Font("Tahoma", Font.BOLD, 11));
+										btn_proveedor.setForeground(new Color(255, 255, 255));
+										btn_proveedor.setBackground(new Color(0, 0, 40));
+										
+
+												JButton btn_Doctores = new JButton("Doctores");
+												btn_Doctores.setBounds(676, 0, 169, 55);
+												panel.add(btn_Doctores);
+												btn_Doctores.setFont(new Font("Tahoma", Font.BOLD, 11));
+												btn_Doctores.setForeground(new Color(255, 255, 255));
+												btn_Doctores.setBackground(new Color(103, 172, 194));
+												
+												
+												// Boton Gestion Medica
+
+												JButton btn_GestionMedica = new JButton("Gestion Medica");
+												btn_GestionMedica.setBounds(338, 0, 169, 55);
+												panel.add(btn_GestionMedica);
+												btn_GestionMedica.setForeground(new Color(255, 255, 255));
+												btn_GestionMedica.setFont(new Font("Tahoma", Font.BOLD, 11));
+												btn_GestionMedica.setBackground(new Color(0, 0, 40));
+												
+
+												// Boton Gestion Economica
+												JButton btn_Citas = new JButton("Citas");
+												btn_Citas.setBounds(845, 0, 173, 55);
+												panel.add(btn_Citas);
+												btn_Citas.setForeground(new Color(255, 255, 255));
+												btn_Citas.setFont(new Font("Tahoma", Font.BOLD, 11));
+												btn_Citas.setBackground(new Color(0, 0, 40));
+												
+														btn_Citas.addActionListener(new ActionListener() {
+															public void actionPerformed(ActionEvent e) {
+																
+																	if(miDesktopPane.isVisible()==false) {
+																		miDesktopPane.setVisible(true);
+																	}
+																Panel_admin_usuario_paciente_consultarCita Citas = new Panel_admin_usuario_paciente_consultarCita();
+																Citas.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+																miDesktopPane.removeAll();
+																miDesktopPane.add(Citas);
+																Citas.setBorder(null);
+																((BasicInternalFrameUI) Citas.getUI()).setNorthPane(null);
+																Citas.setLocation(0, 0);
+																Citas.show();
+																Citas.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
+												
+															}
+														});
+														btn_GestionMedica.addActionListener(new ActionListener() {
+															public void actionPerformed(ActionEvent e) {
+																if(miDesktopPane.isVisible()==false) {
+																	miDesktopPane.setVisible(true);
+																}
+																Panel_admin_gestionMedica_Inicio gestion_medica = new Panel_admin_gestionMedica_Inicio();
+																gestion_medica.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
+																miDesktopPane.removeAll();
+																miDesktopPane.add(gestion_medica);
+																gestion_medica.setBorder(null);
+																((BasicInternalFrameUI) gestion_medica.getUI()).setNorthPane(null);
+																gestion_medica.setLocation(0, 0);
+																gestion_medica.show();
+																gestion_medica.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
+
+															}
+														});
+														btn_Doctores.addActionListener(new ActionListener() {
+															public void actionPerformed(ActionEvent e) {
+
+																mostrarMenuDoctor(btn_Doctores, miDesktopPane);
+															}
+														});
+														btn_proveedor.addActionListener(new ActionListener() {
+															public void actionPerformed(ActionEvent e) {
+																mostrarMenuProveedor(btn_proveedor,miDesktopPane);
+																
+															}
+														});
+														btn_material.addActionListener(new ActionListener() {
+															public void actionPerformed(ActionEvent e) {
+															}
+														});
 		
 		ArrayList<Integer> combo;
 		combo = new ArrayList<>();
@@ -210,157 +352,7 @@ public class Inicio_Panel_Administrador extends JFrame {
         		}}			
         		
 });
-//Menu DNI		
-		JMenuBar BarraMenu_DNI = new JMenuBar();
-		BarraMenu_DNI.setBounds(907, 11, 101, 22);
-		contentPane.add(BarraMenu_DNI);
-
-		JMenu Menu_DNI = new JMenu("DNI");
-		Menu_DNI.setBounds(907, 11, 101, 22);
 		;
-		BarraMenu_DNI.add(Menu_DNI);
-
-		JMenuItem Item_perfil = new JMenuItem("Editar Perfil");
-		Menu_DNI.add(Item_perfil);
-
-		JMenuItem Item_ayuda = new JMenuItem("Ayuda");
-		Menu_DNI.add(Item_ayuda);
-
-		JMenuItem Item_cerrar = new JMenuItem("Cerrar Perfil");
-		Menu_DNI.add(Item_cerrar);
-
-//DesktopPane el cual cambia por internalFrames
-		
-
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 0, 0));
-		panel.setBounds(0, 0, 220, 531);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		
-		// Boton Gestion Medica
-
-		JButton btn_GestionMedica = new JButton("Gestion Medica");
-		btn_GestionMedica.setForeground(new Color(255, 255, 255));
-		btn_GestionMedica.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btn_GestionMedica.setBackground(new Color(0, 0, 40));
-		btn_GestionMedica.setBounds(0, 471, 220, 60);
-		panel.add(btn_GestionMedica);
-		btn_GestionMedica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(miDesktopPane.isVisible()==false) {
-					miDesktopPane.setVisible(true);
-				}
-				Panel_admin_gestionMedica_Inicio gestion_medica = new Panel_admin_gestionMedica_Inicio();
-				gestion_medica.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
-				miDesktopPane.removeAll();
-				miDesktopPane.add(gestion_medica);
-				gestion_medica.setBorder(null);
-				((BasicInternalFrameUI) gestion_medica.getUI()).setNorthPane(null);
-				gestion_medica.setLocation(0, 0);
-				gestion_medica.show();
-				gestion_medica.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
-
-			}
-		});
-		
-
-		// Boton Gestion Economica
-		JButton btn_Citas = new JButton("Citas");
-		btn_Citas.setForeground(new Color(255, 255, 255));
-		btn_Citas.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btn_Citas.setBackground(new Color(0, 0, 40));
-		btn_Citas.setBounds(0, 411, 220, 60);
-		panel.add(btn_Citas);
-		
-				btn_Citas.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						
-							if(miDesktopPane.isVisible()==false) {
-								miDesktopPane.setVisible(true);
-							}
-						Panel_admin_usuario_paciente_consultarCita Citas = new Panel_admin_usuario_paciente_consultarCita();
-						Citas.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
-						miDesktopPane.removeAll();
-						miDesktopPane.add(Citas);
-						Citas.setBorder(null);
-						((BasicInternalFrameUI) Citas.getUI()).setNorthPane(null);
-						Citas.setLocation(0, 0);
-						Citas.show();
-						Citas.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
-		
-					}
-				});
-		
-	
-		
-				JButton btn_proveedor = new JButton("Proveedores");
-				btn_proveedor.setFont(new Font("Tahoma", Font.BOLD, 11));
-				btn_proveedor.setForeground(new Color(255, 255, 255));
-				btn_proveedor.setBackground(new Color(0, 0, 40));
-				btn_proveedor.setBounds(0, 291, 220, 60);
-				btn_proveedor.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						mostrarMenuProveedor(btn_proveedor,miDesktopPane);
-						
-					}
-				});
-				panel.add(btn_proveedor);
-		
-
-				JButton btn_paciente = new JButton("Pacientes");
-				btn_paciente.setFont(new Font("Tahoma", Font.BOLD, 11));
-				btn_paciente.setForeground(new Color(255, 255, 255));
-				btn_paciente.setBackground(new Color(0, 0, 40));
-				btn_paciente.setSelectedIcon(new ImageIcon(Inicio_Panel_Administrador.class.getResource("/img/boton.png")));
-				btn_paciente.setBounds(0, 231, 220, 60);
-				btn_paciente.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-
-						mostrarMenuPaciente(btn_paciente, miDesktopPane);
-
-					}
-				});
-				panel.add(btn_paciente);
-		
-
-				JButton btn_Doctores = new JButton("Doctores");
-				btn_Doctores.setFont(new Font("Tahoma", Font.BOLD, 11));
-				btn_Doctores.setForeground(new Color(255, 255, 255));
-				btn_Doctores.setBackground(new Color(103, 172, 194));
-				btn_Doctores.setBounds(0, 171, 220, 60);
-				btn_Doctores.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-
-						mostrarMenuDoctor(btn_Doctores, miDesktopPane);
-					}
-				});
-				
-				JLabel label_40 = new JLabel("");
-				label_40.setBounds(15, 156, 0, 0);
-				panel.add(label_40);
-				panel.add(btn_Doctores);
-		
-		
-		
-		JButton btn_material = new JButton("Material");
-		btn_material.setForeground(new Color(255, 255, 255));
-		btn_material.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btn_material.setBackground(new Color(0, 0, 40));
-		btn_material.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
-		btn_material.setBounds(0, 351, 220, 60);
-		
-		panel.add(btn_material);
-		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(Inicio_Panel_Administrador.class.getResource("/img/SmileHub.png")));
-		lblNewLabel.setBounds(-13, -14, 251, 199);
-		panel.add(lblNewLabel);
 	}
 	
 

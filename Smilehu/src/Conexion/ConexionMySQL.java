@@ -573,11 +573,11 @@ public class ConexionMySQL {
      
      
      
-     
+    
 
      public static void insertarCita(ConsultaCita cita) throws SQLException {
-		    String query = "INSERT INTO consulta_cita (id_tratamiento, observaciones, fecha, hora) " +
-		                   "VALUES ( '" + cita.getId_tratamiento() + "'', '" + cita.getObservaciones() 
+		    String query = "INSERT INTO consulta_cita (id_tratamiento, observaciones, fecha, hora)" +
+		                   "VALUES(" + cita.getId_tratamiento() + ", '" + cita.getObservaciones() 
 		                   + "', '" + cita.getFecha() + "', '" + 
 		                   cita.getHora() + "')";
 		    

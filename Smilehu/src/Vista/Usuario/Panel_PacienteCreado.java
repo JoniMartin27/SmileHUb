@@ -73,7 +73,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 	 */
 	public Panel_PacienteCreado() {
 		setBorder(null);
-		setBounds(100, 100, 799, 562);
+		setBounds(100, 100, 1018, 576);
 
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(159, 232, 223));
@@ -88,7 +88,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		ButtonGroup g2 = new ButtonGroup();
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 799, 535);
+		panel.setBounds(0, 0, 1018, 549);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 
@@ -268,10 +268,10 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		JButton btn_modificar = new JButton("Modificar Paciente");
 		btn_modificar.setBounds(193, 396, 173, 23);
 		panel.add(btn_modificar);
-
+		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Panel_PacienteCreado.class.getResource("/img/fondoDientes.jpg")));
-		lblNewLabel.setBounds(0, 0, 799, 535);
+		lblNewLabel.setBounds(0, 0, 1018, 549);
 		panel.add(lblNewLabel);
 		btn_modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

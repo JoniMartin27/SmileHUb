@@ -56,17 +56,17 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
 
     public Panel_admin_gestionMedica_Inicio() {
         setBorder(null);
-        setBounds(219, 44, 799, 562);
+        setBounds(219, 44, 1018, 576);
         getContentPane().setLayout(null);
 
         JPanel panel = new JPanel();
         panel.setBackground(new Color(159, 232, 223));
-        panel.setBounds(0, 0, 799, 532);
+        panel.setBounds(0, 0, 1018, 549);
         getContentPane().add(panel);
         panel.setLayout(null);
 
         JButton btn_BorrarEspecialidad = new JButton("Borrar");
-        btn_BorrarEspecialidad.setBounds(106, 391, 125, 23);
+        btn_BorrarEspecialidad.setBounds(141, 403, 125, 23);
         panel.add(btn_BorrarEspecialidad);
 
         table = new JTable();
@@ -88,9 +88,9 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         
         
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(25,33,300,200);
+        scrollPane.setBounds(25,45,373,214);
         JScrollPane specialityScrollPane = new JScrollPane(table_1);
-        specialityScrollPane.setBounds(467,33,300,200);
+        specialityScrollPane.setBounds(616,45,373,214);
         panel.add(specialityScrollPane);
         panel.add(scrollPane);
 
@@ -134,7 +134,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
                 ModEspecialidad.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
             }
         });
-        btn_ModificarEspecialidad.setBounds(106, 326, 125, 23);
+        btn_ModificarEspecialidad.setBounds(141, 338, 125, 23);
         panel.add(btn_ModificarEspecialidad);
 
         JButton btn_Borrar = new JButton("Borrar");
@@ -142,7 +142,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         	public void actionPerformed(ActionEvent e) {
         	}
         });
-        btn_Borrar.setBounds(565, 391, 125, 23);
+        btn_Borrar.setBounds(740, 403, 125, 23);
         panel.add(btn_Borrar);
 
         JButton btn_CrearEspecialidad = new JButton("Crear");
@@ -159,7 +159,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
                 CrearEspecialidad.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
             }
         });
-        btn_CrearEspecialidad.setBounds(106, 258, 125, 23);
+        btn_CrearEspecialidad.setBounds(141, 270, 125, 23);
         panel.add(btn_CrearEspecialidad);
 
         JButton btn_Crear = new JButton("Crear");
@@ -178,7 +178,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
             }
         });
 
-        btn_Crear.setBounds(565, 258, 125, 23);
+        btn_Crear.setBounds(740, 270, 125, 23);
         panel.add(btn_Crear);
 
         JButton btn_Modificar = new JButton("Modificar");
@@ -195,7 +195,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
                 ModTratamiento.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
             }
         });
-        btn_Modificar.setBounds(565, 326, 125, 23);
+        btn_Modificar.setBounds(740, 338, 125, 23);
         panel.add(btn_Modificar);
         // Configurar la tabla para ajustar automáticamente el tamaño de las celdas
         table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -212,7 +212,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
 
         JLabel lblNewLabel = new JLabel("New label");
         lblNewLabel.setIcon(new ImageIcon(Panel_admin_gestionMedica_Inicio.class.getResource("/img/fondoDientes.jpg")));
-        lblNewLabel.setBounds(0, 0, 803, 532);
+        lblNewLabel.setBounds(0, 0, 1018, 549);
         panel.add(lblNewLabel);
     }
     

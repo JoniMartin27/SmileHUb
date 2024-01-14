@@ -43,7 +43,6 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 	private JDesktopPane miDesktopPane;
 	DefaultTableModel modeloTabla = new DefaultTableModel();
 	private JButton btn_modificar;
-	private JLabel lblNewLabel;
 	private JButton btn_Crear;
 	private JPanel panel;
 	private JTextField tf_buscarCita;
@@ -79,16 +78,16 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 		modeloTabla.setColumnIdentifiers(columnas);
 
 		getContentPane().setBackground(new Color(159, 232, 223));
-		setBounds(100, 100, 799, 562);
+		setBounds(100, 100, 1018, 476);
 		getContentPane().setLayout(null);
 
 		panel = new JPanel();
-		panel.setBounds(0, 0, 799, 535);
+		panel.setBounds(0, 0, 1018, 449);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 
 		tf_buscarCita = new JTextField();
-		tf_buscarCita.setBounds(148, 240, 86, 20);
+		tf_buscarCita.setBounds(266, 206, 86, 20);
 		panel.add(tf_buscarCita);
 		tf_buscarCita.setColumns(10);
 		// Inicializar la tabla y el modelo
@@ -99,11 +98,11 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 
 		// Configurar la posición y el tamaño de la tabla
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(102, 283, 600, 150);
+		scrollPane.setBounds(237, 258, 600, 150);
 		panel.add(scrollPane);
 
 		JButton btn_buscarcita = new JButton("Buscar cita");
-		btn_buscarcita.setBounds(328, 239, 106, 23);
+		btn_buscarcita.setBounds(446, 205, 106, 23);
 		panel.add(btn_buscarcita);
 
 		btn_modificar = new JButton("Modificar cita");
@@ -113,13 +112,11 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 		btn_Crear = new JButton("Crear cita");
 		btn_Crear.setBounds(171, 74, 117, 23);
 		panel.add(btn_Crear);
-
-		lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(0, 0, 799, 537);
-
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(Panel_admin_usuario_paciente_consultarCita.class.getResource("/img/fondoDientes.jpg")));
+		lblNewLabel.setBounds(0, 0, 1018, 500);
 		panel.add(lblNewLabel);
-		lblNewLabel.setIcon(
-				new ImageIcon(Panel_admin_usuario_paciente_consultarCita.class.getResource("/img/fondoDientes.jpg")));
 		btn_Crear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

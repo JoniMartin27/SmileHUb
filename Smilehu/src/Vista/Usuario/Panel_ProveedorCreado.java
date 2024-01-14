@@ -57,7 +57,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 	 */
 	public Panel_ProveedorCreado() {
 
-		setBounds(100, 100, 862, 562);
+		setBounds(100, 100, 1018,576);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setForeground(new Color(42, 61, 80));
 		contentPanel.setBackground(new Color(159, 232, 223));
@@ -97,7 +97,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		JLabel lbl_nombre = new JLabel("Nombre:");
 		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_nombre.setForeground(new Color(0, 0, 0));
-		lbl_nombre.setBounds(228, 105, 90, 14);
+		lbl_nombre.setBounds(228, 107, 90, 14);
 		contentPanel.add(lbl_nombre);
 		
 		tf_nombre = new JTextField();
@@ -196,7 +196,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Panel_ProveedorCreado.class.getResource("/img/fondoDientes.jpg")));
-		lblNewLabel.setBounds(0, 0, 846, 532);
+		lblNewLabel.setBounds(0, 0, 1002, 546);
 		contentPanel.add(lblNewLabel);
 		
 		
