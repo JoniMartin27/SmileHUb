@@ -16,7 +16,12 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import Vista.Usuario.Panel_PacienteCreado;
+
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Odontograma extends JInternalFrame {
 
@@ -58,10 +63,47 @@ public class Odontograma extends JInternalFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
+		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 1018, 476);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		
+		
+		
+		JButton btn_guardarOdon = new JButton("Guardar");
+		btn_guardarOdon.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btn_guardarOdon.setBounds(730, 380, 106, 23);
+		panel.add(btn_guardarOdon);
+		
+		
+		
+		
+		
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Odontograma odontograma = new Odontograma();
+				odontograma.setVisible(false);
+				Panel_PacienteCreado panel_PacienteCreado = new Panel_PacienteCreado();
+				panel_PacienteCreado.setVisible(true);
+				
+				
+			}
+		});
+		lblNewLabel_3.setIcon(new ImageIcon(Odontograma.class.getResource("/img/diente.png")));
+		lblNewLabel_3.setBounds(41, 30, 39, 32);
+		panel.add(lblNewLabel_3);
+		
+		
 		
 		JLabel lbl_imagen = new JLabel("New label");
 		lbl_imagen.setIcon(new ImageIcon(Odontograma.class.getResource("/img/Dientes.png")));
@@ -430,9 +472,9 @@ public class Odontograma extends JInternalFrame {
 		ta_observaciones.setBounds(609, 221, 325, 131);
 		panel.add(ta_observaciones);
 		
-		JLabel lbl_nombre = new JLabel("Nombre");
+		JLabel lbl_nombre = new JLabel("Nombre Diente");
 		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_nombre.setBounds(609, 36, 86, 14);
+		lbl_nombre.setBounds(609, 36, 106, 14);
 		panel.add(lbl_nombre);
 		
 		JTextField tf_estado = new JTextField();
@@ -454,11 +496,11 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JRadioButton rdbtn_si = new JRadioButton("Si");
-		rdbtn_si.setBounds(700, 98, 60, 23);
+		rdbtn_si.setBounds(700, 98, 39, 23);
 		panel.add(rdbtn_si);
 		
 		JRadioButton rdbtn_no = new JRadioButton("No");
-		rdbtn_no.setBounds(787, 98, 72, 23);
+		rdbtn_no.setBounds(753, 98, 48, 23);
 		panel.add(rdbtn_no);
 		
         btn.add(rdbtn_si);
@@ -469,7 +511,7 @@ public class Odontograma extends JInternalFrame {
         lbl_observaciones.setBounds(609, 200, 132, 14);
         panel.add(lbl_observaciones);
         
-        JLabel lblNewLabel = new JLabel("New label");
+        JLabel lblNewLabel = new JLabel("");
         lblNewLabel.setIcon(new ImageIcon(Odontograma.class.getResource("/img/fondoDientes.jpg")));
         lblNewLabel.setBounds(0, 0, 1018, 476);
         panel.add(lblNewLabel);
