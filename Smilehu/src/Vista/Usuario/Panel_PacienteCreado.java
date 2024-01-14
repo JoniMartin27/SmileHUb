@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyVetoException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,9 +24,12 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import Conexion.ConexionMySQL;
 import Modelo.Paciente;
+import Vista.gestionMedica.Odontograma;
+
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 
@@ -36,16 +40,16 @@ public class Panel_PacienteCreado extends JInternalFrame {
 	private JTextField tf_direccion;
 	private JTextField tf_apellidos;
 	private JTextField tf_genero;
-	private JFrame Frame;
-	private JDesktopPane desktopPane;
+
+	
 	private JTextField tf_buscaPaciente;
-	private JPanel contentPane;
+
 
 	private JTextField tf_telefono;
 	private JTextField tf_fechaAlta;
 	private JTextField tf_fechaNacimiento;
 	private JTextField tf_nombre;
-	private JDesktopPane miDesktopPane_1;
+	private JDesktopPane miDesktopPane;
 	private JTextField tf_id;
 
 	/**
@@ -65,7 +69,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 	}
 
 	public void setDesktopPane(JDesktopPane desktopPane) {
-		this.miDesktopPane_1 = desktopPane;
+		this.miDesktopPane = desktopPane;
 	}
 
 	/**
@@ -85,14 +89,12 @@ public class Panel_PacienteCreado extends JInternalFrame {
 
 		ButtonGroup g1 = new ButtonGroup();
 
-		ButtonGroup g2 = new ButtonGroup();
-
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 1018, 549);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 
-		JComboBox comboBox = new JComboBox<>();
+		JComboBox<String> comboBox = new JComboBox<>();
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -302,7 +304,16 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		});
 		btn_odontograma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				try {
+					abrirOdontograma(getDesktopPane());
+				} catch (PropertyVetoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
+			
 		});
 		btn_consultarpagos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -318,6 +329,26 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		});
 
 	}
+	
+	
+	
+
+	private static void abrirOdontograma(JDesktopPane desktopPane) throws PropertyVetoException {
+
+		Odontograma odonto = new Odontograma();
+		odonto.setBorder(null);
+		((BasicInternalFrameUI) odonto.getUI()).setNorthPane(null);
+		odonto.setLocation(0, 0);
+		odonto.show();
+		odonto.setSize(desktopPane.getWidth(), desktopPane.getWidth());
+		odonto.setVisible(true);
+		desktopPane.add(odonto); // Usar el parámetro en lugar de la variable local
+		odonto.setSelected(true);
+	}
+	
+	
+	
+	
 
 	private void cargarPacientesAlComboBox(String nombre, JComboBox<String> comboBox) {
 		// Limpiar ComboBox antes de cargar nuevos datos
@@ -348,4 +379,5 @@ public class Panel_PacienteCreado extends JInternalFrame {
 			}
 		}
 	}
+	
 }

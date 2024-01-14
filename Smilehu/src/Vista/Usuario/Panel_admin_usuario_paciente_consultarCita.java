@@ -151,7 +151,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 					System.out.println("aqui esta el error");
 				} else {
 					try {
-						Conexion.ConexionMySQL.conectar();
+						ConexionMySQL.conectar();
 						obtenerDatosFilaSeleccionada();
 					} catch (SQLException | ClassNotFoundException e1) {
 						// TODO Auto-generated catch block
@@ -190,13 +190,13 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 				        ConexionMySQL.conectar();
 
 				        ConsultaCita cita = ConexionMySQL.consultarCitaNombre(nombre);
-				        System.out.println(cita.getNombrePaciente());
+				     
 				        // Limpiar la tabla antes de agregar nuevas filas
 				        limpiarTabla();
 
 				        // Agregar filas a la tabla
 				        if (cita != null) {
-				            agregarFilaConsultaCita(cita);
+				            agregarFilaConsultaCita(cita); 
 				        } else {
 				            JOptionPane.showMessageDialog(tf_buscarCita, "No se encontró ninguna cita con ese Nombre", "Información",
 				                    JOptionPane.INFORMATION_MESSAGE);

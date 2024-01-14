@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,6 +24,7 @@ public class Odontograma extends JInternalFrame {
     private JTextField tf_nombre;
     private JTextField tf_estado;
     private ButtonGroup btn = new ButtonGroup();
+	private JDesktopPane miDesktopPane;
 
 	/**
 	 * Launch the application.
@@ -39,7 +41,9 @@ public class Odontograma extends JInternalFrame {
 			}
 		});
 	}
-
+	public void setDesktopPane(JDesktopPane desktopPane) {
+		this.miDesktopPane = desktopPane;
+	}
 	/**
 	 * Create the frame.
 	 */
