@@ -106,8 +106,8 @@ public class Odontograma extends JInternalFrame {
 			
 			}
 		});
-		lbl_back.setIcon(new ImageIcon(Odontograma.class.getResource("/img/diente.png")));
-		lbl_back.setBounds(41, 30, 39, 32);
+		lbl_back.setIcon(new ImageIcon(Odontograma.class.getResource("/img/boton-de-retorno.png")));
+		lbl_back.setBounds(20, 11, 39, 32);
 		panel.add(lbl_back);
 		
 		
