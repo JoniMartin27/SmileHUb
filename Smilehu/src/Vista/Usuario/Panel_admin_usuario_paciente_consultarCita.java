@@ -36,6 +36,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import java.awt.Font;
 
 public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 
@@ -84,9 +85,14 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 		panel.setBounds(0, 0, 1018, 549);
 		getContentPane().add(panel);
 		panel.setLayout(null);
+		
+		JLabel lbl_citas = new JLabel("Citas");
+		lbl_citas.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_citas.setBounds(10, 11, 46, 14);
+		panel.add(lbl_citas);
 
 		tf_buscarCita = new JTextField();
-		tf_buscarCita.setBounds(87, 206, 115, 20);
+		tf_buscarCita.setBounds(87, 149, 115, 20);
 		panel.add(tf_buscarCita);
 		tf_buscarCita.setColumns(10);
 		// Inicializar la tabla y el modelo
@@ -102,11 +108,11 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 	        }
 		// Configurar la posición y el tamaño de la tabla
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(87, 258, 869, 232);
+		scrollPane.setBounds(87, 201, 869, 234);
 		panel.add(scrollPane);
 
 		JButton btn_buscarcita = new JButton("Buscar cita");
-		btn_buscarcita.setBounds(237, 205, 106, 23);
+		btn_buscarcita.setBounds(237, 148, 106, 23);
 		panel.add(btn_buscarcita);
 
 		btn_modificar = new JButton("Modificar cita");
@@ -153,38 +159,35 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 					}
 				}
 
-			}
+			} 
 		});
 		btn_buscarcita.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 //Comprobamos que no haya dejado en blanco el textField del id    
 				if (!tf_buscarCita.getText().equals("Insertar ID cita")) {
-					try {
-						int id = Integer.parseInt(tf_buscarCita.getText());
-						Conexion.ConexionMySQL.conectar();
-						ConsultaCita cita;
+					
+						try {
+							String nombre = tf_buscarCita.getText();
+							Conexion.ConexionMySQL.conectar();
+							ConsultaCita cita;
 
-						cita = Conexion.ConexionMySQL.consultaCita(id);
-// Limpiar la tabla antes de agregar nuevas filas
-						limpiarTabla();
-						// Agregar la fila a la tabla
-						agregarFilaConsultaCita(cita);
-					} catch (NumberFormatException ex) {
-						ex.getLocalizedMessage();
-						System.out.println("Fallo al insertar String");
-						JOptionPane.showMessageDialog(tf_buscarCita, "Introduce únicamente números", "Error",
-								JOptionPane.ERROR_MESSAGE);
-
-					} catch (ClassNotFoundException | SQLException e1) {
-
-						e1.printStackTrace();
+							cita = Conexion.ConexionMySQL.consultarCitaNombre(nombre);
+	// Limpiar la tabla antes de agregar nuevas filas
+							limpiarTabla();
+	// Agregar la fila a la tabla
+							agregarFilaConsultaCita(cita);
+							
+						} catch (NumberFormatException | ClassNotFoundException | SQLException  ex) {
+							ex.getLocalizedMessage();
+							System.out.println("Fallo al insertar String");
+							JOptionPane.showMessageDialog(tf_buscarCita, "Introduce un Nombre Válido", "Error",
+									JOptionPane.ERROR_MESSAGE);
+						}
 					}
-
-				} else {
-					JOptionPane.showMessageDialog(tf_buscarCita, "Inserta un id ", "Error", JOptionPane.ERROR_MESSAGE);
-
-				}
+					
+					
+					
 
 			}
 		});
@@ -246,6 +249,16 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 	private void limpiarTabla() {
 		modeloTabla.setRowCount(0);
 	}
+	 private static boolean esNumeroEntero(String input) {
+	        try {
+	            // Intentar convertir la cadena a un número entero
+	            int se=Integer.parseInt(input);
+	            return true;
+	        } catch (NumberFormatException e) {
+	            // Capturar la excepción si la conversión falla
+	            return false;
+	        }
+	    }
 
 	public void setDesktopPane(JDesktopPane desktopPane) {
 		this.miDesktopPane = desktopPane;

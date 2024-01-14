@@ -586,10 +586,10 @@ public class ConexionMySQL {
      
      
      
-     public static ConsultaCita consultaCita(int idCita) throws SQLException {
+     public static ConsultaCita consultaCitaId(int idCita) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("SELECT id_tratamiento,observaciones, fecha,hora,nombrePaciente"+
+         ResultSet rset=stmt.executeQuery("SELECT id_tratamiento,observaciones, fecha,hora,nombrePaciente "+
         		   " from consulta_cita where id_cita  = "+ idCita);//consulta
 
          ConsultaCita consultaCita=null;
@@ -601,6 +601,31 @@ public class ConexionMySQL {
         String hora=rset.getString("hora");
         String nombrePaciente=rset.getString("nombrePaciente");
         consultaCita=new ConsultaCita(idCita,id_tratamiento,observaciones,fecha,hora,nombrePaciente);
+         }
+         stmt.close();
+  
+ 	
+
+
+        return consultaCita;
+    }
+      
+     public static ConsultaCita consultarCitaNombre(String nombre) throws SQLException {
+
+         Statement stmt=connection.createStatement();
+         ResultSet rset=stmt.executeQuery("SELECT id_tratamiento,observaciones, fecha,hora,nombrePaciente "+
+        		   " from consulta_cita where nombrePaciente  = '"+ nombre+"'");//consulta
+
+         ConsultaCita consultaCita=null;
+         if (rset.next()) {
+        	 
+        int id_cita=rset.getInt("id_cita");
+        int id_tratamiento=rset.getInt("id_tratamiento");
+        String observaciones=rset.getString("observaciones");
+        String fecha=rset.getString("fecha");
+        String hora=rset.getString("hora");
+        
+        consultaCita=new ConsultaCita(id_cita,id_tratamiento,observaciones,fecha,hora,nombre);
          }
          stmt.close();
   
