@@ -372,7 +372,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 		JMenuItem cerrarPerfil = new JMenuItem("Cerrar Sesión");
 		cerrarPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				  Inicio_Panel_Administrador.hacerInvisible();
+				  
 
 			
 			}
