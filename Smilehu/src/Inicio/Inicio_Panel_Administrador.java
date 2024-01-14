@@ -12,7 +12,6 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import Vista.Material.InicioMaterial;
 import Vista.Material.Panel_Admin_Material_Inicio;
-import Vista.Usuario.JDialog_Admin_Usuario_inicio;
 import Vista.Usuario.Panel_DoctorCreado;
 import Vista.Usuario.Panel_DoctorCrear;
 import Vista.Usuario.Panel_PacienteCreado;
