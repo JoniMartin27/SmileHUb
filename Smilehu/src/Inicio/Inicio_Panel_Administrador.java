@@ -92,6 +92,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 				}
 			}
 		});
+		
 	}
 
 	public void setDesktopPane(JDesktopPane desktopPane) {
@@ -118,23 +119,6 @@ public class Inicio_Panel_Administrador extends JFrame {
 		
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-						//Menu DNI		
-								JMenuBar BarraMenu_DNI = new JMenuBar();
-								BarraMenu_DNI.setBounds(907, 200, 101, 22);
-								contentPane.add(BarraMenu_DNI);
-								
-										JMenu mnPerfil = new JMenu("Perfil");
-										mnPerfil.setBounds(907, 11, 101, 22);
-										BarraMenu_DNI.add(mnPerfil);
-										
-												JMenuItem Item_perfil = new JMenuItem("Editar Perfil");
-												mnPerfil.add(Item_perfil);
-												
-														JMenuItem Item_ayuda = new JMenuItem("Ayuda");
-														mnPerfil.add(Item_ayuda);
-														
-																JMenuItem Item_cerrar = new JMenuItem("Cerrar Perfil");
-																mnPerfil.add(Item_cerrar);
 				
 				//DesktopPane el cual cambia por internalFrames
 						
@@ -153,9 +137,14 @@ public class Inicio_Panel_Administrador extends JFrame {
 						lblNewLabel.setIcon(new ImageIcon(Inicio_Panel_Administrador.class.getResource("/img/fondoDientes.jpg")));
 						lblNewLabel.setBounds(0, 0, 1018, 476);
 						miDesktopPane.add(lblNewLabel);
+								
+								JLabel lblNewLabel_1 = new JLabel("");
+								lblNewLabel_1.setIcon(new ImageIcon(Inicio_Panel_Administrador.class.getResource("/img/SmileHub_mini.png")));
+								lblNewLabel_1.setBounds(954, 0, 64, 55);
+								panel.add(lblNewLabel_1);
 
 								JButton btn_paciente = new JButton("Pacientes");
-								btn_paciente.setBounds(0, 0, 169, 55);
+								btn_paciente.setBounds(0, 0, 159, 55);
 								panel.add(btn_paciente);
 								btn_paciente.setFont(new Font("Tahoma", Font.BOLD, 11));
 								btn_paciente.setForeground(new Color(255, 255, 255));
@@ -169,14 +158,11 @@ public class Inicio_Panel_Administrador extends JFrame {
 									}
 								});
 								
-								JLabel label_40 = new JLabel("");
-								label_40.setBounds(15, 156, 0, 0);
-								panel.add(label_40);
 								
 								
 								
 								JButton btn_material = new JButton("Material");
-								btn_material.setBounds(169, 0, 169, 55);
+								btn_material.setBounds(159, 0, 159, 55);
 								panel.add(btn_material);
 								btn_material.setForeground(new Color(255, 255, 255));
 								btn_material.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -185,7 +171,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 	
 								
 										JButton btn_proveedor = new JButton("Proveedores");
-										btn_proveedor.setBounds(507, 0, 169, 55);
+										btn_proveedor.setBounds(477, 0, 159, 55);
 										panel.add(btn_proveedor);
 										btn_proveedor.setFont(new Font("Tahoma", Font.BOLD, 11));
 										btn_proveedor.setForeground(new Color(255, 255, 255));
@@ -193,7 +179,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 										
 
 												JButton btn_Doctores = new JButton("Doctores");
-												btn_Doctores.setBounds(676, 0, 169, 55);
+												btn_Doctores.setBounds(636, 0, 159, 55);
 												panel.add(btn_Doctores);
 												btn_Doctores.setFont(new Font("Tahoma", Font.BOLD, 11));
 												btn_Doctores.setForeground(new Color(255, 255, 255));
@@ -203,7 +189,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 												// Boton Gestion Medica
 
 												JButton btn_GestionMedica = new JButton("Gestión Medica");
-												btn_GestionMedica.setBounds(338, 0, 169, 55);
+												btn_GestionMedica.setBounds(318, 0, 159, 55);
 												panel.add(btn_GestionMedica);
 												btn_GestionMedica.setForeground(new Color(255, 255, 255));
 												btn_GestionMedica.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -212,11 +198,21 @@ public class Inicio_Panel_Administrador extends JFrame {
 
 												// Boton Gestion Economica
 												JButton btn_Citas = new JButton("Citas");
-												btn_Citas.setBounds(845, 0, 173, 55);
+												btn_Citas.setBounds(795, 0, 159, 55);
 												panel.add(btn_Citas);
 												btn_Citas.setForeground(new Color(255, 255, 255));
 												btn_Citas.setFont(new Font("Tahoma", Font.BOLD, 11));
 												btn_Citas.setBackground(new Color(0, 64, 128));
+												
+												JButton btn_perfil = new JButton("");
+												btn_perfil.addActionListener(new ActionListener() {
+													public void actionPerformed(ActionEvent e) {
+														mostrarPerfil(btn_perfil,miDesktopPane);
+													}
+												});
+												btn_perfil.setOpaque(false);
+												btn_perfil.setBounds(954, 0, 64, 55);
+												panel.add(btn_perfil);
 												
 														btn_Citas.addActionListener(new ActionListener() {
 															public void actionPerformed(ActionEvent e) {
@@ -291,7 +287,7 @@ public class Inicio_Panel_Administrador extends JFrame {
         				((BasicInternalFrameUI) pacienteCrear.getUI()).setNorthPane(null);
         				pacienteCrear.setLocation(0, 0);
         				pacienteCrear.show();
-        				pacienteCrear.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
+        				pacienteCrear.setSize(miDesktopPane.getWidth(), miDesktopPane.getHeight());
         				contentPane.requestFocus();
         				combo.clear();
         			}
@@ -305,7 +301,7 @@ public class Inicio_Panel_Administrador extends JFrame {
         				((BasicInternalFrameUI) pacienteCreado.getUI()).setNorthPane(null);
         				pacienteCreado.setLocation(0, 0);
         				pacienteCreado.show();
-        				pacienteCreado.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
+        				pacienteCreado.setSize(miDesktopPane.getWidth(), miDesktopPane.getHeight());
         				contentPane.requestFocus();
         				combo.clear();
         			}
@@ -321,7 +317,7 @@ public class Inicio_Panel_Administrador extends JFrame {
         				((BasicInternalFrameUI) verProveedor.getUI()).setNorthPane(null);
         				verProveedor.setLocation(0, 0);
         				verProveedor.show();
-        				verProveedor.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth()); 
+        				verProveedor.setSize(miDesktopPane.getWidth(), miDesktopPane.getHeight()); 
         				contentPane.requestFocus();
         				combo.clear();
         			}
@@ -333,7 +329,7 @@ public class Inicio_Panel_Administrador extends JFrame {
         				((BasicInternalFrameUI) crearProveedor.getUI()).setNorthPane(null);
         				crearProveedor.setLocation(0, 0);
         				crearProveedor.show();
-        				crearProveedor.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth()); 
+        				crearProveedor.setSize(miDesktopPane.getWidth(), miDesktopPane.getHeight()); 
         				contentPane.requestFocus();
         				combo.clear();
         			}
@@ -355,7 +351,42 @@ public class Inicio_Panel_Administrador extends JFrame {
 		;
 	}
 	
+	private static void mostrarPerfil(Component invoker, JDesktopPane desktopPane) {
+		JPopupMenu menu = new JPopupMenu();
 
+		// Agregar elementos al menú desplegable
+		
+
+		JMenuItem ayuda = new JMenuItem("Ayuda");
+		ayuda.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			
+			try {
+				abrirPanelCrearPaciente(desktopPane);
+			} catch (PropertyVetoException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	});
+		JMenuItem cerrarPerfil = new JMenuItem("Cerrar Sesión");
+		cerrarPerfil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  Inicio_Panel_Administrador.hacerInvisible();
+
+			
+			}
+		});
+		
+
+	
+		menu.add(ayuda);
+		menu.add(cerrarPerfil);
+
+		// Mostrar el menú desplegable en la posición del componente invocador
+		menu.show(invoker, 0, invoker.getHeight());
+	}
+	
 	private static void mostrarMenuPaciente(Component invoker, JDesktopPane desktopPane) {
 		JPopupMenu menu = new JPopupMenu();
 
@@ -585,10 +616,12 @@ public class Inicio_Panel_Administrador extends JFrame {
 		pacienteCreado.setVisible(true);
 		desktopPane.add(pacienteCreado); // Usar el parámetro en lugar de la variable local
 		pacienteCreado.setSelected(true);
-		
-
-			
-
-	
 	}
+	
+	public static  void hacerInvisible() {
+		 Inicio_Panel_Administrador instancia = new Inicio_Panel_Administrador();
+		    instancia.setVisible(false);
+		    instancia.dispose();  // Liberar recursos
+	}
+	
 }

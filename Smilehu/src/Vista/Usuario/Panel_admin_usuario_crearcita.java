@@ -70,7 +70,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 862, 501);
+		panel.setBounds(0, 0, 1018, 576);
 		getContentPane().add(panel);
 
 		setBounds(100, 100, 862, 531);
@@ -84,15 +84,16 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		panel.setLayout(null);
 
 		JComboBox<String> cb_hora = new JComboBox<>(getAvailableTimes());
-		cb_hora.setBounds(515, 150, 114, 28);
+		cb_hora.setBounds(516, 162, 114, 28);
 		panel.add(cb_hora);
 
 		JLabel lbl_observaciones = new JLabel("Observaciones");
+		lbl_observaciones.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_observaciones.setBounds(64, 314, 105, 14);
 		panel.add(lbl_observaciones);
 
 		JTextArea tA_Observaciones = new JTextArea();
-		tA_Observaciones.setBounds(74, 339, 253, 103);
+		tA_Observaciones.setBounds(64, 339, 253, 103);
 		panel.add(tA_Observaciones);
 
 		JComboBox<String> cb_material = new JComboBox<>();
@@ -116,13 +117,13 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 
 			}
 		});
-		btn_BuscarPaciente.setBounds(406, 37, 109, 23);
+		btn_BuscarPaciente.setBounds(400, 37, 128, 23);
 		panel.add(btn_BuscarPaciente);
 
 		JLabel lbl_hora = new JLabel("Hora");
 		lbl_hora.setForeground(Color.BLACK);
 		lbl_hora.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_hora.setBounds(558, 91, 46, 14);
+		lbl_hora.setBounds(551, 137, 46, 14);
 		panel.add(lbl_hora);
 
 		textField = new JTextField();
@@ -145,7 +146,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		JLabel lbl_fecha_1 = new JLabel("Fecha");
 		lbl_fecha_1.setForeground(Color.BLACK);
 		lbl_fecha_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_fecha_1.setBounds(670, 91, 46, 14);
+		lbl_fecha_1.setBounds(688, 137, 46, 14);
 		panel.add(lbl_fecha_1);
 
 		JComboBox<String> cb_Tratamiento = new JComboBox<>();
@@ -161,8 +162,9 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		cargarMateriales(cb_material);
 
 		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBackground(new Color(240, 240, 240));
 		dateChooser.setDateFormatString("dd MM yyyy");
-		dateChooser.setBounds(656, 163, 148, 20);
+		dateChooser.setBounds(656, 163, 114, 28);
 		panel.add(dateChooser);
 
 		JButton btn_crearcita = new JButton("Crear Cita");
@@ -203,11 +205,11 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 			}
 
 		});
-		btn_crearcita.setBounds(374, 436, 128, 23);
+		btn_crearcita.setBounds(400, 434, 128, 23);
 		panel.add(btn_crearcita);
 		JLabel icon = new JLabel("New label");
 		icon.setIcon(new ImageIcon(Panel_admin_usuario_crearcita.class.getResource("/img/fondoDientes.jpg")));
-		icon.setBounds(0, 0, 912, 531);
+		icon.setBounds(0, 0, 1018, 576);
 		panel.add(icon);
 
 	}
