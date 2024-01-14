@@ -19,7 +19,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
-import Vista.Material.material_Solicitudes;
 import Vista.Usuario.Panel_PacienteCreado;
 
 import java.awt.Font;

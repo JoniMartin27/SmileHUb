@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import Conexion.ConexionMySQL;
 import Modelo.ConsultaCita;
 import Modelo.StockMaterial;
+import Vista.gestionEconomica.JDialog_admin_gestionEconomica_Mixto;
 import Vista.gestionMedica.Odontograma;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -190,7 +191,7 @@ public class InicioMaterial extends JInternalFrame {
 	private void agregarFilaConsultaMaterial(StockMaterial material) {
 		// Asegurarse de que la consultaCita no sea null antes de agregar la fila
 		if (material != null) {
-			Object[] fila = { material.getIdMaterial(),material.getNombreProveedor(), material.getNombre(),
+			Object[] fila = { material.getIdMaterial(), material.getNombre(),material.getNombreProveedor(),
 					material.getDisponible(), material.getSolicitado(),material.getBajoPedido(),material.getPrecio() };
 			modelMaterial.addRow(fila);
 		}
@@ -205,15 +206,13 @@ public class InicioMaterial extends JInternalFrame {
 	
 	private static void abrirSolicitudes(JDesktopPane desktopPane) throws PropertyVetoException {
 
-		material_Solicitudes pedidos = new material_Solicitudes();
-		pedidos.setBorder(null);
-		((BasicInternalFrameUI) pedidos.getUI()).setNorthPane(null);
-		pedidos.setLocation(0, 0);
-		pedidos.show();
-		pedidos.setSize(desktopPane.getWidth(), desktopPane.getWidth());
-		pedidos.setVisible(true);
-		desktopPane.add(pedidos); // Usar el parámetro en lugar de la variable local
-		pedidos.setSelected(true);
+		JDialog_solicitud soli=new JDialog_solicitud();
+		
+		soli.setVisible(true);
+		soli.setLocation(200, 200);
+		soli.setModal(true);
+		soli.setUndecorated(true);
+		soli.dispose();
 	}
 	
 	private static void abrirStock(JDesktopPane desktopPane) throws PropertyVetoException {

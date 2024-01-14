@@ -2,6 +2,8 @@ package Vista.Material;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -12,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
+import java.awt.Font;
 
 public class JDialog_solicitud extends JDialog {
 
@@ -48,6 +51,11 @@ public class JDialog_solicitud extends JDialog {
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
+		JLabel lbl_solicitudes = new JLabel("SOLICITUDES");
+		lbl_solicitudes.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
+		lbl_solicitudes.setBounds(10, 11, 167, 14);
+		panel.add(lbl_solicitudes);
+		
 		JButton btn_rechazar = new JButton("Rechazar");
 		btn_rechazar.setBounds(472, 508, 89, 23);
 		panel.add(btn_rechazar);
@@ -60,9 +68,10 @@ public class JDialog_solicitud extends JDialog {
 		table.setBounds(70, 38, 528, 438);
 		panel.add(table);
 		 JScrollPane scrollPane = new JScrollPane(table);
-	        scrollPane.setBounds(25,45,567,428);
+	        scrollPane.setBounds(6,57,666,428);
 	        panel.add(scrollPane);
 	        String[] columnas = {"id_solicitud", "id_cita", "nombreMaterial","Cantidad","NombreProveedor" };
+	        
 
 	        model = new DefaultTableModel();
 	        model.setColumnIdentifiers(columnas);
@@ -74,4 +83,31 @@ public class JDialog_solicitud extends JDialog {
 	private void limpiarTabla() {
 		model.setRowCount(0);
 	}
+	
+	
+	
+    private void contruirTablaSolicitudes(ResultSet rs) {
+        try {
+            while (rs.next()) {
+                Object[] fila = new Object[5]; // Hay 2 columna que mostrar
+            
+                fila[0] = rs.getString(1);
+                fila[1] = rs.getString(2);
+                fila[2] = rs.getString(3);
+                fila[3] = rs.getString(4);
+                fila[4] = rs.getString(5);
+
+                model.addRow(fila);
+            }
+
+            table.setModel(model);
+
+
+          
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    
 }
+    }
