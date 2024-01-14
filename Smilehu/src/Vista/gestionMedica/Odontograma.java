@@ -1,29 +1,28 @@
 package Vista.gestionMedica;
+
 import java.awt.Color;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.JRadioButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Odontograma extends JFrame {
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+public class Odontograma extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField tf_nombre;
-	private JTextField tf_estado;
-	private ButtonGroup btn = new ButtonGroup();
+    private JTextField tf_nombre;
+    private JTextField tf_estado;
+    private ButtonGroup btn = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -45,9 +44,9 @@ public class Odontograma extends JFrame {
 	 * Create the frame.
 	 */
 	public Odontograma() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1018, 476);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -62,6 +61,7 @@ public class Odontograma extends JFrame {
 		lbl_imagen.setIcon(new ImageIcon(Odontograma.class.getResource("/img/Dientes.png")));
 		lbl_imagen.setBounds(20, 55, 467, 357);
 		panel.add(lbl_imagen);
+		
 		
 		
 		JButton btn_diente1 = new JButton();
@@ -80,15 +80,6 @@ public class Odontograma extends JFrame {
 				
 			}
 		});
-		btn_diente1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);	
-				
-			}
-		});
-		
 		btn_diente1.setOpaque(false);
 		btn_diente1.setBounds(106, 137, 39, 71);
 		panel.add(btn_diente1);
@@ -99,26 +90,19 @@ public class Odontograma extends JFrame {
 		
 		
 		JButton btn_diente2 = new JButton();
-		btn_diente1.addMouseListener(new MouseAdapter() {
+		btn_diente2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				
-				
+				btn_diente2.setOpaque(true);
+				btn_diente2.setBackground(new Color(159,232,223));
+			
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				
+				btn_diente2.setOpaque(false);
 				
-				
-			}
-		});
-		btn_diente2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);
-			
 			}
 		});
 		btn_diente2.setOpaque(false);
@@ -131,25 +115,18 @@ public class Odontograma extends JFrame {
 		
 		
 		JButton btn_diente3 = new JButton();
-		btn_diente1.addMouseListener(new MouseAdapter() {
+		btn_diente3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				
-				
+				btn_diente3.setOpaque(true);
+				btn_diente3.setBackground(new Color(159,232,223));
+			
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				
-				
-				
-			}
-		});
-		btn_diente3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);
+				btn_diente3.setOpaque(false);
 				
 			}
 		});
@@ -163,26 +140,19 @@ public class Odontograma extends JFrame {
 		
 		
 		JButton btn_diente4 = new JButton();
-		btn_diente1.addMouseListener(new MouseAdapter() {
+		btn_diente4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				
-				
+				btn_diente4.setOpaque(true);
+				btn_diente4.setBackground(new Color(159,232,223));
+			
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				
+				btn_diente4.setOpaque(false);
 				
-				
-			}
-		});
-		btn_diente4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);	
-							
 			}
 		});
 		btn_diente4.setOpaque(false);
@@ -195,25 +165,18 @@ public class Odontograma extends JFrame {
 		
 		
 		JButton btn_diente5 = new JButton();
-		btn_diente1.addMouseListener(new MouseAdapter() {
+		btn_diente5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				
-				
+				btn_diente5.setOpaque(true);
+				btn_diente5.setBackground(new Color(159,232,223));
+			
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				
-				
-				
-			}
-		});
-		btn_diente5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);	
+				btn_diente5.setOpaque(false);
 				
 			}
 		});
@@ -227,25 +190,18 @@ public class Odontograma extends JFrame {
 		
 		
 		JButton btn_diente6 = new JButton();
-		btn_diente1.addMouseListener(new MouseAdapter() {
+		btn_diente6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				
-				
+				btn_diente6.setOpaque(true);
+				btn_diente6.setBackground(new Color(159,232,223));
+			
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				
-				
-				
-			}
-		});
-		btn_diente6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);	
+				btn_diente6.setOpaque(false);
 				
 			}
 		});
@@ -259,25 +215,18 @@ public class Odontograma extends JFrame {
 		
 		
 		JButton btn_diente7 = new JButton();
-		btn_diente1.addMouseListener(new MouseAdapter() {
+		btn_diente7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				
-				
+				btn_diente7.setOpaque(true);
+				btn_diente7.setBackground(new Color(159,232,223));
+			
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				
-				
-				
-			}
-		});
-		btn_diente7.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);	
+				btn_diente7.setOpaque(false);
 				
 			}
 		});
@@ -291,25 +240,18 @@ public class Odontograma extends JFrame {
 		
 		
 		JButton btn_diente8 = new JButton();
-		btn_diente1.addMouseListener(new MouseAdapter() {
+		btn_diente8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				
-				
+				btn_diente8.setOpaque(true);
+				btn_diente8.setBackground(new Color(159,232,223));
+			
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				
-				
-				
-			}
-		});
-		btn_diente8.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);	
+				btn_diente8.setOpaque(false);
 				
 			}
 		});
@@ -323,25 +265,18 @@ public class Odontograma extends JFrame {
 		
 		
 		JButton btn_diente9 = new JButton();
-		btn_diente1.addMouseListener(new MouseAdapter() {
+		btn_diente9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				
-				
+				btn_diente9.setOpaque(true);
+				btn_diente9.setBackground(new Color(159,232,223));
+			
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				
-				
-				
-			}
-		});
-		btn_diente9.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);	
+				btn_diente9.setOpaque(false);
 				
 			}
 		});
@@ -355,25 +290,18 @@ public class Odontograma extends JFrame {
 		
 		
 		JButton btn_diente10 = new JButton();
-		btn_diente1.addMouseListener(new MouseAdapter() {
+		btn_diente10.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				
-				
+				btn_diente10.setOpaque(true);
+				btn_diente10.setBackground(new Color(159,232,223));
+			
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				
-				
-				
-			}
-		});
-		btn_diente10.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);	
+				btn_diente10.setOpaque(false);
 				
 			}
 		});
@@ -387,25 +315,18 @@ public class Odontograma extends JFrame {
 		
 		
 		JButton btn_diente11 = new JButton();
-		btn_diente1.addMouseListener(new MouseAdapter() {
+		btn_diente11.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				
-				
+				btn_diente11.setOpaque(true);
+				btn_diente11.setBackground(new Color(159,232,223));
+			
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				
-				
-				
-			}
-		});
-		btn_diente11.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);	
+				btn_diente11.setOpaque(false);
 				
 			}
 		});
@@ -419,25 +340,18 @@ public class Odontograma extends JFrame {
 		
 		
 		JButton btn_diente12 = new JButton();
-		btn_diente1.addMouseListener(new MouseAdapter() {
+		btn_diente12.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				
-				
+				btn_diente12.setOpaque(true);
+				btn_diente12.setBackground(new Color(159,232,223));
+			
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				
-				
-				
-			}
-		});
-		btn_diente12.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);	
+				btn_diente12.setOpaque(false);
 				
 			}
 		});
@@ -451,25 +365,18 @@ public class Odontograma extends JFrame {
 		
 		
 		JButton btn_diente13 = new JButton();
-		btn_diente1.addMouseListener(new MouseAdapter() {
+		btn_diente13.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				
-				
+				btn_diente13.setOpaque(true);
+				btn_diente13.setBackground(new Color(159,232,223));
+			
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				
-				
-				
-			}
-		});
-		btn_diente13.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);	
+				btn_diente13.setOpaque(false);
 				
 			}
 		});
@@ -483,25 +390,18 @@ public class Odontograma extends JFrame {
 		
 		
 		JButton btn_diente14 = new JButton();
-		btn_diente1.addMouseListener(new MouseAdapter() {
+		btn_diente14.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
-				
-				
+				btn_diente14.setOpaque(true);
+				btn_diente14.setBackground(new Color(159,232,223));
+			
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				
-				
-				
-			}
-		});
-		btn_diente14.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
-			InformacionOdont informacionOdont = new InformacionOdont();
-			informacionOdont.setVisible(true);	
+				btn_diente14.setOpaque(false);
 				
 			}
 		});
@@ -515,7 +415,7 @@ public class Odontograma extends JFrame {
 		
 		
 		
-		tf_nombre = new JTextField();
+		JTextField tf_nombre  = new JTextField();
 		tf_nombre.setBounds(609, 55, 106, 20);
 		panel.add(tf_nombre);
 		tf_nombre.setColumns(10);
@@ -528,7 +428,7 @@ public class Odontograma extends JFrame {
 		lbl_nombre.setBounds(609, 36, 86, 14);
 		panel.add(lbl_nombre);
 		
-		tf_estado = new JTextField();
+		JTextField tf_estado = new JTextField();
 		tf_estado.setBounds(753, 55, 106, 20);
 		panel.add(tf_estado);
 		tf_estado.setColumns(10);
