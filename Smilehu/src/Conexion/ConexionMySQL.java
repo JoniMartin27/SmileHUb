@@ -576,10 +576,9 @@ public class ConexionMySQL {
     
 
      public static void insertarCita(ConsultaCita cita) throws SQLException {
-		    String query = "INSERT INTO consulta_cita (id_tratamiento, observaciones, fecha, hora)" +
-		                   "VALUES(" + cita.getId_tratamiento() + ", '" + cita.getObservaciones() 
-		                   + "', '" + cita.getFecha() + "', '" + 
-		                   cita.getHora() + "')";
+		    String query = "INSERT INTO consulta_cita (id_tratamiento, observaciones, fecha, hora, nombrePaciente)" +
+		                   "VALUES('" + cita.getId_tratamiento() + "', '" + cita.getObservaciones() 
+		                   + "', '" + cita.getFecha() + "', '" + cita.getHora() + "', '"+cita.getNombrePaciente()+"')";
 		    
 		    Statement stmt = connection.createStatement();
 		    stmt.executeUpdate(query);
@@ -590,18 +589,18 @@ public class ConexionMySQL {
      public static ConsultaCita consultaCita(int idCita) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("SELECT id_tratamiento,observaciones, fecha,hora"+
+         ResultSet rset=stmt.executeQuery("SELECT id_tratamiento,observaciones, fecha,hora,nombrePaciente"+
         		   " from consulta_cita where id_cita  = "+ idCita);//consulta
 
          ConsultaCita consultaCita=null;
          if (rset.next()) {
        
         int id_tratamiento=rset.getInt("id_tratamiento");
-        int id_historial=rset.getInt("id_historial");
         String observaciones=rset.getString("observaciones");
         String fecha=rset.getString("fecha");
         String hora=rset.getString("hora");
-        consultaCita=new ConsultaCita(idCita,id_tratamiento,id_historial,observaciones,fecha,hora);
+        String nombrePaciente=rset.getString("nombrePaciente");
+        consultaCita=new ConsultaCita(idCita,id_tratamiento,observaciones,fecha,hora,nombrePaciente);
          }
          stmt.close();
   

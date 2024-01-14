@@ -61,12 +61,13 @@ public class Panel_admin_gestionMedica_CrearEspecialidad extends JInternalFrame 
 	 * Create the frame.
 	 */
 	public Panel_admin_gestionMedica_CrearEspecialidad() {
+		setBorder(null);
 		setBounds(219, 44, 1018, 576);
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(159, 232, 223));
-		panel.setBounds(0, 0, 1002, 546);
+		panel.setBounds(0, 0, 1018, 546);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -184,7 +185,7 @@ public class Panel_admin_gestionMedica_CrearEspecialidad extends JInternalFrame 
 		panel.add(lbl_Listado);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(0, 0, 1002, 546);
+		lblNewLabel.setBounds(0, 0, 1018, 558);
 		lblNewLabel.setIcon(new ImageIcon(Panel_admin_gestionMedica_CrearEspecialidad.class.getResource("/img/fondoDientes.jpg")));
 		panel.add(lblNewLabel);
 		

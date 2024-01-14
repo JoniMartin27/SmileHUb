@@ -109,7 +109,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 		// Atributos Frame Principal
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1034, 570);
+		setBounds(750, 350, 1034, 570);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(60, 129, 170));
 		contentPane.setForeground(new Color(4, 20, 36));
@@ -123,18 +123,18 @@ public class Inicio_Panel_Administrador extends JFrame {
 								BarraMenu_DNI.setBounds(907, 200, 101, 22);
 								contentPane.add(BarraMenu_DNI);
 								
-										JMenu Menu_DNI = new JMenu("DNI");
-										Menu_DNI.setBounds(907, 11, 101, 22);
-										BarraMenu_DNI.add(Menu_DNI);
+										JMenu mnPerfil = new JMenu("Perfil");
+										mnPerfil.setBounds(907, 11, 101, 22);
+										BarraMenu_DNI.add(mnPerfil);
 										
 												JMenuItem Item_perfil = new JMenuItem("Editar Perfil");
-												Menu_DNI.add(Item_perfil);
+												mnPerfil.add(Item_perfil);
 												
 														JMenuItem Item_ayuda = new JMenuItem("Ayuda");
-														Menu_DNI.add(Item_ayuda);
+														mnPerfil.add(Item_ayuda);
 														
 																JMenuItem Item_cerrar = new JMenuItem("Cerrar Perfil");
-																Menu_DNI.add(Item_cerrar);
+																mnPerfil.add(Item_cerrar);
 				
 				//DesktopPane el cual cambia por internalFrames
 						
@@ -159,7 +159,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 								panel.add(btn_paciente);
 								btn_paciente.setFont(new Font("Tahoma", Font.BOLD, 11));
 								btn_paciente.setForeground(new Color(255, 255, 255));
-								btn_paciente.setBackground(new Color(0, 0, 40));
+								btn_paciente.setBackground(new Color(0, 64, 128));
 								btn_paciente.setSelectedIcon(new ImageIcon(Inicio_Panel_Administrador.class.getResource("/img/boton.png")));
 								btn_paciente.addActionListener(new ActionListener() {
 									public void actionPerformed(ActionEvent e) {
@@ -180,7 +180,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 								panel.add(btn_material);
 								btn_material.setForeground(new Color(255, 255, 255));
 								btn_material.setFont(new Font("Tahoma", Font.BOLD, 11));
-								btn_material.setBackground(new Color(0, 0, 40));
+								btn_material.setBackground(new Color(0, 64, 128));
 								
 	
 								
@@ -189,7 +189,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 										panel.add(btn_proveedor);
 										btn_proveedor.setFont(new Font("Tahoma", Font.BOLD, 11));
 										btn_proveedor.setForeground(new Color(255, 255, 255));
-										btn_proveedor.setBackground(new Color(0, 0, 40));
+										btn_proveedor.setBackground(new Color(0, 64, 128));
 										
 
 												JButton btn_Doctores = new JButton("Doctores");
@@ -197,17 +197,17 @@ public class Inicio_Panel_Administrador extends JFrame {
 												panel.add(btn_Doctores);
 												btn_Doctores.setFont(new Font("Tahoma", Font.BOLD, 11));
 												btn_Doctores.setForeground(new Color(255, 255, 255));
-												btn_Doctores.setBackground(new Color(103, 172, 194));
+												btn_Doctores.setBackground(new Color(0, 64, 128));
 												
 												
 												// Boton Gestion Medica
 
-												JButton btn_GestionMedica = new JButton("Gestion Medica");
+												JButton btn_GestionMedica = new JButton("Gestión Medica");
 												btn_GestionMedica.setBounds(338, 0, 169, 55);
 												panel.add(btn_GestionMedica);
 												btn_GestionMedica.setForeground(new Color(255, 255, 255));
 												btn_GestionMedica.setFont(new Font("Tahoma", Font.BOLD, 11));
-												btn_GestionMedica.setBackground(new Color(0, 0, 40));
+												btn_GestionMedica.setBackground(new Color(0, 64, 128));
 												
 
 												// Boton Gestion Economica
@@ -216,7 +216,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 												panel.add(btn_Citas);
 												btn_Citas.setForeground(new Color(255, 255, 255));
 												btn_Citas.setFont(new Font("Tahoma", Font.BOLD, 11));
-												btn_Citas.setBackground(new Color(0, 0, 40));
+												btn_Citas.setBackground(new Color(0, 64, 128));
 												
 														btn_Citas.addActionListener(new ActionListener() {
 															public void actionPerformed(ActionEvent e) {

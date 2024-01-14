@@ -44,17 +44,18 @@ public class Panel_admin_gestionMedica_CrearTratamiento extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Panel_admin_gestionMedica_CrearTratamiento() {
+		setBorder(null);
 	setBounds(219, 44, 1018,576);
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(159, 232, 223));
-		panel.setBounds(0, 0, 1002, 546);
+		panel.setBounds(0, 0, 1018, 546);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		table = new JTable();
-		table.setBounds(629, 110, 127, 275);
+		table.setBounds(694, 132, 244, 275);
 		panel.add(table);
 		
 		JLabel lbl_NombreTratamiento = new JLabel("Nombre Tratamiento");
@@ -89,12 +90,12 @@ public class Panel_admin_gestionMedica_CrearTratamiento extends JInternalFrame {
 		panel.add(btn_CrearTratamiento);
 		
 		JLabel lblNewLabel_1 = new JLabel("Listado Tratamientos");
-		lblNewLabel_1.setBounds(629, 59, 144, 14);
+		lblNewLabel_1.setBounds(811, 81, 144, 14);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Panel_admin_gestionMedica_CrearTratamiento.class.getResource("/img/fondoDientes.jpg")));
-		lblNewLabel.setBounds(0, 0, 1002, 546);
+		lblNewLabel.setBounds(0, 0, 1018, 546);
 		panel.add(lblNewLabel);
 
 	}

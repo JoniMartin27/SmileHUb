@@ -64,13 +64,13 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 
 	public Panel_admin_usuario_crearcita() {
 		setBorder(null);
-		setBounds(100, 100, 1018, 570);
+		setBounds(100, 100, 1018, 576);
 		getContentPane().setForeground(new Color(159, 232, 223));
 		
 		getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 846, 501);
+		panel.setBounds(0, 0, 862, 501);
 		getContentPane().add(panel);
 
 		setBounds(100, 100, 862, 531);
@@ -161,6 +161,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		cargarMateriales(cb_material);
 
 		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("dd MM yyyy");
 		dateChooser.setBounds(656, 163, 148, 20);
 		panel.add(dateChooser);
 
@@ -173,11 +174,13 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 
 				// usar SimpleDateFormat para convertir a String
 
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 				String formattedDate = dateFormat.format(selectedDate);
 
 				System.out.println(formattedDate);
 				String selectedTime = (String) cb_hora.getSelectedItem();
+				String paciente = (String) cB_nombrePaciente.getSelectedItem();
+				System.out.println(paciente);
 
 				if (!existeCita(formattedDate, selectedTime)) {
 					try {
@@ -186,7 +189,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 						int id = tratamiento.getIdTratamiento();
 						System.out.println(formattedDate);
 						ConsultaCita cita = new ConsultaCita(id,tA_Observaciones.getText(),formattedDate,
-								selectedTime);
+								selectedTime,paciente);
 						
 						ConexionMySQL.insertarCita(cita);
 					} catch (SQLException e1) {

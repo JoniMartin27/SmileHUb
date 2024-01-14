@@ -12,6 +12,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import Conexion.ConexionMySQL;
@@ -63,8 +64,6 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 		});
 	}
 
-	
-
 	/**
 	 * Create the frame.
 	 */
@@ -74,20 +73,20 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 		this.modeloTabla = new DefaultTableModel();
 
 		// Configurar las columnas del modelo
-		String[] columnas = { "ID Doctor", "ID Tratamiento", "ID Historial", "Observaciones", "Fecha", "Hora" };
+		String[] columnas = { "ID Cita", "ID Tratamiento", "Observaciones", "Fecha", "Hora", "Nombre Paciente" };
 		modeloTabla.setColumnIdentifiers(columnas);
 
 		getContentPane().setBackground(new Color(159, 232, 223));
-		setBounds(100, 100, 1018, 476);
+		setBounds(100, 100, 1018, 576);
 		getContentPane().setLayout(null);
 
 		panel = new JPanel();
-		panel.setBounds(0, 0, 1018, 449);
+		panel.setBounds(0, 0, 1018, 549);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 
 		tf_buscarCita = new JTextField();
-		tf_buscarCita.setBounds(266, 206, 86, 20);
+		tf_buscarCita.setBounds(87, 206, 115, 20);
 		panel.add(tf_buscarCita);
 		tf_buscarCita.setColumns(10);
 		// Inicializar la tabla y el modelo
@@ -95,45 +94,50 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 
 		// Establecer el modelo en la tabla
 		table.setModel(modeloTabla);
+		 DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+	        centerRenderer.setHorizontalAlignment(JLabel.CENTER); // Centrar el contenido
 
+	        for (int i = 0; i < table.getColumnCount(); i++) {
+	            table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+	        }
 		// Configurar la posición y el tamaño de la tabla
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(237, 258, 600, 150);
+		scrollPane.setBounds(87, 258, 869, 232);
 		panel.add(scrollPane);
 
 		JButton btn_buscarcita = new JButton("Buscar cita");
-		btn_buscarcita.setBounds(446, 205, 106, 23);
+		btn_buscarcita.setBounds(237, 205, 106, 23);
 		panel.add(btn_buscarcita);
 
 		btn_modificar = new JButton("Modificar cita");
-		btn_modificar.setBounds(472, 74, 117, 23);
+		btn_modificar.setBounds(237, 74, 117, 23);
 		panel.add(btn_modificar);
 
 		btn_Crear = new JButton("Crear cita");
-		btn_Crear.setBounds(171, 74, 117, 23);
+		btn_Crear.setBounds(87, 74, 117, 23);
 		panel.add(btn_Crear);
-		
+
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(Panel_admin_usuario_paciente_consultarCita.class.getResource("/img/fondoDientes.jpg")));
-		lblNewLabel.setBounds(0, 0, 1018, 500);
+		lblNewLabel.setIcon(
+				new ImageIcon(Panel_admin_usuario_paciente_consultarCita.class.getResource("/img/fondoDientes.jpg")));
+		lblNewLabel.setBounds(0, 0, 1018, 549);
 		panel.add(lblNewLabel);
 		btn_Crear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				Panel_admin_usuario_crearcita crearCita = new Panel_admin_usuario_crearcita();
 				crearCita.setBorder(null);
 				crearCita.setDesktopPane(miDesktopPane); // Asigna la referencia del DesktopPane
 				miDesktopPane.removeAll();
 				miDesktopPane.add(crearCita);
 				((BasicInternalFrameUI) crearCita.getUI()).setNorthPane(null);
-				crearCita.setLocation(0,0);
+				crearCita.setLocation(0, 0);
 				crearCita.show();
 				crearCita.setSize(miDesktopPane.getWidth(), miDesktopPane.getWidth());
 
 			}
 		});
-		
-		
+
 		btn_modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int id = Integer.parseInt(tf_buscarCita.getText());
@@ -192,9 +196,8 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 	private void agregarFilaConsultaCita(ConsultaCita consultaCita) {
 		// Asegurarse de que la consultaCita no sea null antes de agregar la fila
 		if (consultaCita != null) {
-			Object[] fila = { consultaCita.getId_tratamiento(),
-					 consultaCita.getObservaciones(), consultaCita.getFecha(),
-					consultaCita.getHora() };
+			Object[] fila = { consultaCita.getId_cita(),consultaCita.getId_tratamiento(), consultaCita.getObservaciones(),
+					consultaCita.getFecha(), consultaCita.getHora(),consultaCita.getNombrePaciente() };
 			modeloTabla.addRow(fila);
 		}
 
@@ -213,28 +216,26 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 		// Verificar si se ha seleccionado alguna fila
 		if (filaSeleccionada != -1) {
 			// Obtener los valores de las celdas en la fila seleccionada
-			int idDoctor = (int) table.getValueAt(filaSeleccionada, 0);
+			int idCita = (int) table.getValueAt(filaSeleccionada, 0);
 			int idTratamiento = (int) table.getValueAt(filaSeleccionada, 1);
-			int idHistorial = (int) table.getValueAt(filaSeleccionada, 2);
-			String observaciones = (String) table.getValueAt(filaSeleccionada, 3);
-			String fecha = (String) table.getValueAt(filaSeleccionada, 4);
-			String hora = (String) table.getValueAt(filaSeleccionada, 5);
+			String observaciones = (String) table.getValueAt(filaSeleccionada, 2);
+			String fecha = (String) table.getValueAt(filaSeleccionada, 3);
+			String hora = (String) table.getValueAt(filaSeleccionada, 4);
+			String paciente = (String) table.getValueAt(filaSeleccionada, 5);
 
 			// Crear un objeto Cita con los valores obtenidos
 			ConsultaCita cita = new ConsultaCita();
-		
+			cita.setId_cita(idCita);
+			cita.setNombrePaciente(paciente);
 			cita.setId_tratamiento(idTratamiento);
 			cita.setObservaciones(observaciones);
 			cita.setFecha(fecha);
 			cita.setHora(hora);
-			
+
 			ConexionMySQL.conectar();
 			ConexionMySQL.insertarCita(cita);
 
-			// Puedes imprimir los valores, pasarlo a un formulario de edición, etc.
-			System.out.println("Datos de la fila seleccionada:");
-		
-			System.out.println("ID Tratamiento: " + cita.getId_tratamiento());
+
 
 		} else {
 			JOptionPane.showMessageDialog(null, "Seleccione una fila primero", "Error", JOptionPane.ERROR_MESSAGE);
@@ -245,6 +246,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 	private void limpiarTabla() {
 		modeloTabla.setRowCount(0);
 	}
+
 	public void setDesktopPane(JDesktopPane desktopPane) {
 		this.miDesktopPane = desktopPane;
 	}

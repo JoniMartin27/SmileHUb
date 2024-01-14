@@ -169,7 +169,7 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Panel_PacienteCrear.class.getResource("/img/fondoDientes.jpg")));
-		lblNewLabel.setBounds(0, 0, 1018, 549);
+		lblNewLabel.setBounds(0, 0, 1030, 561);
 		panel.add(lblNewLabel);
 		btn_CrearPaciente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

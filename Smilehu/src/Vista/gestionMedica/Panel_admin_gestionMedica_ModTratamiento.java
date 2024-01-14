@@ -42,12 +42,13 @@ public class Panel_admin_gestionMedica_ModTratamiento extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Panel_admin_gestionMedica_ModTratamiento() {
-		setBounds(219, 44, 862, 562);
+		setBorder(null);
+		setBounds(219, 44, 1018, 576);
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(159, 232, 223));
-		panel.setBounds(0, 0, 846, 532);
+		panel.setBounds(0, 0, 1018, 549);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -88,7 +89,7 @@ public class Panel_admin_gestionMedica_ModTratamiento extends JInternalFrame {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Panel_admin_gestionMedica_ModTratamiento.class.getResource("/img/fondoDientes.jpg")));
-		lblNewLabel.setBounds(0, 0, 846, 532);
+		lblNewLabel.setBounds(0, 0, 1018, 549);
 		panel.add(lblNewLabel);
 
 	}

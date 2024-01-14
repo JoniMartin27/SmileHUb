@@ -52,6 +52,7 @@ public class Panel_ProveedorCrear extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Panel_ProveedorCrear() {
+		setBorder(null);
 		setBounds(100, 100, 1018, 576);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(159, 232, 223));
@@ -132,7 +133,7 @@ public class Panel_ProveedorCrear extends JInternalFrame {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Panel_ProveedorCrear.class.getResource("/img/fondoDientes.jpg")));
-		lblNewLabel.setBounds(0, 0, 1002, 546);
+		lblNewLabel.setBounds(0, 0, 1018, 559);
 		contentPanel.add(lblNewLabel);
 		
 		
