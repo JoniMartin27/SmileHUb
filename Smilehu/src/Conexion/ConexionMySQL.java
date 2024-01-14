@@ -613,8 +613,7 @@ public class ConexionMySQL {
      public static ConsultaCita consultarCitaNombre(String nombre) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("SELECT id_tratamiento,observaciones, fecha,hora,nombrePaciente "+
-        		   " from consulta_cita where nombrePaciente  = '"+ nombre+"'");//consulta
+         ResultSet rset=stmt.executeQuery("SELECT * from consulta_cita where nombrePaciente  = '"+ nombre+"'");//consulta
 
          ConsultaCita consultaCita=null;
          if (rset.next()) {
