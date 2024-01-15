@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
+import javax.swing.ImageIcon;
 
 public class Panel_admin_gestionMedica_CrearEspecialidad extends JInternalFrame {
 
@@ -42,12 +43,12 @@ public class Panel_admin_gestionMedica_CrearEspecialidad extends JInternalFrame 
 	 * Create the frame.
 	 */
 	public Panel_admin_gestionMedica_CrearEspecialidad() {
-		setBounds(219, 44, 799, 487);
+		setBounds(219, 44, 862, 562);
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(159, 232, 223));
-		panel.setBounds(0, 0, 783, 457);
+		panel.setBounds(0, 0, 846, 532);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -80,6 +81,11 @@ public class Panel_admin_gestionMedica_CrearEspecialidad extends JInternalFrame 
 		JLabel lbl_Listado = new JLabel("Listado Especialidades");
 		lbl_Listado.setBounds(597, 48, 150, 14);
 		panel.add(lbl_Listado);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(Panel_admin_gestionMedica_CrearEspecialidad.class.getResource("/img/fondoDientes.jpg")));
+		lblNewLabel.setBounds(0, 0, 846, 532);
+		panel.add(lblNewLabel);
 
 	}
 }

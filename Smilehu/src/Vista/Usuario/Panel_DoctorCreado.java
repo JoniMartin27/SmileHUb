@@ -6,6 +6,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -17,18 +19,30 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import Vista.gestionEconomica.JDialog_admin_gestionEconomica_tipoPago;
+
 import javax.swing.ImageIcon;
 
 public class Panel_DoctorCreado extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
+
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+
+	private JTextField tf_apellidos;
+	private JTextField tf_nombre;
+	private JTextField tf_iddoctor;
+	private JTextField tf_direccion;
+	private JTextField tf_idespecialidad;
+	private JTextField tf_idbuscar;
+
 
 	/**
 	 * Launch the application.
@@ -50,7 +64,7 @@ public class Panel_DoctorCreado extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Panel_DoctorCreado() {
-		setBounds(100, 100, 862, 531);
+		setBounds(100, 100, 862, 562);
 
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(159, 232, 223));
@@ -59,7 +73,7 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		contentPanel.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 846, 501);
+		panel.setBounds(0, 0, 846, 562);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
@@ -72,7 +86,7 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		JRadioButton rdbtn_alta = new JRadioButton("Alta");
 		rdbtn_alta.setBounds(398, 303, 68, 23);
 		panel.add(rdbtn_alta);
-		
+
 		JRadioButton rdbtn_baja = new JRadioButton("Baja");
 		rdbtn_baja.setBounds(495, 303, 68, 23);
 		panel.add(rdbtn_baja);
@@ -165,15 +179,59 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		textField_5.setBounds(398, 239, 116, 20);
 		panel.add(textField_5);
 		
+		
+		JButton btn_realizarpago=new JButton();
+		btn_realizarpago.setBounds(529, 39, 109, 23);
+		btn_realizarpago.setText("Registrar Pago");
+		btn_realizarpago.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JDialog_admin_gestionEconomica_tipoPago tipoPago=new JDialog_admin_gestionEconomica_tipoPago();
+				
+				tipoPago.setVisible(true);
+				tipoPago.setLocation(200, 200);
+				tipoPago.setModal(true);
+				tipoPago.setUndecorated(true);
+				dispose();
+			}
+		});
+		panel.add(btn_realizarpago);
+		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Panel_DoctorCreado.class.getResource("/img/fondoDientes.jpg")));
-		lblNewLabel.setBounds(0, 0, 846, 501);
+		lblNewLabel.setBounds(0, 0, 846, 531);
 		panel.add(lblNewLabel);
 		
 		
 		ButtonGroup g1 = new ButtonGroup();
+
 		
-		ButtonGroup g2 = new ButtonGroup();
+		JLabel lbl_ficha1 = new JLabel("Ficha de Doctor");
+		lbl_ficha1.setForeground(new Color(0, 0, 0));
+		lbl_ficha1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_ficha1.setBounds(23, 11, 173, 14);
+		contentPanel.add(lbl_ficha1);
+		
+		
+		
+		
+		
+		
+		/*DNI*/
+		JLabel lbl_iddoctor1 = new JLabel("DNI:");
+		lbl_iddoctor1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_iddoctor1.setForeground(new Color(0, 0, 0));
+		lbl_iddoctor1.setBounds(23, 89, 61, 14);
+		contentPanel.add(lbl_iddoctor1);
+		
+		tf_iddoctor = new JTextField();
+		tf_iddoctor.setBounds(235, 86, 116, 20);
+		contentPanel.add(tf_iddoctor);
+		tf_iddoctor.setColumns(10);
+		
+	
+
+
+		
 		
 	}
 }

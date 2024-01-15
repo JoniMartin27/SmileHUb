@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
+import javax.swing.ImageIcon;
 
 public class Panel_admin_gestionMedica_CrearTratamiento extends JInternalFrame {
 
@@ -43,12 +44,12 @@ public class Panel_admin_gestionMedica_CrearTratamiento extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Panel_admin_gestionMedica_CrearTratamiento() {
-		setBounds(219, 44, 799, 487);
+		setBounds(219, 44, 862, 562);
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(159, 232, 223));
-		panel.setBounds(0, 0, 783, 457);
+		panel.setBounds(0, 0, 846, 532);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -90,6 +91,11 @@ public class Panel_admin_gestionMedica_CrearTratamiento extends JInternalFrame {
 		JLabel lblNewLabel_1 = new JLabel("Listado Tratamientos");
 		lblNewLabel_1.setBounds(629, 59, 144, 14);
 		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(Panel_admin_gestionMedica_CrearTratamiento.class.getResource("/img/fondoDientes.jpg")));
+		lblNewLabel.setBounds(0, 0, 846, 532);
+		panel.add(lblNewLabel);
 
 	}
 }

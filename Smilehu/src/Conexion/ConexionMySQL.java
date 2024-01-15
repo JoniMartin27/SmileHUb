@@ -9,7 +9,9 @@
  */
 package Conexion;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.TimeZone;
 
 import Modelo.ConsultaCita;
@@ -64,7 +66,7 @@ public class ConexionMySQL {
    
  
     
-    public void desconectar()throws SQLException{
+    public static void desconectar()throws SQLException{
         if(connection!=null && connection.isClosed()){
         connection.close();  
         }
@@ -78,17 +80,63 @@ public class ConexionMySQL {
         return fila;
     }
     
-     
      public static void modificarPaciente(Paciente paciente) throws SQLException {
-    	 String query = "UPDATE paciente SET " +
-    	            "nombre = '" + paciente.getNombre() + "', " +
-    	            "apellidos = '" + paciente.getApellidos() + "', " +
-    	            "direccion = '" + paciente.getDireccion() + "', " +
-    	            "genero = '" + paciente.getGenero() + "', " +
-    	            "telefono = '" + paciente.getTelefono() + "', " +
-    	            "fecha_alta = '" + paciente.getFechaDeAlta() + "', " +
-    	            "fecha_nacimiento = '" + paciente.getFechaNacimiento() + "' " +
-    	            "WHERE id_paciente = " + paciente.getIdUsuario();
+         // Verificar si el paciente existe antes de intentar la actualización
+         if (!existePaciente(paciente.getNombre(), paciente.getApellidos())) {
+             System.out.println("El paciente no existe en la base de datos.");
+             System.out.println(paciente.getApellidos());
+             return;
+         }
+
+         String query = "UPDATE paciente SET " +
+                 "nombre = ?, " +
+                 "apellidos = ?, " +
+                 "direccion = ?, " +
+                 "genero = ?, " +
+                 "telefono = ?, " +
+                 "fecha_alta = ?, " +
+                 "fecha_nacimiento = ? " +
+                 "WHERE id_paciente = ? ";
+
+         try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+             pstmt.setString(1, paciente.getNombre());
+             pstmt.setString(2, paciente.getApellidos());
+             pstmt.setString(3, paciente.getDireccion());
+             pstmt.setString(4, paciente.getGenero());
+             pstmt.setString(5, paciente.getTelefono());
+             pstmt.setString(6, paciente.getFechaDeAlta());
+             pstmt.setString(7, paciente.getFechaNacimiento());
+             pstmt.setInt(8, paciente.getIdUsuario()); // id en la cláusula WHERE
+            
+
+             pstmt.executeUpdate();
+             System.out.println("Paciente modificado correctamente");
+         }
+     }
+
+     private static boolean existePaciente(String nombre, String apellidos) throws SQLException {
+         String query = "SELECT COUNT(*) FROM paciente WHERE nombre = ? AND apellidos = ?";
+         try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+             pstmt.setString(1, nombre);
+             pstmt.setString(2, apellidos);
+             try (ResultSet resultSet = pstmt.executeQuery()) {
+                 resultSet.next();
+                 return resultSet.getInt(1) > 0;
+             }
+         }
+     }
+     
+     
+     public static void modificarCita(ConsultaCita cita) throws SQLException {
+    	 String query = "UPDATE consulta_cita SET " +
+    	            "nombre = '" + cita.getId_doctor() + "', " +
+    	            "apellidos = '" + cita.getId_historial() + "', " +
+    	            "direccion = '" + cita.getId_tratamiento() + "', " +
+    	            "genero = '" + cita.getObservaciones() + "', " +
+    	            "telefono = '" + cita.getFecha() + "', " +
+    	            "fecha_alta = '" + cita.getHora() + "', " +
+    	            
+    	            "WHERE id_cita = " + cita.getId_cita();
          
          Statement stmt = connection.createStatement();
          stmt.executeUpdate(query);
@@ -96,7 +144,14 @@ public class ConexionMySQL {
          System.out.println("hola");
          stmt.close();
          }
-     public void modificarCita(ConsultaCita cita,int id) throws SQLException {
+     
+     
+     
+     
+     
+     
+     
+     public void modificarCita1(ConsultaCita cita,int id) throws SQLException {
     	 String query = "UPDATE consulta_cita SET " +
                  "id_doctor = ?, " +
                  "id_tratamiento = ?, " +
@@ -143,8 +198,66 @@ public class ConexionMySQL {
 
         return proveedor;
     }*/
+     public static Paciente buscarPacientes(String nombrePaciente, String apellidoPaciente) throws SQLException {
+    	    String query = "SELECT * FROM Paciente WHERE nombre = ? AND apellidos = ?";
+    	    
+    	    try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+    	        pstmt.setString(1, nombrePaciente);
+    	        pstmt.setString(2, apellidoPaciente);
+    	        
+    	        ResultSet rset = pstmt.executeQuery();
+
+    	        if (rset.next()) {
+    	            int id = rset.getInt("id_paciente");
+    	            String direccion = rset.getString("direccion");
+    	            String genero = rset.getString("genero");
+    	            String telefono = rset.getString("telefono");
+    	            String fecha_alta = rset.getString("fecha_alta");
+    	            String fecha_nacimiento = rset.getString("fecha_nacimiento");
+
+    	            return new Paciente(id, nombrePaciente, apellidoPaciente, direccion, genero, telefono, fecha_alta, fecha_nacimiento);
+    	        }
+    	    }
+
+    	    return null;
+    	}
   
      
+     public static ResultSet ejecutarSelect(String consulta)throws SQLException{
+         Statement stmt=connection.createStatement();
+         ResultSet rset=stmt.executeQuery(consulta);
+         
+         return rset;
+     }
+     
+     
+     
+     
+     
+     public static List<Paciente> buscarPacientes(String nombrePaciente) throws SQLException {
+    	    List<Paciente> pacientes = new ArrayList<>();
+    	    String query = "SELECT * FROM paciente WHERE nombre = ?";
+    	    
+    	    try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+    	        pstmt.setString(1, nombrePaciente);
+    	        ResultSet rset = pstmt.executeQuery();
+
+    	        while (rset.next()) {
+    	            int id = rset.getInt("id_paciente");
+    	            String apellidos = rset.getString("apellidos");
+    	            String direccion = rset.getString("direccion");
+    	            String genero = rset.getString("genero");
+    	            String telefono = rset.getString("telefono");
+    	            String fecha_alta = rset.getString("fecha_alta");
+    	            String fecha_nacimiento = rset.getString("fecha_nacimiento");
+
+    	            Paciente paciente = new Paciente(id, nombrePaciente, apellidos, direccion, genero, telefono, fecha_alta, fecha_nacimiento);
+    	            pacientes.add(paciente);
+    	        }
+    	    }
+
+    	    return pacientes;
+    	}
      public static Paciente consultaPaciente(int idPaciente) throws SQLException {
 
          Statement stmt=connection.createStatement();

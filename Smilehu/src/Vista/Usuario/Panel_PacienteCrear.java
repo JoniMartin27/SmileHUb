@@ -22,6 +22,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class Panel_PacienteCrear extends JInternalFrame {
 
@@ -56,7 +57,7 @@ public class Panel_PacienteCrear extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Panel_PacienteCrear() {
-		setBounds(100, 100, 595, 398);
+		setBounds(100, 100, 862, 562);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(159, 232, 223));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -65,7 +66,7 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		
 		JLabel lbl_ficha = new JLabel("Ficha de Paciente");
 		lbl_ficha.setForeground(new Color(0, 0, 0));
-		lbl_ficha.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_ficha.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_ficha.setBounds(23, 11, 173, 14);
 		contentPanel.add(lbl_ficha);
 		
@@ -74,18 +75,18 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		
 		/*Botones Sexo*/
 		JLabel lbl_sexo = new JLabel("Sexo");
-		lbl_sexo.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lbl_sexo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_sexo.setForeground(new Color(0, 0, 0));
-		lbl_sexo.setBounds(258, 194, 48, 21);
+		lbl_sexo.setBounds(384, 262, 144, 21);
 		contentPanel.add(lbl_sexo);
 		
 		JRadioButton rdbtn_masculino = new JRadioButton("Masculino");
-		rdbtn_masculino.setBounds(161, 222, 109, 23);
+		rdbtn_masculino.setBounds(287, 290, 109, 23);
 		contentPanel.add(rdbtn_masculino);
 		
 		
 		JRadioButton rdbtn_femenino = new JRadioButton("Femenino");
-		rdbtn_femenino.setBounds(293, 222, 109, 23);
+		rdbtn_femenino.setBounds(419, 290, 109, 23);
 		contentPanel.add(rdbtn_femenino);
 		
 		
@@ -98,61 +99,61 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		JLabel lbl_dni_1 = new JLabel("Nombre");
 		lbl_dni_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_dni_1.setForeground(Color.BLACK);
-		lbl_dni_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lbl_dni_1.setBounds(183, 22, 46, 14);
+		lbl_dni_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_dni_1.setBounds(301, 90, 219, 14);
 		contentPanel.add(lbl_dni_1);
 		
 		tf_nombre = new JTextField();
 		tf_nombre.setColumns(10);
-		tf_nombre.setBounds(144, 54, 126, 20);
+		tf_nombre.setBounds(270, 122, 126, 20);
 		contentPanel.add(tf_nombre);
 		
 		tf_fechaNacimiento = new JTextField();
 		tf_fechaNacimiento.setColumns(10);
-		tf_fechaNacimiento.setBounds(144, 112, 126, 20);
+		tf_fechaNacimiento.setBounds(270, 180, 126, 20);
 		contentPanel.add(tf_fechaNacimiento);
 		
 		JLabel lbl_nombre_1 = new JLabel("Fecha nacimiento");
 		lbl_nombre_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_nombre_1.setForeground(Color.BLACK);
-		lbl_nombre_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lbl_nombre_1.setBounds(161, 97, 92, 14);
+		lbl_nombre_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_nombre_1.setBounds(287, 165, 241, 14);
 		contentPanel.add(lbl_nombre_1);
 		
 		tf_apellidos = new JTextField();
 		tf_apellidos.setColumns(10);
-		tf_apellidos.setBounds(293, 54, 126, 20);
+		tf_apellidos.setBounds(419, 122, 126, 20);
 		contentPanel.add(tf_apellidos);
 		
 		JLabel lbl_nombre_2 = new JLabel("Apellidos");
 		lbl_nombre_2.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_nombre_2.setForeground(Color.BLACK);
-		lbl_nombre_2.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lbl_nombre_2.setBounds(336, 22, 48, 14);
+		lbl_nombre_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_nombre_2.setBounds(462, 90, 66, 14);
 		contentPanel.add(lbl_nombre_2);
 		
 		JLabel lbl_apellidos_1 = new JLabel("Direccion");
 		lbl_apellidos_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_apellidos_1.setForeground(Color.BLACK);
-		lbl_apellidos_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lbl_apellidos_1.setBounds(336, 97, 48, 14);
+		lbl_apellidos_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_apellidos_1.setBounds(462, 165, 66, 14);
 		contentPanel.add(lbl_apellidos_1);
 		
 		JLabel lbl_sexo_1 = new JLabel("Teléfono");
 		lbl_sexo_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_sexo_1.setForeground(Color.BLACK);
-		lbl_sexo_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lbl_sexo_1.setBounds(258, 139, 48, 14);
+		lbl_sexo_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_sexo_1.setBounds(384, 207, 144, 14);
 		contentPanel.add(lbl_sexo_1);
 		
 		tf_telefono = new JTextField();
 		tf_telefono.setColumns(10);
-		tf_telefono.setBounds(221, 164, 126, 20);
+		tf_telefono.setBounds(347, 232, 126, 20);
 		contentPanel.add(tf_telefono);
 		
 		tf_direccion = new JTextField();
 		tf_direccion.setColumns(10);
-		tf_direccion.setBounds(293, 112, 126, 20);
+		tf_direccion.setBounds(419, 180, 126, 20);
 		contentPanel.add(tf_direccion);
 		
 		JButton btn_CrearPaciente = new JButton("Crear Paciente");
@@ -190,7 +191,12 @@ public class Panel_PacienteCrear extends JInternalFrame {
 				
 			}
 		});
-		btn_CrearPaciente.setBounds(221, 276, 126, 23);
+		btn_CrearPaciente.setBounds(347, 344, 126, 23);
 		contentPanel.add(btn_CrearPaciente);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(Panel_PacienteCrear.class.getResource("/img/fondoDientes.jpg")));
+		lblNewLabel.setBounds(0, 0, 846, 532);
+		contentPanel.add(lblNewLabel);
 	}
 }

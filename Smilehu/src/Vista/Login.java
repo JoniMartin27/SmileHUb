@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Controlador.ConexionMySQL;
+import Conexion.ConexionMySQL;
 
 import java.awt.Color;
 import javax.swing.JLabel;
