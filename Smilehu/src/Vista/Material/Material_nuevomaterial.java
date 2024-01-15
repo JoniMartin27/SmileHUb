@@ -9,14 +9,18 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Conexion.ConexionMySQL;
+import Modelo.Paciente;
+import Modelo.Proveedor;
 import Modelo.StockMaterial;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class Material_nuevomaterial extends JDialog {
@@ -57,6 +61,8 @@ public class Material_nuevomaterial extends JDialog {
 		
 		
 		
+		
+		
 		JTextField tf_precio = new JTextField();
 		tf_precio.setBounds(390, 155, 124, 20);
 		panel.add(tf_precio);
@@ -67,9 +73,16 @@ public class Material_nuevomaterial extends JDialog {
 		panel.add(tf_material);
 		tf_material.setColumns(10);
 		
-		JComboBox cb_proveedor = new JComboBox();
+		JComboBox<String> cb_proveedor = new JComboBox<>();
 		cb_proveedor.setBounds(69, 228, 186, 22);
 		panel.add(cb_proveedor);
+		
+		
+		
+		cargarProveedoresAlComboBox(cb_proveedor);
+		
+		
+		
 		
 		JLabel lbl_nombre = new JLabel("Nombre Material");
 		lbl_nombre.setBounds(69, 130, 118, 14);
@@ -87,7 +100,6 @@ public class Material_nuevomaterial extends JDialog {
 		lbl_fondo.setIcon(new ImageIcon(Material_nuevomaterial.class.getResource("/img/fondoDientes.jpg")));
 		lbl_fondo.setBounds(0, 0, 678, 566);
 		panel.add(lbl_fondo);
-		
 		JButton btn_crearMaterial = new JButton("Crear Material");
 		btn_crearMaterial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -97,6 +109,7 @@ public class Material_nuevomaterial extends JDialog {
 				StockMaterial mat =new StockMaterial();
 				mat.setPrecio(ds);
 				mat.setNombre(tf_material.getText());
+				mat.setNombreProveedor((String)cb_proveedor.getSelectedItem());
 				
 				//Insertar Material
 				try {
@@ -110,6 +123,34 @@ public class Material_nuevomaterial extends JDialog {
 		btn_crearMaterial.setBounds(251, 287, 124, 23);
 		panel.add(btn_crearMaterial);
 		
-		
+	}
+	private void cargarProveedoresAlComboBox( JComboBox<String> comboBox) {
+		// Limpiar ComboBox antes de cargar nuevos datos
+		comboBox.removeAllItems();
+
+		try {
+
+			// Obtener pacientes desde la base de datos
+			ConexionMySQL.conectar();
+
+			// Supongamos que tienes un método para obtener pacientes por nombre
+			List<Proveedor> proveedores = ConexionMySQL.buscarProvedor();
+
+			// Agregar nombre y apellidos de cada paciente al ComboBox
+			for (Proveedor proveedor : proveedores) {
+				String nombreCompleto = proveedor.getNombre() ;
+				comboBox.addItem(nombreCompleto);
+			}
+
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Error al cargar proveedores", "Error", JOptionPane.ERROR_MESSAGE);
+		} finally {
+			try {
+				ConexionMySQL.desconectar();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
 	}
 }

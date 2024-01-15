@@ -376,13 +376,6 @@ public class Inicio_Panel_Administrador extends JFrame {
 		}
 	});
 		JMenuItem cerrarPerfil = new JMenuItem("Cerrar Sesión");
-		cerrarPerfil.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				  
-				
-			
-			}
-		});
 		
 
 	
@@ -642,5 +635,8 @@ public class Inicio_Panel_Administrador extends JFrame {
 		    instancia.setVisible(false);
 		    instancia.dispose();  // Liberar recursos
 	}
+	private static void cerrarFrameActual(JFrame frame) {
+		System.exit(0);
+    }
 	
 }

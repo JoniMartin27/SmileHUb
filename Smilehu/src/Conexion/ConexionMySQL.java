@@ -570,6 +570,33 @@ public class ConexionMySQL {
     	 
     	 return combo;
      }
+//COMBOBOX Nuevo material proveedor
+     
+     public static List<Proveedor> buscarProvedor() throws SQLException {
+    	 List<Proveedor> combo = new ArrayList<>();
+    	 String query = "SELECT * FROM proveedor";
+    	 
+    	 try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+    		
+    		 ResultSet rset = pstmt.executeQuery();
+    		 
+    		 while (rset.next()) {
+    			 
+    			 
+    			 	int id_proveedor=rset.getInt("id_proveedor");
+    		        String nombre=rset.getString("nombre");
+    		        String direccion=rset.getString("direccion");
+    		        String telefono=rset.getString("telefono");
+    		        String correo=rset.getString("correo");
+    		       
+    			 
+    		        Proveedor prov=new Proveedor(id_proveedor,nombre,direccion,telefono,correo);
+    		        combo.add(prov);
+    		 }
+    	 }
+    	 
+    	 return combo;
+     }
      
      
      

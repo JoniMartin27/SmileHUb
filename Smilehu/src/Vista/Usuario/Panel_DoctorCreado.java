@@ -184,7 +184,7 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		
 		
 		JButton btn_realizarpago=new JButton();
-		btn_realizarpago.setBounds(529, 39, 109, 23);
+		btn_realizarpago.setBounds(964, 22, 17, 23);
 		btn_realizarpago.setText("Registrar Pago");
 		btn_realizarpago.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
