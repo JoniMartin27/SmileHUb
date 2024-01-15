@@ -19,6 +19,7 @@ import Modelo.Doctor_administrador;
 import Modelo.Especialidad;
 import Modelo.Paciente;
 import Modelo.Proveedor;
+import Modelo.Solicitud;
 import Modelo.StockMaterial;
 import Modelo.Tratamiento;
 
@@ -110,7 +111,7 @@ public class ConexionMySQL {
              pstmt.setString(5, paciente.getTelefono());
              pstmt.setString(6, paciente.getFechaDeAlta());
              pstmt.setString(7, paciente.getFechaNacimiento());
-             pstmt.setInt(8, paciente.getIdUsuario()); // id en la cláusula WHERE
+             pstmt.setInt(8, paciente.getIdUsuario ()); // id en la cláusula WHERE
             
 
              pstmt.executeUpdate();
@@ -583,6 +584,14 @@ public class ConexionMySQL {
 		    Statement stmt = connection.createStatement();
 		    stmt.executeUpdate(query);
 		}
+     public static void insertarMaterial(StockMaterial material) throws SQLException {
+		    String query = "INSERT INTO consulta_cita (id_proveedor, nombre, precio)" +
+		                   "VALUES('" + material.getIdProveedor() + "', '" + material.getNombre() 
+		                   + "', '" + material.getPrecio() + "')";
+		    
+		    Statement stmt = connection.createStatement();
+		    stmt.executeUpdate(query);
+		}
      
      
      
@@ -700,7 +709,33 @@ public class ConexionMySQL {
          return stockMateriales;
      }
     
-     
+     public static List<Solicitud> obtenerSolicitudes() {
+         List<Solicitud> soli = new ArrayList<>();
+
+         String query = "SELECT * FROM solicitud";
+
+         try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+             try (ResultSet resultSet = pstmt.executeQuery()) {
+                 while (resultSet.next()) {
+                     int id_solicitud = resultSet.getInt("id_solicitud");
+                     int id_cita = resultSet.getInt("id_cita");
+                     int cantidad = resultSet.getInt("cantidad");
+                     String nombreMaterial = resultSet.getString("nombreMaterial");
+                     String solicitado = resultSet.getString("solicitado");
+                     
+
+                     Solicitud solicitud = new Solicitud(id_solicitud, id_cita, cantidad,
+                    		 nombreMaterial, solicitado);
+
+                     soli.add(solicitud);
+                 }
+             }
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+
+         return soli;
+     }
      
      
      

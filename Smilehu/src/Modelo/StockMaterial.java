@@ -39,6 +39,14 @@ public class StockMaterial {
 	
 	
 	
+	public StockMaterial(String nombre, int idProveedor, double precio) {
+		super();
+		this.nombre = nombre;
+		this.idProveedor = idProveedor;
+		this.precio = precio;
+	}
+
+
 	public String getNombreProveedor() {
 		return nombreProveedor;
 	}

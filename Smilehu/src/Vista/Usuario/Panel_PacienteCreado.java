@@ -282,8 +282,21 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		panel.add(lblNewLabel);
 		btn_modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String texto;
+				String nombre="";
+				
+				String[] partes;
+				// recojo los datos del comboBox
+				texto = (String) comboBox.getSelectedItem();
+				// divide el string comlpeto del comboBox en nombre y apellidos
+				 if (texto != null) {
+				         partes = texto.split(" ", 2);
+				if (partes.length >= 2) {
+					// Guardar las partes en variables
+					nombre = partes[0];
+					}}
 				  // Obtener los datos de los textfields
-		        String nombre = tf_nombre.getText();
+		       
 		        String apellidos = tf_apellidos.getText();
 		        String direccion = tf_direccion.getText();
 		        String genero = tf_genero.getText();
@@ -296,13 +309,15 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		        Paciente pacienteModificado = new Paciente(id,nombre, apellidos, direccion, genero, telefono, fechaAlta, fechaNacimiento);
 
 		        // Mostrar un mensaje de confirmación 
-		        JOptionPane.showMessageDialog(btn_modificar, "Paciente Modificado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+		        
 
 		        // Llamar al método para modificar en la base de datos
 		        try {
 		            ConexionMySQL.modificarPaciente(pacienteModificado);
+		            JOptionPane.showMessageDialog(btn_modificar, "Paciente Modificado", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 		        } catch (SQLException e1) {
 		            e1.printStackTrace();
+		            System.err.println(e1.getLocalizedMessage());
 		           
 		        }
 			}
