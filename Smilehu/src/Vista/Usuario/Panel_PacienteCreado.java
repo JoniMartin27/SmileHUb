@@ -308,10 +308,10 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		        // Crear un objeto Paciente con los datos modificados
 		        Paciente pacienteModificado = new Paciente(id,nombre, apellidos, direccion, genero, telefono, fechaAlta, fechaNacimiento);
 
-		        // Mostrar un mensaje de confirmación 
+		       
 		        
 
-		        // Llamar al método para modificar en la base de datos
+		        // Llamar al método para modificar en la base de datos y Mostrar un mensaje de confirmación 
 		        try {
 		            ConexionMySQL.modificarPaciente(pacienteModificado);
 		            JOptionPane.showMessageDialog(btn_modificar, "Paciente Modificado", "Éxito", JOptionPane.INFORMATION_MESSAGE);

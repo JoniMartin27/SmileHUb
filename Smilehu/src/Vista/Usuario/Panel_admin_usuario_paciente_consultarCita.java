@@ -169,23 +169,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 //Comprobamos que no haya dejado en blanco el textField del id    
 				
 				try {
-				    if (esNumeroEntero(tf_buscarCita.getText())) {
-				        int id = Integer.parseInt(tf_buscarCita.getText());
-				        ConexionMySQL.conectar();
-
-				        ConsultaCita cita = ConexionMySQL.consultaCitaId(id);
-
-				        // Limpiar la tabla antes de agregar nuevas filas
-				        limpiarTabla();
-
-				        // Agregar filas a la tabla
-				        if (cita != null) {
-				            agregarFilaConsultaCita(cita);
-				        } else {
-				            JOptionPane.showMessageDialog(tf_buscarCita, "No se encontró ninguna cita con ese Id", "Información",
-				                    JOptionPane.INFORMATION_MESSAGE);
-				        }
-				    } else {
+				   
 				        String nombre = tf_buscarCita.getText();
 				        ConexionMySQL.conectar();
 
@@ -201,7 +185,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 				            JOptionPane.showMessageDialog(tf_buscarCita, "No se encontró ninguna cita con ese Nombre", "Información",
 				                    JOptionPane.INFORMATION_MESSAGE);
 				        }
-				    }
+				    
 				} catch (NumberFormatException | ClassNotFoundException | SQLException ex) {
 				    ex.printStackTrace();
 				    JOptionPane.showMessageDialog(tf_buscarCita, "Error al buscar la cita: " + ex.getMessage(), "Error",

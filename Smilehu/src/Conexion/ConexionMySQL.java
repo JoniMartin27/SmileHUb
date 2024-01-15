@@ -649,7 +649,7 @@ public class ConexionMySQL {
      public static ConsultaCita consultarCitaNombre(String nombre) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("SELECT * from consulta_cita where nombrePaciente  = '"+ nombre+"'");//consulta
+         ResultSet rset=stmt.executeQuery("SELECT * from consulta_cita where fecha  = '"+ nombre+"'");//consulta
 
          ConsultaCita consultaCita=null;
          if (rset.next()) {
@@ -659,8 +659,8 @@ public class ConexionMySQL {
         String observaciones=rset.getString("observaciones");
         String fecha=rset.getString("fecha");
         String hora=rset.getString("hora");
-        
-        consultaCita=new ConsultaCita(id_cita,id_tratamiento,observaciones,fecha,hora,nombre);
+        String nom=rset.getString("nombre");
+        consultaCita=new ConsultaCita(id_cita,id_tratamiento,observaciones,fecha,hora,nom);
          }
          stmt.close();
   

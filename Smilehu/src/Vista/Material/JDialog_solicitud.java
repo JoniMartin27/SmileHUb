@@ -212,6 +212,10 @@ public class JDialog_solicitud extends JDialog {
 	                // Maneja la excepción según sea necesario
 	            }
 	        }
+	        
+	        
+	        
+	        
 	    }
 	
 	

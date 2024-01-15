@@ -110,7 +110,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 		// Atributos Frame Principal
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(750, 350, 1034, 570);
+		setBounds(350, 250, 1034, 570);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(60, 129, 170));
 		contentPane.setForeground(new Color(4, 20, 36));

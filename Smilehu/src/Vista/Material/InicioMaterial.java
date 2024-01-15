@@ -172,7 +172,7 @@ public class InicioMaterial extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					abrirStock(getDesktopPane());
-				} catch (PropertyVetoException e1) {
+				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -205,27 +205,32 @@ public class InicioMaterial extends JInternalFrame {
 	}
 	
 	private static void abrirSolicitudes(JDesktopPane desktopPane) throws PropertyVetoException {
-
-		JDialog_solicitud soli=new JDialog_solicitud();
-		
-		soli.setVisible(true);
-		soli.setLocation(200, 200);
-		soli.setModal(true);
-		soli.setUndecorated(true);
-		soli.dispose();
-	}
+try {
+	JDialog_solicitud soli=new JDialog_solicitud();
 	
+	soli.setVisible(true);
+	soli.setLocation(200, 200);
+	soli.setModal(true);
+	soli.setUndecorated(true);
+	soli.dispose();
+}catch(Exception e) {
+	System.err.println(e.getLocalizedMessage());}
+
+	}
+
 	private static void abrirStock(JDesktopPane desktopPane) throws PropertyVetoException {
 
-		material_stock stock = new material_stock();
-		stock.setBorder(null);
-		((BasicInternalFrameUI) stock.getUI()).setNorthPane(null);
-		stock.setLocation(0, 0);
-		stock.show();
-		stock.setSize(desktopPane.getWidth(), desktopPane.getWidth());
-		stock.setVisible(true);
-		desktopPane.add(stock); // Usar el parámetro en lugar de la variable local
-		stock.setSelected(true);
+Material_nuevomaterial mat=new Material_nuevomaterial();
+	try {
+		mat.setVisible(true);
+		mat.setLocation(200, 200);
+		mat.setModal(true);
+		mat.setUndecorated(true);
+	}catch(Exception e) {
+		
+	}
+
+
 	}
 	  private void contruirTablaMaterial(ResultSet rs) {
 	        try {

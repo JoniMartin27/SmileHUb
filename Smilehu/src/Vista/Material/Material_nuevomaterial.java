@@ -58,21 +58,6 @@ public class Material_nuevomaterial extends JDialog {
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
-		
-		
-		
-		
-		
-		JTextField tf_precio = new JTextField();
-		tf_precio.setBounds(390, 155, 124, 20);
-		panel.add(tf_precio);
-		tf_precio.setColumns(10);
-		
-		tf_material = new JTextField();
-		tf_material.setBounds(69, 155, 186, 20);
-		panel.add(tf_material);
-		tf_material.setColumns(10);
-		
 		JComboBox<String> cb_proveedor = new JComboBox<>();
 		cb_proveedor.setBounds(69, 228, 186, 22);
 		panel.add(cb_proveedor);
@@ -81,25 +66,6 @@ public class Material_nuevomaterial extends JDialog {
 		
 		cargarProveedoresAlComboBox(cb_proveedor);
 		
-		
-		
-		
-		JLabel lbl_nombre = new JLabel("Nombre Material");
-		lbl_nombre.setBounds(69, 130, 118, 14);
-		panel.add(lbl_nombre);
-		
-		JLabel lbl_proveedor = new JLabel("Nombre Proveedor");
-		lbl_proveedor.setBounds(69, 203, 118, 14);
-		panel.add(lbl_proveedor);
-		
-		JLabel lbl_precio = new JLabel("precio");
-		lbl_precio.setBounds(390, 130, 95, 14);
-		panel.add(lbl_precio);
-		
-		JLabel lbl_fondo = new JLabel("");
-		lbl_fondo.setIcon(new ImageIcon(Material_nuevomaterial.class.getResource("/img/fondoDientes.jpg")));
-		lbl_fondo.setBounds(0, 0, 678, 566);
-		panel.add(lbl_fondo);
 		JButton btn_crearMaterial = new JButton("Crear Material");
 		btn_crearMaterial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -122,6 +88,43 @@ public class Material_nuevomaterial extends JDialog {
 		});
 		btn_crearMaterial.setBounds(251, 287, 124, 23);
 		panel.add(btn_crearMaterial);
+		
+		
+		
+		
+		
+		
+		JTextField tf_precio = new JTextField();
+		tf_precio.setBounds(390, 155, 124, 20);
+		panel.add(tf_precio);
+		tf_precio.setColumns(10);
+		
+		tf_material = new JTextField();
+		tf_material.setBounds(69, 155, 186, 20);
+		panel.add(tf_material);
+		tf_material.setColumns(10);
+		
+		
+		
+		
+		
+		
+		JLabel lbl_nombre = new JLabel("Nombre Material");
+		lbl_nombre.setBounds(69, 130, 118, 14);
+		panel.add(lbl_nombre);
+		
+		JLabel lbl_proveedor = new JLabel("Nombre Proveedor");
+		lbl_proveedor.setBounds(69, 203, 118, 14);
+		panel.add(lbl_proveedor);
+		
+		JLabel lbl_precio = new JLabel("precio");
+		lbl_precio.setBounds(390, 130, 95, 14);
+		panel.add(lbl_precio);
+		
+		JLabel lbl_fondo = new JLabel("");
+		lbl_fondo.setIcon(new ImageIcon(Material_nuevomaterial.class.getResource("/img/fondoDientes.jpg")));
+		lbl_fondo.setBounds(0, 0, 678, 566);
+		panel.add(lbl_fondo);
 		
 	}
 	private void cargarProveedoresAlComboBox( JComboBox<String> comboBox) {
