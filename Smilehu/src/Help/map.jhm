@@ -1,0 +1,5 @@
+<map version="1.0">
+    <mapID target="aplicacion" url="html/index.html"></mapID>
+    <mapID target="introduccion" url="hmtl/page2.html"></mapID>
+    <mapID target="alta" url="html/page1.html"></mapID>
+</map>
