@@ -5,30 +5,30 @@ import java.util.Date;
 
 public class ConsultaCita  {
 
-	private int id_cita,id_tratamiento;
+	private int id_cita,id_tratamiento,id_paciente;
 	private String observaciones,hora;
-	private String fecha,nombrePaciente;
+	private String fecha;
 	
 	public ConsultaCita( int id_tratamiento, String observaciones, String fecha,
-			String hora,String nombrePaciente) {
+			String hora,int id_paciente) {
 		super();
 	
 		this.id_tratamiento = id_tratamiento;
 		this.observaciones = observaciones;
 		this.fecha = fecha;
 		this.hora = hora;
-		this.nombrePaciente=nombrePaciente;
+		this.id_paciente=id_paciente;
 	}
 
 	public ConsultaCita(int id_cita, int id_tratamiento, String observaciones, String hora, String fecha,
-			String nombrePaciente) {
+			int id_paciente) {
 		super();
 		this.id_cita = id_cita;
 		this.id_tratamiento = id_tratamiento;
 		this.observaciones = observaciones;
 		this.hora = hora;
 		this.fecha = fecha;
-		this.nombrePaciente = nombrePaciente;
+		this.id_paciente = id_paciente;
 	}
 
 	public ConsultaCita() {
@@ -75,18 +75,18 @@ public class ConsultaCita  {
 		this.fecha = fecha;
 	}
 
-	public String getNombrePaciente() {
-		return nombrePaciente;
+	public int getid_paciente() {
+		return id_paciente;
 	}
 
-	public void setNombrePaciente(String nombrePaciente) {
-		this.nombrePaciente = nombrePaciente;
+	public void setid_paciente(int id_paciente) {
+		this.id_paciente = id_paciente;
 	}
 
 	@Override
 	public String toString() {
 		return "ConsultaCita [id_cita=" + id_cita + ", id_tratamiento=" + id_tratamiento + ", observaciones="
-				+ observaciones + ", hora=" + hora + ", fecha=" + fecha + ", nombrePaciente=" + nombrePaciente + "]";
+				+ observaciones + ", hora=" + hora + ", fecha=" + fecha + ", nombrePaciente=" + id_paciente + "]";
 	}
 
 	

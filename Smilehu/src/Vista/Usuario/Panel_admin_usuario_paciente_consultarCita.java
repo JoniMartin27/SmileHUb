@@ -204,7 +204,7 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 		// Asegurarse de que la consultaCita no sea null antes de agregar la fila
 		if (consultaCita != null) {
 			Object[] fila = { consultaCita.getId_cita(),consultaCita.getId_tratamiento(), consultaCita.getObservaciones(),
-					consultaCita.getFecha(), consultaCita.getHora(),consultaCita.getNombrePaciente() };
+					consultaCita.getFecha(), consultaCita.getHora(),consultaCita.getid_paciente() };
 			modeloTabla.addRow(fila);
 		}
 
@@ -228,12 +228,12 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 			String observaciones = (String) table.getValueAt(filaSeleccionada, 2);
 			String fecha = (String) table.getValueAt(filaSeleccionada, 3);
 			String hora = (String) table.getValueAt(filaSeleccionada, 4);
-			String paciente = (String) table.getValueAt(filaSeleccionada, 5);
+			int paciente = (int) table.getValueAt(filaSeleccionada, 5);
 
 			// Crear un objeto Cita con los valores obtenidos
 			ConsultaCita cita = new ConsultaCita();
 			cita.setId_cita(idCita);
-			cita.setNombrePaciente(paciente);
+			cita.setid_paciente(paciente);
 			cita.setId_tratamiento(idTratamiento);
 			cita.setObservaciones(observaciones);
 			cita.setFecha(fecha);

@@ -35,7 +35,7 @@ import com.toedter.calendar.JDateChooser;
 public class Panel_admin_usuario_crearcita extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
+	private JTextField tf_nombre;
 	private JDesktopPane miDesktopPane;
 
 	/**
@@ -118,7 +118,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		btn_BuscarPaciente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				cargarPacientes(textField.getText(), cB_nombrePaciente);
+				cargarPacientes(tf_nombre.getText(), cB_nombrePaciente);
 
 			}
 		});
@@ -131,10 +131,10 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		lbl_hora.setBounds(551, 137, 46, 14);
 		panel.add(lbl_hora);
 
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(201, 38, 176, 20);
-		panel.add(textField);
+		tf_nombre = new JTextField();
+		tf_nombre.setColumns(10);
+		tf_nombre.setBounds(201, 38, 176, 20);
+		panel.add(tf_nombre);
 
 		JLabel lbl_tratamiento = new JLabel("Tratamiento");
 		lbl_tratamiento.setForeground(Color.BLACK);
@@ -186,17 +186,35 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 
 				System.out.println(formattedDate);
 				String selectedTime = (String) cb_hora.getSelectedItem();
-				String paciente = (String) cB_nombrePaciente.getSelectedItem();
-				System.out.println(paciente);
+				String texto;
+				String nombre="";
+				String apellido="";
+				String[] partes;
+				// recojo los datos del comboBox
+				texto = (String) cB_nombrePaciente.getSelectedItem();
+				// divide el string comlpeto del comboBox en nombre y apellidos
+				 if (texto != null) {
+				         partes = texto.split(" ", 2);
+				if (partes.length >= 2) {
+					// Guardar las partes en variables
+					nombre = partes[0];
+					apellido = partes[1];
+				}}
+				
+			
+				
+				
+	
 
 				if (!existeCita(formattedDate, selectedTime)) {
 					try {
-						String nombre = (String) cb_Tratamiento.getSelectedItem();
+						Paciente paciente =ConexionMySQL.buscarPacientes(nombre,apellido);
+						
 						Tratamiento tratamiento = ConexionMySQL.buscarTratamiento(nombre);
 						int id = tratamiento.getIdTratamiento();
 						System.out.println(formattedDate);
 						ConsultaCita cita = new ConsultaCita(id,tA_Observaciones.getText(),formattedDate,
-								selectedTime,paciente);
+								selectedTime,paciente.getIdUsuario());
 						
 						ConexionMySQL.insertarCita(cita);
 					} catch (SQLException e1) {
@@ -255,6 +273,8 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		return exists;
 	}
 
+	
+	//Cargar materiales al combobox
 	private void cargarMateriales(JComboBox<String> comboBox) {
 		// Limpiar ComboBox antes de cargar nuevos datos
 		comboBox.removeAllItems();
@@ -285,6 +305,8 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		}
 	}
 
+	
+	//Cargar tratamientos al combobox
 	private void cargarTratamientos(JComboBox<String> comboBox) {
 		// Limpiar ComboBox antes de cargar nuevos datos
 		comboBox.removeAllItems();
@@ -315,6 +337,8 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		}
 	}
 
+	
+	//Cargar pacientes al combobox
 	private void cargarPacientes(String nombre, JComboBox<String> comboBox) {
 		// Limpiar ComboBox antes de cargar nuevos datos
 		comboBox.removeAllItems();

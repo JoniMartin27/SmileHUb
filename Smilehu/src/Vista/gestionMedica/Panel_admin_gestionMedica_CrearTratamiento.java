@@ -7,10 +7,21 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JTable;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import Conexion.ConexionMySQL;
+import Modelo.Especialidad;
+import Modelo.Tratamiento;
+
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.List;
+import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class Panel_admin_gestionMedica_CrearTratamiento extends JInternalFrame {
 
@@ -18,7 +29,6 @@ public class Panel_admin_gestionMedica_CrearTratamiento extends JInternalFrame {
 	private JTable table;
 	private JTextField tf_NombreTratamiento;
 	private JTextField tf_PrecioTratamiento;
-	private JTextField tf_DuracionTratamiento;
 	private JDesktopPane miDesktopPane;
 
 	/**
@@ -54,6 +64,17 @@ public class Panel_admin_gestionMedica_CrearTratamiento extends JInternalFrame {
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
+		JComboBox<String> cb_especialidad = new JComboBox<>();
+		cb_especialidad.setBounds(225, 262, 127, 20);
+		panel.add(cb_especialidad);
+		
+		
+		//Llenamos el comboBox de especialidad con las especialidades
+		cargarEspecialidad(cb_especialidad);
+		
+		
+		
+		
 		table = new JTable();
 		table.setBounds(694, 132, 244, 275);
 		panel.add(table);
@@ -76,27 +97,87 @@ public class Panel_admin_gestionMedica_CrearTratamiento extends JInternalFrame {
 		panel.add(tf_PrecioTratamiento);
 		tf_PrecioTratamiento.setColumns(10);
 		
-		JLabel lbl_DuracionTratamiento = new JLabel("Duracion del Tratamiento");
-		lbl_DuracionTratamiento.setBounds(55, 266, 160, 14);
-		panel.add(lbl_DuracionTratamiento);
-		
-		tf_DuracionTratamiento = new JTextField();
-		tf_DuracionTratamiento.setColumns(10);
-		tf_DuracionTratamiento.setBounds(225, 263, 127, 20);
-		panel.add(tf_DuracionTratamiento);
+		JLabel lbl_Especialidad = new JLabel("Especialidad");
+		lbl_Especialidad.setBounds(55, 266, 160, 14);
+		panel.add(lbl_Especialidad);
 		
 		JButton btn_CrearTratamiento = new JButton("Crear Tratamiento");
 		btn_CrearTratamiento.setBounds(276, 362, 153, 23);
+		btn_CrearTratamiento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				//Creamos un objeto de especialidad para pasarle los valores nombre e id, para des`pues insetrtarlos en la tabla tratamiento
+				Especialidad esp=new Especialidad();
+				//Conversión String a int de tratamiento
+				double precio=Double.parseDouble(tf_PrecioTratamiento.getText());
+				
+				//Buscamos la especialidad elegida en la base de datos
+				try {
+					esp=ConexionMySQL.buscarEspecialidad(cb_especialidad.getSelectedItem().toString());
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				//Creamos el objeto de tratamiento para insertarlo
+				Tratamiento tratamiento =new Tratamiento(esp.getIdEspecialidad(),precio,tf_NombreTratamiento.getText());
+				try {
+					ConexionMySQL.conectar();//Conectamos a la base de datos
+					ConexionMySQL.insertarTratamiento(tratamiento);//Insertamos en la base de datos
+					JOptionPane.showMessageDialog(btn_CrearTratamiento, "Tratamiento correctamente creado", "Error",
+							JOptionPane.INFORMATION_MESSAGE);
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(btn_CrearTratamiento, "Tratamiento no insertado", "Error",
+							JOptionPane.ERROR_MESSAGE);
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		panel.add(btn_CrearTratamiento);
 		
 		JLabel lblNewLabel_1 = new JLabel("Listado Tratamientos");
-		lblNewLabel_1.setBounds(811, 81, 144, 14);
+		lblNewLabel_1.setBounds(694, 81, 144, 14);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(Panel_admin_gestionMedica_CrearTratamiento.class.getResource("/img/fondoDientes.jpg")));
 		lblNewLabel.setBounds(0, 0, 1018, 546);
+		lblNewLabel.setIcon(new ImageIcon(Panel_admin_gestionMedica_CrearTratamiento.class.getResource("/img/fondoDientes.jpg")));
 		panel.add(lblNewLabel);
 
 	}
+	
+	//Cargar especialidad al combobox
+	private void cargarEspecialidad(JComboBox<String> comboBox) {
+		// Limpiar ComboBox antes de cargar nuevos datos
+		comboBox.removeAllItems();
+
+		try {
+
+			// Obtener pacientes desde la base de datos
+			ConexionMySQL.conectar();
+
+			// Supongamos que tienes un método para obtener pacientes por nombre
+			List<Especialidad> especialidades = ConexionMySQL.buscarEspecialidad();
+
+			// Agregar nombre y apellidos de cada paciente al ComboBox
+			for (Especialidad especialidad : especialidades) {
+
+				comboBox.addItem(especialidad.getNombreEspecialidad());
+			}
+
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Error al cargar tratamientos", "Error", JOptionPane.ERROR_MESSAGE);
+		} finally {
+			try {
+				ConexionMySQL.desconectar();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+	
 }
