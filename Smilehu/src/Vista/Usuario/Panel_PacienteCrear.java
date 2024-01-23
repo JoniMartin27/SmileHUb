@@ -133,7 +133,7 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		g1.add(rdbtn_femenino);
 		
 		JButton btn_CrearPaciente = new JButton("Crear Paciente");
-		btn_CrearPaciente.setBounds(413, 479, 126, 23);
+		btn_CrearPaciente.setBounds(448, 400, 126, 23);
 		panel.add(btn_CrearPaciente);
 		
 		tf_nombre = new JTextField();
