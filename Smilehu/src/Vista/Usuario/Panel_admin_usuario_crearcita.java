@@ -181,7 +181,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 
 				// usar SimpleDateFormat para convertir a String
 
-				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 				String formattedDate = dateFormat.format(selectedDate);
 
 				System.out.println(formattedDate);
