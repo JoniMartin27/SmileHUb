@@ -449,6 +449,30 @@ public class ConexionMySQL {
 
         return tratamiento;
     }
+     public static StockMaterial buscarMaterial(String nombre) throws SQLException {
+
+         Statement stmt=connection.createStatement();
+         ResultSet rset=stmt.executeQuery("SELECT * from tratamiento where nombre  ='"+nombre+"'");//consulta
+
+         StockMaterial material=null;
+         if (rset.next()) {
+       
+        int id_tratamiento=rset.getInt("id_material");
+        int id_especialidad=rset.getInt("id_proveedor"); 
+        int disponible=rset.getInt("disponible");  
+        int solicitado=rset.getInt("solicitado");  
+        int bajo_pedido=rset.getInt("bajo_pedido");  
+        double precio=rset.getDouble("precio");  
+        int id_paciente=rset.getInt("id_paciente");  
+        
+        material=new Tratamiento(id_tratamiento,id_especialidad,nombre,precio);
+         }
+         stmt.close();
+  
+
+        return material;
+    }
+     
      
      
      

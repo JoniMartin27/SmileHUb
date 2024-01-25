@@ -9,8 +9,7 @@ public class ConsultaCita  {
 	private String observaciones,hora;
 	private String fecha;
 	
-	public ConsultaCita( int id_tratamiento, String observaciones, String fecha,
-			String hora,int id_paciente) {
+	public ConsultaCita( int id_tratamiento, String observaciones, String fecha,String hora,int id_paciente) {
 		super();
 	
 		this.id_tratamiento = id_tratamiento;
@@ -30,6 +29,7 @@ public class ConsultaCita  {
 		this.fecha = fecha;
 		this.id_paciente = id_paciente;
 	}
+
 
 	public ConsultaCita() {
 		super();

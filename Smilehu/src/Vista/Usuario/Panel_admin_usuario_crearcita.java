@@ -181,7 +181,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 
 				// usar SimpleDateFormat para convertir a String
 
-				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 				String formattedDate = dateFormat.format(selectedDate);
 
 				System.out.println(formattedDate);
@@ -211,10 +211,10 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 						Paciente paciente =ConexionMySQL.buscarPacientes(nombre,apellido);
 						
 						Tratamiento tratamiento = ConexionMySQL.buscarTratamiento(nombre);
-						int id = tratamiento.getIdTratamiento();
-						System.out.println(id);
+						StockMaterial material =ConexionMySQL.buscarMaterial(nombre);
+					
 						System.out.println(formattedDate);
-						ConsultaCita cita = new ConsultaCita(id,tA_Observaciones.getText(),formattedDate,
+						ConsultaCita cita = new ConsultaCita(tratamiento.getIdTratamiento(),formattedDate,
 								selectedTime,paciente.getIdUsuario());
 						
 						ConexionMySQL.insertarCita(cita);
@@ -266,6 +266,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 				if (statement != null)
 					statement.close();
 				ConexionMySQL.desconectar();
+				
 			} catch (SQLException ex) {
 				ex.printStackTrace();
 			}
