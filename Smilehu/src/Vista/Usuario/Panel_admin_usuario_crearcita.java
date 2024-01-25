@@ -212,6 +212,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 						
 						Tratamiento tratamiento = ConexionMySQL.buscarTratamiento(nombre);
 						int id = tratamiento.getIdTratamiento();
+						System.out.println(id);
 						System.out.println(formattedDate);
 						ConsultaCita cita = new ConsultaCita(id,tA_Observaciones.getText(),formattedDate,
 								selectedTime,paciente.getIdUsuario());

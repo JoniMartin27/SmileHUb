@@ -18,16 +18,11 @@ import Vista.Usuario.Panel_PacienteCreado;
 import Vista.Usuario.Panel_PacienteCrear;
 import Vista.Usuario.Panel_ProveedorCreado;
 import Vista.Usuario.Panel_ProveedorCrear;
-import Vista.Usuario.Panel_admin_usuario_generarInforme;
+
 import Vista.Usuario.Panel_admin_usuario_paciente_consultarCita;
-import Vista.gestionEconomica.JDialog_Admin_Gestion_Economica_Fraccionado;
-import Vista.gestionEconomica.JDialog_admin_gestionEconomica_tipoPago;
-import Vista.gestionEconomica.Panel_admin_gestionEconomica;
-import Vista.gestionEconomica.Panel_admin_gestionEconomica_GenerarInforme;
+
 import Vista.gestionMedica.Panel_admin_gestionMedica_Inicio;
-import ayudas.Panel_Admin_Usuario_Paciente;
-import ayudas.Panel_admin_GestEconomica;
-import ayudas.Panel_admin_Material;
+
 
 import java.awt.Color;
 import java.awt.Component;
@@ -46,28 +41,12 @@ import javax.swing.JMenuBar;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.CardLayout;
-import javax.swing.BoxLayout;
-import javax.swing.SpringLayout;
-import net.miginfocom.swing.MigLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import com.jgoodies.forms.layout.RowSpec;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JTabbedPane;
+
 
 public class Inicio_Panel_Administrador extends JFrame {
 
