@@ -57,6 +57,22 @@ public class Doctor_administrador {
 
 
 
+	public Doctor_administrador(int id_doctor_administrador, int id_especialidad, String nombre, String apellidos) {
+		super();
+		this.id_doctor_administrador = id_doctor_administrador;
+		this.id_especialidad = id_especialidad;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+	}
+
+
+
+
+
+
+
+
+
 	public int getId_doctor_administrador() {
 		return id_doctor_administrador;
 	}

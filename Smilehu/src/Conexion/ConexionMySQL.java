@@ -499,9 +499,9 @@ public class ConexionMySQL {
      
    //COMBOBOX Doctores Crear cita
      
-     public static List<Doctor_administrador> buscarDoctor(int tratamiento) throws SQLException {
+     public static List<Doctor_administrador> buscarDoctorCita(int id_especialidad) throws SQLException {
     	 List<Doctor_administrador> combo = new ArrayList<>();
-    	 String query = "SELECT * FROM doctor_administrador WHERE tipo_usuario='1'";
+    	 String query = "SELECT * FROM doctor_administrador WHERE id_especialidad='"+id_especialidad+"'";
     	 
     	 try (PreparedStatement pstmt = connection.prepareStatement(query)) {
     		
@@ -509,20 +509,11 @@ public class ConexionMySQL {
     		 
     		 while (rset.next()) {
     			 int id_doctor_administrador=rset.getInt("id_doctor_administrador");
-    		        int id_especialidad=rset.getInt("id_especialidad");
-    		        String direccion=rset.getString("direccion");
     		        String nombre=rset.getString("nombre");
     		        String apellidos=rset.getString("apellidos");
-    		        String fecha_alta=rset.getString("fecha_alta");
-    		        int estado_baja=rset.getInt("estado_baja");
-    		        String genero=rset.getString("genero");
-    		        String pass=rset.getString("pass");
-    		        String tipo_usuario=rset.getString("tipo_usuario");
-    		        String teléfono=rset.getString("telefono");
-    		        String fecha_nacimiento=rset.getString("fecha_nacimiento");
-    		        int activo=rset.getInt("activo");
+
     			 
-    		        Doctor_administrador doctor=new Doctor_administrador(id_doctor_administrador,id_especialidad,nombre,apellidos,direccion,fecha_alta,estado_baja,genero,pass,tipo_usuario,teléfono,fecha_nacimiento,activo);
+    		        Doctor_administrador doctor=new Doctor_administrador(id_doctor_administrador,id_especialidad,nombre,apellidos);
     		        combo.add(doctor);
     		 }
     	 }

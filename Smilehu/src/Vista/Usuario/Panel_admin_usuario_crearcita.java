@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import Conexion.ConexionMySQL;
 import Modelo.ConsultaCita;
 import Modelo.Doctor_administrador;
+import Modelo.Especialidad;
 import Modelo.Paciente;
 import Modelo.StockMaterial;
 import Modelo.Tratamiento;
@@ -84,9 +85,9 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		cB_especialista.setBounds(284, 254, 176, 23);
 		panel.setLayout(null);
 		
-		JLabel lbl_doctor = new JLabel("Material");
+		JLabel lbl_doctor = new JLabel("Doctor");
 		lbl_doctor.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_doctor.setBounds(63, 160, 105, 23);
+		lbl_doctor.setBounds(65, 163, 105, 23);
 		panel.add(lbl_doctor);
 		
 		JComboBox<String> cb_doctor = new JComboBox<String>();
@@ -158,13 +159,30 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		lbl_nombrepaciente.setBounds(64, 41, 105, 14);
 		panel.add(lbl_nombrepaciente);
 
-		JLabel lbl_fecha_1 = new JLabel("Fecha");
-		lbl_fecha_1.setForeground(Color.BLACK);
-		lbl_fecha_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_fecha_1.setBounds(688, 137, 46, 14);
-		panel.add(lbl_fecha_1);
+	
 
 		JComboBox<String> cb_Tratamiento = new JComboBox<>();
+		cb_Tratamiento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cb_doctor.removeAllItems();
+				 
+				try {
+					
+					Tratamiento tratamiento = ConexionMySQL.buscarTratamiento(cb_Tratamiento.getSelectedItem().toString());
+					cargarDoctores(tratamiento.getId_especialidad(),cb_doctor);
+				
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			
+				
+			}
+		});
+		
+
+		
+		
 		cb_Tratamiento.setBounds(203, 115, 176, 23);
 		panel.add(cb_Tratamiento);
 
@@ -196,6 +214,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 
 				System.out.println(formattedDate);
 				String selectedTime = (String) cb_hora.getSelectedItem();
+				
 				String texto;
 				String nombre="";
 				String apellido="";
@@ -240,7 +259,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 					
 						System.out.println(formattedDate);
 						ConsultaCita cita = new ConsultaCita(tratamiento.getIdTratamiento(),tA_Observaciones.getText(),doctor.getId_doctor_administrador(),selectedTime,formattedDate,
-								paciente.getIdUsuario());
+								paciente.getIdUsuario(),material.getIdMaterial());
 						
 						ConexionMySQL.insertarCita(cita);
 					} catch (SQLException e1) {
@@ -263,11 +282,18 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 
 	}
 
+	
+	
+	
+	
 	private static String[] getAvailableTimes() {
 		// Obtener las horas disponibles desde la base de datos o definirlas manualmente
 		return new String[] { "9:00 AM", "10:00 AM", "11:00 AM", "12:00 AM", "2:00 PM", "3:00 PM" };
 	}
 
+	
+	
+	
 	private static boolean existeCita(String date, String time) {
 		boolean exists = false;
 		PreparedStatement statement = null;
@@ -398,7 +424,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 	
 	
 	//Cargar doctores al combobox
-	private void cargarDoctores(int id_tratamiento, JComboBox<String> comboBox) {
+	private void cargarDoctores(int id_especialidad, JComboBox<String> comboBox) {
 		// Limpiar ComboBox antes de cargar nuevos datos
 		comboBox.removeAllItems();
 
@@ -408,17 +434,17 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 			ConexionMySQL.conectar();
 
 			// Supongamos que tienes un método para obtener pacientes por nombre
-			List<Paciente> pacientes = ConexionMySQL.buscarPacientes(nombre);
+			List<Doctor_administrador> doctores = ConexionMySQL.buscarDoctorCita(id_especialidad);
 
 			// Agregar nombre y apellidos de cada paciente al ComboBox
-			for (Paciente paciente : pacientes) {
-				String nombreCompleto = paciente.getNombre() + " " + paciente.getApellidos();
+			for (Doctor_administrador doctor : doctores) {
+				String nombreCompleto = doctor.getNombre() + " " + doctor.getApellidos();
 				comboBox.addItem(nombreCompleto);
 			}
 
 		} catch (SQLException | ClassNotFoundException ex) {
 			ex.printStackTrace();
-			JOptionPane.showMessageDialog(this, "Error al cargar pacientes", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Error al cargar doctores", "Error", JOptionPane.ERROR_MESSAGE);
 		} finally {
 			try {
 				ConexionMySQL.desconectar();
