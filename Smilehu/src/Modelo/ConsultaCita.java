@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class ConsultaCita  {
 
-	private int id_cita,id_tratamiento,id_paciente;
+	private int id_cita,id_tratamiento,id_paciente,id_doctor;
 	private String observaciones,hora;
 	private String fecha;
 	
@@ -24,6 +24,17 @@ public class ConsultaCita  {
 		super();
 		this.id_cita = id_cita;
 		this.id_tratamiento = id_tratamiento;
+		this.observaciones = observaciones;
+		this.hora = hora;
+		this.fecha = fecha;
+		this.id_paciente = id_paciente;
+	}
+	public ConsultaCita(int id_tratamiento, String observaciones,int id_doctor, String hora, String fecha,
+			int id_paciente) {
+		super();
+	
+		this.id_tratamiento = id_tratamiento;
+		this.id_doctor=id_doctor;
 		this.observaciones = observaciones;
 		this.hora = hora;
 		this.fecha = fecha;

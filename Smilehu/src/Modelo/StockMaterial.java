@@ -17,6 +17,7 @@ public class StockMaterial {
 	}
 	
 	
+	
 	public StockMaterial(String nombre, String nombreProveedor, int idMaterial, int disponible, int solicitado,
 			int bajoPedido, double precio) {
 		super();

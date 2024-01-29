@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import Conexion.ConexionMySQL;
 import Modelo.ConsultaCita;
+import Modelo.Doctor_administrador;
 import Modelo.Paciente;
 import Modelo.StockMaterial;
 import Modelo.Tratamiento;
@@ -83,6 +84,15 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		cB_especialista.setBounds(284, 254, 176, 23);
 		panel.setLayout(null);
 		
+		JLabel lbl_doctor = new JLabel("Material");
+		lbl_doctor.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_doctor.setBounds(63, 160, 105, 23);
+		panel.add(lbl_doctor);
+		
+		JComboBox<String> cb_doctor = new JComboBox<String>();
+		cb_doctor.setBounds(198, 163, 176, 23);
+		panel.add(cb_doctor);
+		
 		JLabel lblNewLabel = new JLabel("CREAR CITA");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		lblNewLabel.setBounds(10, 11, 193, 14);
@@ -94,20 +104,20 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 
 		JLabel lbl_observaciones = new JLabel("Observaciones");
 		lbl_observaciones.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_observaciones.setBounds(64, 314, 105, 14);
+		lbl_observaciones.setBounds(65, 329, 105, 14);
 		panel.add(lbl_observaciones);
 
 		JTextArea tA_Observaciones = new JTextArea();
-		tA_Observaciones.setBounds(64, 339, 253, 103);
+		tA_Observaciones.setBounds(66, 351, 253, 103);
 		panel.add(tA_Observaciones);
 
 		JComboBox<String> cb_material = new JComboBox<>();
-		cb_material.setBounds(201, 254, 176, 23);
+		cb_material.setBounds(201, 204, 176, 23);
 		panel.add(cb_material);
 
 		JLabel lbl_material = new JLabel("Material");
 		lbl_material.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_material.setBounds(64, 254, 105, 23);
+		lbl_material.setBounds(66, 201, 105, 23);
 		panel.add(lbl_material);
 
 		JComboBox<String> cB_nombrePaciente = new JComboBox<>();
@@ -139,7 +149,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		JLabel lbl_tratamiento = new JLabel("Tratamiento");
 		lbl_tratamiento.setForeground(Color.BLACK);
 		lbl_tratamiento.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_tratamiento.setBounds(64, 169, 105, 14);
+		lbl_tratamiento.setBounds(66, 119, 105, 14);
 		panel.add(lbl_tratamiento);
 
 		JLabel lbl_nombrepaciente = new JLabel("Nombre Paciente");
@@ -155,7 +165,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		panel.add(lbl_fecha_1);
 
 		JComboBox<String> cb_Tratamiento = new JComboBox<>();
-		cb_Tratamiento.setBounds(201, 165, 176, 23);
+		cb_Tratamiento.setBounds(203, 115, 176, 23);
 		panel.add(cb_Tratamiento);
 
 		JLabel lbl_fecha = new JLabel("Fecha");
@@ -201,7 +211,21 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 					apellido = partes[1];
 				}}
 				
-			
+				
+					String text="";
+					String name="";
+					String last_name="";
+					String[] slides = null;
+					// recojo los datos del comboBox
+					text = (String) cb_doctor.getSelectedItem();
+					// divide el string comlpeto del comboBox en nombre y apellidos
+					 if (text != null) {
+					         partes = text.split(" ", 2);
+					if (partes.length >= 2) {
+						// Guardar las partes en variables
+						name = slides[0];
+						last_name = slides[1];
+					}}
 				
 				
 	
@@ -212,10 +236,11 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 						
 						Tratamiento tratamiento = ConexionMySQL.buscarTratamiento(nombre);
 						StockMaterial material =ConexionMySQL.buscarMaterial(nombre);
+						Doctor_administrador doctor =ConexionMySQL.buscarDoctor(name, last_name);
 					
 						System.out.println(formattedDate);
-						ConsultaCita cita = new ConsultaCita(tratamiento.getIdTratamiento(),formattedDate,
-								selectedTime,paciente.getIdUsuario());
+						ConsultaCita cita = new ConsultaCita(tratamiento.getIdTratamiento(),tA_Observaciones.getText(),doctor.getId_doctor_administrador(),selectedTime,formattedDate,
+								paciente.getIdUsuario());
 						
 						ConexionMySQL.insertarCita(cita);
 					} catch (SQLException e1) {
@@ -370,4 +395,37 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 			}
 		}
 	}
+	
+	
+	//Cargar doctores al combobox
+	private void cargarDoctores(int id_tratamiento, JComboBox<String> comboBox) {
+		// Limpiar ComboBox antes de cargar nuevos datos
+		comboBox.removeAllItems();
+
+		try {
+
+			// Obtener pacientes desde la base de datos
+			ConexionMySQL.conectar();
+
+			// Supongamos que tienes un método para obtener pacientes por nombre
+			List<Paciente> pacientes = ConexionMySQL.buscarPacientes(nombre);
+
+			// Agregar nombre y apellidos de cada paciente al ComboBox
+			for (Paciente paciente : pacientes) {
+				String nombreCompleto = paciente.getNombre() + " " + paciente.getApellidos();
+				comboBox.addItem(nombreCompleto);
+			}
+
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Error al cargar pacientes", "Error", JOptionPane.ERROR_MESSAGE);
+		} finally {
+			try {
+				ConexionMySQL.desconectar();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+	
 }
