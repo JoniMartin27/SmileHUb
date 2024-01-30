@@ -22,6 +22,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import java.awt.Font;
 
 public class Panel_admin_gestionMedica_CrearTratamiento extends JInternalFrame {
 
@@ -65,7 +66,8 @@ public class Panel_admin_gestionMedica_CrearTratamiento extends JInternalFrame {
 		panel.setLayout(null);
 		
 		JComboBox<String> cb_especialidad = new JComboBox<>();
-		cb_especialidad.setBounds(225, 262, 127, 20);
+		cb_especialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
+		cb_especialidad.setBounds(225, 262, 160, 20);
 		panel.add(cb_especialidad);
 		
 		
@@ -80,29 +82,35 @@ public class Panel_admin_gestionMedica_CrearTratamiento extends JInternalFrame {
 		panel.add(table);
 		
 		JLabel lbl_NombreTratamiento = new JLabel("Nombre Tratamiento");
-		lbl_NombreTratamiento.setBounds(53, 124, 140, 14);
+		lbl_NombreTratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_NombreTratamiento.setBounds(53, 124, 162, 14);
 		panel.add(lbl_NombreTratamiento);
 		
 		tf_NombreTratamiento = new JTextField();
-		tf_NombreTratamiento.setBounds(225, 121, 127, 20);
+		tf_NombreTratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
+		tf_NombreTratamiento.setBounds(225, 121, 160, 20);
 		panel.add(tf_NombreTratamiento);
 		tf_NombreTratamiento.setColumns(10);
 		
 		JLabel lbl_PrecioTratamiento = new JLabel("Precio Tratamiento");
-		lbl_PrecioTratamiento.setBounds(55, 195, 118, 14);
+		lbl_PrecioTratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_PrecioTratamiento.setBounds(55, 195, 160, 14);
 		panel.add(lbl_PrecioTratamiento);
 		
 		tf_PrecioTratamiento = new JTextField();
-		tf_PrecioTratamiento.setBounds(225, 192, 127, 20);
+		tf_PrecioTratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
+		tf_PrecioTratamiento.setBounds(225, 192, 160, 20);
 		panel.add(tf_PrecioTratamiento);
 		tf_PrecioTratamiento.setColumns(10);
 		
 		JLabel lbl_Especialidad = new JLabel("Especialidad");
+		lbl_Especialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_Especialidad.setBounds(55, 266, 160, 14);
 		panel.add(lbl_Especialidad);
 		
 		JButton btn_CrearTratamiento = new JButton("Crear Tratamiento");
-		btn_CrearTratamiento.setBounds(276, 362, 153, 23);
+		btn_CrearTratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btn_CrearTratamiento.setBounds(276, 362, 197, 23);
 		btn_CrearTratamiento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -139,7 +147,8 @@ public class Panel_admin_gestionMedica_CrearTratamiento extends JInternalFrame {
 		panel.add(btn_CrearTratamiento);
 		
 		JLabel lblNewLabel_1 = new JLabel("Listado Tratamientos");
-		lblNewLabel_1.setBounds(694, 81, 144, 14);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_1.setBounds(733, 107, 205, 14);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("New label");

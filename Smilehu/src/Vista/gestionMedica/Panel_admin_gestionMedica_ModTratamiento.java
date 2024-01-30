@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class Panel_admin_gestionMedica_ModTratamiento extends JInternalFrame {
 
@@ -52,44 +53,56 @@ public class Panel_admin_gestionMedica_ModTratamiento extends JInternalFrame {
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
+		JLabel lbl_tratamientos = new JLabel("Listado tratamientos");
+		lbl_tratamientos.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_tratamientos.setBounds(770, 50, 163, 14);
+		panel.add(lbl_tratamientos);
+		
 		table = new JTable();
-		table.setBounds(594, 98, 148, 289);
+		table.setBounds(770, 97, 195, 289);
 		panel.add(table);
 		
 		JLabel lbl_NombreTratamiento = new JLabel("Nombre Tratamiento");
-		lbl_NombreTratamiento.setBounds(69, 126, 167, 14);
+		lbl_NombreTratamiento.setBounds(178, 130, 195, 14);
+		lbl_NombreTratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panel.add(lbl_NombreTratamiento);
 		
 		tf_NombreTratamiento = new JTextField();
-		tf_NombreTratamiento.setBounds(246, 123, 119, 20);
+		tf_NombreTratamiento.setBounds(383, 127, 174, 20);
+		tf_NombreTratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panel.add(tf_NombreTratamiento);
 		tf_NombreTratamiento.setColumns(10);
 		
 		JLabel lbl_PrecioTratamiento = new JLabel("Precio Tratamiento");
-		lbl_PrecioTratamiento.setBounds(71, 183, 148, 14);
+		lbl_PrecioTratamiento.setBounds(180, 187, 193, 14);
+		lbl_PrecioTratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panel.add(lbl_PrecioTratamiento);
 		
 		tf_PrecioTratamiento = new JTextField();
-		tf_PrecioTratamiento.setBounds(246, 180, 119, 20);
+		tf_PrecioTratamiento.setBounds(383, 184, 174, 20);
+		tf_PrecioTratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panel.add(tf_PrecioTratamiento);
 		tf_PrecioTratamiento.setColumns(10);
 		
 		JLabel lbl_DuracionTratamiento = new JLabel("Duracion del Tratamiento");
-		lbl_DuracionTratamiento.setBounds(71, 248, 165, 14);
+		lbl_DuracionTratamiento.setBounds(180, 252, 193, 14);
+		lbl_DuracionTratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panel.add(lbl_DuracionTratamiento);
 		
 		tf_DuracionTratamiento = new JTextField();
+		tf_DuracionTratamiento.setBounds(383, 249, 174, 20);
+		tf_DuracionTratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		tf_DuracionTratamiento.setColumns(10);
-		tf_DuracionTratamiento.setBounds(246, 245, 119, 20);
 		panel.add(tf_DuracionTratamiento);
 		
 		JButton btn_ModificarTratamiento = new JButton("Modificar Tratamiento");
-		btn_ModificarTratamiento.setBounds(196, 315, 224, 23);
+		btn_ModificarTratamiento.setBounds(429, 363, 224, 23);
+		btn_ModificarTratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panel.add(btn_ModificarTratamiento);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(Panel_admin_gestionMedica_ModTratamiento.class.getResource("/img/fondoDientes.jpg")));
 		lblNewLabel.setBounds(0, 0, 1018, 549);
+		lblNewLabel.setIcon(new ImageIcon(Panel_admin_gestionMedica_ModTratamiento.class.getResource("/img/fondoDientes.jpg")));
 		panel.add(lblNewLabel);
 
 	}

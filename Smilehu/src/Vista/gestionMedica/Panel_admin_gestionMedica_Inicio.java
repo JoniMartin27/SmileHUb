@@ -25,6 +25,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
 
@@ -66,6 +67,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         panel.setLayout(null);
 
         JButton btn_BorrarEspecialidad = new JButton("Borrar");
+        btn_BorrarEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
         btn_BorrarEspecialidad.setBounds(141, 403, 125, 23);
         panel.add(btn_BorrarEspecialidad);
 
@@ -121,6 +123,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         
         
         JButton btn_ModificarEspecialidad = new JButton("Modificar");
+        btn_ModificarEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
         btn_ModificarEspecialidad.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Panel_admin_gestionMedica_ModEspecialidad ModEspecialidad = new Panel_admin_gestionMedica_ModEspecialidad();
@@ -138,6 +141,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         panel.add(btn_ModificarEspecialidad);
 
         JButton btn_Borrar = new JButton("Borrar");
+        btn_Borrar.setFont(new Font("Tahoma", Font.BOLD, 14));
         btn_Borrar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         	}
@@ -146,6 +150,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         panel.add(btn_Borrar);
 
         JButton btn_CrearEspecialidad = new JButton("Crear");
+        btn_CrearEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
         btn_CrearEspecialidad.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Panel_admin_gestionMedica_CrearEspecialidad CrearEspecialidad = new Panel_admin_gestionMedica_CrearEspecialidad();
@@ -163,6 +168,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         panel.add(btn_CrearEspecialidad);
 
         JButton btn_Crear = new JButton("Crear");
+        btn_Crear.setFont(new Font("Tahoma", Font.BOLD, 14));
         btn_Crear.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Panel_admin_gestionMedica_CrearTratamiento CrearTratamiento = new Panel_admin_gestionMedica_CrearTratamiento();
@@ -182,6 +188,7 @@ public class Panel_admin_gestionMedica_Inicio extends JInternalFrame {
         panel.add(btn_Crear);
 
         JButton btn_Modificar = new JButton("Modificar");
+        btn_Modificar.setFont(new Font("Tahoma", Font.BOLD, 14));
         btn_Modificar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Panel_admin_gestionMedica_ModTratamiento ModTratamiento = new Panel_admin_gestionMedica_ModTratamiento();

@@ -28,6 +28,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class Panel_admin_gestionMedica_CrearEspecialidad extends JInternalFrame {
 
@@ -71,8 +72,14 @@ public class Panel_admin_gestionMedica_CrearEspecialidad extends JInternalFrame 
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
+		JLabel lbl_especialidad = new JLabel("Crear especialidad");
+		lbl_especialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_especialidad.setBounds(44, 11, 165, 14);
+		panel.add(lbl_especialidad);
+		
 		JComboBox<String> cb_doctor = new JComboBox<>();
-		cb_doctor.setBounds(228, 206, 115, 20);
+		cb_doctor.setFont(new Font("Tahoma", Font.BOLD, 14));
+		cb_doctor.setBounds(228, 206, 151, 20);
 		panel.add(cb_doctor);
 		
 		
@@ -109,19 +116,23 @@ public class Panel_admin_gestionMedica_CrearEspecialidad extends JInternalFrame 
 		
 		
 		JLabel lbl_NombreEspecialidad = new JLabel("Nombre Especialidad");
-		lbl_NombreEspecialidad.setBounds(70, 156, 127, 14);
+		lbl_NombreEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_NombreEspecialidad.setBounds(63, 156, 165, 14);
 		panel.add(lbl_NombreEspecialidad);
 		
 		tf_NombreEspecialidad = new JTextField();
-		tf_NombreEspecialidad.setBounds(228, 153, 115, 20);
+		tf_NombreEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
+		tf_NombreEspecialidad.setBounds(228, 153, 151, 20);
 		panel.add(tf_NombreEspecialidad);
 		tf_NombreEspecialidad.setColumns(10);
 		
 		JLabel lbl_Doctor = new JLabel("Doctor");
-		lbl_Doctor.setBounds(70, 210, 118, 14);
+		lbl_Doctor.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_Doctor.setBounds(63, 210, 165, 14);
 		panel.add(lbl_Doctor);
 		
 		JButton btn_CrearEspecialidad = new JButton("Crear Especialidad");
+		btn_CrearEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_CrearEspecialidad.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        String nombre = null;
@@ -252,5 +263,4 @@ public class Panel_admin_gestionMedica_CrearEspecialidad extends JInternalFrame 
 				}
 			}
 		}
-	  
 }

@@ -76,6 +76,7 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_guardarOdon = new JButton("Guardar");
+		btn_guardarOdon.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_guardarOdon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -479,8 +480,8 @@ public class Odontograma extends JInternalFrame {
 		panel.add(ta_observaciones);
 		
 		JLabel lbl_nombre = new JLabel("Nombre Diente");
-		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_nombre.setBounds(609, 36, 106, 14);
+		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_nombre.setBounds(609, 36, 137, 14);
 		panel.add(lbl_nombre);
 		
 		JTextField tf_estado = new JTextField();
@@ -489,23 +490,25 @@ public class Odontograma extends JInternalFrame {
 		tf_estado.setColumns(10);
 		
 		JLabel lbl_estado = new JLabel("Estado");
-		lbl_estado.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_estado.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_estado.setBounds(751, 36, 72, 14);
 		panel.add(lbl_estado);
 		
 		JLabel lbl_protesis = new JLabel("Prótesis");
-		lbl_protesis.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_protesis.setBounds(609, 102, 72, 14);
+		lbl_protesis.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_protesis.setBounds(609, 102, 91, 14);
 		panel.add(lbl_protesis);
 		
 		
 		
 		
 		JRadioButton rdbtn_si = new JRadioButton("Si");
+		rdbtn_si.setFont(new Font("Tahoma", Font.BOLD, 14));
 		rdbtn_si.setBounds(700, 98, 39, 23);
 		panel.add(rdbtn_si);
 		
 		JRadioButton rdbtn_no = new JRadioButton("No");
+		rdbtn_no.setFont(new Font("Tahoma", Font.BOLD, 14));
 		rdbtn_no.setBounds(753, 98, 48, 23);
 		panel.add(rdbtn_no);
 		
@@ -513,8 +516,8 @@ public class Odontograma extends JInternalFrame {
         btn.add(rdbtn_no);
         
         JLabel lbl_observaciones = new JLabel("Observaciones");
-        lbl_observaciones.setFont(new Font("Tahoma", Font.BOLD, 11));
-        lbl_observaciones.setBounds(609, 200, 132, 14);
+        lbl_observaciones.setFont(new Font("Tahoma", Font.BOLD, 14));
+        lbl_observaciones.setBounds(609, 200, 137, 14);
         panel.add(lbl_observaciones);
         
         JLabel lblNewLabel = new JLabel("");

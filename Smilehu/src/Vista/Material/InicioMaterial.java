@@ -25,6 +25,7 @@ import Vista.gestionEconomica.JDialog_admin_gestionEconomica_Mixto;
 import Vista.gestionMedica.Odontograma;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class InicioMaterial extends JInternalFrame {
 
@@ -68,7 +69,8 @@ public class InicioMaterial extends JInternalFrame {
 		panel.setLayout(null);
 		
 		tf_buscar = new JTextField();
-		tf_buscar.setBounds(82, 154, 117, 23);
+		tf_buscar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		tf_buscar.setBounds(82, 154, 155, 23);
 		panel.add(tf_buscar);
 		tf_buscar.setColumns(10);
 		
@@ -114,6 +116,7 @@ public class InicioMaterial extends JInternalFrame {
 		
 		
 		JButton btn_solicitudes = new JButton("Solicitudes");
+		btn_solicitudes.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_solicitudes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -124,10 +127,11 @@ public class InicioMaterial extends JInternalFrame {
 				}
 			}
 		});
-		btn_solicitudes.setBounds(82, 25, 117, 23);
+		btn_solicitudes.setBounds(82, 25, 155, 23);
 		panel.add(btn_solicitudes);
 		
 		JButton btn_buscar = new JButton("buscar");
+		btn_buscar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_buscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -164,10 +168,11 @@ public class InicioMaterial extends JInternalFrame {
 				
 			}
 		});
-		btn_buscar.setBounds(237, 154, 117, 23);
+		btn_buscar.setBounds(275, 154, 155, 23);
 		panel.add(btn_buscar);
 		
 		JButton btn_stock = new JButton("Stock");
+		btn_stock.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_stock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -178,7 +183,7 @@ public class InicioMaterial extends JInternalFrame {
 				}
 			}
 		});
-		btn_stock.setBounds(237, 25, 117, 23);
+		btn_stock.setBounds(275, 25, 155, 23);
 		panel.add(btn_stock);
 		
 		JLabel lblNewLabel = new JLabel("New label");

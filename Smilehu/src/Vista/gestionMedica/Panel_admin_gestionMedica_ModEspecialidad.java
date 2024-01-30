@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class Panel_admin_gestionMedica_ModEspecialidad extends JInternalFrame {
 
@@ -53,11 +54,12 @@ public class Panel_admin_gestionMedica_ModEspecialidad extends JInternalFrame {
 		panel.setLayout(null);
 		
 		table = new JTable();
-		table.setBounds(622, 97, 115, 328);
+		table.setBounds(622, 97, 219, 328);
 		panel.add(table);
 		
 		JLabel lbl_NombreEspecialidad = new JLabel("Nombre Especialidad");
-		lbl_NombreEspecialidad.setBounds(96, 158, 129, 14);
+		lbl_NombreEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_NombreEspecialidad.setBounds(87, 158, 157, 14);
 		panel.add(lbl_NombreEspecialidad);
 		
 		tf_NombreEspecialidad = new JTextField();
@@ -66,7 +68,8 @@ public class Panel_admin_gestionMedica_ModEspecialidad extends JInternalFrame {
 		tf_NombreEspecialidad.setColumns(10);
 		
 		JLabel lbl_PrecioTratamiento = new JLabel("Precio Especialidad");
-		lbl_PrecioTratamiento.setBounds(98, 222, 127, 14);
+		lbl_PrecioTratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_PrecioTratamiento.setBounds(89, 222, 155, 14);
 		panel.add(lbl_PrecioTratamiento);
 		
 		tf_PrecioEspecialidad = new JTextField();
@@ -75,11 +78,13 @@ public class Panel_admin_gestionMedica_ModEspecialidad extends JInternalFrame {
 		tf_PrecioEspecialidad.setColumns(10);
 		
 		JButton btn_ModificarEspecialidad = new JButton("Modificar Especialidad");
+		btn_ModificarEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_ModificarEspecialidad.setBounds(203, 304, 185, 23);
 		panel.add(btn_ModificarEspecialidad);
 		
 		JLabel lbl_Listado = new JLabel("Listado Especialidades");
-		lbl_Listado.setBounds(622, 40, 151, 14);
+		lbl_Listado.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_Listado.setBounds(622, 40, 206, 14);
 		panel.add(lbl_Listado);
 		
 		JLabel lblNewLabel = new JLabel("New label");

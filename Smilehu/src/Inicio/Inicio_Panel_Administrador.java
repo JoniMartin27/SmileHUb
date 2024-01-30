@@ -1,69 +1,35 @@
 package Inicio;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-
 import Vista.Material.InicioMaterial;
-import Vista.Material.Panel_Admin_Material_Inicio;
 import Vista.Usuario.Panel_DoctorCreado;
 import Vista.Usuario.Panel_DoctorCrear;
 import Vista.Usuario.Panel_PacienteCreado;
 import Vista.Usuario.Panel_PacienteCrear;
 import Vista.Usuario.Panel_ProveedorCreado;
 import Vista.Usuario.Panel_ProveedorCrear;
-import Vista.Usuario.Panel_admin_usuario_generarInforme;
 import Vista.Usuario.Panel_admin_usuario_paciente_consultarCita;
-import Vista.gestionEconomica.JDialog_Admin_Gestion_Economica_Fraccionado;
 import Vista.gestionEconomica.JDialog_admin_gestionEconomica_tipoPago;
-import Vista.gestionEconomica.Panel_admin_gestionEconomica;
-import Vista.gestionEconomica.Panel_admin_gestionEconomica_GenerarInforme;
 import Vista.gestionMedica.Panel_admin_gestionMedica_Inicio;
-import ayudas.Panel_Admin_Usuario_Paciente;
-import ayudas.Panel_admin_GestEconomica;
-import ayudas.Panel_admin_Material;
-
 import java.awt.Color;
 import java.awt.Component;
-
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
-import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
-import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JMenuBar;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.CardLayout;
-import javax.swing.BoxLayout;
-import javax.swing.SpringLayout;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JTabbedPane;
 
 public class Inicio_Panel_Administrador extends JFrame {
 
@@ -142,7 +108,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 								JButton btn_paciente = new JButton("PACIENTES");
 								btn_paciente.setBounds(0, 0, 159, 55);
 								panel.add(btn_paciente);
-								btn_paciente.setFont(new Font("Tahoma", Font.BOLD, 11));
+								btn_paciente.setFont(new Font("Tahoma", Font.BOLD, 13));
 								btn_paciente.setForeground(new Color(255, 255, 255));
 								btn_paciente.setBackground(new Color(0, 64, 128));
 								btn_paciente.setSelectedIcon(new ImageIcon(Inicio_Panel_Administrador.class.getResource("/img/boton.png")));
@@ -161,7 +127,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 								btn_material.setBounds(159, 0, 159, 55);
 								panel.add(btn_material);
 								btn_material.setForeground(new Color(255, 255, 255));
-								btn_material.setFont(new Font("Tahoma", Font.BOLD, 11));
+								btn_material.setFont(new Font("Tahoma", Font.BOLD, 13));
 								btn_material.setBackground(new Color(0, 64, 128));
 								
 	
@@ -169,7 +135,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 										JButton btn_proveedor = new JButton("PROVEEDORES");
 										btn_proveedor.setBounds(477, 0, 159, 55);
 										panel.add(btn_proveedor);
-										btn_proveedor.setFont(new Font("Tahoma", Font.BOLD, 11));
+										btn_proveedor.setFont(new Font("Tahoma", Font.BOLD, 13));
 										btn_proveedor.setForeground(new Color(255, 255, 255));
 										btn_proveedor.setBackground(new Color(0, 64, 128));
 										
@@ -177,7 +143,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 												JButton btn_Doctores = new JButton("DOCTORES");
 												btn_Doctores.setBounds(636, 0, 159, 55);
 												panel.add(btn_Doctores);
-												btn_Doctores.setFont(new Font("Tahoma", Font.BOLD, 11));
+												btn_Doctores.setFont(new Font("Tahoma", Font.BOLD, 13));
 												btn_Doctores.setForeground(new Color(255, 255, 255));
 												btn_Doctores.setBackground(new Color(0, 64, 128));
 												
@@ -188,7 +154,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 												btn_GestionMedica.setBounds(318, 0, 159, 55);
 												panel.add(btn_GestionMedica);
 												btn_GestionMedica.setForeground(new Color(255, 255, 255));
-												btn_GestionMedica.setFont(new Font("Tahoma", Font.BOLD, 11));
+												btn_GestionMedica.setFont(new Font("Tahoma", Font.BOLD, 13));
 												btn_GestionMedica.setBackground(new Color(0, 64, 128));
 												
 
@@ -197,7 +163,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 												btn_Citas.setBounds(795, 0, 159, 55);
 												panel.add(btn_Citas);
 												btn_Citas.setForeground(new Color(255, 255, 255));
-												btn_Citas.setFont(new Font("Tahoma", Font.BOLD, 11));
+												btn_Citas.setFont(new Font("Tahoma", Font.BOLD, 13));
 												btn_Citas.setBackground(new Color(0, 64, 128));
 												
 												JButton btn_perfil = new JButton("");

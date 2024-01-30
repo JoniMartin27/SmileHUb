@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class Material_nuevomaterial extends JDialog {
 
@@ -59,6 +60,7 @@ public class Material_nuevomaterial extends JDialog {
 		panel.setLayout(null);
 		
 		JComboBox<String> cb_proveedor = new JComboBox<>();
+		cb_proveedor.setFont(new Font("Tahoma", Font.BOLD, 14));
 		cb_proveedor.setBounds(69, 228, 186, 22);
 		panel.add(cb_proveedor);
 		
@@ -67,6 +69,7 @@ public class Material_nuevomaterial extends JDialog {
 		cargarProveedoresAlComboBox(cb_proveedor);
 		
 		JButton btn_crearMaterial = new JButton("Crear Material");
+		btn_crearMaterial.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_crearMaterial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -86,7 +89,7 @@ public class Material_nuevomaterial extends JDialog {
 				}
 			}
 		});
-		btn_crearMaterial.setBounds(251, 287, 124, 23);
+		btn_crearMaterial.setBounds(231, 287, 179, 23);
 		panel.add(btn_crearMaterial);
 		
 		
@@ -95,11 +98,13 @@ public class Material_nuevomaterial extends JDialog {
 		
 		
 		JTextField tf_precio = new JTextField();
-		tf_precio.setBounds(390, 155, 124, 20);
+		tf_precio.setFont(new Font("Tahoma", Font.BOLD, 14));
+		tf_precio.setBounds(390, 155, 186, 20);
 		panel.add(tf_precio);
 		tf_precio.setColumns(10);
 		
 		tf_material = new JTextField();
+		tf_material.setFont(new Font("Tahoma", Font.BOLD, 14));
 		tf_material.setBounds(69, 155, 186, 20);
 		panel.add(tf_material);
 		tf_material.setColumns(10);
@@ -110,14 +115,17 @@ public class Material_nuevomaterial extends JDialog {
 		
 		
 		JLabel lbl_nombre = new JLabel("Nombre Material");
-		lbl_nombre.setBounds(69, 130, 118, 14);
+		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_nombre.setBounds(69, 130, 158, 14);
 		panel.add(lbl_nombre);
 		
 		JLabel lbl_proveedor = new JLabel("Nombre Proveedor");
-		lbl_proveedor.setBounds(69, 203, 118, 14);
+		lbl_proveedor.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_proveedor.setBounds(69, 203, 158, 14);
 		panel.add(lbl_proveedor);
 		
-		JLabel lbl_precio = new JLabel("precio");
+		JLabel lbl_precio = new JLabel("Precio");
+		lbl_precio.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_precio.setBounds(390, 130, 95, 14);
 		panel.add(lbl_precio);
 		

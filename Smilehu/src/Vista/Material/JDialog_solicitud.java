@@ -96,6 +96,7 @@ public class JDialog_solicitud extends JDialog {
 		panel.add(lbl_solicitudes);
 		
 		JButton btn_rechazar = new JButton("Rechazar");
+		btn_rechazar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_rechazar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RechazarSolicitud();
@@ -103,10 +104,11 @@ public class JDialog_solicitud extends JDialog {
 				
 			}
 		});
-		btn_rechazar.setBounds(472, 508, 89, 23);
+		btn_rechazar.setBounds(450, 508, 155, 23);
 		panel.add(btn_rechazar);
 		
 		JButton btn_aceptar = new JButton("Aceptar");
+		btn_aceptar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				  procesarSolicitudSeleccionada(); 
@@ -116,7 +118,7 @@ public class JDialog_solicitud extends JDialog {
 	
 				
 	
-		btn_aceptar.setBounds(88, 508, 89, 23);
+		btn_aceptar.setBounds(88, 508, 155, 23);
 		panel.add(btn_aceptar);
 	   
 	        
