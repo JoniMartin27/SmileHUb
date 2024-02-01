@@ -87,74 +87,78 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		
 		JLabel lbl_altabaja = new JLabel("Dar de alta o baja");
 		lbl_altabaja.setForeground(Color.BLACK);
-		lbl_altabaja.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_altabaja.setBounds(120, 304, 173, 14);
+		lbl_altabaja.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_altabaja.setBounds(120, 304, 151, 14);
 		panel.add(lbl_altabaja);
 		
 		JRadioButton rdbtn_alta = new JRadioButton("Alta");
-		rdbtn_alta.setBounds(398, 303, 68, 23);
+		rdbtn_alta.setFont(new Font("Tahoma", Font.BOLD, 14));
+		rdbtn_alta.setBounds(398, 300, 116, 23);
 		panel.add(rdbtn_alta);
 
 		JRadioButton rdbtn_baja = new JRadioButton("Baja");
-		rdbtn_baja.setBounds(495, 303, 68, 23);
+		rdbtn_baja.setFont(new Font("Tahoma", Font.BOLD, 14));
+		rdbtn_baja.setBounds(524, 300, 116, 23);
 		panel.add(rdbtn_baja);
 		
 		JRadioButton rdbtn_femenino = new JRadioButton("Femenino");
-		rdbtn_femenino.setBounds(495, 266, 109, 23);
+		rdbtn_femenino.setFont(new Font("Tahoma", Font.BOLD, 14));
+		rdbtn_femenino.setBounds(524, 266, 116, 23);
 		panel.add(rdbtn_femenino);
 		
 		JRadioButton rdbtn_masculino = new JRadioButton("Masculino");
-		rdbtn_masculino.setBounds(398, 266, 109, 23);
+		rdbtn_masculino.setFont(new Font("Tahoma", Font.BOLD, 14));
+		rdbtn_masculino.setBounds(398, 266, 116, 23);
 		panel.add(rdbtn_masculino);
 		
-		JLabel lbl_sexo = new JLabel("Sexo");
-		lbl_sexo.setForeground(Color.BLACK);
-		lbl_sexo.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_sexo.setBounds(120, 267, 48, 14);
-		panel.add(lbl_sexo);
+		JLabel lbl_genero = new JLabel("Genero");
+		lbl_genero.setForeground(Color.BLACK);
+		lbl_genero.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_genero.setBounds(120, 267, 151, 14);
+		panel.add(lbl_genero);
 		
 		JLabel lbl_direccion = new JLabel("Direccion");
 		lbl_direccion.setForeground(Color.BLACK);
-		lbl_direccion.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_direccion.setBounds(120, 239, 173, 14);
+		lbl_direccion.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_direccion.setBounds(120, 239, 151, 14);
 		panel.add(lbl_direccion);
 		
 		JLabel lbl_apellidos = new JLabel("Apellidos");
 		lbl_apellidos.setForeground(Color.BLACK);
-		lbl_apellidos.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_apellidos.setBounds(120, 211, 102, 14);
+		lbl_apellidos.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_apellidos.setBounds(120, 211, 151, 14);
 		panel.add(lbl_apellidos);
 		
 		JLabel lbl_nombre = new JLabel("Nombre");
 		lbl_nombre.setForeground(Color.BLACK);
-		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_nombre.setBounds(119, 186, 90, 14);
+		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_nombre.setBounds(119, 186, 152, 14);
 		panel.add(lbl_nombre);
 		
 		JLabel lbl_idespecialidad = new JLabel("ID Especialidad");
 		lbl_idespecialidad.setForeground(Color.BLACK);
-		lbl_idespecialidad.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_idespecialidad.setBounds(120, 155, 173, 14);
+		lbl_idespecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_idespecialidad.setBounds(120, 155, 151, 14);
 		panel.add(lbl_idespecialidad);
 		
 		JLabel lbl_iddoctor = new JLabel("DNI");
 		lbl_iddoctor.setForeground(Color.BLACK);
-		lbl_iddoctor.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_iddoctor.setBounds(120, 130, 61, 14);
+		lbl_iddoctor.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_iddoctor.setBounds(120, 130, 151, 14);
 		panel.add(lbl_iddoctor);
 		
 		JLabel lbl_BuscarId = new JLabel("Ponga el ID del doctor");
-		lbl_BuscarId.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_BuscarId.setBounds(120, 43, 142, 14);
+		lbl_BuscarId.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_BuscarId.setBounds(120, 43, 187, 14);
 		panel.add(lbl_BuscarId);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
-		textField.setBounds(272, 40, 116, 20);
+		textField.setBounds(398, 44, 116, 20);
 		panel.add(textField);
 		
 		JButton btn_buscar = new JButton("Buscar");
-		btn_buscar.setBounds(398, 39, 89, 23);
+		btn_buscar.setBounds(524, 43, 89, 23);
 		panel.add(btn_buscar);
 		
 		textField_1 = new JTextField();

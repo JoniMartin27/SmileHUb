@@ -86,12 +86,13 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		panel.setLayout(null);
 		
 		JLabel lbl_doctor = new JLabel("Doctor");
-		lbl_doctor.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_doctor.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_doctor.setBounds(65, 163, 105, 23);
 		panel.add(lbl_doctor);
 		
 		JComboBox<String> cb_doctor = new JComboBox<String>();
-		cb_doctor.setBounds(198, 163, 176, 23);
+		cb_doctor.setFont(new Font("Tahoma", Font.BOLD, 14));
+		cb_doctor.setBounds(201, 163, 176, 23);
 		panel.add(cb_doctor);
 		
 		JLabel lblNewLabel = new JLabel("CREAR CITA");
@@ -100,6 +101,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		panel.add(lblNewLabel);
 
 		JComboBox<String> cb_hora = new JComboBox<>(getAvailableTimes());
+		cb_hora.setFont(new Font("Tahoma", Font.BOLD, 14));
 		cb_hora.setBounds(516, 162, 114, 28);
 		panel.add(cb_hora);
 
@@ -109,23 +111,26 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		panel.add(lbl_observaciones);
 
 		JTextArea tA_Observaciones = new JTextArea();
-		tA_Observaciones.setBounds(66, 351, 253, 103);
+		tA_Observaciones.setBounds(65, 354, 253, 103);
 		panel.add(tA_Observaciones);
 
 		JComboBox<String> cb_material = new JComboBox<>();
+		cb_material.setFont(new Font("Tahoma", Font.BOLD, 14));
 		cb_material.setBounds(201, 204, 176, 23);
 		panel.add(cb_material);
 
 		JLabel lbl_material = new JLabel("Material");
-		lbl_material.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_material.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_material.setBounds(66, 201, 105, 23);
 		panel.add(lbl_material);
 
 		JComboBox<String> cB_nombrePaciente = new JComboBox<>();
+		cB_nombrePaciente.setFont(new Font("Tahoma", Font.BOLD, 14));
 		cB_nombrePaciente.setBounds(201, 69, 176, 23);
 		panel.add(cB_nombrePaciente);
 
 		JButton btn_BuscarPaciente = new JButton("Buscar");
+		btn_BuscarPaciente.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_BuscarPaciente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -143,25 +148,27 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		panel.add(lbl_hora);
 
 		tf_nombre = new JTextField();
+		tf_nombre.setFont(new Font("Tahoma", Font.BOLD, 14));
 		tf_nombre.setColumns(10);
 		tf_nombre.setBounds(201, 38, 176, 20);
 		panel.add(tf_nombre);
 
 		JLabel lbl_tratamiento = new JLabel("Tratamiento");
 		lbl_tratamiento.setForeground(Color.BLACK);
-		lbl_tratamiento.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_tratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_tratamiento.setBounds(66, 119, 105, 14);
 		panel.add(lbl_tratamiento);
 
 		JLabel lbl_nombrepaciente = new JLabel("Nombre Paciente");
 		lbl_nombrepaciente.setForeground(Color.BLACK);
-		lbl_nombrepaciente.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_nombrepaciente.setBounds(64, 41, 105, 14);
+		lbl_nombrepaciente.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_nombrepaciente.setBounds(64, 41, 128, 14);
 		panel.add(lbl_nombrepaciente);
 
 	
 
 		JComboBox<String> cb_Tratamiento = new JComboBox<>();
+		cb_Tratamiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		cb_Tratamiento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cb_doctor.removeAllItems();
@@ -183,7 +190,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 
 		
 		
-		cb_Tratamiento.setBounds(203, 115, 176, 23);
+		cb_Tratamiento.setBounds(201, 115, 176, 23);
 		panel.add(cb_Tratamiento);
 
 		JLabel lbl_fecha = new JLabel("Fecha");
@@ -201,6 +208,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		panel.add(dateChooser);
 
 		JButton btn_crearcita = new JButton("Crear Cita");
+		btn_crearcita.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_crearcita.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 

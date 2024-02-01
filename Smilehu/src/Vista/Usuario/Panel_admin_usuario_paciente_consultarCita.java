@@ -92,7 +92,8 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 		panel.add(lbl_citas);
 
 		tf_buscarCita = new JTextField();
-		tf_buscarCita.setBounds(87, 149, 115, 20);
+		tf_buscarCita.setFont(new Font("Tahoma", Font.BOLD, 14));
+		tf_buscarCita.setBounds(87, 149, 134, 20);
 		panel.add(tf_buscarCita);
 		tf_buscarCita.setColumns(10);
 		// Inicializar la tabla y el modelo
@@ -112,15 +113,18 @@ public class Panel_admin_usuario_paciente_consultarCita extends JInternalFrame {
 		panel.add(scrollPane);
 
 		JButton btn_buscarcita = new JButton("Buscar cita");
-		btn_buscarcita.setBounds(237, 148, 106, 23);
+		btn_buscarcita.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btn_buscarcita.setBounds(237, 148, 134, 23);
 		panel.add(btn_buscarcita);
 
 		btn_modificar = new JButton("Modificar cita");
-		btn_modificar.setBounds(237, 74, 117, 23);
+		btn_modificar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btn_modificar.setBounds(237, 74, 134, 23);
 		panel.add(btn_modificar);
 
 		btn_Crear = new JButton("Crear cita");
-		btn_Crear.setBounds(87, 74, 117, 23);
+		btn_Crear.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btn_Crear.setBounds(87, 74, 134, 23);
 		panel.add(btn_Crear);
 
 		JLabel lblNewLabel = new JLabel("New label");
