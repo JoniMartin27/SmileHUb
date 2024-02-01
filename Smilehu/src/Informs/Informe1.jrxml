@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Informe1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f95a5c0a-66dc-4192-af84-7c478673a0fd">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexión Jasper"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT concat(consulta_cita.fecha,' ',consulta_cita.hora) as "Fecha y hora",tratamiento.nombre as "Tratamiento",
+paciente.nombre as "Nombre Paciente",consulta_cita.observaciones,doctor_administrador.nombre as "Nombre Doctor"
+from consulta_cita
+inner join tratamiento on consulta_cita.id_tratamiento=tratamiento.id_tratamiento
+inner join doctor_administrador on consulta_cita.id_doctor=doctor_administrador.id_doctor_administrador
+inner join historial on consulta_cita.id_historial=historial.id_historial
+inner join paciente on historial.id_paciente=paciente.id_paciente]]>
+	</queryString>
+	<field name="id_paciente" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_paciente"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_paciente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="apellidos" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellidos"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellidos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="direccion"/>
+		<property name="com.jaspersoft.studio.field.label" value="direccion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="genero" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="genero"/>
+		<property name="com.jaspersoft.studio.field.label" value="genero"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="telefono"/>
+		<property name="com.jaspersoft.studio.field.label" value="telefono"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="fecha_alta" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="fecha_alta"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha_alta"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<field name="fecha_nacimiento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="fecha_nacimiento"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha_nacimiento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="paciente"/>
+	</field>
+	<group name="id_paciente">
+		<groupExpression><![CDATA[$F{id_paciente}]]></groupExpression>
+	</group>
+	<group name="nombre">
+		<groupExpression><![CDATA[$F{nombre}]]></groupExpression>
+	</group>
+	<group name="apellidos">
+		<groupExpression><![CDATA[$F{apellidos}]]></groupExpression>
+	</group>
+	<group name="direccion">
+		<groupExpression><![CDATA[$F{direccion}]]></groupExpression>
+	</group>
+	<group name="genero">
+		<groupExpression><![CDATA[$F{genero}]]></groupExpression>
+	</group>
+	<group name="telefono">
+		<groupExpression><![CDATA[$F{telefono}]]></groupExpression>
+	</group>
+	<group name="fecha_alta">
+		<groupExpression><![CDATA[$F{fecha_alta}]]></groupExpression>
+	</group>
+	<group name="fecha_nacimiento">
+		<groupExpression><![CDATA[$F{fecha_nacimiento}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="88" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="20" width="270" height="30" uuid="2e2f3bba-eb91-42fb-8212-c8e39a379af2"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SMILEHUB INFORME]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="9" width="90" height="70" uuid="1919b401-e646-42ae-af27-b94ace3ce9c4"/>
+				<imageExpression><![CDATA["C:\\Users\\Medac\\Documents\\GitHub\\SmileHUb\\Smilehu\\src\\img\\SmileHub.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="560" height="60" uuid="591522c8-16b3-4ff2-bff9-5291bbd8c694"/>
+				<text><![CDATA[En el siguiente informe le otorgaremos la informacion completa de todas sus citas en nuestra consulta de forma estructurada y detallada.
+A continuación se le otorgará dicha informacion:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<line>
+				<reportElement x="-20" y="36" width="595" height="1" uuid="f434b17b-37ed-4eb2-9c88-88e23837f767"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="59e8e50e-6275-4993-a3c9-645aec413f02">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="802830e2-e2ae-4546-8ef8-d864f2f81a88"/>
+				</reportElement>
+				<text><![CDATA[nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="3" width="100" height="30" uuid="11f5519d-ea3b-4f9a-90c1-2ba71ae1b250">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a07ce933-f76f-40fd-8f72-d916edf5cb20"/>
+				</reportElement>
+				<text><![CDATA[apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="0" width="100" height="30" uuid="2c259457-a28b-432c-bf04-b4e15a9d48d2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f7705874-cfea-4d31-9168-e25d23a8b687"/>
+				</reportElement>
+				<text><![CDATA[telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="0" width="100" height="30" uuid="2fb44eb3-6069-4b81-9033-1132c942ae95">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9f486c66-4bce-4796-8f8c-f00cb3cc9f56"/>
+				</reportElement>
+				<text><![CDATA[direccion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="236" splitType="Stretch">
+			<line>
+				<reportElement x="-20" y="57" width="600" height="1" uuid="e4c999a3-f2b5-4b37-b95b-0ff0ff7fb9f3"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="0" y="20" width="100" height="30" uuid="9bb85830-08b8-4738-a7c1-d94eac28899b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="802830e2-e2ae-4546-8ef8-d864f2f81a88"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="20" width="100" height="30" uuid="d6d473dd-fc15-40ba-bd9f-6fa0b4940e54">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a07ce933-f76f-40fd-8f72-d916edf5cb20"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="20" width="100" height="30" uuid="b7c02faa-29ff-42ed-88c1-90ff363ec6d1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f7705874-cfea-4d31-9168-e25d23a8b687"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="20" width="100" height="30" uuid="dc6db63e-4b60-461d-a930-80e1cb0897db">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9f486c66-4bce-4796-8f8c-f00cb3cc9f56"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="67" splitType="Stretch">
+			<line>
+				<reportElement x="-30" y="66" width="605" height="1" uuid="2ef25a12-e10f-42c3-bf41-29e403c621f5"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="60" y="0" width="100" height="54" uuid="6a232dd0-631f-409f-afc1-f5d7dc2b0d9c"/>
+				<text><![CDATA[abfckwndfjasjnf    jnwefjowjfowqojfjo wijfewjfjwofjwojefojwjfwjjwefojwofijejwfej wpjefjwefjewijfjwjfejwfjwjfjwjfjsfjsjfjafjsñj]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="7" width="140" height="40" uuid="0bbd07be-457c-4ff1-ba5c-625920d420aa"/>
+				<text><![CDATA[Copo De Nieve                  Calle Calvario 54, 4                   +723737372 | Aquimata.gente]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

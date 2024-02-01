@@ -134,6 +134,19 @@ public class Panel_PacienteCreado extends JInternalFrame {
 			};
 		});
 		
+		
+		JButton btn_historial = new JButton("Historial");
+		btn_historial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		btn_historial.setBounds(249, 468, 173, 23);
+		panel.add(btn_historial);
+		
+		
+		
 		JLabel lblNewLabel_1 = new JLabel("FICHA PACIENTE ");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
 		lblNewLabel_1.setBounds(10, 11, 228, 14);
