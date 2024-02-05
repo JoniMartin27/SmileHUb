@@ -85,7 +85,7 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		panel.add(lbl_nombre_1);
 		lbl_nombre_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_nombre_1.setForeground(Color.BLACK);
-		lbl_nombre_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_nombre_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		tf_fechaNacimiento = new JTextField();
 		tf_fechaNacimiento.setBounds(155, 211, 225, 20);
@@ -102,14 +102,14 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		panel.add(lbl_apellidos_1);
 		lbl_apellidos_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_apellidos_1.setForeground(Color.BLACK);
-		lbl_apellidos_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_apellidos_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		JLabel lbl_sexo_1 = new JLabel("Teléfono");
 		lbl_sexo_1.setBounds(155, 242, 144, 14);
 		panel.add(lbl_sexo_1);
 		lbl_sexo_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_sexo_1.setForeground(Color.BLACK);
-		lbl_sexo_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_sexo_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		tf_telefono = new JTextField();
 		tf_telefono.setBounds(157, 271, 225, 20);
@@ -118,22 +118,25 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		JLabel lbl_genero = new JLabel("Género");
 		lbl_genero.setBounds(155, 350, 144, 21);
 		panel.add(lbl_genero);
-		lbl_genero.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_genero.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_genero.setForeground(new Color(0, 0, 0));
 		
 		JRadioButton rdbtn_masculino = new JRadioButton("Masculino");
+		rdbtn_masculino.setFont(new Font("Tahoma", Font.BOLD, 14));
 		rdbtn_masculino.setBounds(155, 400, 109, 23);
 		panel.add(rdbtn_masculino);
 		g1.add(rdbtn_masculino);
 		
 		
 		JRadioButton rdbtn_femenino = new JRadioButton("Femenino");
+		rdbtn_femenino.setFont(new Font("Tahoma", Font.BOLD, 14));
 		rdbtn_femenino.setBounds(310, 400, 109, 23);
 		panel.add(rdbtn_femenino);
 		g1.add(rdbtn_femenino);
 		
 		JButton btn_CrearPaciente = new JButton("Crear Paciente");
-		btn_CrearPaciente.setBounds(448, 400, 126, 23);
+		btn_CrearPaciente.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btn_CrearPaciente.setBounds(448, 400, 140, 23);
 		panel.add(btn_CrearPaciente);
 		
 		tf_nombre = new JTextField();
@@ -151,7 +154,7 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		panel.add(lbl_nombre_2);
 		lbl_nombre_2.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_nombre_2.setForeground(Color.BLACK);
-		lbl_nombre_2.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_nombre_2.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		JLabel lbl_dni_1 = new JLabel("Nombre");
 		lbl_dni_1.setBackground(new Color(131, 167, 197));
@@ -159,7 +162,7 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		panel.add(lbl_dni_1);
 		lbl_dni_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_dni_1.setForeground(Color.BLACK);
-		lbl_dni_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_dni_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		JLabel lbl_ficha = new JLabel("FICHA PACIENTE CREAR");
 		lbl_ficha.setBounds(25, 11, 274, 14);

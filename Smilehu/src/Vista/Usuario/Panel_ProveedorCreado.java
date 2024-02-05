@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -13,10 +15,17 @@ import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import Conexion.ConexionMySQL;
+import Modelo.Paciente;
+import Modelo.Proveedor;
+
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 
 public class Panel_ProveedorCreado extends JInternalFrame {
 
@@ -29,7 +38,6 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 	private JDesktopPane desktopPane;
 	private JTextField tf_correo;
 	private JTextField textField;
-	private JTextField tf_buscarProveedor;
 	private JDesktopPane miDesktopPane_1;
 	
 	/**
@@ -66,6 +74,25 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
+		JComboBox<String> comboBox = new JComboBox<>();
+		comboBox.setBounds(407, 104, 126, 22);
+		contentPanel.add(comboBox);
+		
+		JButton btn_buscarProveedor = new JButton("Buscar");
+		btn_buscarProveedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String nombre=tf_nombre.getText();
+				
+				cargarProveedoresAlComboBox(nombre,comboBox);
+				
+				
+				
+			}
+		});
+		btn_buscarProveedor.setBounds(543, 83, 89, 23);
+		contentPanel.add(btn_buscarProveedor);
+		
 		JLabel lbl_ficha = new JLabel("FICHA PROVEEDOR");
 		lbl_ficha.setForeground(new Color(0, 0, 0));
 		lbl_ficha.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
@@ -98,11 +125,11 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		JLabel lbl_nombre = new JLabel("Nombre");
 		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lbl_nombre.setForeground(new Color(0, 0, 0));
-		lbl_nombre.setBounds(228, 107, 90, 14);
+		lbl_nombre.setBounds(228, 87, 90, 14);
 		contentPanel.add(lbl_nombre);
 		
 		tf_nombre = new JTextField();
-		tf_nombre.setBounds(407, 104, 126, 20);
+		tf_nombre.setBounds(407, 84, 126, 20);
 		contentPanel.add(tf_nombre);
 		tf_nombre.setColumns(10);
 		
@@ -184,17 +211,6 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		textField.setBounds(407, 135, 126, 20);
 		contentPanel.add(textField);
 		
-		tf_buscarProveedor = new JTextField();
-		tf_buscarProveedor.setColumns(10);
-		tf_buscarProveedor.setBounds(407, 239, 126, 20);
-		contentPanel.add(tf_buscarProveedor);
-		
-		JLabel lbl_buscar = new JLabel("Buscar proveedor");
-		lbl_buscar.setForeground(new Color(0, 0, 0));
-		lbl_buscar.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_buscar.setBounds(228, 240, 167, 14);
-		contentPanel.add(lbl_buscar);
-		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Panel_ProveedorCreado.class.getResource("/img/fondoDientes.jpg")));
 		lblNewLabel.setBounds(0, 0, 1018, 564);
@@ -208,5 +224,38 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		
 	
 	}
+	
 
+	private void cargarProveedoresAlComboBox(String nombre, JComboBox<String> comboBox) {
+		// Limpiar ComboBox antes de cargar nuevos datos
+		comboBox.removeAllItems();
+
+		try {
+
+			// Obtener proveedores desde la base de datos
+			ConexionMySQL.conectar();
+
+			// Supongamos que tienes un método para obtener proveedores por nombre
+			List<Proveedor> proveedores = ConexionMySQL.buscarProveedor(nombre);
+
+			// Agregar nombre de cada proveedor al ComboBox
+			for (Proveedor proveedor : proveedores) {
+				String nombreCompleto = proveedor.getNombre() ;
+				comboBox.addItem(nombreCompleto);
+			}
+
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Error al cargar pacientes", "Error", JOptionPane.ERROR_MESSAGE);
+		} finally {
+			try {
+				ConexionMySQL.desconectar();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
 }
+	
+	
+

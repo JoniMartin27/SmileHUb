@@ -136,6 +136,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		
 		
 		JButton btn_historial = new JButton("Historial");
+		btn_historial.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_historial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -155,11 +156,11 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		tf_id = new JTextField();
 		tf_id.setEditable(false);
 		tf_id.setColumns(10);
-		tf_id.setBounds(315, 161, 73, 20);
+		tf_id.setBounds(315, 161, 126, 20);
 		panel.add(tf_id);
 		
 		JLabel lbl_id = new JLabel("ID");
-		lbl_id.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_id.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_id.setBounds(220, 164, 46, 14);
 		panel.add(lbl_id);
 		comboBox.setBounds(425, 56, 126, 22);
@@ -194,7 +195,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		lbl_buscar.setBounds(288, 28, 126, 14);
 		panel.add(lbl_buscar);
 		lbl_buscar.setForeground(new Color(0, 0, 0));
-		lbl_buscar.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_buscar.setFont(new Font("Tahoma", Font.BOLD, 14));
 
 		tf_buscaPaciente = new JTextField();
 		tf_buscaPaciente.setBounds(425, 25, 126, 20);
@@ -210,7 +211,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		panel.add(lbl_dni_1);
 		lbl_dni_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_dni_1.setForeground(Color.BLACK);
-		lbl_dni_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_dni_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 
 		tf_fechaAlta = new JTextField();
 		tf_fechaAlta.setBounds(589, 189, 126, 20);
@@ -223,7 +224,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		panel.add(lbl_nombre_1);
 		lbl_nombre_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_nombre_1.setForeground(Color.BLACK);
-		lbl_nombre_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_nombre_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 
 		tf_fechaNacimiento = new JTextField();
 		tf_fechaNacimiento.setBounds(589, 215, 126, 20);
@@ -234,58 +235,63 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		lbl_dni.setBounds(220, 189, 85, 14);
 		panel.add(lbl_dni);
 		lbl_dni.setHorizontalAlignment(SwingConstants.LEFT);
-		lbl_dni.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_dni.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_dni.setForeground(new Color(0, 0, 0));
 		JLabel lbl_nombre = new JLabel("Apellidos");
 		lbl_nombre.setBounds(220, 214, 85, 14);
 		panel.add(lbl_nombre);
 		lbl_nombre.setHorizontalAlignment(SwingConstants.LEFT);
-		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_nombre.setForeground(new Color(0, 0, 0));
 		JLabel lbl_apellidos = new JLabel("Direccion");
 		lbl_apellidos.setBounds(220, 239, 85, 14);
 		panel.add(lbl_apellidos);
 		lbl_apellidos.setHorizontalAlignment(SwingConstants.LEFT);
-		lbl_apellidos.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_apellidos.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_apellidos.setForeground(new Color(0, 0, 0));
 		JLabel lbl_fechanacimiento = new JLabel("Genero");
 		lbl_fechanacimiento.setBounds(220, 264, 85, 14);
 		panel.add(lbl_fechanacimiento);
 		lbl_fechanacimiento.setHorizontalAlignment(SwingConstants.LEFT);
-		lbl_fechanacimiento.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_fechanacimiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_fechanacimiento.setForeground(new Color(0, 0, 0));
 		JLabel lbl_sexo = new JLabel("Telefono");
 		lbl_sexo.setBounds(220, 289, 85, 14);
 		panel.add(lbl_sexo);
 		lbl_sexo.setHorizontalAlignment(SwingConstants.LEFT);
-		lbl_sexo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_sexo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_sexo.setForeground(new Color(0, 0, 0));
 		JLabel lbl_altabaja = new JLabel("Dar de alta o baja:");
 		lbl_altabaja.setBounds(268, 337, 173, 14);
 		panel.add(lbl_altabaja);
 		lbl_altabaja.setHorizontalAlignment(SwingConstants.LEFT);
-		lbl_altabaja.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_altabaja.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_altabaja.setForeground(new Color(0, 0, 0));
 
 		JRadioButton rdbtn_alta = new JRadioButton("Alta");
+		rdbtn_alta.setFont(new Font("Tahoma", Font.BOLD, 14));
 		rdbtn_alta.setBounds(456, 333, 68, 23);
 		panel.add(rdbtn_alta);
 		g1.add(rdbtn_alta);
 
 		JRadioButton rdbtn_baja = new JRadioButton("Baja");
+		rdbtn_baja.setFont(new Font("Tahoma", Font.BOLD, 14));
 		rdbtn_baja.setBounds(556, 333, 68, 23);
 		panel.add(rdbtn_baja);
 		g1.add(rdbtn_baja);
 
 		JButton btn_consultarpagos = new JButton("Consultar Pagos");
+		btn_consultarpagos.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_consultarpagos.setBounds(249, 399, 173, 23);
 		panel.add(btn_consultarpagos);
 
 		JButton btn_odontograma = new JButton("Odontograma");
+		btn_odontograma.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_odontograma.setBounds(249, 421, 173, 23);
 		panel.add(btn_odontograma);
 
 		JButton btn_modificar = new JButton("Modificar Paciente");
+		btn_modificar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_modificar.setBounds(249, 445, 173, 23);
 		panel.add(btn_modificar);
 		

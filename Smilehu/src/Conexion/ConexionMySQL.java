@@ -521,6 +521,33 @@ public class ConexionMySQL {
     	 return combo;
      }
      
+//COMBOBOX Proveedores proveedor creado
+     
+     public static List<Proveedor> buscarProveedor(String nombre) throws SQLException {
+    	 List<Proveedor> combo = new ArrayList<>();
+    	 String query = "SELECT * FROM doctor_administrador WHERE nombre='"+nombre+"'";
+    	 
+    	 try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+    		
+    		 ResultSet rset = pstmt.executeQuery();
+    		 
+    		 while (rset.next()) {
+    			 int id_proveedor=rset.getInt("id_doctor_administrador");
+    		        
+    		        String direccion=rset.getString("direccion");
+    		        String telefono=rset.getString("telefono");
+    		        String correo=rset.getString("correo");
+
+    			 
+    		        Proveedor proveedor=new Proveedor(id_proveedor,nombre,direccion,telefono,correo);
+    		        combo.add(proveedor);
+    		 }
+    	 }
+    	 
+    	 return combo;
+     }
+     
+     
      //COMBOBOX Doctores gestion medica crear especialidad
      
      public static List<Doctor_administrador> buscarDoctor() throws SQLException {
