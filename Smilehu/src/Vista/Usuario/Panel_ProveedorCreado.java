@@ -37,7 +37,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 	private JFrame Frame;
 	private JDesktopPane desktopPane;
 	private JTextField tf_correo;
-	private JTextField textField;
+	private JTextField tf_direccion;
 	private JDesktopPane miDesktopPane_1;
 	
 	/**
@@ -79,6 +79,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		contentPanel.add(comboBox);
 		
 		JButton btn_buscarProveedor = new JButton("Buscar");
+		btn_buscarProveedor.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_buscarProveedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -104,6 +105,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		
 		
 		JButton btn_modificarproveedor = new JButton("Modificar Proveedor");
+		btn_modificarproveedor.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_modificarproveedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -123,7 +125,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		
 		/*Nombre*/
 		JLabel lbl_nombre = new JLabel("Nombre");
-		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_nombre.setForeground(new Color(0, 0, 0));
 		lbl_nombre.setBounds(228, 87, 90, 14);
 		contentPanel.add(lbl_nombre);
@@ -138,22 +140,19 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		
 		/*Apellidos*/
 		JLabel lbl_direccion = new JLabel("Dirección");
-		lbl_direccion.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_direccion.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_direccion.setForeground(new Color(0, 0, 0));
 		lbl_direccion.setBounds(228, 136, 102, 14);
 		contentPanel.add(lbl_direccion);
 		
-		JTextField tf_direccion = new JTextField();
-		tf_direccion.setBounds(347, 69, 126, 20);
-		
-		tf_direccion.setColumns(10);
+
 		
 		
 		
 		
 		/*Fecha de nacimiento*/
 		JLabel lbl_telefono = new JLabel("Telefono");
-		lbl_telefono.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_telefono.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_telefono.setForeground(new Color(0, 0, 0));
 		lbl_telefono.setBounds(228, 171, 102, 14);
 		contentPanel.add(lbl_telefono);
@@ -169,7 +168,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		tf_correo.setColumns(10);
 		
 		JLabel lbl_correo = new JLabel("Correo");
-		lbl_correo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_correo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_correo.setForeground(new Color(0, 0, 0));
 		lbl_correo.setBounds(228, 203, 75, 14);
 		contentPanel.add(lbl_correo);
@@ -206,10 +205,10 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		BTN_BuscarProveedor.setBounds(348, 172, 102, 23);
 		contentPanel.add(BTN_BuscarProveedor);
 		*/
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(407, 135, 126, 20);
-		contentPanel.add(textField);
+		tf_direccion = new JTextField();
+		tf_direccion.setColumns(10);
+		tf_direccion.setBounds(407, 135, 126, 20);
+		contentPanel.add(tf_direccion);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Panel_ProveedorCreado.class.getResource("/img/fondoDientes.jpg")));
@@ -237,10 +236,14 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 
 			// Supongamos que tienes un método para obtener proveedores por nombre
 			List<Proveedor> proveedores = ConexionMySQL.buscarProveedor(nombre);
-
+			
 			// Agregar nombre de cada proveedor al ComboBox
 			for (Proveedor proveedor : proveedores) {
 				String nombreCompleto = proveedor.getNombre() ;
+				tf_correo.setText(proveedor.getCorreo());
+				tf_direccion.setText(proveedor.getDireccion());
+				tf_telefono.setText(proveedor.getTelefono());
+				System.out.println(nombreCompleto);
 				comboBox.addItem(nombreCompleto);
 			}
 
