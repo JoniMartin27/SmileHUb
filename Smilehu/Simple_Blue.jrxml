@@ -4,8 +4,35 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="adaptador"/>
 	<queryString language="SQL">
-		<![CDATA[]]>
+		<![CDATA[Select facturacion.id_cita,CONCAT(paciente.nombre,paciente.apellidos) AS Nombre, facturacion.fecha, tratamiento.nombre AS Tratamiento, tratamiento.precio from facturacion 
+JOIN prdatos.consulta_cita ON facturacion.id_cita=consulta_cita.id_cita
+JOIN prdatos.paciente ON paciente.id_paciente=consulta_cita.id_paciente
+JOIN prdatos.tratamiento ON tratamiento.id_tratamiento=consulta_cita.id_tratamiento]]>
 	</queryString>
+	<field name="id_cita" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_cita"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_cita"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="facturacion"/>
+	</field>
+	<field name="Nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="Nombre"/>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="facturacion"/>
+	</field>
+	<field name="Tratamiento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="Tratamiento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tratamiento"/>
+	</field>
+	<field name="precio" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="precio"/>
+		<property name="com.jaspersoft.studio.field.label" value="precio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tratamiento"/>
+	</field>
 	<background>
 		<band/>
 	</background>

@@ -718,6 +718,14 @@ public class ConexionMySQL {
 		    Statement stmt = connection.createStatement();
 		    stmt.executeUpdate(query);
 		}
+     public static void insertarProveedor(Proveedor proveedor) throws SQLException {
+		    String query = "INSERT INTO proveedor (nombre, direccion,telefono,correo)" +
+		                   "VALUES('" + proveedor.getNombre() + "', '" + proveedor.getDireccion() 
+		                   + "', '" + proveedor.getTelefono() + proveedor.getCorreo() +"')";
+		    
+		    Statement stmt = connection.createStatement();
+		    stmt.executeUpdate(query);
+		}
      
      
      

@@ -75,7 +75,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		contentPanel.setLayout(null);
 		
 		JComboBox<String> comboBox = new JComboBox<>();
-		comboBox.setBounds(407, 104, 126, 22);
+		comboBox.setBounds(469, 108, 207, 22);
 		contentPanel.add(comboBox);
 		
 		JButton btn_buscarProveedor = new JButton("Buscar");
@@ -91,7 +91,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 				
 			}
 		});
-		btn_buscarProveedor.setBounds(543, 83, 89, 23);
+		btn_buscarProveedor.setBounds(705, 74, 89, 23);
 		contentPanel.add(btn_buscarProveedor);
 		
 		JLabel lbl_ficha = new JLabel("FICHA PROVEEDOR");
@@ -116,7 +116,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 				
 			}
 		});
-		btn_modificarproveedor.setBounds(302, 341, 173, 23);
+		btn_modificarproveedor.setBounds(469, 414, 207, 23);
 		contentPanel.add(btn_modificarproveedor);
 		
 	
@@ -127,11 +127,11 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		JLabel lbl_nombre = new JLabel("Nombre");
 		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_nombre.setForeground(new Color(0, 0, 0));
-		lbl_nombre.setBounds(228, 87, 90, 14);
+		lbl_nombre.setBounds(302, 78, 90, 14);
 		contentPanel.add(lbl_nombre);
 		
 		tf_nombre = new JTextField();
-		tf_nombre.setBounds(407, 84, 126, 20);
+		tf_nombre.setBounds(469, 77, 207, 20);
 		contentPanel.add(tf_nombre);
 		tf_nombre.setColumns(10);
 		
@@ -142,7 +142,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		JLabel lbl_direccion = new JLabel("Dirección");
 		lbl_direccion.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_direccion.setForeground(new Color(0, 0, 0));
-		lbl_direccion.setBounds(228, 136, 102, 14);
+		lbl_direccion.setBounds(302, 224, 102, 14);
 		contentPanel.add(lbl_direccion);
 		
 
@@ -154,23 +154,23 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		JLabel lbl_telefono = new JLabel("Telefono");
 		lbl_telefono.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_telefono.setForeground(new Color(0, 0, 0));
-		lbl_telefono.setBounds(228, 171, 102, 14);
+		lbl_telefono.setBounds(302, 255, 102, 14);
 		contentPanel.add(lbl_telefono);
 		
 		tf_telefono = new JTextField();
-		tf_telefono.setBounds(407, 170, 126, 20);
+		tf_telefono.setBounds(469, 254, 207, 20);
 		contentPanel.add(tf_telefono);
 		tf_telefono.setColumns(10);
 		
 		tf_correo = new JTextField();
-		tf_correo.setBounds(407, 202, 126, 20);
+		tf_correo.setBounds(469, 285, 207, 20);
 		contentPanel.add(tf_correo);
 		tf_correo.setColumns(10);
 		
 		JLabel lbl_correo = new JLabel("Correo");
 		lbl_correo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_correo.setForeground(new Color(0, 0, 0));
-		lbl_correo.setBounds(228, 203, 75, 14);
+		lbl_correo.setBounds(302, 286, 75, 14);
 		contentPanel.add(lbl_correo);
 		
 		/*JButton BTN_BuscarProveedor = new JButton("Buscar");
@@ -207,7 +207,7 @@ public class Panel_ProveedorCreado extends JInternalFrame {
 		*/
 		tf_direccion = new JTextField();
 		tf_direccion.setColumns(10);
-		tf_direccion.setBounds(407, 135, 126, 20);
+		tf_direccion.setBounds(469, 223, 207, 20);
 		contentPanel.add(tf_direccion);
 		
 		JLabel lblNewLabel = new JLabel("New label");

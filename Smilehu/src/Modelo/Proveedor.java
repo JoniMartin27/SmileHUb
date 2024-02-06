@@ -39,6 +39,17 @@ public class Proveedor {
 		this.direccion = direccion;
 		this.telefono = telefono;
 	}
+	public Proveedor(String nombre, String direccion, String telefono,String correo) {
+		super();
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.correo=correo;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "Proveedor [id_proveedor=" + id_proveedor + ", nombre=" + nombre + ", direccion=" + direccion
