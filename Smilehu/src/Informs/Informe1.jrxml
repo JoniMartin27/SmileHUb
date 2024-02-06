@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Informe1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f95a5c0a-66dc-4192-af84-7c478673a0fd">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexión Jasper"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="adaptador"/>
 	<parameter name="id_paciente" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT concat(consulta_cita.fecha,' ',consulta_cita.hora) as "Fecha y hora",tratamiento.nombre as "Tratamiento",
@@ -11,9 +11,9 @@ from consulta_cita
 inner join tratamiento on consulta_cita.id_tratamiento=tratamiento.id_tratamiento
 inner join doctor_administrador on consulta_cita.id_doctor=doctor_administrador.id_doctor_administrador
 inner join historial on consulta_cita.id_historial=historial.id_historial
-inner join paciente on historial.id_paciente=paciente.id_paciente
+inner join paciente on consulta_cita.id_paciente=paciente.id_paciente
 
-where  paciente.id_paciente=$P{id_paciente}]]>
+where  consulta_cita.id_paciente=$P{id_paciente}]]>
 	</queryString>
 	<field name="Fecha y hora" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="Fecha y hora"/>
@@ -43,28 +43,43 @@ where  paciente.id_paciente=$P{id_paciente}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="100" splitType="Stretch">
+		<band height="113" splitType="Stretch">
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="120" backcolor="#006699" uuid="39183387-d2a0-4ac8-9334-4c643bbfe24a"/>
 				<image>
-					<reportElement x="10" y="120" width="70" height="70" uuid="1919b401-e646-42ae-af27-b94ace3ce9c4"/>
+					<reportElement x="0" y="0" width="120" height="120" uuid="1919b401-e646-42ae-af27-b94ace3ce9c4"/>
 					<imageExpression><![CDATA["C:\\Users\\Medac\\Documents\\GitHub\\SmileHUb\\Smilehu\\src\\img\\SmileHub.png"]]></imageExpression>
 				</image>
 				<staticText>
-					<reportElement x="160" y="140" width="330" height="30" uuid="2e2f3bba-eb91-42fb-8212-c8e39a379af2"/>
-					<textElement textAlignment="Center" verticalAlignment="Top">
-						<font size="22" isBold="true"/>
+					<reportElement x="421" y="10" width="141" height="54" uuid="3f929c39-f24d-41ca-8a7f-ff17fbe911a2"/>
+					<textElement>
+						<font size="10" isBold="true"/>
 					</textElement>
-					<text><![CDATA[INFORME DE CITAS]]></text>
+					<text><![CDATA[Calle de Hermenegildo Bielsa 
+Numero 32 
+Usera
+28019 Madrid.]]></text>
 				</staticText>
-				<frame>
-					<reportElement x="0" y="60" width="582" height="50" uuid="404fc69f-c577-4c77-ba8c-fcf0cd876ce1"/>
-				</frame>
+			</frame>
+			<frame>
+				<reportElement x="-13" y="50" width="582" height="50" uuid="404fc69f-c577-4c77-ba8c-fcf0cd876ce1"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="414" y="0" width="100" height="13" uuid="28c49932-d1d8-40f5-a6f1-0042136f9f31"/>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
 			</frame>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="70" splitType="Stretch"/>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="114" y="20" width="330" height="30" uuid="2e2f3bba-eb91-42fb-8212-c8e39a379af2"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INFORME DE CITAS]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="37" splitType="Stretch">
@@ -153,20 +168,12 @@ where  paciente.id_paciente=$P{id_paciente}]]>
 					<textElement textAlignment="Right"/>
 					<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de "+$V{PAGE_COUNT}]]></textFieldExpression>
 				</textField>
-				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="430" y="-242" width="100" height="13" uuid="28c49932-d1d8-40f5-a6f1-0042136f9f31"/>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
 				<staticText>
-					<reportElement x="17" y="40" width="560" height="54" uuid="6a232dd0-631f-409f-afc1-f5d7dc2b0d9c"/>
-					<text><![CDATA[Si tiene alguna duda o algun problema, siempre puede llamar al (+34)623 23 23 67, aquí le atenderemos con mucho gusto.]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="280" y="-260" width="160" height="48" uuid="94516927-717c-49e7-b15c-b0586ac4c28e"/>
-					<text><![CDATA[Calle de Hermenegildo Bielsa 
-Numero 32 
-Usera
-28019 Madrid.]]></text>
+					<reportElement x="30" y="36" width="538" height="54" uuid="6a232dd0-631f-409f-afc1-f5d7dc2b0d9c"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Agradecemos sinceramente su elección de SmileHub para sus necesidades dentales. Estamos comprometidos a brindarle la mejor atención posible. No dude en contactarnos para cualquier pregunta o inquietud. Su salud dental es nuestra prioridad. Gracias por confiar en nosotros.]]></text>
 				</staticText>
 			</frame>
 		</band>
