@@ -1,3 +1,4 @@
+
 package Vista.gestionMedica;
 
 import java.awt.Color;
@@ -553,3 +554,4 @@ public class Odontograma extends JInternalFrame {
 	}
 		}
 }
+

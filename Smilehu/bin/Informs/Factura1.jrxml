@@ -2,17 +2,14 @@
 <!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2adf070-2b18-4585-85de-92d8d414db0c">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexión Jasper"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="adaptador"/>
 	<parameter name="id_cita" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[Select facturacion.id_cita,CONCAT(paciente.nombre,paciente.apellidos) AS Nombre, facturacion.fecha, tratamiento.nombre AS Tratamiento, tratamiento.precio from facturacion 
 JOIN prdatos.consulta_cita ON facturacion.id_cita=consulta_cita.id_cita
 JOIN prdatos.paciente ON paciente.id_paciente=consulta_cita.id_paciente
 JOIN prdatos.tratamiento ON tratamiento.id_tratamiento=consulta_cita.id_tratamiento
-where  consulta_cita.id_paciente=$P{id_cita}
-
-
-]]>
+where  consulta_cita.id_paciente=$P{id_cita}]]>
 	</queryString>
 	<field name="id_cita" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="id_cita"/>
