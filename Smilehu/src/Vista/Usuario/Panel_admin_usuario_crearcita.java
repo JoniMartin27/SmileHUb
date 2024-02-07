@@ -85,6 +85,12 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		cB_especialista.setBounds(284, 254, 176, 23);
 		panel.setLayout(null);
 		
+				JLabel lbl_fecha = new JLabel("Fecha");
+				lbl_fecha.setFont(new Font("Tahoma", Font.BOLD, 11));
+				lbl_fecha.setForeground(Color.BLACK);
+				lbl_fecha.setBounds(684, 137, 45, 14);
+				panel.add(lbl_fecha);
+		
 		JLabel lbl_doctor = new JLabel("Doctor");
 		lbl_doctor.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_doctor.setBounds(65, 163, 105, 23);
@@ -95,10 +101,10 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		cb_doctor.setBounds(201, 163, 176, 23);
 		panel.add(cb_doctor);
 		
-		JLabel lblNewLabel = new JLabel("CREAR CITA");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		lblNewLabel.setBounds(10, 11, 193, 14);
-		panel.add(lblNewLabel);
+		JLabel lbl_crearCita = new JLabel("CREAR CITA");
+		lbl_crearCita.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
+		lbl_crearCita.setBounds(10, 11, 193, 14);
+		panel.add(lbl_crearCita);
 
 		JComboBox<String> cb_hora = new JComboBox<>(getAvailableTimes());
 		cb_hora.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -192,12 +198,6 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		
 		cb_Tratamiento.setBounds(201, 115, 176, 23);
 		panel.add(cb_Tratamiento);
-
-		JLabel lbl_fecha = new JLabel("Fecha");
-		lbl_fecha.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lbl_fecha.setForeground(Color.BLACK);
-		lbl_fecha.setBounds(413, -137, 29, 14);
-		panel.add(lbl_fecha);
 		cargarTratamientos(cb_Tratamiento);
 		cargarMateriales(cb_material);
 
@@ -287,6 +287,10 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		icon.setIcon(new ImageIcon(Panel_admin_usuario_crearcita.class.getResource("/img/fondoDientes.jpg")));
 		icon.setBounds(0, 0, 1018, 576);
 		panel.add(icon);
+		
+		JLabel lblNewLabel_1 = new JLabel("fecha");
+		lblNewLabel_1.setBounds(683, 137, 46, 14);
+		panel.add(lblNewLabel_1);
 
 	}
 
@@ -461,5 +465,4 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 			}
 		}
 	}
-	
 }

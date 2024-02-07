@@ -1,6 +1,31 @@
 
 <toc version="1.0">
-    <tocitem text="Manual" target="aplicacion">
-        <tocitem text="introduccion" target="introduccion"/>
+    <tocitem text="Manual" target="aplicacion"/>
+        <tocitem text="introduccion" target="introduccion"/> 
         <tocitem text="alta" target="alta"/>
-    </tocitem>
+        <tocitem text="consultarCita" target="consultarCita"/>
+        <tocitem text="consultarPedido" target="consultarPedido"/>
+        <tocitem text="crearCita" target="crearCita"/>
+        <tocitem text="crearDoctor" target="crearDoctor"/>
+        <tocitem text="crearEspecialidad" target="crearEspecialidad"/>
+        <tocitem text="crearPaciente" target="crearPaciente"/>
+        <tocitem text="crearPedido" target="crearPedido"/>
+        <tocitem text="crearProveedor" target="crearProveedor"/>
+        <tocitem text="crearTratamiento" target="crearTratamiento"/>
+        <tocitem text="fichaDoctor" target="fichaDoctor"/>
+        <tocitem text="fichaPaciente" target="fichaPaciente"/>
+        <tocitem text="fichaProveedor" target="fichaProveedor"/>
+        <tocitem text="gestionMedica_inicio" target="gestionMedica_inicio"/>
+        <tocitem text="inicio_administrador" target="inicio_administrador"/>
+        <tocitem text="inicioMaterial" target="inicioMaterial"/>
+        <tocitem text="login" target="login"/>
+        <tocitem text="material_stock" target="material_stock"/>
+        <tocitem text="modificarEspecialidad" target="modificarEspecialidad"/>
+        <tocitem text="modificarPedido" target="modificarPedido"/>
+        <tocitem text="modificarTratamiento" target="modificarTratamiento"/>
+        <tocitem text="nuevoMaterial" target="nuevoMaterial"/>
+        <tocitem text="odontograma" target="odontograma"/>
+        <tocitem text="solicitudMaterial" target="solicitudMaterial"/>
+        <tocitem text="stock" target="stock"/>
+    <tocitem />
+</toc>

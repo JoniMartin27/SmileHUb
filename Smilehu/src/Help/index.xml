@@ -1,7 +1,30 @@
 
 <index version="1.0">
         <indexitem text="Manual" target="aplicacion"/>
-        <indexitem text="introduccion" target="introduccion"/>
-        <indexitem text="alta" target="alta"/>
+        <indexitem text="introduccion" target="introduccion"/> 
+        <indexitem text="alta" target="alta"/> 
+        <indexitem text="consultarCita" target="consultarCita"/>
+        <indexitem text="crearCita" target="crearCita"/>
+        <indexitem text="crearDoctor" target="crearDoctor"/>
+        <indexitem text="crearEspecialidad" target="crearEspecialidad"/>
+        <indexitem text="crearPaciente" target="crearPaciente"/>
+        <indexitem text="crearPedido" target="crearPedido"/>
+        <indexitem text="crearProveedor" target="crearProveedor"/>
+        <indexitem text="crearTratamiento" target="crearTratamiento"/>
+        <indexitem text="fichaDoctor" target="fichaDoctor"/>
+        <indexitem text="fichaPaciente" target="fichaPaciente"/>
+        <indexitem text="fichaProveedor" target="fichaProveedor"/>
+        <indexitem text="gestionMedica_inicio" target="gestionMedica_inicio"/>
+        <indexitem text="inicio_administrador" target="inicio_administrador"/>
+        <indexitem text="inicioMaterial" target="inicioMaterial"/>
+        <indexitem text="login" target="login"/>
+        <indexitem text="material_stock" target="material_stock"/>
+        <indexitem text="modificarEspecialidad" target="modificarEspecialidad"/>
+        <indexitem text="modificarPedido" target="modificarPedido"/>
+        <indexitem text="modificarTratamiento" target="modificarTratamiento"/>
+        <indexitem text="nuevoMaterial" target="nuevoMaterial"/>
+        <indexitem text="odontograma" target="odontograma"/>
+        <indexitem text="solicitudMaterial" target="solicitudMaterial"/>
+        <indexitem text="stock" target="stock"/>
 </index>
 

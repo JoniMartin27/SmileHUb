@@ -1,7 +1,4 @@
 <helpset version="1.0">
-
-
-
     <maps>
         <homeID> aplicacion </homeID>
         <mapref location="map.jhm"></mapref>
