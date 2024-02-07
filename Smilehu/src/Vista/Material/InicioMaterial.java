@@ -68,6 +68,16 @@ public class InicioMaterial extends JInternalFrame {
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
+		JLabel lbl_material = new JLabel("Material");
+		lbl_material.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_material.setBounds(82, 129, 103, 14);
+		panel.add(lbl_material);
+		
+		JLabel lbl_inicioMateriak = new JLabel("Inicio material");
+		lbl_inicioMateriak.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_inicioMateriak.setBounds(30, 11, 190, 14);
+		panel.add(lbl_inicioMateriak);
+		
 		tf_buscar = new JTextField();
 		tf_buscar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		tf_buscar.setBounds(82, 154, 155, 23);
@@ -127,10 +137,10 @@ public class InicioMaterial extends JInternalFrame {
 				}
 			}
 		});
-		btn_solicitudes.setBounds(82, 25, 155, 23);
+		btn_solicitudes.setBounds(82, 55, 155, 23);
 		panel.add(btn_solicitudes);
 		
-		JButton btn_buscar = new JButton("buscar");
+		JButton btn_buscar = new JButton("Buscar");
 		btn_buscar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_buscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -183,13 +193,13 @@ public class InicioMaterial extends JInternalFrame {
 				}
 			}
 		});
-		btn_stock.setBounds(275, 25, 155, 23);
+		btn_stock.setBounds(275, 55, 155, 23);
 		panel.add(btn_stock);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(InicioMaterial.class.getResource("/img/fondoDientes.jpg")));
-		lblNewLabel.setBounds(0, 0, 1018, 476);
-		panel.add(lblNewLabel);
+		JLabel lbl_fondo = new JLabel("New label");
+		lbl_fondo.setIcon(new ImageIcon(InicioMaterial.class.getResource("/img/fondoDientes.jpg")));
+		lbl_fondo.setBounds(0, 0, 1018, 476);
+		panel.add(lbl_fondo);
 
 	}
 	

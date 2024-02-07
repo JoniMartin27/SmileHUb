@@ -142,7 +142,7 @@ public class Login extends JFrame {
 				lbl_IconCont.setIcon(icoCont);
 				contentPane.add(lbl_IconCont);
 				
-				tf_contrasena = new JTextField();
+				tf_contrasena = new JPasswordField();
 				tf_contrasena.setFont(new Font("Tahoma", Font.PLAIN, 16));
 				tf_contrasena.setColumns(10);
 				tf_contrasena.setBackground(new Color(176, 255, 250));

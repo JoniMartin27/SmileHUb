@@ -19,6 +19,9 @@ import Vista.gestionMedica.Panel_admin_gestionMedica_Inicio;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JLabel;
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
+import javax.help.HelpSetException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -27,6 +30,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
+import java.io.File;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
@@ -330,8 +335,20 @@ public class Inicio_Panel_Administrador extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			
 			try {
-				abrirPanelCrearPaciente(desktopPane);
-			} catch (PropertyVetoException e1) {
+				File fichero =new File("src/help/help_set.hs");
+				java.net.URL hsURL = fichero.toURI().toURL();
+				HelpSet helpset=new HelpSet(getClass().getClassLoader(),hsURL);
+				HelpBroker hb= helpset.createHelpBroker();
+				hb.enableHelpOnButton(ayuda,"aplicacion",helpset);
+				
+				
+				
+				
+				
+			} catch (MalformedURLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (HelpSetException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}

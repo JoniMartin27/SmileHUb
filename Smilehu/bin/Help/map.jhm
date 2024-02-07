@@ -3,7 +3,6 @@
     <mapID target="introduccion" url="html/page2.html"/>
     <mapID target="alta" url="html/page1.html"/>
     <mapID target="consultarCita" url="html/consultarCita.html"/>
-    <mapID target="consultarPedido" url="html/consultarPedido.html"/>
     <mapID target="crearCita" url="html/crearCita.html"/>
     <mapID target="crearDoctor" url="html/crearDoctor.html"/>
     <mapID target="crearEspecialidad" url="html/crearEspecialidad.html"/>

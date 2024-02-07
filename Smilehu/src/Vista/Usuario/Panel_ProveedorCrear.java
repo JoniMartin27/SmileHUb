@@ -78,6 +78,7 @@ public class Panel_ProveedorCrear extends JInternalFrame {
 		
 		
 		JButton btn_crearproveedor = new JButton("Crear Proveedor");
+		btn_crearproveedor.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_crearproveedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Proveedor proveedor=new Proveedor(tf_direccion.getText(),tf_direccion.getText(),tf_telefono.getText(),tf_correo.getText());
@@ -91,7 +92,7 @@ public class Panel_ProveedorCrear extends JInternalFrame {
 				}
 			}
 		});
-		btn_crearproveedor.setBounds(476, 438, 173, 23);
+		btn_crearproveedor.setBounds(407, 432, 173, 23);
 		contentPanel.add(btn_crearproveedor);
 		
 	
@@ -100,13 +101,13 @@ public class Panel_ProveedorCrear extends JInternalFrame {
 		
 		/*Nombre*/
 		JLabel lbl_nombre = new JLabel("Nombre");
-		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_nombre.setForeground(new Color(0, 0, 0));
-		lbl_nombre.setBounds(389, 145, 90, 14);
+		lbl_nombre.setBounds(320, 139, 90, 14);
 		contentPanel.add(lbl_nombre);
 		
 		tf_direccion = new JTextField();
-		tf_direccion.setBounds(578, 170, 153, 20);
+		tf_direccion.setBounds(509, 164, 153, 20);
 		contentPanel.add(tf_direccion);
 		tf_direccion.setColumns(10);
 		
@@ -115,13 +116,13 @@ public class Panel_ProveedorCrear extends JInternalFrame {
 		
 		/*Apellidos*/
 		JLabel lbl_direccion = new JLabel("Dirección");
-		lbl_direccion.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_direccion.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_direccion.setForeground(new Color(0, 0, 0));
-		lbl_direccion.setBounds(578, 145, 102, 14);
+		lbl_direccion.setBounds(509, 139, 102, 14);
 		contentPanel.add(lbl_direccion);
 		
 		tf_nombre = new JTextField();
-		tf_nombre.setBounds(389, 170, 153, 20);
+		tf_nombre.setBounds(320, 164, 153, 20);
 		contentPanel.add(tf_nombre);
 		tf_nombre.setColumns(10);
 		
@@ -130,25 +131,25 @@ public class Panel_ProveedorCrear extends JInternalFrame {
 		
 		/*Fecha de nacimiento*/
 		JLabel lbl_telefono = new JLabel("Telefono");
-		lbl_telefono.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_telefono.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_telefono.setForeground(new Color(0, 0, 0));
-		lbl_telefono.setBounds(389, 215, 102, 14);
+		lbl_telefono.setBounds(320, 209, 102, 14);
 		contentPanel.add(lbl_telefono);
 		
 		tf_telefono = new JTextField();
-		tf_telefono.setBounds(389, 240, 153, 20);
+		tf_telefono.setBounds(320, 234, 153, 20);
 		contentPanel.add(tf_telefono);
 		tf_telefono.setColumns(10);
 		
 		tf_correo = new JTextField();
-		tf_correo.setBounds(578, 240, 153, 20);
+		tf_correo.setBounds(509, 234, 153, 20);
 		contentPanel.add(tf_correo);
 		tf_correo.setColumns(10);
 		
 		JLabel lbl_correo = new JLabel("Correo");
-		lbl_correo.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbl_correo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_correo.setForeground(new Color(0, 0, 0));
-		lbl_correo.setBounds(578, 215, 75, 14);
+		lbl_correo.setBounds(509, 209, 75, 14);
 		contentPanel.add(lbl_correo);
 		
 		JLabel lblNewLabel = new JLabel("New label");

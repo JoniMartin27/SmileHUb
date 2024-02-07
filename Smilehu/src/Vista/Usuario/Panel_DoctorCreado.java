@@ -23,6 +23,7 @@ import javax.swing.border.EmptyBorder;
 import Vista.gestionEconomica.JDialog_admin_gestionEconomica_tipoPago;
 
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 
 public class Panel_DoctorCreado extends JInternalFrame {
 
@@ -30,7 +31,6 @@ public class Panel_DoctorCreado extends JInternalFrame {
 	private final JPanel contentPanel = new JPanel();
 
 	private JTextField textField;
-	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
@@ -78,6 +78,10 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
+		JComboBox cb_nombreDoctor = new JComboBox();
+		cb_nombreDoctor.setBounds(529, 139, 116, 22);
+		panel.add(cb_nombreDoctor);
+		
 		JLabel lbl_ficha = new JLabel("FICHA DOCTOR");
 		lbl_ficha.setBackground(new Color(192, 192, 192));
 		lbl_ficha.setForeground(new Color(0, 0, 0));
@@ -88,107 +92,96 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		JLabel lbl_altabaja = new JLabel("Dar de alta o baja");
 		lbl_altabaja.setForeground(Color.BLACK);
 		lbl_altabaja.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_altabaja.setBounds(120, 304, 151, 14);
+		lbl_altabaja.setBounds(251, 320, 151, 14);
 		panel.add(lbl_altabaja);
 		
 		JRadioButton rdbtn_alta = new JRadioButton("Alta");
 		rdbtn_alta.setFont(new Font("Tahoma", Font.BOLD, 14));
-		rdbtn_alta.setBounds(398, 300, 116, 23);
+		rdbtn_alta.setBounds(529, 316, 116, 23);
 		panel.add(rdbtn_alta);
 
 		JRadioButton rdbtn_baja = new JRadioButton("Baja");
 		rdbtn_baja.setFont(new Font("Tahoma", Font.BOLD, 14));
-		rdbtn_baja.setBounds(524, 300, 116, 23);
+		rdbtn_baja.setBounds(655, 316, 116, 23);
 		panel.add(rdbtn_baja);
 		
 		JRadioButton rdbtn_femenino = new JRadioButton("Femenino");
 		rdbtn_femenino.setFont(new Font("Tahoma", Font.BOLD, 14));
-		rdbtn_femenino.setBounds(524, 266, 116, 23);
+		rdbtn_femenino.setBounds(655, 282, 116, 23);
 		panel.add(rdbtn_femenino);
 		
 		JRadioButton rdbtn_masculino = new JRadioButton("Masculino");
 		rdbtn_masculino.setFont(new Font("Tahoma", Font.BOLD, 14));
-		rdbtn_masculino.setBounds(398, 266, 116, 23);
+		rdbtn_masculino.setBounds(529, 282, 116, 23);
 		panel.add(rdbtn_masculino);
 		
 		JLabel lbl_genero = new JLabel("Genero");
 		lbl_genero.setForeground(Color.BLACK);
 		lbl_genero.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_genero.setBounds(120, 267, 151, 14);
+		lbl_genero.setBounds(251, 283, 151, 14);
 		panel.add(lbl_genero);
 		
 		JLabel lbl_direccion = new JLabel("Direccion");
 		lbl_direccion.setForeground(Color.BLACK);
 		lbl_direccion.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_direccion.setBounds(120, 239, 151, 14);
+		lbl_direccion.setBounds(251, 255, 151, 14);
 		panel.add(lbl_direccion);
 		
 		JLabel lbl_apellidos = new JLabel("Apellidos");
 		lbl_apellidos.setForeground(Color.BLACK);
 		lbl_apellidos.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_apellidos.setBounds(120, 211, 151, 14);
+		lbl_apellidos.setBounds(251, 197, 151, 14);
 		panel.add(lbl_apellidos);
 		
 		JLabel lbl_nombre = new JLabel("Nombre");
 		lbl_nombre.setForeground(Color.BLACK);
 		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_nombre.setBounds(119, 186, 152, 14);
+		lbl_nombre.setBounds(250, 172, 152, 14);
 		panel.add(lbl_nombre);
 		
 		JLabel lbl_idespecialidad = new JLabel("ID Especialidad");
 		lbl_idespecialidad.setForeground(Color.BLACK);
 		lbl_idespecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_idespecialidad.setBounds(120, 155, 151, 14);
+		lbl_idespecialidad.setBounds(250, 222, 151, 14);
 		panel.add(lbl_idespecialidad);
 		
-		JLabel lbl_iddoctor = new JLabel("DNI");
-		lbl_iddoctor.setForeground(Color.BLACK);
-		lbl_iddoctor.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_iddoctor.setBounds(120, 130, 151, 14);
-		panel.add(lbl_iddoctor);
-		
-		JLabel lbl_BuscarId = new JLabel("Ponga el ID del doctor");
-		lbl_BuscarId.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_BuscarId.setBounds(120, 43, 187, 14);
-		panel.add(lbl_BuscarId);
+		JLabel lbl_Buscardoctor = new JLabel("nombre doctor");
+		lbl_Buscardoctor.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_Buscardoctor.setBounds(250, 110, 162, 14);
+		panel.add(lbl_Buscardoctor);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
-		textField.setBounds(398, 44, 116, 20);
+		textField.setBounds(528, 111, 116, 20);
 		panel.add(textField);
 		
 		JButton btn_buscar = new JButton("Buscar");
-		btn_buscar.setBounds(524, 43, 89, 23);
+		btn_buscar.setBounds(654, 110, 89, 23);
 		panel.add(btn_buscar);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(398, 130, 116, 20);
-		panel.add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(398, 161, 116, 20);
+		textField_2.setBounds(528, 228, 116, 20);
 		panel.add(textField_2);
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(398, 186, 116, 20);
+		textField_3.setBounds(529, 172, 116, 20);
 		panel.add(textField_3);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(398, 211, 116, 20);
+		textField_4.setBounds(529, 197, 116, 20);
 		panel.add(textField_4);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(398, 239, 116, 20);
+		textField_5.setBounds(529, 255, 116, 20);
 		panel.add(textField_5);
 		
 		
 		JButton btn_realizarpago=new JButton();
-		btn_realizarpago.setBounds(964, 22, 17, 23);
+		btn_realizarpago.setBounds(845, 22, 136, 23);
 		btn_realizarpago.setText("Registrar Pago");
 		btn_realizarpago.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

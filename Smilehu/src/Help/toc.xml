@@ -4,7 +4,6 @@
         <tocitem text="introduccion" target="introduccion"/> 
         <tocitem text="alta" target="alta"/>
         <tocitem text="consultarCita" target="consultarCita"/>
-        <tocitem text="consultarPedido" target="consultarPedido"/>
         <tocitem text="crearCita" target="crearCita"/>
         <tocitem text="crearDoctor" target="crearDoctor"/>
         <tocitem text="crearEspecialidad" target="crearEspecialidad"/>
