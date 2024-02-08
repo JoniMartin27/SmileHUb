@@ -110,22 +110,6 @@ public class Login extends JFrame {
 				contentPane.add(lbl_Icon);
 
 		
-		JButton btn_ocultarCont = new JButton("");
-		
-				btn_ocultarCont.setBounds(606, 441, 34, 34);
-
-		JButton btn_verCont = new JButton("");
-		ImageIcon icoOjo = new ImageIcon(getClass().getResource("/img/ojo.png"));
-		
-
-
-				btn_verCont.setIcon(icoOjo);
-				btn_verCont.setBounds(606, 441, 34, 34);
-				contentPane.add(btn_verCont);
-		
-		ImageIcon icoVisible = new ImageIcon(getClass().getResource("/img/visible.png"));
-				btn_ocultarCont.setIcon(icoVisible);
-				contentPane.add(btn_ocultarCont);
 		
 		
 		
@@ -142,7 +126,7 @@ public class Login extends JFrame {
 				lbl_IconCont.setIcon(icoCont);
 				contentPane.add(lbl_IconCont);
 				
-				tf_contrasena = new JPasswordField();
+				JPasswordField tf_contrasena = new JPasswordField();
 				tf_contrasena.setFont(new Font("Tahoma", Font.PLAIN, 16));
 				tf_contrasena.setColumns(10);
 				tf_contrasena.setBackground(new Color(176, 255, 250));
@@ -196,7 +180,62 @@ public class Login extends JFrame {
 
 				
 				});
+				JButton btn_ocultarCont = new JButton("");
+				JButton btn_verCont = new JButton("");
+				btn_verCont.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						 // Obtener el texto del campo de contraseña
+		                char[] password = tf_contrasena.getPassword();
+
+		                // Cambiar temporalmente el carácter de ocultación
+		                tf_contrasena.setEchoChar((char) 0);
+
+		                
+		                btn_verCont.setVisible(false);
+		                btn_ocultarCont.setVisible(true);
+		            
+		                
+		                
+		                
+		            }
+						
+					
+				});
+			
+				btn_ocultarCont.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						// Volver a establecer el carácter de ocultación
+		                ((JPasswordField) tf_contrasena).setEchoChar('*');
+		                
+		                btn_ocultarCont.setVisible(false);
+		                btn_verCont.setVisible(true);
+		                
+					}
+				});
+				
+						btn_ocultarCont.setBounds(606, 441, 34, 34);
+
+
+				
+				ImageIcon icoOjo = new ImageIcon(getClass().getResource("/img/ojo.png"));
+				
+
+
+						
+				
+				ImageIcon icoVisible = new ImageIcon(getClass().getResource("/img/visible.png"));
+						btn_ocultarCont.setIcon(icoVisible);
+						contentPane.add(btn_ocultarCont);
+				
+				btn_verCont.setIcon(icoOjo);
+				btn_verCont.setBounds(606, 441, 34, 34);
+				contentPane.add(btn_verCont);
 						btn_Acceder.setBounds(426, 513, 107, 34);
 						contentPane.add(btn_Acceder);
+
+
+						
+						
+						
 	}
 }

@@ -3,8 +3,8 @@
         <indexitem text="Manual" target="aplicacion"/>
         <indexitem text="introduccion" target="introduccion"/> 
         <indexitem text="alta" target="alta"/> 
-        <indexitem text="consultarCita" target="consultarCita"/>
-        <indexitem text="crearCita" target="crearCita"/>
+                <indexitem text="consultarCita" target="consultarCita"/>
+                <indexitem text="crearCita" target="crearCita"/>
         <indexitem text="crearDoctor" target="crearDoctor"/>
         <indexitem text="crearEspecialidad" target="crearEspecialidad"/>
         <indexitem text="crearPaciente" target="crearPaciente"/>
