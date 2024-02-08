@@ -51,20 +51,20 @@ where  consulta_cita.id_paciente=$P{id_paciente}]]>
 					<imageExpression><![CDATA["C:\\Users\\Medac\\Documents\\GitHub\\SmileHUb\\Smilehu\\src\\img\\SmileHub.png"]]></imageExpression>
 				</image>
 				<staticText>
-					<reportElement x="421" y="10" width="141" height="54" uuid="3f929c39-f24d-41ca-8a7f-ff17fbe911a2"/>
-					<textElement>
-						<font size="10" isBold="true"/>
+					<reportElement x="150" y="40" width="330" height="30" forecolor="#FFFFFF" uuid="6ba350b5-7a57-48eb-8d9e-4be2ba8930cc"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="23" isBold="true"/>
 					</textElement>
-					<text><![CDATA[Calle de Hermenegildo Bielsa 
-Numero 32 
-Usera
-28019 Madrid.]]></text>
+					<text><![CDATA[SMILEHUB]]></text>
 				</staticText>
 			</frame>
 			<frame>
 				<reportElement x="-13" y="50" width="582" height="50" uuid="404fc69f-c577-4c77-ba8c-fcf0cd876ce1"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="414" y="0" width="100" height="13" uuid="28c49932-d1d8-40f5-a6f1-0042136f9f31"/>
+					<reportElement x="470" y="20" width="114" height="20" forecolor="#FFFFFF" uuid="28c49932-d1d8-40f5-a6f1-0042136f9f31"/>
+					<textElement>
+						<font size="13" isBold="true"/>
+					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 			</frame>
@@ -87,28 +87,28 @@ Usera
 				<reportElement x="-20" y="36" width="595" height="1" uuid="f434b17b-37ed-4eb2-9c88-88e23837f767"/>
 			</line>
 			<staticText>
-				<reportElement x="10" y="0" width="100" height="30" uuid="1d070329-a38a-430f-9699-e658ed17e0e3">
+				<reportElement x="0" y="0" width="100" height="30" uuid="1d070329-a38a-430f-9699-e658ed17e0e3">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5d0ce4c7-29d2-49ec-b5b2-3104aed9e29e"/>
 				</reportElement>
 				<text><![CDATA[Fecha y hora]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="120" y="0" width="100" height="30" uuid="c326751b-4d69-4c3c-814a-2aeac631c742">
+				<reportElement x="114" y="0" width="100" height="30" uuid="c326751b-4d69-4c3c-814a-2aeac631c742">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fadd1c30-5ada-4a84-9cbc-c8137fb226ab"/>
 				</reportElement>
 				<text><![CDATA[Tratamiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="340" y="3" width="100" height="30" uuid="bf583e91-c14e-42c6-9807-0407d66964b5">
+				<reportElement x="340" y="0" width="100" height="30" uuid="bf583e91-c14e-42c6-9807-0407d66964b5">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b2d99b14-3eed-48c6-8b55-6a0e5caf5434"/>
 				</reportElement>
 				<text><![CDATA[Nombre Paciente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="220" y="0" width="100" height="30" uuid="2c848cef-d1ab-4b0a-bd4b-fedcc6a78e06">
+				<reportElement x="227" y="0" width="100" height="30" uuid="2c848cef-d1ab-4b0a-bd4b-fedcc6a78e06">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fe6909c1-1d92-473e-9535-cda9ca288505"/>
 				</reportElement>
-				<text><![CDATA[observaciones]]></text>
+				<text><![CDATA[Observaciones]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="460" y="0" width="100" height="36" uuid="aed856c9-10db-4413-9be1-7d0d224c7108">
@@ -127,28 +127,28 @@ Usera
 				<textFieldExpression><![CDATA[$F{Fecha y hora}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="120" y="0" width="100" height="30" uuid="309e6ced-cbeb-4f90-8dd6-57dbda29aa05">
+				<reportElement x="114" y="0" width="100" height="30" uuid="309e6ced-cbeb-4f90-8dd6-57dbda29aa05">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fadd1c30-5ada-4a84-9cbc-c8137fb226ab"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{Tratamiento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="240" y="0" width="100" height="30" uuid="249ce251-4dff-41aa-ab2e-319d69bc4d59">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b2d99b14-3eed-48c6-8b55-6a0e5caf5434"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{Nombre Paciente}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="360" y="0" width="100" height="30" uuid="8abaab73-c7c9-4ad9-972a-a19d7db12e89">
+				<reportElement x="229" y="0" width="100" height="30" uuid="8abaab73-c7c9-4ad9-972a-a19d7db12e89">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fe6909c1-1d92-473e-9535-cda9ca288505"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="475" y="0" width="100" height="30" uuid="6ae8bbe4-5607-448f-8f5b-29666cae85aa">
+				<reportElement x="460" y="0" width="100" height="30" uuid="6ae8bbe4-5607-448f-8f5b-29666cae85aa">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7613c390-c6a5-49a9-90ce-b0a6df62e738"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{Nombre Doctor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="0" width="100" height="30" uuid="249ce251-4dff-41aa-ab2e-319d69bc4d59">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b2d99b14-3eed-48c6-8b55-6a0e5caf5434"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Nombre Paciente}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -156,6 +156,9 @@ Usera
 		<band height="67" splitType="Stretch">
 			<line>
 				<reportElement x="-30" y="66" width="605" height="1" uuid="2ef25a12-e10f-42c3-bf41-29e403c621f5"/>
+			</line>
+			<line>
+				<reportElement x="-30" y="10" width="610" height="1" uuid="c25baa75-cfbe-4de9-a1f0-3057438b4dec"/>
 			</line>
 		</band>
 	</columnFooter>
@@ -169,11 +172,22 @@ Usera
 					<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de "+$V{PAGE_COUNT}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="30" y="36" width="538" height="54" uuid="6a232dd0-631f-409f-afc1-f5d7dc2b0d9c"/>
+					<reportElement x="30" y="36" width="370" height="54" forecolor="#FFFFFF" uuid="6a232dd0-631f-409f-afc1-f5d7dc2b0d9c"/>
 					<textElement>
 						<font size="10" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Agradecemos sinceramente su elección de SmileHub para sus necesidades dentales. Estamos comprometidos a brindarle la mejor atención posible. No dude en contactarnos para cualquier pregunta o inquietud. Su salud dental es nuestra prioridad. Gracias por confiar en nosotros.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="430" y="36" width="159" height="57" forecolor="#FFFFFF" uuid="3f929c39-f24d-41ca-8a7f-ff17fbe911a2"/>
+					<textElement rotation="None">
+						<font size="10" isBold="true"/>
+						<paragraph lineSpacingSize="0.0"/>
+					</textElement>
+					<text><![CDATA[Calle de Hermenegildo Bielsa 
+Numero 32 
+Usera
+28019 Madrid.]]></text>
 				</staticText>
 			</frame>
 		</band>
