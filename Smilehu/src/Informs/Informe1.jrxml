@@ -61,7 +61,7 @@ where  consulta_cita.id_paciente=$P{id_paciente}]]>
 			<frame>
 				<reportElement x="-13" y="50" width="582" height="50" uuid="404fc69f-c577-4c77-ba8c-fcf0cd876ce1"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="470" y="20" width="114" height="20" forecolor="#FFFFFF" uuid="28c49932-d1d8-40f5-a6f1-0042136f9f31"/>
+					<reportElement x="460" y="20" width="114" height="20" forecolor="#FFFFFF" uuid="28c49932-d1d8-40f5-a6f1-0042136f9f31"/>
 					<textElement>
 						<font size="13" isBold="true"/>
 					</textElement>
@@ -119,46 +119,46 @@ where  consulta_cita.id_paciente=$P{id_paciente}]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="30" splitType="Stretch">
+		<band height="51" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="100" height="30" uuid="0db3b1be-e6d8-4855-96cc-400d2783feb9">
+				<reportElement x="0" y="20" width="100" height="30" uuid="0db3b1be-e6d8-4855-96cc-400d2783feb9">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5d0ce4c7-29d2-49ec-b5b2-3104aed9e29e"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{Fecha y hora}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="114" y="0" width="100" height="30" uuid="309e6ced-cbeb-4f90-8dd6-57dbda29aa05">
+				<reportElement x="120" y="20" width="100" height="30" uuid="309e6ced-cbeb-4f90-8dd6-57dbda29aa05">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fadd1c30-5ada-4a84-9cbc-c8137fb226ab"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{Tratamiento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="229" y="0" width="100" height="30" uuid="8abaab73-c7c9-4ad9-972a-a19d7db12e89">
+				<reportElement x="230" y="20" width="100" height="30" uuid="8abaab73-c7c9-4ad9-972a-a19d7db12e89">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fe6909c1-1d92-473e-9535-cda9ca288505"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="460" y="0" width="100" height="30" uuid="6ae8bbe4-5607-448f-8f5b-29666cae85aa">
+				<reportElement x="470" y="20" width="100" height="30" uuid="6ae8bbe4-5607-448f-8f5b-29666cae85aa">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7613c390-c6a5-49a9-90ce-b0a6df62e738"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{Nombre Doctor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="340" y="0" width="100" height="30" uuid="249ce251-4dff-41aa-ab2e-319d69bc4d59">
+				<reportElement x="347" y="20" width="100" height="30" uuid="249ce251-4dff-41aa-ab2e-319d69bc4d59">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b2d99b14-3eed-48c6-8b55-6a0e5caf5434"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{Nombre Paciente}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="-35" y="50" width="610" height="1" uuid="c25baa75-cfbe-4de9-a1f0-3057438b4dec"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
 		<band height="67" splitType="Stretch">
 			<line>
 				<reportElement x="-30" y="66" width="605" height="1" uuid="2ef25a12-e10f-42c3-bf41-29e403c621f5"/>
-			</line>
-			<line>
-				<reportElement x="-30" y="10" width="610" height="1" uuid="c25baa75-cfbe-4de9-a1f0-3057438b4dec"/>
 			</line>
 		</band>
 	</columnFooter>
