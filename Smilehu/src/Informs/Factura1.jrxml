@@ -303,10 +303,15 @@ WHERE p.id_paciente = $P{id_paciente}]]>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="53" splitType="Stretch">
+		<band height="113" splitType="Stretch">
 			<textField>
-				<reportElement x="460" y="20" width="100" height="30" uuid="018bb7e4-8888-4aaa-b8c8-d109edb8e864"/>
+				<reportElement x="474" y="20" width="100" height="30" uuid="018bb7e4-8888-4aaa-b8c8-d109edb8e864"/>
 				<textFieldExpression><![CDATA[$V{importe1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="-20" y="100" width="595" height="13" backcolor="#E6E6E6" uuid="0c515b76-24d8-4c3c-b8ac-720167ebdf13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Nº de Facturas "+$V{PAGE_COUNT}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>
@@ -314,11 +319,6 @@ WHERE p.id_paciente = $P{id_paciente}]]>
 		<band height="140" splitType="Stretch">
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="0" width="595" height="140" backcolor="#006699" uuid="8d1b6e7c-c1d8-4b9c-9c72-00dd9326bbcc"/>
-				<textField>
-					<reportElement mode="Opaque" x="17" y="100" width="560" height="13" backcolor="#E6E6E6" uuid="0c515b76-24d8-4c3c-b8ac-720167ebdf13"/>
-					<textElement textAlignment="Right"/>
-					<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de "+$V{PAGE_COUNT}]]></textFieldExpression>
-				</textField>
 				<staticText>
 					<reportElement x="30" y="36" width="350" height="54" forecolor="#FFFFFF" uuid="2daf4439-503c-48c4-b8fb-7ccb27075de8"/>
 					<textElement>
@@ -340,7 +340,4 @@ Usera
 			</frame>
 		</band>
 	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>

@@ -425,7 +425,7 @@ public class ConexionMySQL {
      public static Tratamiento buscarTratamiento(String nombre) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("SELECT * from tratamiento where nombre  ='"+nombre+"'");//consulta
+         ResultSet rset=stmt.executeQuery("SELECT * from tratamiento where nombre_tratamiento  ='"+nombre+"'");//consulta
 
          Tratamiento tratamiento=null;
          if (rset.next()) {
@@ -452,7 +452,7 @@ public class ConexionMySQL {
      public static StockMaterial buscarMaterial(String nombre) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("SELECT * from tratamiento where nombre  ='"+nombre+"'");//consulta
+         ResultSet rset=stmt.executeQuery("SELECT * from tratamiento where nombre_tratamiento  ='"+nombre+"'");//consulta
 
          StockMaterial material=null;
          if (rset.next()) {
@@ -605,7 +605,7 @@ public class ConexionMySQL {
     		 while (rset.next()) {
     			 int id_tratamiento=rset.getInt("id_tratamiento");
     		        int id_especialidad=rset.getInt("id_especialidad");
-    		        String nombre=rset.getString("nombre");
+    		        String nombre=rset.getString("nombre_tratamiento");
     		        double precio=rset.getDouble("precio");
     			 
     		        Tratamiento doctor=new Tratamiento(id_tratamiento,id_especialidad,nombre,precio);
@@ -670,7 +670,7 @@ public class ConexionMySQL {
     	 
     	 return combo;
      }
-//COMBOBOX Crear Tratamiento Seleccionar especialidad 
+//COMBOBOX Crear Especialidad Seleccionar especialidad 
      
      public static List<Especialidad> buscarEspecialidad() throws SQLException {
     	 List<Especialidad> combo = new ArrayList<>();
@@ -711,7 +711,7 @@ public class ConexionMySQL {
 		}
      
      public static void insertarTratamiento(Tratamiento tratamiento) throws SQLException {
-		    String query = "INSERT INTO tratamiento (id_especialidad, nombre, precio)" +
+		    String query = "INSERT INTO tratamiento (id_especialidad, nombre_tratamiento, precio)" +
 		                   "VALUES('" + tratamiento.getId_especialidad() + "', '" + tratamiento.getNombre() 
 		                   + "', '" + tratamiento.getPrecio() + "')";
 		    

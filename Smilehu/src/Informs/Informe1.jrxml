@@ -5,7 +5,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="adaptador"/>
 	<parameter name="id_paciente" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT concat(consulta_cita.fecha,' ',consulta_cita.hora) as "Fecha y hora",tratamiento.nombre as "Tratamiento",
+		<![CDATA[SELECT concat(consulta_cita.fecha,' ',consulta_cita.hora) as "Fecha y hora",tratamiento.nombre_tratamiento as "Tratamiento",
 paciente.nombre as "Nombre Paciente",consulta_cita.observaciones,doctor_administrador.nombre as "Nombre Doctor"
 from consulta_cita
 inner join tratamiento on consulta_cita.id_tratamiento=tratamiento.id_tratamiento
@@ -20,7 +20,7 @@ where  consulta_cita.id_paciente=$P{id_paciente}]]>
 		<property name="com.jaspersoft.studio.field.label" value="Fecha y hora"/>
 	</field>
 	<field name="Tratamiento" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.name" value="nombre_tratamiento"/>
 		<property name="com.jaspersoft.studio.field.label" value="Tratamiento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tratamiento"/>
 	</field>
@@ -167,9 +167,11 @@ where  consulta_cita.id_paciente=$P{id_paciente}]]>
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="0" width="595" height="140" backcolor="#006699" uuid="9b6f8c58-61eb-462e-a0d0-257b7f4494b9"/>
 				<textField>
-					<reportElement mode="Opaque" x="17" y="100" width="560" height="13" backcolor="#E6E6E6" uuid="33db669d-8c57-4276-b983-403f12f095f3"/>
-					<textElement textAlignment="Right"/>
-					<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de "+$V{PAGE_COUNT}]]></textFieldExpression>
+					<reportElement mode="Opaque" x="0" y="-14" width="595" height="13" backcolor="#E6E6E6" uuid="33db669d-8c57-4276-b983-403f12f095f3"/>
+					<textElement textAlignment="Right">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Nº de citas: "+$V{PAGE_COUNT}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="30" y="36" width="370" height="54" forecolor="#FFFFFF" uuid="6a232dd0-631f-409f-afc1-f5d7dc2b0d9c"/>
