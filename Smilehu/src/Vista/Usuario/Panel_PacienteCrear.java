@@ -21,6 +21,8 @@ import Modelo.Paciente;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
@@ -188,9 +190,16 @@ public class Panel_PacienteCrear extends JInternalFrame {
 				}
 				
 				try {
+					
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+					String fechaComoCadena = sdf.format(new Date());
+					
+					
+					
+					System.out.println(fechaComoCadena);
 					ConexionMySQL.conectar();
 					Paciente paciente = new Paciente( tf_nombre.getText(), tf_apellidos.getText(),
-							tf_direccion.getText(), genero, tf_telefono.getText(),
+							tf_direccion.getText(), genero, tf_telefono.getText(),fechaComoCadena,
 							tf_fechaNacimiento.getText());
 					
 					

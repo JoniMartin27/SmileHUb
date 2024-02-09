@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de ayuda: Citas Médicas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff; /* Color de fondo azul pastel */
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #007bff; /* Color de fondo de la barra de navegación */
+            color: #fff; /* Color de texto de la barra de navegación */
+            padding: 10px 20px; /* Espaciado interno */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e0f0ff; /* Color de fondo de la caja */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+            box-sizing: border-box;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        img {
+            display: block;
+            margin: 10px auto;
+            max-width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        input[type="date"],
+        input[type="time"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"],
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover,
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Sección de Ayuda - Citas Médicas</h1>
+    </div>
+    <div class="container">
+        <section id="consultarCita">
+            <h2>Consultar Citas</h2>
+            <ul>
+                <li>
+                    <p>Para consultar las citas, simplemente navegue a la sección <strong>"Consultar Citas"</strong>.</p>
+                    <img src="imagenes/consultar_citas.png" alt="Consultar Citas">
+                </li>
+                <li>
+                    <p>Aquí podrá ver una lista de todas las citas registradas, junto con información relevante.</p>
+                    <img src="imagenes/lista_citas.png" alt="Lista de Citas">
+                </li>
+            </ul>
+        </section>
+
+            <section id="crearCita">
+                <h2>Crear Cita</h2>
+                <ul>
+                    <li>
+                        <p>Para crear una cita, vaya a la sección <strong>"Crear Cita"</strong>.</p>
+                        <img src="imagenes/crear_cita.png" alt="Crear Cita">
+                    </li>
+                    <li>
+                        <p>Ingrese los detalles de la cita, como el <strong>ID de Cita</strong>, <strong>Nombre del Paciente</strong>, <strong>ID de Tratamiento</strong>, <strong>Observaciones</strong>, <strong>Fecha</strong> y <strong>Hora</strong>.</p>
+                        <img src="imagenes/formulario_cita.png" alt="Formulario de Cita">
+                    </li>
+                    <li>
+                        <p>Haga clic en el botón <strong>"Crear"</strong> para guardar la cita.</p>
+                        <img src="imagenes/boton_crear.png" alt="Boton Crear">
+                    </li>
+                    <li>
+                        <p>La nueva cita se mostrará en la lista de citas.</p>
+                        <img src="imagenes/nueva_cita.png" alt="Nueva Cita">
+                    </li>
+                </ul>
+            </section>
+
+            <section id="modificarCita">
+                <h2>Modificar Cita</h2>
+                <form action="actualizar_cita.php" method="post">
+                    <input type="hidden" name="id_cita" value="123">
+                    <div class="form-group">
+                        <label for="nombre_paciente">Nombre del Paciente</label>
+                        <input type="text" id="nombre_paciente" name="nombre_paciente" value="Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_tratamiento">ID de Tratamiento</label>
+                        <input type="number" id="id_tratamiento" name="id_tratamiento" value="456" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="observaciones">Observaciones</label>
+                        <textarea id="observaciones" name="observaciones">Observaciones de la cita</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" id="fecha" name="fecha" value="2023-03-22" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Hora</label>
+                        <input type="time" id="hora" name="hora" value="14:00:00" required>
+                    </div>
+                    <button type="submit" class="button">Actualizar Cita</button>
+                    <button type="button" class="btn-secondary">Cancelar</button>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

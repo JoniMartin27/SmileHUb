@@ -227,9 +227,11 @@ public class ConexionMySQL {
     	            String telefono = rset.getString("telefono");
     	            String fecha_alta = rset.getString("fecha_alta");
     	            String fecha_nacimiento = rset.getString("fecha_nacimiento");
-
+    	            System.out.println(id);
     	            return new Paciente(id, nombrePaciente, apellidoPaciente, direccion, genero, telefono, fecha_alta, fecha_nacimiento);
+    	            
     	        }
+    	     
     	    }
 
     	    return null;
@@ -247,7 +249,7 @@ public class ConexionMySQL {
      
      
      
-     public static List<Paciente> buscarPacientes(String nombrePaciente) throws SQLException {
+     public static List<Paciente> buscarPacientesCombo(String nombrePaciente) throws SQLException {
     	    List<Paciente> pacientes = new ArrayList<>();
     	    String query = "SELECT * FROM paciente WHERE nombre = ?";
     	    
