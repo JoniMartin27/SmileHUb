@@ -198,6 +198,10 @@ WHERE p.id_paciente = $P{id_paciente}]]>
 					</textElement>
 					<text><![CDATA[SMILEHUB]]></text>
 				</staticText>
+				<textField>
+					<reportElement x="337" y="96" width="100" height="30" uuid="fea0ac96-b4e4-4200-8cd8-fd46f9c38171"/>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
 			</frame>
 		</band>
 	</title>
@@ -340,4 +344,7 @@ Usera
 			</frame>
 		</band>
 	</pageFooter>
+	<summary>
+		<band height="50"/>
+	</summary>
 </jasperReport>
