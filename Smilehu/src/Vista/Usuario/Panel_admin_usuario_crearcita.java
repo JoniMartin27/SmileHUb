@@ -267,7 +267,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 					
 						System.out.println(formattedDate);
 						ConsultaCita cita = new ConsultaCita(tratamiento.getIdTratamiento(),tA_Observaciones.getText(),doctor.getId_doctor_administrador(),selectedTime,formattedDate,
-								paciente.getIdUsuario(),material.getIdMaterial());
+								paciente.getIdPaciente(),material.getIdMaterial());
 						
 						ConexionMySQL.insertarCita(cita);
 					} catch (SQLException e1) {

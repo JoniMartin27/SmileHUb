@@ -117,16 +117,16 @@ public class Panel_PacienteCreado extends JInternalFrame {
 					// buscamos al paciente con nombre y apellido e insertamos datos en textfields
 					try {
 						Paciente paciente = ConexionMySQL.buscarPacientes(nombre, apellido);
-						tf_id.setText(Integer.toString(paciente.getIdUsuario()));
+						tf_id.setText(Integer.toString(paciente.getIdPaciente()));
 						tf_apellidos.setText(paciente.getApellidos());
 						tf_direccion.setText(paciente.getDireccion());
-						tf_fechaAlta.setText(paciente.getFechaDeAlta());
+						tf_fechaAlta.setText(paciente.getFechaComoCadena());
 						tf_fechaNacimiento.setText(paciente.getFechaNacimiento());
 						tf_genero.setText(paciente.getGenero());
 						tf_telefono.setText(paciente.getTelefono());
 						tf_nombre.setText(paciente.getNombre());
 						
-						System.out.println(paciente.getIdUsuario());
+						System.out.println(paciente.getIdPaciente());
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -152,10 +152,10 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		
 		
 		
-		JLabel lblNewLabel_1 = new JLabel("FICHA PACIENTE ");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		lblNewLabel_1.setBounds(10, 11, 228, 14);
-		panel.add(lblNewLabel_1);
+		JLabel lbl_fichaPaciente = new JLabel("FICHA PACIENTE ");
+		lbl_fichaPaciente.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
+		lbl_fichaPaciente.setBounds(10, 11, 228, 14);
+		panel.add(lbl_fichaPaciente);
 		
 		tf_id = new JTextField();
 		tf_id.setEditable(false);

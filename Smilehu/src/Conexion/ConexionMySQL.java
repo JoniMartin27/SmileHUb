@@ -109,9 +109,9 @@ public class ConexionMySQL {
              pstmt.setString(3, paciente.getDireccion());
              pstmt.setString(4, paciente.getGenero());
              pstmt.setString(5, paciente.getTelefono());
-             pstmt.setString(6, paciente.getFechaDeAlta());
+             pstmt.setString(6, paciente.getFechaComoCadena());
              pstmt.setString(7, paciente.getFechaNacimiento());
-             pstmt.setInt(8, paciente.getIdUsuario ()); // id en la cláusula WHERE
+             pstmt.setInt(8, paciente.getIdPaciente()); // id en la cláusula WHERE
             
 
              pstmt.executeUpdate();
@@ -228,13 +228,14 @@ public class ConexionMySQL {
     	            String fecha_alta = rset.getString("fecha_alta");
     	            String fecha_nacimiento = rset.getString("fecha_nacimiento");
     	            System.out.println(id);
-    	            return new Paciente(id, nombrePaciente, apellidoPaciente, direccion, genero, telefono, fecha_alta, fecha_nacimiento);
-    	            
+    	            Paciente paciente= new Paciente(id, nombrePaciente, apellidoPaciente, direccion, genero, telefono, fecha_alta, fecha_nacimiento);
+    	            return paciente;
     	        }
-    	     
+    	        
     	    }
-
-    	    return null;
+			return null;
+    	   
+    	    
     	}
   
      
@@ -266,13 +267,19 @@ public class ConexionMySQL {
     	            String fecha_alta = rset.getString("fecha_alta");
     	            String fecha_nacimiento = rset.getString("fecha_nacimiento");
 
+    	            System.out.println("Justo antes de crear objetop"+id);
     	            Paciente paciente = new Paciente(id, nombrePaciente, apellidos, direccion, genero, telefono, fecha_alta, fecha_nacimiento);
+    	            System.out.println("Despues de crear objeto"+paciente.getIdPaciente());
     	            pacientes.add(paciente);
     	        }
     	    }
 
     	    return pacientes;
     	}
+     
+     
+     
+     
      public static Paciente consultaPaciente(int idPaciente) throws SQLException {
 
          Statement stmt=connection.createStatement();
@@ -301,7 +308,7 @@ public class ConexionMySQL {
 		    String query = "INSERT INTO paciente (nombre, apellidos, direccion, genero, telefono, fecha_alta, fecha_nacimiento) " +
 		                   "VALUES ('" + paciente.getNombre() + "', '" + paciente.getApellidos() + "', '" +
 		                   paciente.getDireccion() + "', '" + paciente.getGenero() + "', '" + paciente.getTelefono() + "', '" + 
-		                   paciente.getFechaDeAlta() + "', '" + paciente.getFechaNacimiento() + "')";
+		                   paciente.getFechaComoCadena() + "', '" + paciente.getFechaNacimiento() + "')";
 		    
 		    Statement stmt = connection.createStatement();
 		    stmt.executeUpdate(query);
@@ -474,25 +481,6 @@ public class ConexionMySQL {
 
         return material;
     }
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
      
      
      
