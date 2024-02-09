@@ -7,9 +7,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
@@ -115,6 +117,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 					// buscamos al paciente con nombre y apellido e insertamos datos en textfields
 					try {
 						Paciente paciente = ConexionMySQL.buscarPacientes(nombre, apellido);
+						tf_id.setText(Integer.toString(paciente.getIdUsuario()));
 						tf_apellidos.setText(paciente.getApellidos());
 						tf_direccion.setText(paciente.getDireccion());
 						tf_fechaAlta.setText(paciente.getFechaDeAlta());
@@ -122,7 +125,8 @@ public class Panel_PacienteCreado extends JInternalFrame {
 						tf_genero.setText(paciente.getGenero());
 						tf_telefono.setText(paciente.getTelefono());
 						tf_nombre.setText(paciente.getNombre());
-						tf_id.setText(Integer.toString(paciente.getIdUsuario()));
+						
+						System.out.println(paciente.getIdUsuario());
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -321,11 +325,14 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		        String genero = tf_genero.getText();
 		        String telefono = tf_telefono.getText();
 		        String fechaAlta = tf_fechaAlta.getText();
+		        
 		        String fechaNacimiento = tf_fechaNacimiento.getText();
 		        int id=Integer.parseInt(tf_id.getText());
-
+		        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		        
+		        String fechaComoCadena=sdf.format(fechaAlta);
 		        // Crear un objeto Paciente con los datos modificados
-		        Paciente pacienteModificado = new Paciente(id,nombre, apellidos, direccion, genero, telefono, fechaAlta, fechaNacimiento);
+		        Paciente pacienteModificado = new Paciente(id,nombre, apellidos, direccion, genero, telefono, fechaComoCadena, fechaNacimiento);
 
 		       
 		        
@@ -399,7 +406,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 			ConexionMySQL.conectar();
 
 			// Supongamos que tienes un método para obtener pacientes por nombre
-			List<Paciente> pacientes = ConexionMySQL.buscarPacientes(nombre);
+			List<Paciente> pacientes = ConexionMySQL.buscarPacientesCombo(nombre);
 
 			// Agregar nombre y apellidos de cada paciente al ComboBox
 			for (Paciente paciente : pacientes) {

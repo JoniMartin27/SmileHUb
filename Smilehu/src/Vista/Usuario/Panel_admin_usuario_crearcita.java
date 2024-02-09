@@ -414,7 +414,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 			ConexionMySQL.conectar();
 
 			// Supongamos que tienes un método para obtener pacientes por nombre
-			List<Paciente> pacientes = ConexionMySQL.buscarPacientes(nombre);
+			List<Paciente> pacientes = ConexionMySQL.buscarPacientesCombo(nombre);
 
 			// Agregar nombre y apellidos de cada paciente al ComboBox
 			for (Paciente paciente : pacientes) {

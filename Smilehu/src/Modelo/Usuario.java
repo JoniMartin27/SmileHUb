@@ -6,25 +6,13 @@ public abstract class  Usuario {
 	
 	
 	protected int idUsuario,tipoUsuario;
-	protected String nombre,apellidos,direccion,genero,telefono,pass,fechaDeAlta,fechaNacimiento;
+	protected String nombre,apellidos,direccion,genero,telefono,pass,fechaNacimiento;
+	protected String fechaDeAlta;
+	
+
 
 	
-	public Usuario(int idUsuario, int tipoUsuario,String nombre, String apellidos, String direccion, String genero,
-			 String telefono, String fechaDeAlta,String fechaNacimiento) {
-		super();
-		this.tipoUsuario=tipoUsuario;
-		this.idUsuario = idUsuario;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.direccion = direccion;
-		this.genero = genero;
-		this.fechaNacimiento = fechaNacimiento;
-		this.telefono = telefono;
-		this.fechaDeAlta = fechaDeAlta;
-	}
-
-	
-	public Usuario(String nombre,String apellidos, String direccion, String genero,String telefono,  String fechaNacimiento) {
+	public Usuario(int idUsuario, String nombre,String apellidos, String direccion, String genero,String telefono,  String fechaAlta, String fechaNacimiento) {
 		// TODO Auto-generated constructor stub
 		super();
 		this.nombre=nombre;
@@ -59,13 +47,22 @@ public abstract class  Usuario {
 	}
 
 
-
+	public Usuario(String nombre, String apellidos, String direccion, String genero, String telefono,
+			String fechaNacimiento) {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Usuario() {
 		// TODO Auto-generated constructor stub
 	}
 
 
+
+
+	
+
+
+	
 
 
 	public int getIdUsuario() {
