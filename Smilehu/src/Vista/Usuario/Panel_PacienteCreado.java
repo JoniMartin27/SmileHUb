@@ -328,11 +328,9 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		        
 		        String fechaNacimiento = tf_fechaNacimiento.getText();
 		        int id=Integer.parseInt(tf_id.getText());
-		        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		        
-		        String fechaComoCadena=sdf.format(fechaAlta);
+		       
 		        // Crear un objeto Paciente con los datos modificados
-		        Paciente pacienteModificado = new Paciente(id,nombre, apellidos, direccion, genero, telefono, fechaComoCadena, fechaNacimiento);
+		        Paciente pacienteModificado = new Paciente(id,nombre, apellidos, direccion, genero, telefono, fechaAlta, fechaNacimiento);
 
 		       
 		        

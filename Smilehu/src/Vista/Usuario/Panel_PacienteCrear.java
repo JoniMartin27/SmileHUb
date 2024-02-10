@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -179,16 +180,32 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		btn_CrearPaciente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String genero="";
-				if(rdbtn_femenino.isSelected()) {
-					genero="Mujer";
-					
-				}else if(rdbtn_masculino.isSelected()) {
-					genero="Hombre";
-					
-				}else {
-					
+				
+				if((!tf_nombre.getText().equals(" "))&&(!tf_apellidos.getText().equals(" "))) {
+					JOptionPane.showMessageDialog(null, "Introduce el nombre y apellidos del paciente.");	}
+				
+				else {
+					if(rdbtn_femenino.isSelected()) {
+						genero="Mujer";
+						
+					}else if(rdbtn_masculino.isSelected()) {
+						genero="Hombre";
+						
+					}else {
+						JOptionPane.showMessageDialog(null, "Selecciona el genero del paciente.");
+					}
+				
+					crearPaciente(genero);
 				}
 				
+			
+				
+				
+				
+				
+			}
+
+			private void crearPaciente(String genero) {
 				try {
 					
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -204,17 +221,13 @@ public class Panel_PacienteCrear extends JInternalFrame {
 					
 					
 					ConexionMySQL.insertarPaciente(paciente);
-					
+					JOptionPane.showMessageDialog(null, "Paciente Creado.");
 					
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Inserte los datos del paciente antes de pulsar el botón crear.");
 				}
-				
-				
-				
-				
-				
 			}
 		});
 	}

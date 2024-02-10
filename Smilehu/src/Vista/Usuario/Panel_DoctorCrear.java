@@ -11,12 +11,23 @@ import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import Conexion.ConexionMySQL;
+import Modelo.Doctor_administrador;
+import Modelo.Especialidad;
+import Modelo.Paciente;
+
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
@@ -29,6 +40,9 @@ public class Panel_DoctorCrear extends JInternalFrame {
 	private JTextField tf_direccion;
 	private JFrame Frame;
 	private JDesktopPane desktopPane;
+	private JTextField tf_telefono;
+	private JTextField tf_pass;
+	private JTextField tf_fecha_nacimiento;
 
 	/**
 	 * Launch the application.
@@ -61,28 +75,86 @@ public class Panel_DoctorCrear extends JInternalFrame {
 		contentPanel.setLayout(null);
 	
 		ButtonGroup g1 = new ButtonGroup();
+		ButtonGroup g2 = new ButtonGroup();
 
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 1018, 546);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
-		JComboBox cb_especialidad = new JComboBox();
-		cb_especialidad.setBounds(371, 152, 141, 22);
+		JLabel lbl_fechaNacimiento = new JLabel("Fecha nacimiento");
+		lbl_fechaNacimiento.setForeground(Color.BLACK);
+		lbl_fechaNacimiento.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_fechaNacimiento.setBounds(214, 258, 147, 14);
+		panel.add(lbl_fechaNacimiento);
+		
+		tf_fecha_nacimiento = new JTextField();
+		tf_fecha_nacimiento.setFont(new Font("Tahoma", Font.BOLD, 14));
+		tf_fecha_nacimiento.setColumns(10);
+		tf_fecha_nacimiento.setBounds(365, 256, 147, 20);
+		panel.add(tf_fecha_nacimiento);
+		
+		
+		JRadioButton rdbtn_BajaNo = new JRadioButton("Alta");
+		rdbtn_BajaNo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		rdbtn_BajaNo.setBounds(514, 344, 147, 23);
+		panel.add(rdbtn_BajaNo);
+		g2.add(rdbtn_BajaNo);
+		
+		JRadioButton rdbtn_BajaSi = new JRadioButton("Baja");
+		rdbtn_BajaSi.setFont(new Font("Tahoma", Font.BOLD, 14));
+		rdbtn_BajaSi.setBounds(368, 344, 144, 23);
+		panel.add(rdbtn_BajaSi);
+		g2.add(rdbtn_BajaSi);
+		
+		JLabel lbl_estado = new JLabel("Estado");
+		lbl_estado.setForeground(Color.BLACK);
+		lbl_estado.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_estado.setBounds(214, 344, 147, 14);
+		panel.add(lbl_estado);
+		
+		tf_pass = new JTextField();
+		tf_pass.setFont(new Font("Tahoma", Font.BOLD, 14));
+		tf_pass.setColumns(10);
+		tf_pass.setBounds(365, 225, 147, 20);
+		panel.add(tf_pass);
+		
+		JLabel lbl_contrasenia = new JLabel("Contraseña");
+		lbl_contrasenia.setForeground(Color.BLACK);
+		lbl_contrasenia.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_contrasenia.setBounds(214, 227, 147, 14);
+		panel.add(lbl_contrasenia);
+		
+		tf_telefono = new JTextField();
+		tf_telefono.setFont(new Font("Tahoma", Font.BOLD, 14));
+		tf_telefono.setColumns(10);
+		tf_telefono.setBounds(365, 198, 147, 20);
+		panel.add(tf_telefono);
+		
+		JLabel lbl_telefono = new JLabel("Teléfono");
+		lbl_telefono.setForeground(Color.BLACK);
+		lbl_telefono.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_telefono.setBounds(214, 200, 147, 14);
+		panel.add(lbl_telefono);
+		
+		JComboBox<String> cb_especialidad = new JComboBox();
+		cb_especialidad.setBounds(365, 137, 147, 22);
 		panel.add(cb_especialidad);
 		
-		
+		//Llenamos el comboBox de especialidad con las especialidades
+		cargarEspecialidad(cb_especialidad);
 		
 		
 		
 		JLabel lbl_ficha = new JLabel("FICHA CREAR DOCTOR");
+		lbl_ficha.setBackground(new Color(128, 64, 0));
 		lbl_ficha.setBounds(30, 11, 173, 14);
 		panel.add(lbl_ficha);
 		lbl_ficha.setForeground(new Color(0, 0, 0));
 		lbl_ficha.setFont(new Font("Tahoma", Font.BOLD, 15));
 		
 		JLabel lbl_especialidad = new JLabel("Especialidad");
-		lbl_especialidad.setBounds(214, 154, 147, 14);
+		lbl_especialidad.setBounds(214, 139, 147, 14);
 		panel.add(lbl_especialidad);
 		lbl_especialidad.setForeground(Color.BLACK);
 		lbl_especialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -103,12 +175,12 @@ public class Panel_DoctorCrear extends JInternalFrame {
 		lbl_apellidos.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_apellidos.setForeground(new Color(0, 0, 0));
 		JLabel lbl_direccion = new JLabel("Direccion");
-		lbl_direccion.setBounds(214, 208, 147, 14);
+		lbl_direccion.setBounds(214, 172, 147, 14);
 		panel.add(lbl_direccion);
 		lbl_direccion.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_direccion.setForeground(new Color(0, 0, 0));
 		JLabel lbl_sexo = new JLabel("Genero");
-		lbl_sexo.setBounds(214, 289, 147, 14);
+		lbl_sexo.setBounds(214, 309, 147, 14);
 		panel.add(lbl_sexo);
 		lbl_sexo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_sexo.setForeground(new Color(0, 0, 0));
@@ -116,19 +188,19 @@ public class Panel_DoctorCrear extends JInternalFrame {
 				
 				JRadioButton rdbtn_femenino = new JRadioButton("Femenino");
 				rdbtn_femenino.setFont(new Font("Tahoma", Font.BOLD, 14));
-				rdbtn_femenino.setBounds(514, 289, 147, 23);
+				rdbtn_femenino.setBounds(514, 309, 147, 23);
 				panel.add(rdbtn_femenino);
 				g1.add(rdbtn_femenino);
 				
 				JRadioButton rdbtn_masculino = new JRadioButton("Masculino");
 				rdbtn_masculino.setFont(new Font("Tahoma", Font.BOLD, 14));
-				rdbtn_masculino.setBounds(368, 289, 144, 23);
+				rdbtn_masculino.setBounds(368, 309, 144, 23);
 				panel.add(rdbtn_masculino);
 				g1.add(rdbtn_masculino);
 				
 				tf_direccion = new JTextField();
 				tf_direccion.setFont(new Font("Tahoma", Font.BOLD, 14));
-				tf_direccion.setBounds(365, 206, 147, 20);
+				tf_direccion.setBounds(365, 170, 147, 20);
 				panel.add(tf_direccion);
 				tf_direccion.setColumns(10);
 				
@@ -141,10 +213,74 @@ public class Panel_DoctorCrear extends JInternalFrame {
 				JButton btn_crearDoctor = new JButton("Crear Doctor");
 				btn_crearDoctor.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+				
+						
+						
+						String especialidadCB= (String) cb_especialidad.getSelectedItem();
+						
+						  // Obtener la fecha del día actual
+				        Date fecha = new Date();
+
+				        // Crear un objeto SimpleDateFormat para formatear la fecha
+				        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
+				        // Formatear la fecha como una cadena de texto
+				        String fechaActual = formato.format(fecha);
+				     
+				        
+				        
+				        
+				        //buscar Especialidad desde el nombre seleccionado en el comboBox
+				       
+					
+				       
+				        
+				        //Estado de baja y genero
+					String genero="";
+					int estado=0;
+				
+						if(rdbtn_femenino.isSelected()) {
+							genero="Mujer";
+							
+						}else if(rdbtn_masculino.isSelected()) {
+							genero="Hombre";
+							
+						}else {
+							JOptionPane.showMessageDialog(null, "Selecciona el genero del paciente.");
+						}
+						if(rdbtn_BajaNo.isSelected()) {
+							estado=1;
+							
+						}else if(rdbtn_BajaSi.isSelected()) {
+							estado=0;
+							
+						}else {
+							JOptionPane.showMessageDialog(null, "Selecciona el estado del doctor.");
+						}
+				        
+				        
+				        
+				        
+						try {
+							Especialidad especialidad = ConexionMySQL.buscarEspecialidad(cb_especialidad.getSelectedItem().toString());
+							 int idEspecialidad=especialidad.getIdEspecialidad();
+							 Doctor_administrador doctor =new Doctor_administrador(idEspecialidad,tf_nombre.getText(),tf_apellidos.getText(),tf_direccion.getText(),fechaActual,estado,genero,tf_pass.getText(),tf_telefono.getText(),tf_fecha_nacimiento.getText());
+							 ConexionMySQL.insertarDoctor(doctor);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				        
+				        
+						
+						
+						
+						
+						
 					}
 				});
 				btn_crearDoctor.setFont(new Font("Tahoma", Font.BOLD, 14));
-				btn_crearDoctor.setBounds(339, 404, 147, 23);
+				btn_crearDoctor.setBounds(365, 404, 147, 23);
 				panel.add(btn_crearDoctor);
 				
 				JLabel lblNewLabel = new JLabel("New label");
@@ -153,4 +289,39 @@ public class Panel_DoctorCrear extends JInternalFrame {
 				panel.add(lblNewLabel);
 		
 	}
+	
+	
+	//Cargar especialidad al combobox
+	private void cargarEspecialidad(JComboBox<String> comboBox) {
+		// Limpiar ComboBox antes de cargar nuevos datos
+		comboBox.removeAllItems();
+
+		try {
+
+			// Obtener pacientes desde la base de datos
+			ConexionMySQL.conectar();
+
+			// Supongamos que tienes un método para obtener pacientes por nombre
+			List<Especialidad> especialidades = ConexionMySQL.buscarEspecialidad();
+
+			// Agregar nombre y apellidos de cada paciente al ComboBox
+			for (Especialidad especialidad : especialidades) {
+
+				comboBox.addItem(especialidad.getNombreEspecialidad());
+			}
+
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Error al cargar tratamientos", "Error", JOptionPane.ERROR_MESSAGE);
+		} finally {
+			try {
+				ConexionMySQL.desconectar();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+	
+	
+	
 }

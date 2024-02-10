@@ -73,6 +73,52 @@ public class Doctor_administrador {
 
 
 
+	public Doctor_administrador(String text, String text2, int idEspecialidad, String fechaActual, String text3,
+			String genero) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+	public Doctor_administrador(int id_especialidad,String nombre,String apellidos,String direccion,String fecha_alta, int estado_baja,   
+			String genero, String pass,  String teléfono, String fecha_nacimiento) {
+		super();
+		this.id_especialidad = id_especialidad;
+		this.estado_baja = estado_baja;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.direccion = direccion;
+		this.genero = genero;
+		this.pass = pass;
+
+		this.teléfono = teléfono;
+		this.fecha_nacimiento = fecha_nacimiento;
+		this.fecha_alta = fecha_alta;
+	}
+
+
+
+
+
+
+
+
+
 	public int getId_doctor_administrador() {
 		return id_doctor_administrador;
 	}

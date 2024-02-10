@@ -330,6 +330,51 @@ public class ConexionMySQL {
      
      
      
+     
+     
+     
+     
+     public static void insertarDoctor(Doctor_administrador doctor) throws SQLException {
+    	    String query = "INSERT INTO doctor_administrador (id_especialidad, nombre, apellidos, direccion, fecha_alta, estado_baja, genero, pass, tipo_usuario, telefono, fecha_nacimiento) " +
+    	                   "VALUES (" + doctor.getId_especialidad() + ", '" + doctor.getNombre() + "', '" + doctor.getApellidos() + "', '" +
+    	                   doctor.getDireccion() + "', '" + doctor.getFecha_alta() + "', " + doctor.getEstado_baja() + ", '" +
+    	                   doctor.getGenero() + "', '" + doctor.getPass() + "', 1, '" + doctor.getTeléfono() + "', '" + 
+    	                   doctor.getFecha_nacimiento() + "')";
+
+    	    Statement stmt = connection.createStatement(); 
+    	    stmt.executeUpdate(query);
+    	}
+     
+     
+     
+     
+     
+     public static Especialidad buscarEspecialidadId(int id_especialidad) throws SQLException {
+
+         Statement stmt=connection.createStatement();
+         ResultSet rset=stmt.executeQuery("SELECT * from especialidad where id_especialidad  ='"+id_especialidad+"'");//consulta
+
+         Especialidad especialidad=null;
+         if (rset.next()) {
+       
+        String nombre=rset.getString("nombre");
+       
+
+        
+        
+        
+        
+        
+        especialidad=new Especialidad(id_especialidad,nombre);
+         }
+         stmt.close();
+  
+ 	
+
+
+        return especialidad;
+    }
+     
     
      
      public static Especialidad buscarEspecialidad(String nombre) throws SQLException {
