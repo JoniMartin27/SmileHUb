@@ -247,8 +247,8 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 					text = (String) cb_doctor.getSelectedItem();
 					// divide el string comlpeto del comboBox en nombre y apellidos
 					 if (text != null) {
-					         partes = text.split(" ", 2);
-					if (partes.length >= 2) {
+						 slides = text.split(" ", 2);
+					if (slides.length >= 2) {
 						// Guardar las partes en variables
 						name = slides[0];
 						last_name = slides[1];
@@ -273,6 +273,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+						e1.getLocalizedMessage();
 					}
 					JOptionPane.showMessageDialog(null, "Cita guardada correctamente.");
 				} else {
@@ -393,6 +394,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 		} catch (SQLException | ClassNotFoundException ex) {
 			ex.printStackTrace();
 			JOptionPane.showMessageDialog(this, "Error al cargar tratamientos", "Error", JOptionPane.ERROR_MESSAGE);
+			System.out.println(ex.getLocalizedMessage());
 		} finally {
 			try {
 				ConexionMySQL.desconectar();

@@ -145,10 +145,12 @@ public class Panel_DoctorCreado extends JInternalFrame {
 						
 						
 						
-						Doctor_administrador doctors =new Doctor_administrador(estado_baja,direccion,telefono,pass,nombre,apellido);
+						Doctor_administrador doctors =new Doctor_administrador(estado_baja,nombre,apellido,direccion,pass,telefono);
 						
 						try {
 							ConexionMySQL.modificarDoctor(doctors);	
+							JOptionPane.showMessageDialog(getContentPane(), "Doctor modificado", "Modificado", JOptionPane.DEFAULT_OPTION);
+
 						}catch(Exception ex) {
 							System.out.println(ex.getMessage());
 							JOptionPane.showMessageDialog(getContentPane(), "Error al modficar doctor", "Error", JOptionPane.ERROR_MESSAGE);

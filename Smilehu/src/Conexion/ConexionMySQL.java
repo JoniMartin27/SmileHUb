@@ -137,7 +137,7 @@ public class ConexionMySQL {
           // Verificar si el paciente existe antes de intentar la actualización
           if (!existeDoctor(doctor.getNombre(), doctor.getApellidos())) {
               System.out.println("El paciente no existe en la base de datos.");
-              System.out.println(doctor.getApellidos());
+              System.out.println(doctor.getNombre()+doctor.getApellidos());
               return;
           }
 
@@ -525,7 +525,7 @@ public class ConexionMySQL {
      public static Tratamiento buscarTratamiento(String nombre) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("SELECT * from tratamiento where nombre_tratamiento  ='"+nombre+"'");//consulta
+         ResultSet rset=stmt.executeQuery("SELECT * from tratamiento where nombre  ='"+nombre+"'");//consulta
 
          Tratamiento tratamiento=null;
          if (rset.next()) {
@@ -552,7 +552,7 @@ public class ConexionMySQL {
      public static StockMaterial buscarMaterial(String nombre) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("SELECT * from tratamiento where nombre_tratamiento  ='"+nombre+"'");//consulta
+         ResultSet rset=stmt.executeQuery("SELECT * from tratamiento where nombre  ='"+nombre+"'");//consulta
 
          StockMaterial material=null;
          if (rset.next()) {
@@ -582,7 +582,7 @@ public class ConexionMySQL {
      
      public static List<Doctor_administrador> buscarDoctorCita(int id_especialidad) throws SQLException {
     	 List<Doctor_administrador> combo = new ArrayList<>();
-    	 String query = "SELECT * FROM doctor_administrador WHERE id_especialidad='"+id_especialidad+"'";
+    	 String query = "SELECT * FROM doctor_administrador WHERE id_especialidad='"+id_especialidad+"'AND tipo_usuario = '1'";
     	 
     	 try (PreparedStatement pstmt = connection.prepareStatement(query)) {
     		
@@ -719,7 +719,7 @@ public class ConexionMySQL {
     		 while (rset.next()) {
     			 int id_tratamiento=rset.getInt("id_tratamiento");
     		        int id_especialidad=rset.getInt("id_especialidad");
-    		        String nombre=rset.getString("nombre_tratamiento");
+    		        String nombre=rset.getString("nombre");
     		        double precio=rset.getDouble("precio");
     			 
     		        Tratamiento doctor=new Tratamiento(id_tratamiento,id_especialidad,nombre,precio);
@@ -825,7 +825,7 @@ public class ConexionMySQL {
 		}
      
      public static void insertarTratamiento(Tratamiento tratamiento) throws SQLException {
-		    String query = "INSERT INTO tratamiento (id_especialidad, nombre_tratamiento, precio)" +
+		    String query = "INSERT INTO tratamiento (id_especialidad, nombre, precio)" +
 		                   "VALUES('" + tratamiento.getId_especialidad() + "', '" + tratamiento.getNombre() 
 		                   + "', '" + tratamiento.getPrecio() + "')";
 		    
