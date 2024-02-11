@@ -8,6 +8,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -15,11 +17,15 @@ import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import Conexion.ConexionMySQL;
+import Modelo.Doctor_administrador;
+import Modelo.Paciente;
 import Vista.gestionEconomica.JDialog_admin_gestionEconomica_tipoPago;
 
 import javax.swing.ImageIcon;
@@ -30,18 +36,10 @@ public class Panel_DoctorCreado extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 
-	private JTextField textField;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-
-	private JTextField tf_apellidos;
-	private JTextField tf_nombre;
-	private JTextField tf_iddoctor;
-	private JTextField tf_direccion;
-	private JTextField tf_idespecialidad;
-	private JTextField tf_idbuscar;
+	private JTextField tf_buscarNombre;
+	private JTextField tf_direcion;
+	private JTextField tf_telefono;
+	private JTextField tf_pass;
 
 
 	/**
@@ -78,9 +76,126 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
-		JComboBox cb_nombreDoctor = new JComboBox();
-		cb_nombreDoctor.setBounds(529, 139, 116, 22);
+		tf_pass = new JTextField();
+		tf_pass.setBounds(500, 281, 174, 20);
+		panel.add(tf_pass);
+		tf_pass.setColumns(10);
+		
+		JLabel lbl_pass = new JLabel("Contraseña");
+		lbl_pass.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_pass.setBounds(298, 282, 136, 14);
+		panel.add(lbl_pass);
+		JRadioButton rdbtn_alta = new JRadioButton("Alta");
+		rdbtn_alta.setFont(new Font("Tahoma", Font.BOLD, 14));
+		rdbtn_alta.setBounds(500, 253, 174, 23);
+		panel.add(rdbtn_alta);
+
+		JRadioButton rdbtn_baja = new JRadioButton("Baja");
+		rdbtn_baja.setFont(new Font("Tahoma", Font.BOLD, 14));
+		rdbtn_baja.setBounds(676, 253, 173, 23);
+		panel.add(rdbtn_baja);
+		JComboBox<String> cb_nombreDoctor = new <String> JComboBox();
+		cb_nombreDoctor.setBounds(501, 164, 173, 22);
 		panel.add(cb_nombreDoctor);
+		
+		
+		
+		JButton btn_modificarCita = new JButton("Modificar Cita");
+		btn_modificarCita.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+
+				
+				int estado= 0;
+				if(rdbtn_baja.isSelected()) {
+					estado=1;
+					
+				}else if( rdbtn_alta.isSelected()) {
+					estado=0;
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "Selecciona el estado del doctor.");
+				}
+		        
+				String texto;
+				String nombre;
+				String apellido;
+				String[] partes;
+				// recojo los datos del comboBox
+				texto = (String) cb_nombreDoctor.getSelectedItem();
+				// divide el string comlpeto del comboBox en nombre y apellidos
+				 if (texto != null) {
+				         partes = texto.split(" ", 2);
+				if (partes.length >= 2) {
+					// Guardar las partes en variables
+					nombre = partes[0];
+					apellido = partes[1];
+				
+					// buscamos al paciente con nombre y apellido e insertamos datos en textfields
+					try {
+						Doctor_administrador doctor = ConexionMySQL.buscarDoctor(nombre, apellido);
+					
+			
+						String direccion = tf_direcion.getText();
+						int estado_baja = estado;
+						String telefono = tf_telefono.getText();
+						String pass = tf_pass.getText();
+					
+
+						
+						
+						
+						Doctor_administrador doctors =new Doctor_administrador(estado_baja,direccion,telefono,pass,nombre,apellido);
+						
+						try {
+							ConexionMySQL.modificarDoctor(doctors);	
+						}catch(Exception ex) {
+							System.out.println(ex.getMessage());
+							JOptionPane.showMessageDialog(getContentPane(), "Error al modficar doctor", "Error", JOptionPane.ERROR_MESSAGE);
+						}
+						
+		;
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} else {
+					System.out.println("El texto no contiene un espacio.");
+				}
+				 }
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			}
+		});
+		
+		
+		
+		
+		
+		JLabel lbl_telefono = new JLabel("Teléfono");
+		lbl_telefono.setForeground(Color.BLACK);
+		lbl_telefono.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_telefono.setBounds(298, 207, 151, 14);
+		panel.add(lbl_telefono);
+		
+		tf_telefono = new JTextField();
+		tf_telefono.setColumns(10);
+		tf_telefono.setBounds(501, 202, 173, 20);
+		panel.add(tf_telefono);
+		btn_modificarCita.setBounds(501, 452, 116, 23);
+		panel.add(btn_modificarCita);
+		
+	
 		
 		JLabel lbl_ficha = new JLabel("FICHA DOCTOR");
 		lbl_ficha.setBackground(new Color(192, 192, 192));
@@ -92,92 +207,93 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		JLabel lbl_altabaja = new JLabel("Dar de alta o baja");
 		lbl_altabaja.setForeground(Color.BLACK);
 		lbl_altabaja.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_altabaja.setBounds(251, 320, 151, 14);
+		lbl_altabaja.setBounds(298, 257, 151, 14);
 		panel.add(lbl_altabaja);
 		
-		JRadioButton rdbtn_alta = new JRadioButton("Alta");
-		rdbtn_alta.setFont(new Font("Tahoma", Font.BOLD, 14));
-		rdbtn_alta.setBounds(529, 316, 116, 23);
-		panel.add(rdbtn_alta);
+		
+		cb_nombreDoctor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 
-		JRadioButton rdbtn_baja = new JRadioButton("Baja");
-		rdbtn_baja.setFont(new Font("Tahoma", Font.BOLD, 14));
-		rdbtn_baja.setBounds(655, 316, 116, 23);
-		panel.add(rdbtn_baja);
-		
-		JRadioButton rdbtn_femenino = new JRadioButton("Femenino");
-		rdbtn_femenino.setFont(new Font("Tahoma", Font.BOLD, 14));
-		rdbtn_femenino.setBounds(655, 282, 116, 23);
-		panel.add(rdbtn_femenino);
-		
-		JRadioButton rdbtn_masculino = new JRadioButton("Masculino");
-		rdbtn_masculino.setFont(new Font("Tahoma", Font.BOLD, 14));
-		rdbtn_masculino.setBounds(529, 282, 116, 23);
-		panel.add(rdbtn_masculino);
-		
-		JLabel lbl_genero = new JLabel("Genero");
-		lbl_genero.setForeground(Color.BLACK);
-		lbl_genero.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_genero.setBounds(251, 283, 151, 14);
-		panel.add(lbl_genero);
-		
-		JLabel lbl_direccion = new JLabel("Direccion");
+				String texto;
+				String nombre;
+				String apellido;
+				String[] partes;
+				// recojo los datos del comboBox
+				texto = (String) cb_nombreDoctor.getSelectedItem();
+				// divide el string comlpeto del comboBox en nombre y apellidos
+				 if (texto != null) {
+				         partes = texto.split(" ", 2);
+				if (partes.length >= 2) {
+					// Guardar las partes en variables
+					nombre = partes[0];
+					apellido = partes[1];
+				
+					// buscamos al paciente con nombre y apellido e insertamos datos en textfields
+					try {
+						Doctor_administrador doctor = ConexionMySQL.buscarDoctor(nombre, apellido);
+						tf_direcion.setText(doctor.getDireccion());
+						tf_pass.setText(doctor.getPass());
+						tf_telefono.setText(doctor.getTeléfono());
+						
+						
+						
+						
+						if(doctor.getEstado_baja()==1) {
+							rdbtn_baja.setSelected(true);
+						}else {
+							rdbtn_alta.setSelected(true);
+						}
+						
+						
+					
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				} else {
+					System.out.println("El texto no contiene un espacio.");
+				}
+				 }
+			};
+		});
+		JLabel lbl_direccion = new JLabel("Dirección");
 		lbl_direccion.setForeground(Color.BLACK);
 		lbl_direccion.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_direccion.setBounds(251, 255, 151, 14);
+		lbl_direccion.setBounds(298, 232, 151, 14);
 		panel.add(lbl_direccion);
 		
-		JLabel lbl_apellidos = new JLabel("Apellidos");
-		lbl_apellidos.setForeground(Color.BLACK);
-		lbl_apellidos.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_apellidos.setBounds(251, 197, 151, 14);
-		panel.add(lbl_apellidos);
-		
-		JLabel lbl_nombre = new JLabel("Nombre");
-		lbl_nombre.setForeground(Color.BLACK);
-		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_nombre.setBounds(250, 172, 152, 14);
-		panel.add(lbl_nombre);
-		
-		JLabel lbl_idespecialidad = new JLabel("ID Especialidad");
-		lbl_idespecialidad.setForeground(Color.BLACK);
-		lbl_idespecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_idespecialidad.setBounds(250, 222, 151, 14);
-		panel.add(lbl_idespecialidad);
-		
-		JLabel lbl_Buscardoctor = new JLabel("nombre doctor");
+		JLabel lbl_Buscardoctor = new JLabel("Nombre doctor");
 		lbl_Buscardoctor.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_Buscardoctor.setBounds(250, 110, 162, 14);
+		lbl_Buscardoctor.setBounds(298, 136, 162, 14);
 		panel.add(lbl_Buscardoctor);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(528, 111, 116, 20);
-		panel.add(textField);
+		tf_buscarNombre = new JTextField();
+		tf_buscarNombre.setColumns(10);
+		tf_buscarNombre.setBounds(500, 136, 174, 20);
+		panel.add(tf_buscarNombre);
 		
 		JButton btn_buscar = new JButton("Buscar");
-		btn_buscar.setBounds(654, 110, 89, 23);
+		btn_buscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				cargarDoctoresAlComboBox(tf_buscarNombre.getText(), cb_nombreDoctor); 
+			
+				
+				
+				
+				
+				
+				
+				
+			}
+		});
+		btn_buscar.setBounds(684, 135, 89, 23);
 		panel.add(btn_buscar);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(528, 228, 116, 20);
-		panel.add(textField_2);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(529, 172, 116, 20);
-		panel.add(textField_3);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(529, 197, 116, 20);
-		panel.add(textField_4);
-		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(529, 255, 116, 20);
-		panel.add(textField_5);
+		tf_direcion = new JTextField();
+		tf_direcion.setColumns(10);
+		tf_direcion.setBounds(501, 226, 173, 20);
+		panel.add(tf_direcion);
 		
 		
 		JButton btn_realizarpago=new JButton();
@@ -212,26 +328,61 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		contentPanel.add(lbl_ficha1);
 		
 		
-		
-		
-		
-		
-		/*DNI*/
-		JLabel lbl_iddoctor1 = new JLabel("DNI:");
-		lbl_iddoctor1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lbl_iddoctor1.setForeground(new Color(0, 0, 0));
-		lbl_iddoctor1.setBounds(23, 89, 61, 14);
-		contentPanel.add(lbl_iddoctor1);
-		
-		tf_iddoctor = new JTextField();
-		tf_iddoctor.setBounds(235, 86, 116, 20);
-		contentPanel.add(tf_iddoctor);
-		tf_iddoctor.setColumns(10);
-		
-	
 
 
 		
 		
 	}
+	private Doctor_administrador cbSplitter(JComboBox<String> comboBox) {
+		String texto;
+		String nombre="";
+		String apellidos="";
+		
+		
+		String[] partes;
+		// recojo los datos del comboBox
+		texto = (String) comboBox.getSelectedItem();
+		// divide el string comlpeto del comboBox en nombre y apellidos
+		 if (texto != null) {
+		         partes = texto.split(" ", 2);
+		if (partes.length >= 2) {
+			// Guardar las partes en variables
+			nombre = partes[0];
+			apellidos = partes[1];
+			}}
+		 Doctor_administrador doctor =new Doctor_administrador(nombre,apellidos);;
+		return doctor;
+	
+	}
+
+	private void cargarDoctoresAlComboBox(String nombre, JComboBox<String> comboBox) {
+		// Limpiar ComboBox antes de cargar nuevos datos
+		comboBox.removeAllItems();
+
+		try {
+
+			// Obtener pacientes desde la base de datos
+			ConexionMySQL.conectar();
+
+			// Supongamos que tienes un método para obtener pacientes por nombre
+			List<Doctor_administrador> doctores = ConexionMySQL.buscarDoctorModificar(nombre);
+
+			// Agregar nombre y apellidos de cada paciente al ComboBox
+			for (Doctor_administrador doctor : doctores) {
+				String nombreCompleto = doctor.getNombre() + " " + doctor.getApellidos();
+				comboBox.addItem(nombreCompleto);
+			}
+
+		} catch (SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Error al cargar doctores", "Error", JOptionPane.ERROR_MESSAGE);
+		} finally {
+			try {
+				ConexionMySQL.desconectar();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+	
 }

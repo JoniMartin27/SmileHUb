@@ -40,6 +40,53 @@ public class Doctor_administrador {
 
 
 
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+	public Doctor_administrador(String nombre, String apellidos) {
+		super();
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public Doctor_administrador(int estado_baja, String nombre, String apellidos, String direccion, String pass,
+			String teléfono) {
+		super();
+		this.estado_baja = estado_baja;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.direccion = direccion;
+		this.pass = pass;
+		this.teléfono = teléfono;
+	}
+
+
+
+
 
 
 

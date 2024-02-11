@@ -112,7 +112,7 @@ public class Panel_DoctorCrear extends JInternalFrame {
 		lbl_estado.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_estado.setBounds(214, 344, 147, 14);
 		panel.add(lbl_estado);
-		
+	
 		tf_pass = new JTextField();
 		tf_pass.setFont(new Font("Tahoma", Font.BOLD, 14));
 		tf_pass.setColumns(10);

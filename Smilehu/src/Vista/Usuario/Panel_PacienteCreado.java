@@ -147,7 +147,12 @@ public class Panel_PacienteCreado extends JInternalFrame {
 				
 			}
 		});
-		btn_historial.setBounds(249, 468, 173, 23);
+		
+		JButton btn_realizarpago = new JButton();
+		btn_realizarpago.setText("Registrar Pago");
+		btn_realizarpago.setBounds(829, 26, 136, 23);
+		panel.add(btn_realizarpago);
+		btn_historial.setBounds(253, 443, 173, 23);
 		panel.add(btn_historial);
 		
 		
@@ -176,6 +181,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		tf_telefono.setColumns(10);
 
 		tf_genero = new JTextField();
+		tf_genero.setEditable(false);
 		tf_genero.setBounds(315, 265, 126, 20);
 		panel.add(tf_genero);
 		tf_genero.setColumns(10);
@@ -186,11 +192,13 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		tf_direccion.setColumns(10);
 
 		tf_apellidos = new JTextField();
+		tf_apellidos.setEditable(false);
 		tf_apellidos.setBounds(315, 215, 126, 20);
 		panel.add(tf_apellidos);
 		tf_apellidos.setColumns(10);
 
 		tf_nombre = new JTextField();
+		tf_nombre.setEditable(false);
 		tf_nombre.setBounds(315, 189, 126, 20);
 		panel.add(tf_nombre);
 		tf_nombre.setColumns(10);
@@ -266,7 +274,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		lbl_sexo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbl_sexo.setForeground(new Color(0, 0, 0));
 		JLabel lbl_altabaja = new JLabel("Dar de alta o baja:");
-		lbl_altabaja.setBounds(268, 337, 173, 14);
+		lbl_altabaja.setBounds(269, 329, 173, 14);
 		panel.add(lbl_altabaja);
 		lbl_altabaja.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_altabaja.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -274,29 +282,29 @@ public class Panel_PacienteCreado extends JInternalFrame {
 
 		JRadioButton rdbtn_alta = new JRadioButton("Alta");
 		rdbtn_alta.setFont(new Font("Tahoma", Font.BOLD, 14));
-		rdbtn_alta.setBounds(456, 333, 68, 23);
+		rdbtn_alta.setBounds(457, 325, 68, 23);
 		panel.add(rdbtn_alta);
 		g1.add(rdbtn_alta);
 
 		JRadioButton rdbtn_baja = new JRadioButton("Baja");
 		rdbtn_baja.setFont(new Font("Tahoma", Font.BOLD, 14));
-		rdbtn_baja.setBounds(556, 333, 68, 23);
+		rdbtn_baja.setBounds(557, 325, 68, 23);
 		panel.add(rdbtn_baja);
 		g1.add(rdbtn_baja);
 
 		JButton btn_consultarpagos = new JButton("Consultar Pagos");
 		btn_consultarpagos.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btn_consultarpagos.setBounds(249, 399, 173, 23);
+		btn_consultarpagos.setBounds(253, 374, 173, 23);
 		panel.add(btn_consultarpagos);
 
 		JButton btn_odontograma = new JButton("Odontograma");
 		btn_odontograma.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btn_odontograma.setBounds(249, 421, 173, 23);
+		btn_odontograma.setBounds(253, 396, 173, 23);
 		panel.add(btn_odontograma);
 
 		JButton btn_modificar = new JButton("Modificar Paciente");
 		btn_modificar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btn_modificar.setBounds(249, 445, 173, 23);
+		btn_modificar.setBounds(253, 420, 173, 23);
 		panel.add(btn_modificar);
 		
 		JLabel lblNewLabel = new JLabel("New label");
@@ -305,19 +313,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		panel.add(lblNewLabel);
 		btn_modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String texto;
-				String nombre="";
-				
-				String[] partes;
-				// recojo los datos del comboBox
-				texto = (String) comboBox.getSelectedItem();
-				// divide el string comlpeto del comboBox en nombre y apellidos
-				 if (texto != null) {
-				         partes = texto.split(" ", 2);
-				if (partes.length >= 2) {
-					// Guardar las partes en variables
-					nombre = partes[0];
-					}}
+				String nombre = cbSplitter(comboBox);
 				  // Obtener los datos de los textfields
 		       
 		        String apellidos = tf_apellidos.getText();
@@ -345,6 +341,8 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		           
 		        }
 			}
+
+			
 		});
 		btn_odontograma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -374,7 +372,22 @@ public class Panel_PacienteCreado extends JInternalFrame {
 
 	}
 	
-	
+	private String cbSplitter(JComboBox<String> comboBox) {
+		String texto;
+		String nombre="";
+		
+		String[] partes;
+		// recojo los datos del comboBox
+		texto = (String) comboBox.getSelectedItem();
+		// divide el string comlpeto del comboBox en nombre y apellidos
+		 if (texto != null) {
+		         partes = texto.split(" ", 2);
+		if (partes.length >= 2) {
+			// Guardar las partes en variables
+			nombre = partes[0];
+			}}
+		return nombre;
+	}
 	
 
 	private static void abrirOdontograma(JDesktopPane desktopPane) throws PropertyVetoException {

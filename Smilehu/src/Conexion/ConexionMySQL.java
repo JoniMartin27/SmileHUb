@@ -119,6 +119,7 @@ public class ConexionMySQL {
          }
      }
 
+   
      private static boolean existePaciente(String nombre, String apellidos) throws SQLException {
          String query = "SELECT COUNT(*) FROM paciente WHERE nombre = ? AND apellidos = ?";
          try (PreparedStatement pstmt = connection.prepareStatement(query)) {
@@ -130,6 +131,51 @@ public class ConexionMySQL {
              }
          }
      }
+  
+     
+      public static void modificarDoctor(Doctor_administrador doctor) throws SQLException {
+          // Verificar si el paciente existe antes de intentar la actualización
+          if (!existeDoctor(doctor.getNombre(), doctor.getApellidos())) {
+              System.out.println("El paciente no existe en la base de datos.");
+              System.out.println(doctor.getApellidos());
+              return;
+          }
+
+          String query = "UPDATE doctor_administrador SET " +
+        		  "direccion = ?, " +
+                  "estado_baja = ?, " +
+                  "pass = ?, " +
+                  "telefono = ? " +
+                  "WHERE nombre = ? AND apellidos = ? ";
+
+          try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+        	
+              pstmt.setString(1, doctor.getDireccion());
+              pstmt.setInt(2, doctor.getEstado_baja()); 
+              pstmt.setString(3, doctor.getPass());
+              pstmt.setString(4, doctor.getTeléfono()); 
+              pstmt.setString(5, doctor.getNombre()); 
+              pstmt.setString(6, doctor.getApellidos()); 
+             
+
+              pstmt.executeUpdate();
+              System.out.println("doctor modificado correctamente");
+              
+          }
+      }
+
+      private static boolean existeDoctor(String nombre, String apellidos) throws SQLException {
+          String query = "SELECT COUNT(*) FROM doctor_administrador WHERE nombre = ? AND apellidos = ?";
+          try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+              pstmt.setString(1, nombre);
+              pstmt.setString(2, apellidos);
+              try (ResultSet resultSet = pstmt.executeQuery()) {
+                  resultSet.next();
+                  return resultSet.getInt(1) > 0;
+              }
+          }
+      }
+     
      
      
     /* public static void modificarCita(ConsultaCita cita) throws SQLException {
@@ -440,7 +486,7 @@ public class ConexionMySQL {
     	    try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
     	        pstmt.setString(1, nombre);
     	        pstmt.setString(2, apellidos);
-    	        pstmt.setString(3, "1");
+    	        pstmt.setString(3, "0");
 
     	        try (ResultSet rset = pstmt.executeQuery()) {
     	            if (rset.next()) {
@@ -587,7 +633,7 @@ public class ConexionMySQL {
      
      public static List<Doctor_administrador> buscarDoctor() throws SQLException {
     	 List<Doctor_administrador> combo = new ArrayList<>();
-    	 String query = "SELECT * FROM doctor_administrador WHERE tipo_usuario='1'";
+    	 String query = "SELECT * FROM doctor_administrador WHERE tipo_usuario='1' ";
     	 
     	 try (PreparedStatement pstmt = connection.prepareStatement(query)) {
     		
@@ -609,6 +655,39 @@ public class ConexionMySQL {
     		        int activo=rset.getInt("activo");
     			 
     		        Doctor_administrador doctor=new Doctor_administrador(id_doctor_administrador,id_especialidad,nombre,apellidos,direccion,fecha_alta,estado_baja,genero,pass,tipo_usuario,teléfono,fecha_nacimiento,activo);
+    		        combo.add(doctor);
+    		 }
+    	 }
+    	 
+    	 return combo;
+     }
+     //COMBOBOX Doctores Ficha Modificar nombre Doctor
+
+     
+     public static List<Doctor_administrador> buscarDoctorModificar(String nombre) throws SQLException {
+    	 List<Doctor_administrador> combo = new ArrayList<>();
+    	 String query = "SELECT * FROM doctor_administrador WHERE tipo_usuario='0' AND nombre = '"+nombre+"'" ;
+    	 
+    	 try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+    		
+    		 ResultSet rset = pstmt.executeQuery();
+    		 
+    		 while (rset.next()) {
+    			 int id_doctor_administrador=rset.getInt("id_doctor_administrador");
+    		        int id_especialidad=rset.getInt("id_especialidad");
+    		        String direccion=rset.getString("direccion"); 
+    		        String nom=rset.getString("nombre"); 
+    		        String apellidos=rset.getString("apellidos");
+    		        String fecha_alta=rset.getString("fecha_alta");
+    		        int estado_baja=rset.getInt("estado_baja");
+    		        String genero=rset.getString("genero");
+    		        String pass=rset.getString("pass");
+    		        String tipo_usuario=rset.getString("tipo_usuario");
+    		        String teléfono=rset.getString("telefono");
+    		        String fecha_nacimiento=rset.getString("fecha_nacimiento");
+    		        int activo=rset.getInt("activo");
+    			 
+    		        Doctor_administrador doctor=new Doctor_administrador(id_doctor_administrador,id_especialidad,nom,apellidos,direccion,fecha_alta,estado_baja,genero,pass,tipo_usuario,teléfono,fecha_nacimiento,activo);
     		        combo.add(doctor);
     		 }
     	 }
