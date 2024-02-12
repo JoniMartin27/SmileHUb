@@ -14,6 +14,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
+import javax.swing.JOptionPane;
+
 import Modelo.ConsultaCita;
 import Modelo.Doctor_administrador;
 import Modelo.Especialidad;
@@ -291,6 +293,52 @@ public class ConexionMySQL {
          
          return rset;
      }
+     
+     public static void crearRegistrosDientes(Paciente paciente) {
+         try {
+             conectar(); // Establecer conexión a la base de datos
+
+             // Consultar si ya existen registros para el paciente
+             String consultaExistencia = "SELECT COUNT(*) FROM Dientes WHERE idPaciente = ?";
+             try (PreparedStatement statement = connection.prepareStatement(consultaExistencia)) {
+                 statement.setInt(1, paciente.getIdPaciente());
+                 try (ResultSet resultSet = statement.executeQuery()) {
+                     resultSet.next();
+                     int cantidadRegistros = resultSet.getInt(1);
+                     // Si ya existen registros para el paciente, abrir su información
+                     if (cantidadRegistros > 0) {
+                         abrirInformacionPaciente(paciente);
+                     } else {
+                         // Si no existen registros, crear 10 nuevos registros para el paciente
+                         String insercionRegistros = "INSERT INTO Dientes (nDiente, descripcion, idPaciente) VALUES (?, ?, ?)";
+                         try (PreparedStatement insertStatement = connection.prepareStatement(insercionRegistros)) {
+                             for (int i = 1; i <= 10; i++) {
+                                 insertStatement.setInt(1, i);
+                                 insertStatement.setString(2, "Descripción del diente " + i);
+                                 insertStatement.setInt(3, paciente.getIdPaciente());
+                                 insertStatement.executeUpdate();
+                             }
+                             JOptionPane.showMessageDialog(null, "Se han creado 10 registros para el paciente.");
+                         }
+                     }
+                 }
+             }
+         } catch (SQLException | ClassNotFoundException e) {
+             e.printStackTrace();
+         }
+     }
+     
+     
+     
+     
+     
+     public static void abrirInformacionPaciente(Paciente paciente) {
+         // Aquí puedes implementar la lógica para abrir la información del paciente
+         JOptionPane.showMessageDialog(null, "Abrir información del paciente con ID: " + paciente.getIdPaciente());
+     }
+     
+     
+     
      
      
      

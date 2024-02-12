@@ -47,6 +47,10 @@ public class Paciente {
 		this.fechaNacimiento=fechaNacimiento;
 	}
 
+	public Paciente(int id) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getIdPaciente() {
 		return idPaciente;
 	}
