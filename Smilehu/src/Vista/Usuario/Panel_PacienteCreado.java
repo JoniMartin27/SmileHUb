@@ -409,12 +409,12 @@ public class Panel_PacienteCreado extends JInternalFrame {
 					reporte = JasperCompileManager
 							.compileReport("src/Informs/Factura1.jrxml");
 					JasperPrint p;
-					p = JasperFillManager.fillReport(reporte, parametros, conexion.conectar1());
+					p = JasperFillManager.fillReport(reporte, parametros, ConexionMySQL.obtenerConexion());
 					JasperViewer viewer = new JasperViewer(p, false);
 		            viewer.setVisible(true);
 		            dispose();
 		            viewer.toFront();
-				} catch (ClassNotFoundException | JRException | SQLException e1) {
+				} catch (JRException | SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
