@@ -252,6 +252,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 						// Guardar las partes en variables
 						name = slides[0];
 						last_name = slides[1];
+						System.out.println(name+last_name);
 					}}
 				
 				
@@ -262,12 +263,13 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 						Paciente paciente =ConexionMySQL.buscarPacientes(nombre,apellido);
 						
 						Tratamiento tratamiento = ConexionMySQL.buscarTratamiento(cb_Tratamiento.getSelectedItem().toString());
-						StockMaterial material =ConexionMySQL.buscarMaterial(nombre);
-						Doctor_administrador doctor =ConexionMySQL.buscarDoctor(name, last_name);
 					
+						StockMaterial material =ConexionMySQL.buscarMaterial(cb_material.getSelectedItem().toString());
+						
+						System.out.println("bua"+material.getIdMaterial());
 						System.out.println(formattedDate);
-						ConsultaCita cita = new ConsultaCita(tratamiento.getIdTratamiento(),tA_Observaciones.getText(),doctor.getId_doctor_administrador(),selectedTime,formattedDate,
-								paciente.getIdPaciente(),material.getIdMaterial());
+						ConsultaCita cita = new ConsultaCita(tratamiento.getIdTratamiento(),paciente.getIdPaciente(),selectedTime,formattedDate,
+								tA_Observaciones.getText(),material.getIdMaterial());
 						
 						ConexionMySQL.insertarCita(cita);
 					} catch (SQLException e1) {
@@ -452,7 +454,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 
 			// Agregar nombre y apellidos de cada paciente al ComboBox
 			for (Doctor_administrador doctor : doctores) {
-				String nombreCompleto = doctor.getNombre() + " " + doctor.getApellidos();
+				String nombreCompleto = doctor.getNombre() ;
 				comboBox.addItem(nombreCompleto);
 			}
 
