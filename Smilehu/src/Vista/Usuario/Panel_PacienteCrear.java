@@ -210,7 +210,7 @@ public class Panel_PacienteCrear extends JInternalFrame {
 				try {
 					
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-					String fechaComoCadena = sdf.format(new Date());
+					String fechaAlta = sdf.format(new Date());
 					Date selectedDate = dt_fechaNacimiento.getDate();
 
 
@@ -233,11 +233,10 @@ public class Panel_PacienteCrear extends JInternalFrame {
 			        } else if (fechaIngresada.isBefore(fechaActual)) {
 
 
-			        	
-			            System.out.println(fechaComoCadena);
+			        
 						ConexionMySQL.conectar();
 						Paciente paciente = new Paciente( tf_nombre.getText(), tf_apellidos.getText(),
-								tf_direccion.getText(), genero, tf_telefono.getText(),fechaComoCadena,
+								tf_direccion.getText(), genero, tf_telefono.getText(),fechaAlta,
 								fechaNacimiento);
 						
 						
@@ -248,7 +247,7 @@ public class Panel_PacienteCrear extends JInternalFrame {
 			        
 						ConexionMySQL.conectar();
 						Paciente paciente = new Paciente( tf_nombre.getText(), tf_apellidos.getText(),
-								tf_direccion.getText(), genero, tf_telefono.getText(),fechaComoCadena,
+								tf_direccion.getText(), genero, tf_telefono.getText(),fechaAlta,
 								fechaNacimiento);
 						
 						
