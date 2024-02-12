@@ -100,8 +100,8 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		
 		
 		
-		JButton btn_modificarCita = new JButton("Modificar Cita");
-		btn_modificarCita.addActionListener(new ActionListener() {
+		JButton btn_modificarDoctor = new JButton("Modificar Doctor");
+		btn_modificarDoctor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 
@@ -194,8 +194,8 @@ public class Panel_DoctorCreado extends JInternalFrame {
 		tf_telefono.setColumns(10);
 		tf_telefono.setBounds(501, 202, 173, 20);
 		panel.add(tf_telefono);
-		btn_modificarCita.setBounds(501, 452, 116, 23);
-		panel.add(btn_modificarCita);
+		btn_modificarDoctor.setBounds(501, 452, 116, 23);
+		panel.add(btn_modificarDoctor);
 		
 	
 		

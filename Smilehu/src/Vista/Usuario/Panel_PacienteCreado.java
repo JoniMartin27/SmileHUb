@@ -146,6 +146,17 @@ public class Panel_PacienteCreado extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
+				 try {
+			            // Cargar y compilar el archivo JRXML para obtener el JasperPrint
+			            JasperPrint jasperPrint = JasperFillManager.fillReport("reporte.jasper", null, ConexionMySQL.conectar());
+			            
+			            // Visualizar el reporte utilizando JasperViewer
+			            JasperViewer viewer = new JasperViewer(jasperPrint, false);
+			            viewer.setVisible(true);
+			        } catch (Exception e) {
+			            e.printStackTrace();
+			        }
+				
 				
 			}
 		});
@@ -324,6 +335,9 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		        String telefono = tf_telefono.getText();
 		        String fechaAlta = tf_fechaAlta.getText();
 		        
+		        
+		        
+		        
 		        String fechaNacimiento = tf_fechaNacimiento.getText();
 		        int id=Integer.parseInt(tf_id.getText());
 		       
@@ -348,23 +362,35 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		});
 		btn_odontograma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int id=Integer.parseInt(tf_id.getText());
-			Paciente paciente=new Paciente(id);
-			System.out.println("El id insertado al crear registro es: "+id);
-				ConexionMySQL.crearRegistrosDientes(paciente);
-				
-				
-				try {
-					abrirOdontograma(getDesktopPane());
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+			
+	
+			
+				if(tf_id.getText().equals("")) {
+					JOptionPane.showMessageDialog(btn_odontograma, "Busque primero un paciente", "Selección", JOptionPane.INFORMATION_MESSAGE);
+					
+				}else {
+					 try {
+							int id = Integer.parseInt(tf_id.getText()); // Obtener el ID del paciente
+							Paciente paciente=new Paciente(id);
+							System.out.println("El id insertado al crear registro es: "+id);
+							ConexionMySQL.crearRegistrosDientes(paciente);
+					       
+					            abrirOdontograma(getDesktopPane(), id); // Pasar el ID del paciente al método
+					        } catch (PropertyVetoException e1) {
+					        	
+					            e1.printStackTrace();
 				}
+			
+				      
+		            
+		        }
 			}
 			
 		});
 		btn_consultarpagos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
 			}
 		});
 
@@ -396,9 +422,9 @@ public class Panel_PacienteCreado extends JInternalFrame {
 	}
 	
 
-	private static void abrirOdontograma(JDesktopPane desktopPane) throws PropertyVetoException {
-
-		Odontograma odonto = new Odontograma();
+	private static void abrirOdontograma(JDesktopPane desktopPane,int id) throws PropertyVetoException {
+		
+		Odontograma odonto = new Odontograma(id);
 		odonto.setBorder(null);
 		((BasicInternalFrameUI) odonto.getUI()).setNorthPane(null);
 		odonto.setLocation(0, 0);

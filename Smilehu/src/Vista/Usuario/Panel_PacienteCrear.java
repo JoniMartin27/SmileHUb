@@ -23,9 +23,12 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
 
 public class Panel_PacienteCrear extends JInternalFrame {
 
@@ -34,7 +37,6 @@ public class Panel_PacienteCrear extends JInternalFrame {
 	private final JPanel contentPanel = new JPanel();
 	private JDesktopPane miDesktopPane_1;
 	private JTextField tf_nombre;
-	private JTextField tf_fechaNacimiento;
 	private JTextField tf_apellidos;
 	private JTextField tf_telefono;
 	private JTextField tf_direccion;
@@ -83,17 +85,16 @@ public class Panel_PacienteCrear extends JInternalFrame {
 		contentPanel.add(panel);
 		panel.setLayout(null);
 		
+		JDateChooser dt_fechaNacimiento = new JDateChooser();
+		dt_fechaNacimiento.setBounds(155, 211, 225, 20);
+		panel.add(dt_fechaNacimiento);
+		
 		JLabel lbl_nombre_1 = new JLabel("Fecha nacimiento");
 		lbl_nombre_1.setBounds(155, 194, 120, 14);
 		panel.add(lbl_nombre_1);
 		lbl_nombre_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lbl_nombre_1.setForeground(Color.BLACK);
 		lbl_nombre_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		
-		tf_fechaNacimiento = new JTextField();
-		tf_fechaNacimiento.setBounds(155, 211, 225, 20);
-		panel.add(tf_fechaNacimiento);
-		tf_fechaNacimiento.setColumns(10);
 		
 		tf_direccion = new JTextField();
 		tf_direccion.setBounds(155, 319, 225, 20);
@@ -181,7 +182,7 @@ public class Panel_PacienteCrear extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 				String genero="";
 				
-				if((!tf_nombre.getText().equals(" "))&&(!tf_apellidos.getText().equals(" "))) {
+				if((tf_nombre.getText().equals(""))||(tf_apellidos.getText().equals(""))) {
 					JOptionPane.showMessageDialog(null, "Introduce el nombre y apellidos del paciente.");	}
 				
 				else {
@@ -194,7 +195,7 @@ public class Panel_PacienteCrear extends JInternalFrame {
 					}else {
 						JOptionPane.showMessageDialog(null, "Selecciona el genero del paciente.");
 					}
-				
+					
 					crearPaciente(genero);
 				}
 				
@@ -210,18 +211,51 @@ public class Panel_PacienteCrear extends JInternalFrame {
 					
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 					String fechaComoCadena = sdf.format(new Date());
-					
-					
-					
-					System.out.println(fechaComoCadena);
-					ConexionMySQL.conectar();
-					Paciente paciente = new Paciente( tf_nombre.getText(), tf_apellidos.getText(),
-							tf_direccion.getText(), genero, tf_telefono.getText(),fechaComoCadena,
-							tf_fechaNacimiento.getText());
-					
-					
-					ConexionMySQL.insertarPaciente(paciente);
-					JOptionPane.showMessageDialog(null, "Paciente Creado.");
+					Date selectedDate = dt_fechaNacimiento.getDate();
+
+
+					// usar SimpleDateFormat para convertir a String
+
+					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+					String fechaNacimiento = dateFormat.format(selectedDate);
+					// Obtener la fecha actual
+	
+			        LocalDate fechaActual = LocalDate.now();
+			        
+			        
+			        LocalDate fechaIngresada = LocalDate.parse(fechaNacimiento);
+			        
+			        // Comparar la fecha ingresada con la fecha actual
+			        if (fechaIngresada.isAfter(fechaActual)) {
+
+						JOptionPane.showMessageDialog(null, "La fecha ingresada es posterior a la fecha actual. No se puede insertar.");
+
+			        } else if (fechaIngresada.isBefore(fechaActual)) {
+
+
+			        	
+			            System.out.println(fechaComoCadena);
+						ConexionMySQL.conectar();
+						Paciente paciente = new Paciente( tf_nombre.getText(), tf_apellidos.getText(),
+								tf_direccion.getText(), genero, tf_telefono.getText(),fechaComoCadena,
+								fechaNacimiento);
+						
+						
+						ConexionMySQL.insertarPaciente(paciente);
+						JOptionPane.showMessageDialog(null, "Paciente Creado.");
+			        } else {
+			   
+			        
+						ConexionMySQL.conectar();
+						Paciente paciente = new Paciente( tf_nombre.getText(), tf_apellidos.getText(),
+								tf_direccion.getText(), genero, tf_telefono.getText(),fechaComoCadena,
+								fechaNacimiento);
+						
+						
+						ConexionMySQL.insertarPaciente(paciente);
+						JOptionPane.showMessageDialog(null, "Paciente Creado.");
+			        }
+			        
 					
 				} catch (ClassNotFoundException | SQLException e1) {
 					// TODO Auto-generated catch block

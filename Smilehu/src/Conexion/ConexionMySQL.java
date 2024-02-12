@@ -5,15 +5,17 @@
 
 /**
  *
- * @author Rafae
+ * @author Jonathan
  */
 package Conexion;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import Modelo.ConsultaCita;
@@ -331,12 +333,16 @@ public class ConexionMySQL {
                          abrirInformacionPaciente(paciente);
                      } else {
                          // Insertar 10 nuevos registros de dientes para el paciente
-                         String insercionRegistros = "INSERT INTO Dientes (nDiente, descripcion, id_Paciente) VALUES (?, ?, ?)";
+                         String insercionRegistros = "INSERT INTO Dientes (nDiente, descripcion, id_Paciente, estado, protesis) VALUES (?, ?, ?, ?, ?)";
                          try (PreparedStatement insertStatement = connection.prepareStatement(insercionRegistros)) {
-                             for (int i = 1; i <= 10; i++) {
-                                 insertStatement.setInt(1, i);
-                                 insertStatement.setString(2, "Descripción del diente " + i);
+                        	 // Crear una lista de los números de dientes que deseas crear
+                             List<Integer> numerosDientes = Arrays.asList(11, 12, 13, 14, 21, 22, 23, 24, 31, 32, 33, 41, 42, 43);
+                             for (int nDiente : numerosDientes) {
+                                 insertStatement.setInt(1, nDiente);
+                                 insertStatement.setString(2, "Descripción del diente " + nDiente);
                                  insertStatement.setInt(3, paciente.getIdPaciente());
+                                 insertStatement.setString(4, "Sin riesgo");
+                                 insertStatement.setInt(5, 0);
                                  insertStatement.executeUpdate();
                              }
                              JOptionPane.showMessageDialog(null, "Se han creado 10 registros para el paciente.");
@@ -349,14 +355,37 @@ public class ConexionMySQL {
          }
      }
  
+     public static void actualizarDiente(int idPaciente, String nombreDiente, String estadoDiente, String observaciones, int protesis) throws SQLException {
+         Connection connection = null;
+         PreparedStatement statement = null;
+         
+         try {
+             connection = obtenerConexion(); // Método para obtener la conexión a la base de datos
+             
+             String query = "UPDATE Dientes SET descripcion = ?, estado = ?, protesis = ? WHERE id_Paciente = ? AND nDiente = ?";
+             statement = connection.prepareStatement(query);
+             statement.setString(1, observaciones);
+             statement.setString(2, estadoDiente);
+             statement.setInt(3, protesis);
+             statement.setInt(4, idPaciente);
+             statement.setString(5, nombreDiente);
+             statement.executeUpdate();
+         } finally {
+             if (statement != null) {
+                 statement.close();
+             }
+             if (connection != null) {
+                 connection.close();
+             }
+         }
+     }
      
      
      
      
      
      
-     
-     public static ModeloDiente consultarDiente(int idDiente) throws SQLException {
+     public static ModeloDiente consultarDiente(int id_Paciente,int ndiente) throws SQLException {
          ModeloDiente diente = null;
          Connection connection = null;
          PreparedStatement pstmt = null;
@@ -364,24 +393,21 @@ public class ConexionMySQL {
          
          try {
              connection = obtenerConexion();
-             String query = "SELECT * FROM dientes WHERE idDiente = ?";
+             String query = "SELECT * FROM dientes WHERE id_Paciente = ? AND ndiente = ?";
              pstmt = connection.prepareStatement(query);
-             pstmt.setInt(1, idDiente);
+             pstmt.setInt(1, id_Paciente);
+             pstmt.setInt(2, ndiente);
              resultSet = pstmt.executeQuery();
 
              if (resultSet.next()) {
                  int id = resultSet.getInt("idDiente");
-                 int numeroDiente = resultSet.getInt("nDiente");
-                 int idPaciente = resultSet.getInt("id_Paciente");
                  String descripcion = resultSet.getString("descripcion");
+                 int protesis = resultSet.getInt("protesis");
+                 String estado = resultSet.getString("estado");
 
-                 diente = new ModeloDiente(id, numeroDiente, descripcion, idPaciente);
-                 
-                 
-                 
-                 
-                 
+                 diente = new ModeloDiente(id, ndiente, descripcion, id_Paciente,estado,protesis);
              }
+             
          } finally {
              // Cerrar recursos en un bloque finally para asegurarse de que se cierren correctamente
              if (resultSet != null) {

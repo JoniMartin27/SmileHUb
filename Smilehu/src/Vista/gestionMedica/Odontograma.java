@@ -38,6 +38,7 @@ public class Odontograma extends JInternalFrame {
     private JTextField tf_estado;
     private ButtonGroup btn = new ButtonGroup();
 	private static JDesktopPane miDesktopPane;
+	private int idPaciente;
 
 	/**
 	 * Launch the application.
@@ -60,11 +61,13 @@ public class Odontograma extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Odontograma(int idPaciente) {
-		cargarOdontograma(idPaciente);
+public Odontograma() {
+		
+		
 	}
-	
-	public Odontograma() {
+	public Odontograma(int idPaciente) {
+		this.idPaciente=idPaciente;
+
 		setBorder(null);
 		setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1018, 476);
@@ -80,6 +83,51 @@ public class Odontograma extends JInternalFrame {
 		panel.setBounds(0, 0, 1018, 476);
 		contentPane.add(panel);
 		panel.setLayout(null);
+
+		
+
+		
+		JRadioButton rdbtn_si = new JRadioButton("Si");
+		rdbtn_si.setFont(new Font("Tahoma", Font.BOLD, 14));
+		rdbtn_si.setBounds(700, 98, 39, 23);
+		panel.add(rdbtn_si);
+		
+		JRadioButton rdbtn_no = new JRadioButton("No");
+		rdbtn_no.setFont(new Font("Tahoma", Font.BOLD, 14));
+		rdbtn_no.setBounds(753, 98, 48, 23);
+		panel.add(rdbtn_no);
+		
+        btn.add(rdbtn_si);
+        btn.add(rdbtn_no);
+		JTextField tf_nombre  = new JTextField();
+		tf_nombre.setBounds(609, 55, 106, 20);
+		panel.add(tf_nombre);
+		tf_nombre.setColumns(10);
+		
+		JTextArea ta_observaciones = new JTextArea();
+		ta_observaciones.setBounds(609, 221, 325, 131);
+		panel.add(ta_observaciones);
+		
+		JLabel lbl_nombre = new JLabel("Nombre Diente");
+		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_nombre.setBounds(609, 36, 137, 14);
+		panel.add(lbl_nombre);
+		
+		JTextField tf_estado = new JTextField();
+		tf_estado.setBounds(753, 55, 106, 20);
+		panel.add(tf_estado);
+		tf_estado.setColumns(10);
+		
+		JLabel lbl_estado = new JLabel("Estado");
+		lbl_estado.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_estado.setBounds(751, 36, 72, 14);
+		panel.add(lbl_estado);
+		
+		JLabel lbl_protesis = new JLabel("Prótesis");
+		lbl_protesis.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lbl_protesis.setBounds(609, 102, 91, 14);
+		panel.add(lbl_protesis);
+		
 		
 		
 		
@@ -88,8 +136,24 @@ public class Odontograma extends JInternalFrame {
 		btn_guardarOdon.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_guardarOdon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					int protesis=0;
+					String ndiente=tf_nombre.getText();
+					String observaciones =ta_observaciones.getText();
+					String estado =tf_estado.getText();
+					if(rdbtn_si.isSelected()) {
+						protesis=1;
+						
+					}
+				
+				
+					ConexionMySQL.actualizarDiente(idPaciente, ndiente,estado, observaciones, protesis);
+				
+			}catch(Exception ex) {
+				System.out.println(ex.getMessage());
 			}
-		});
+			}});
 		btn_guardarOdon.setBounds(730, 380, 106, 23);
 		panel.add(btn_guardarOdon);
 		
@@ -129,12 +193,23 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente1 = new JButton();
+		btn_diente1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(11, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				
 				btn_diente1.setOpaque(true);
-				btn_diente1.setBackground(new Color(159,232,223));
+				btn_diente1.setBackground(new Color(255,255,230 ));
 			
 			}
 			@Override
@@ -154,6 +229,17 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente2 = new JButton();
+		btn_diente2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(12, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -179,6 +265,17 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente3 = new JButton();
+		btn_diente3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(13, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -204,6 +301,17 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente4 = new JButton();
+		btn_diente4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(14, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -229,6 +337,17 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente5 = new JButton();
+		btn_diente5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(21, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -254,6 +373,17 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente6 = new JButton();
+		btn_diente6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(22, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -279,6 +409,17 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente7 = new JButton();
+		btn_diente7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(23, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -304,6 +445,17 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente8 = new JButton();
+		btn_diente8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(24, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -329,6 +481,17 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente9 = new JButton();
+		btn_diente9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(31, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -354,6 +517,17 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente10 = new JButton();
+		btn_diente10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(32, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente10.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -379,6 +553,17 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente11 = new JButton();
+		btn_diente11.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(33, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente11.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -404,6 +589,17 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente12 = new JButton();
+		btn_diente12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(41, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente12.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -429,6 +625,17 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente13 = new JButton();
+		btn_diente13.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(42, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente13.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -454,6 +661,17 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		JButton btn_diente14 = new JButton();
+		btn_diente14.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				buscarDiente(43, rdbtn_si, rdbtn_no, tf_nombre, ta_observaciones, tf_estado);
+				
+				
+				
+			}
+
+			
+		});
 		btn_diente14.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -478,51 +696,6 @@ public class Odontograma extends JInternalFrame {
 		
 		
 		
-		
-		JTextField tf_nombre  = new JTextField();
-		tf_nombre.setBounds(609, 55, 106, 20);
-		panel.add(tf_nombre);
-		tf_nombre.setColumns(10);
-		
-		JTextArea ta_observaciones = new JTextArea();
-		ta_observaciones.setBounds(609, 221, 325, 131);
-		panel.add(ta_observaciones);
-		
-		JLabel lbl_nombre = new JLabel("Nombre Diente");
-		lbl_nombre.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_nombre.setBounds(609, 36, 137, 14);
-		panel.add(lbl_nombre);
-		
-		JTextField tf_estado = new JTextField();
-		tf_estado.setBounds(753, 55, 106, 20);
-		panel.add(tf_estado);
-		tf_estado.setColumns(10);
-		
-		JLabel lbl_estado = new JLabel("Estado");
-		lbl_estado.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_estado.setBounds(751, 36, 72, 14);
-		panel.add(lbl_estado);
-		
-		JLabel lbl_protesis = new JLabel("Prótesis");
-		lbl_protesis.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lbl_protesis.setBounds(609, 102, 91, 14);
-		panel.add(lbl_protesis);
-		
-		
-		
-		
-		JRadioButton rdbtn_si = new JRadioButton("Si");
-		rdbtn_si.setFont(new Font("Tahoma", Font.BOLD, 14));
-		rdbtn_si.setBounds(700, 98, 39, 23);
-		panel.add(rdbtn_si);
-		
-		JRadioButton rdbtn_no = new JRadioButton("No");
-		rdbtn_no.setFont(new Font("Tahoma", Font.BOLD, 14));
-		rdbtn_no.setBounds(753, 98, 48, 23);
-		panel.add(rdbtn_no);
-		
-        btn.add(rdbtn_si);
-        btn.add(rdbtn_no);
         
         JLabel lbl_observaciones = new JLabel("Observaciones");
         lbl_observaciones.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -534,35 +707,37 @@ public class Odontograma extends JInternalFrame {
         lblNewLabel.setBounds(0, 0, 1018, 476);
         panel.add(lblNewLabel);
 		
-		
-		
 	}
 	
 	
-	private void cargarOdontograma(int idPaciente) {
+	
+	
+	
+	
+	
+	private void buscarDiente(int idDiente, JRadioButton rdbtn_si, JRadioButton rdbtn_no, JTextField tf_nombre,
+			JTextArea ta_observaciones, JTextField tf_estado) {
 		try {
-				ModeloDiente diente=ConexionMySQL.consultarDiente(idPaciente);
+			ModeloDiente diente =ConexionMySQL.consultarDiente(idPaciente,idDiente);
+			
+			tf_nombre.setText(Integer.toString(diente.getnDiente()));
+			ta_observaciones.setText(diente.getDescripcion());
+			tf_estado.setText(diente.getEstado());
+			if(diente.getProtesis()==0) {
+				rdbtn_no.setSelected(true);
 				
-				tf_nombre.setText(Integer.toString(diente.getIdDiente()));;
-				
-				
-		} catch (SQLException e) {
+			}else {
+				rdbtn_si.setSelected(true);
+			}
+			
+			
+			
+			
+		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
-		
-		
-		
-        // Aquí iría la lógica para cargar el odontograma con los datos del paciente
-        // Por ejemplo, podrías utilizar el ID del paciente para consultar la base de datos y obtener sus datos de odontograma
-        // Luego, usar esos datos para cargar y mostrar el odontograma en los componentes adecuados del frame
-        // Como es una operación específica de tu aplicación y depende de cómo estén estructurados tus datos y componentes, no puedo proporcionar un código específico sin más detalles
-        // Debes escribir el código para esta funcionalidad basándote en la estructura de tu aplicación y la forma en que se almacenan y muestran los datos del odontograma
-    }
-	
-	
-	
-	
+	}
 	
 	private static void volver() throws PropertyVetoException {
 		
