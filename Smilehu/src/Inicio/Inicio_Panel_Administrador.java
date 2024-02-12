@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import Vista.Material.InicioMaterial;
@@ -25,6 +26,8 @@ import javax.help.HelpSetException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Window;
+
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -61,7 +64,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 		});
 		
 	}
-
+	
 	public void setDesktopPane(JDesktopPane desktopPane) {
 	    this.miDesktopPane_1 = desktopPane;
 	}
@@ -333,6 +336,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 	
 	private static void mostrarPerfil(Component invoker, JDesktopPane desktopPane) {
 		JPopupMenu menu = new JPopupMenu();
+		
 
 		// Agregar elementos al menú desplegable
 		
@@ -358,7 +362,7 @@ public class Inicio_Panel_Administrador extends JFrame {
 	            }
 	        });
 	        
-	        menu.add(ayuda);
+	        
 		
 	        
 	        
@@ -367,15 +371,38 @@ public class Inicio_Panel_Administrador extends JFrame {
 	        
 	        
 	        
+	        JMenuItem cerrarPerfil = new JMenuItem("Cerrar Sesión");
 	        
-	        
-		JMenuItem cerrarPerfil = new JMenuItem("Cerrar Sesión");
-		
+	        cerrarPerfil.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                // Abre el formulario de inicio de sesión
+	            	
+	            	// Obtiene la ventana contenedora más cercana del componente invocador
+	            	Window window = SwingUtilities.getWindowAncestor(invoker);
 
-	
-		menu.add(ayuda);
+	            	// Verifica si se pudo obtener una ventana contenedora
+	            	if (window != null) {
+	            	    // Si se encontró una ventana contenedora, se cierra
+	            	    window.dispose();
+	            	}
+	            	
+	                Login login = new Login();
+	                login.setVisible(true);
+	               
+	                
+	            }	            
+	            
+	        });
+	        
+	        
+	       
+	    menu.add(ayuda); 
 		menu.add(cerrarPerfil);
 
+		
+		
+		
+		
 		// Mostrar el menú desplegable en la posición del componente invocador
 		menu.show(invoker, 0, invoker.getHeight());
 	}
