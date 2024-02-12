@@ -5,7 +5,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JAVAHELP"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Nombre"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="src/mysql-connector-j-8.1.0.jar">
 		<attributes>
@@ -20,5 +20,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="net.sf.jasperreports.JR_CONTAINER"/>
+	<classpathentry kind="con" path="net.sf.jasperreports.JR_DEPENDENCIES_CONTAINER"/>
+	<classpathentry kind="con" path="com.jaspersoft.server.JRS_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
