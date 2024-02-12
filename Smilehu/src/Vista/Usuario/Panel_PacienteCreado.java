@@ -159,7 +159,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 					Map<String, Object> parametros = new HashedMap<String, Object>();
 					parametros.put("id_paciente", ConexionMySQL.consultaPaciente(Integer.parseInt(tf_id.getText())));
 					reporte = JasperCompileManager
-							.compileReport("SmileHUb/Smilehu/src/Informs/Informe1.jrxml");
+							.compileReport("src/Informs/Informe1.jrxml");
 					JasperPrint p;
 					p = JasperFillManager.fillReport(reporte, parametros, conexion.conectar1());
 					JasperViewer viewer = new JasperViewer(p, false);
@@ -403,7 +403,22 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		});
 		btn_consultarpagos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					Map<String, Object> parametros = new HashedMap<String, Object>();
+					
+					parametros.put("id_paciente", Integer.parseInt(tf_id.getText()));
+					reporte = JasperCompileManager
+							.compileReport("src/Informs/Factura1.jrxml");
+					JasperPrint p;
+					p = JasperFillManager.fillReport(reporte, parametros, conexion.conectar1());
+					JasperViewer viewer = new JasperViewer(p, false);
+		            viewer.setVisible(true);
+		            dispose();
+		            viewer.toFront();
+				} catch (ClassNotFoundException | JRException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
