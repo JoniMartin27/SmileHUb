@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyVetoException;
+import java.sql.SQLException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -20,6 +21,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
+import Conexion.ConexionMySQL;
+import Modelo.ModeloDiente;
+import Modelo.Paciente;
 import Vista.Usuario.Panel_PacienteCreado;
 
 import java.awt.Font;
@@ -57,7 +61,7 @@ public class Odontograma extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Odontograma(int idPaciente) {
-		
+		cargarOdontograma(idPaciente);
 	}
 	
 	public Odontograma() {
@@ -536,6 +540,19 @@ public class Odontograma extends JInternalFrame {
 	
 	
 	private void cargarOdontograma(int idPaciente) {
+		try {
+				ModeloDiente diente=ConexionMySQL.consultarDiente(idPaciente);
+				
+				tf_nombre.setText(Integer.toString(diente.getIdDiente()));;
+				
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
         // Aquí iría la lógica para cargar el odontograma con los datos del paciente
         // Por ejemplo, podrías utilizar el ID del paciente para consultar la base de datos y obtener sus datos de odontograma
         // Luego, usar esos datos para cargar y mostrar el odontograma en los componentes adecuados del frame

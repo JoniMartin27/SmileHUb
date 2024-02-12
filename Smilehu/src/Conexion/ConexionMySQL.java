@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 import Modelo.ConsultaCita;
 import Modelo.Doctor_administrador;
 import Modelo.Especialidad;
+import Modelo.ModeloDiente;
 import Modelo.Paciente;
 import Modelo.Proveedor;
 import Modelo.Solicitud;
@@ -348,6 +349,66 @@ public class ConexionMySQL {
          }
      }
  
+     
+     
+     
+     
+     
+     
+     
+     public static ModeloDiente consultarDiente(int idDiente) throws SQLException {
+         ModeloDiente diente = null;
+         Connection connection = null;
+         PreparedStatement pstmt = null;
+         ResultSet resultSet = null;
+         
+         try {
+             connection = obtenerConexion();
+             String query = "SELECT * FROM dientes WHERE idDiente = ?";
+             pstmt = connection.prepareStatement(query);
+             pstmt.setInt(1, idDiente);
+             resultSet = pstmt.executeQuery();
+
+             if (resultSet.next()) {
+                 int id = resultSet.getInt("idDiente");
+                 int numeroDiente = resultSet.getInt("nDiente");
+                 int idPaciente = resultSet.getInt("id_Paciente");
+                 String descripcion = resultSet.getString("descripcion");
+
+                 diente = new ModeloDiente(id, numeroDiente, descripcion, idPaciente);
+                 
+                 
+                 
+                 
+                 
+             }
+         } finally {
+             // Cerrar recursos en un bloque finally para asegurarse de que se cierren correctamente
+             if (resultSet != null) {
+                 resultSet.close();
+             }
+             if (pstmt != null) {
+                 pstmt.close();
+             }
+             if (connection != null) {
+                 connection.close();
+             }
+         }
+
+         return diente;
+     }
+ 
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
      
      
      
