@@ -152,7 +152,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		btn_realizarpago.setText("Registrar Pago");
 		btn_realizarpago.setBounds(829, 26, 136, 23);
 		panel.add(btn_realizarpago);
-		btn_historial.setBounds(253, 443, 173, 23);
+		btn_historial.setBounds(253, 354, 173, 23);
 		panel.add(btn_historial);
 		
 		
