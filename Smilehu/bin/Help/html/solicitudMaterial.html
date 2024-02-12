@@ -1,31 +1,70 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Descripción de la imagen</title>
+    <title>Solicitud Material</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        #titulo {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 20px;
+        }
+
+        #inicioMaterial {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 15px 15px 15px 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 2);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body id="solicitudMaterial">
-    <h1>Descripción de la imagen</h1>
-    <p>La imagen muestra una vista previa de una sección de una aplicación web que gestiona pedidos de material médico.
-    </p>
-    <h2>Encabezado</h2>
-    <p>En la parte superior de la imagen se encuentra el encabezado de la aplicación, el cual contiene el nombre de la
-        empresa y un menú de navegación.</p>
-    <h2>Contenido</h2>
-    <p>Justo debajo del encabezado se encuentra el contenido principal de la sección, el cual está dividido en dos
-        partes:</p>
-    <ul>
-        <li><strong>Filtros:</strong> En la parte izquierda de la imagen se encuentran los filtros, los cuales permiten
-            al usuario buscar y filtrar los pedidos de material médico por diferentes criterios, como el estado del
-            pedido, el proveedor, la fecha de creación, etc.</li>
-        <li><strong>Lista de pedidos:</strong> En la parte derecha de la imagen se encuentra la lista de pedidos, la
-            cual muestra los pedidos de material médico que coinciden con los filtros seleccionados por el usuario. Cada
-            pedido está representado por una fila que contiene diferente información, como el ID del pedido, el nombre
-            del material, la cantidad solicitada, el nombre del proveedor, el estado del pedido, etc.</li>
-    </ul>
-    <h2>Pie de página</h2>
-    <p>Al final de la imagen se encuentra el pie de página de la aplicación, el cual contiene información de copyright y
-        enlaces a redes sociales.</p>
+    <div id="titulo">
+        <h1>Solicitud Material</h1>
+    </div>
+    <div id="inicioMaterial">
+        <p>Tenemos una tabla la cual nos mostrará todas las solicitudes de materiales que tengamos disponibles.</p>
+        <p>Hay dos botones (Aceptar y Rechazar) el cual al seleccionar el material que deseemos, podremos aceptarlo o rechazarlo.</p>
+    </div>
 </body>
 
 </html>

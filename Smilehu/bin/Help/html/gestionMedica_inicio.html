@@ -1,42 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de ayuda: Gestión Médica</title>
+    <title>Inicio Gestión Médica</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
             margin: 0;
             padding: 0;
-            background-color: #f0f8ff; /* Color de fondo azul pastel */
         }
 
-        .navbar {
-            background-color: #007bff; /* Color de fondo de la barra de navegación */
-            color: #fff; /* Color de texto de la barra de navegación */
-            padding: 10px 20px; /* Espaciado interno */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
-            border-radius: 10px 10px 0 0; /* Bordes redondeados solo arriba */
+        #titulo {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 20px;
         }
 
-        .container {
+        #inicioMaterial {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #e0f0ff; /* Color de fondo de la caja */
-            border-radius: 0 0 10px 10px; /* Bordes redondeados solo abajo */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: 15px 15px 15px 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 2);
         }
 
-        h1, h2 {
-            text-align: center;
+        h1 {
+            color: #333;
         }
 
-        p {
-            margin-bottom: 20px;
+        h2 {
+            color: #555;
         }
 
         ul {
@@ -47,27 +45,36 @@
         li {
             margin-bottom: 10px;
         }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
 <body id="gestionMedica_inicio">
-    <div class="navbar">
-        <h1>Página de ayuda: Gestión Médica</h1>
+    <div id="titulo">
+        <h1>Gestión Médica</h1>
     </div>
-    <div class="container">
-        <h1>Gestión Médica Inicio</h1>
-        <h2>Menú de Navegación</h2>
-        <p>El menú de navegación permite al usuario acceder a diferentes módulos del sistema.</p>
+    <div id="inicioMaterial">
         <ul>
             <li><strong>Especialidad:</strong> Este módulo permite gestionar las especialidades médicas del sistema. Se
                 pueden crear nuevas especialidades, modificar las existentes y eliminar aquellas que ya no se necesiten.
             </li>
             <li><strong>Tratamiento:</strong> Este módulo permite gestionar los tratamientos médicos del sistema. Se pueden
-                crear nuevos tratamientos, modificar los existentes y eliminar aquellos que ya no se necesiten. Además, el
-                sistema permite buscar un tratamiento específico mediante un campo de búsqueda.</li>
-        </ul>
-       
+                crear nuevos tratamientos, modificar los existentes y eliminar aquellos que ya no se necesiten.</li>
     </div>
 </body>
 
 </html>
+
+
+
+
+
+        
