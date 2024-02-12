@@ -34,7 +34,7 @@ import Vista.gestionMedica.Odontograma;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
-
+import Conexion.ConexionMySQL;
 public class Panel_PacienteCreado extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -53,6 +53,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 	private JTextField tf_nombre;
 	private JDesktopPane miDesktopPane;
 	private JTextField tf_id;
+	
 
 	/**
 	 * Launch the application.
@@ -347,6 +348,9 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		});
 		btn_odontograma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int id=Integer.parseInt(tf_id.getText());
+			Paciente paciente=new Paciente(id);
+				ConexionMySQL.crearRegistrosDientes(paciente);
 				
 				
 				try {
@@ -404,7 +408,8 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		odonto.setSelected(true);
 	}
 	
-	
+
+
 	
 	
 
