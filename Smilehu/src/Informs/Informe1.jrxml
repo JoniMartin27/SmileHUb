@@ -5,7 +5,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="adaptador"/>
 	<parameter name="id_paciente" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT concat(consulta_cita.fecha,' ',consulta_cita.hora) as "Fecha y hora",tratamiento.nombre as "Tratamiento",
+		<![CDATA[SELECT concat(consulta_cita.fecha,' ',consulta_cita.hora) as "Fecha y hora",tratamiento.nombre_tratamiento as "Tratamiento",
 paciente.nombre as "Nombre Paciente",consulta_cita.observaciones
 from consulta_cita
 inner join tratamiento on consulta_cita.id_tratamiento=tratamiento.id_tratamiento
@@ -149,7 +149,7 @@ where  consulta_cita.id_paciente=$P{id_paciente}]]>
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="0" width="595" height="140" backcolor="#006699" uuid="9b6f8c58-61eb-462e-a0d0-257b7f4494b9"/>
 				<textField>
-					<reportElement mode="Opaque" x="0" y="-14" width="595" height="13" backcolor="#E6E6E6" uuid="33db669d-8c57-4276-b983-403f12f095f3"/>
+					<reportElement mode="Opaque" x="0" y="-67" width="595" height="13" backcolor="#E6E6E6" uuid="33db669d-8c57-4276-b983-403f12f095f3"/>
 					<textElement textAlignment="Right">
 						<font size="10"/>
 					</textElement>
@@ -177,6 +177,6 @@ Usera
 		</band>
 	</pageFooter>
 	<summary>
-		<band splitType="Stretch"/>
+		<band height="330" splitType="Stretch"/>
 	</summary>
 </jasperReport>

@@ -160,8 +160,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 					parametros.put("id_paciente", Integer.parseInt(tf_id.getText()));
 					reporte = JasperCompileManager
 							.compileReport("src/Informs/Informe1.jrxml");
-					JasperPrint p;
-					p = JasperFillManager.fillReport(reporte, parametros, conexion.conectar1());
+					JasperPrint p= JasperFillManager.fillReport(reporte, parametros, conexion.conectar1());
 					JasperViewer viewer = new JasperViewer(p, false);
 		            viewer.setVisible(true);
 		            dispose();
@@ -415,7 +414,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		            viewer.setVisible(true);
 		            dispose();
 		            viewer.toFront();
-				} catch (JRException | SQLException e1) {
+				} catch (JRException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}

@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c2adf070-2b18-4585-85de-92d8d414db0c">
-	<property name="com.jaspersoft.studio.data.sql.tables">
-		<![CDATA[cHJkYXRvcy5jb25zdWx0YV9jaXRhICwxMjAsMTUsNDUxMGNiMmMtNzRhNC00ZTIwLTk1OWYtMjI3
-NTc0N2M1NGU5O3ByZGF0b3MucGFjaWVudGUgLDM0OSwxNSw3N2RkYTczNy1mYmU3LTQxMDAtYjFl
-Yy0zMGZmMTNjNmZhMDM7cHJkYXRvcy50cmF0YW1pZW50byAsMjQyLDE1LGU0ZWUwNWFhLTM3MWYt
-NGQwMy1iMjU2LTlmNzAyNWRlMmRmMTtwcmRhdG9zLmZhY3R1cmFjaW9uICwxNSwxNSxjNjk4YTdi
-Ni0yOWEzLTRjYTktOTQwOC01OThhYmMxZGZiZDM7]]>
-	</property>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="adaptador"/>
 	<parameter name="id_paciente" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT p.nombre,cc.fecha,cc.id_cita,t.nombre as nombre_tratamiento,f.importe
+		<![CDATA[SELECT p.nombre,cc.fecha,cc.id_cita,t.nombre_tratamiento ,f.importe
 FROM prdatos.facturacion f 
 JOIN prdatos.consulta_cita cc ON f.id_cita = cc.id_cita
 JOIN prdatos.tratamiento t ON cc.id_tratamiento= t.id_tratamiento
