@@ -1,33 +1,39 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de ayuda: Inicio de administradores</title>
+    <title>Inicio Administrador</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
             margin: 0;
             padding: 0;
-            background-color:#f0f8ff; /* Color pastel de fondo */
         }
 
-        .container {
+        #titulo {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 20px;
+        }
+
+        #inicioMaterial {
             max-width: 800px;
-            margin: 20px auto;
-            background-color: #f0f8ff;
+            margin: 0 auto;
             padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 15px 15px 15px 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 2);
         }
 
         h1 {
-            text-align: center;
             color: #333;
         }
 
-        h4 {
+        h2 {
             color: #555;
         }
 
@@ -36,54 +42,27 @@
             padding: 0;
         }
 
-        ul li {
-            margin-bottom: 15px;
+        li {
+            margin-bottom: 10px;
         }
 
-        ul li strong {
+        a {
+            text-decoration: none;
             color: #007bff;
         }
 
-        /* Estilos para la barra de navegación */
-        nav {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        nav ul li {
-            display: inline;
-        }
-
-        nav ul li:not(:last-child) {
-            margin-right: 20px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #f0f0f0;
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 
 <body id="inicio_administrador">
-    <div class="container">
-        <h1>Página de ayuda: Inicio de administradores</h1>
+    <div id="titulo">
+        <h1>Inicio Administrador</h1>
+    </div>
+    <div id="inicioMaterial">
+        
         <nav>
             <ul>
                 <li><a href="../html/fichaPaciente.html">Pacientes</a></li>
@@ -114,7 +93,14 @@
                 </ul>
             </li>
         </ul>
+
     </div>
 </body>
 
 </html>
+
+
+
+
+
+        
