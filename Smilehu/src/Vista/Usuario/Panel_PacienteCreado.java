@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -28,9 +29,17 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
+import org.apache.commons.collections4.map.HashedMap;
+
 import Conexion.ConexionMySQL;
 import Modelo.Paciente;
 import Vista.gestionMedica.Odontograma;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -46,7 +55,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 	
 	private JTextField tf_buscaPaciente;
 
-
+	private JasperReport reporte;
 	private JTextField tf_telefono;
 	private JTextField tf_fechaAlta;
 	private JTextField tf_fechaNacimiento;
@@ -54,6 +63,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 	private JDesktopPane miDesktopPane;
 	private JTextField tf_id;
 	private int idPaciente;
+	ConexionMySQL conexion=new ConexionMySQL();
 
 	/**
 	 * Launch the application.
@@ -144,18 +154,22 @@ public class Panel_PacienteCreado extends JInternalFrame {
 		btn_historial.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_historial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				 try {
-			            // Cargar y compilar el archivo JRXML para obtener el JasperPrint
-			            JasperPrint jasperPrint = JasperFillManager.fillReport("reporte.jasper", null, ConexionMySQL.conectar());
-			            
-			            // Visualizar el reporte utilizando JasperViewer
-			            JasperViewer viewer = new JasperViewer(jasperPrint, false);
-			            viewer.setVisible(true);
-			        } catch (Exception e) {
-			            e.printStackTrace();
-			        }
+
+				try {
+					Map<String, Object> parametros = new HashedMap<String, Object>();
+					parametros.put("id_paciente", ConexionMySQL.consultaPaciente(Integer.parseInt(tf_id.getText())));
+					reporte = JasperCompileManager
+							.compileReport("SmileHUb/Smilehu/src/Informs/Informe1.jrxml");
+					JasperPrint p;
+					p = JasperFillManager.fillReport(reporte, parametros, conexion.conectar1());
+					JasperViewer viewer = new JasperViewer(p, false);
+		            viewer.setVisible(true);
+		            dispose();
+		            viewer.toFront();
+				} catch (ClassNotFoundException | JRException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				
 			}

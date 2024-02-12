@@ -57,6 +57,23 @@ public class ConexionMySQL {
             }
         }
     }
+   public Connection conectar1() throws SQLException, ClassNotFoundException{
+       if(connection == null || connection.isClosed()){
+           try{
+
+               Class.forName("com.mysql.jdbc.Driver");
+               Calendar now = Calendar.getInstance();
+               zonaHoraria = now.getTimeZone();
+               //add ?useSSL=false to the url if i dont want a warning about verification
+               connection = (Connection)DriverManager.getConnection("jdbc:mysql://"+HOST+"/"+BD+"?user="+USUARIO+"&password="+PASS+"&userLegacyDateTimeCode=false&serverTimeZone="+zonaHoraria.getID());
+               System.out.println("Conexion OK");
+           } catch(SQLException e){
+               System.out.println(e.getLocalizedMessage());
+           }
+       }
+       return connection;
+
+   }
    
    
    public static Connection obtenerConexion() {
