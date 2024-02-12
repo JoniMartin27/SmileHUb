@@ -99,39 +99,6 @@ public class Inicio_Panel_Administrador extends JFrame {
 						miDesktopPane.setBounds(0, 55, 1018, 476);
 						contentPane.add(miDesktopPane);
 						miDesktopPane.setBackground(new Color(4, 20, 36));
-						JButton btn_ayuda = new JButton("ayuda");
-						btn_ayuda.setBounds(81, 87, 89, 23);
-						miDesktopPane.add(btn_ayuda);
-						
-						
-						
-						
-						btn_ayuda.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								
-								
-								try {
-									File fichero =new File("src/help/help_set.hs");
-									java.net.URL hsURL = fichero.toURI().toURL();
-									HelpSet helpset=new HelpSet(getClass().getClassLoader(),hsURL);
-									HelpBroker hb= helpset.createHelpBroker();
-									hb.enableHelpOnButton(btn_ayuda,"aplicacion",helpset);
-									
-									
-									
-									
-									
-								} catch (MalformedURLException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
-								} catch (HelpSetException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
-								}
-								
-								
-							}
-						});
 						
 						
 						
@@ -370,30 +337,38 @@ public class Inicio_Panel_Administrador extends JFrame {
 		// Agregar elementos al menú desplegable
 		
 
-		JMenuItem ayuda = new JMenuItem("Ayuda");
-		ayuda.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			
-			try {
-				File fichero =new File("src/help/help_set.hs");
-				java.net.URL hsURL = fichero.toURI().toURL();
-				HelpSet helpset=new HelpSet(getClass().getClassLoader(),hsURL);
-				HelpBroker hb= helpset.createHelpBroker();
-				hb.enableHelpOnButton(ayuda,"aplicacion",helpset);
-				
-				
-				
-				
-				
-			} catch (MalformedURLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (HelpSetException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-	});
+		 JMenuItem ayuda = new JMenuItem("Ayuda");
+	        
+	        ayuda.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                try {
+	                    // Cargar el archivo de ayuda
+	                    File fichero = new File("src/help/help_set.hs");
+	                    java.net.URL hsURL = fichero.toURI().toURL();
+	                    HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+	                    
+	                    // Crear el broker de ayuda
+	                    HelpBroker hb = helpset.createHelpBroker();
+	                    
+	                    // Mostrar la ayuda
+	                    hb.setDisplayed(true);
+	                } catch (Exception ex) {
+	                    ex.printStackTrace();
+	                }
+	            }
+	        });
+	        
+	        menu.add(ayuda);
+		
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
 		JMenuItem cerrarPerfil = new JMenuItem("Cerrar Sesión");
 		
 
