@@ -145,6 +145,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				
+				
 			}
 		});
 		
