@@ -56,6 +56,10 @@ public class Odontograma extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
+	public Odontograma(int idPaciente) {
+		
+	}
+	
 	public Odontograma() {
 		setBorder(null);
 		setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
@@ -529,6 +533,20 @@ public class Odontograma extends JInternalFrame {
 		
 		
 	}
+	
+	
+	private void cargarOdontograma(int idPaciente) {
+        // Aquí iría la lógica para cargar el odontograma con los datos del paciente
+        // Por ejemplo, podrías utilizar el ID del paciente para consultar la base de datos y obtener sus datos de odontograma
+        // Luego, usar esos datos para cargar y mostrar el odontograma en los componentes adecuados del frame
+        // Como es una operación específica de tu aplicación y depende de cómo estén estructurados tus datos y componentes, no puedo proporcionar un código específico sin más detalles
+        // Debes escribir el código para esta funcionalidad basándote en la estructura de tu aplicación y la forma en que se almacenan y muestran los datos del odontograma
+    }
+	
+	
+	
+	
+	
 	private static void volver() throws PropertyVetoException {
 		
 		

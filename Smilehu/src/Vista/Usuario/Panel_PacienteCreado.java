@@ -53,7 +53,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 	private JTextField tf_nombre;
 	private JDesktopPane miDesktopPane;
 	private JTextField tf_id;
-	
+	private int idPaciente;
 
 	/**
 	 * Launch the application.
@@ -350,6 +350,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 				int id=Integer.parseInt(tf_id.getText());
 			Paciente paciente=new Paciente(id);
+			System.out.println("El id insertado al crear registro es: "+id);
 				ConexionMySQL.crearRegistrosDientes(paciente);
 				
 				

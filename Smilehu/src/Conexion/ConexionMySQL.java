@@ -296,21 +296,41 @@ public class ConexionMySQL {
      
      public static void crearRegistrosDientes(Paciente paciente) {
          try {
-             conectar(); // Establecer conexión a la base de datos
-
-             // Consultar si ya existen registros para el paciente
-             String consultaExistencia = "SELECT COUNT(*) FROM Dientes WHERE idPaciente = ?";
-             try (PreparedStatement statement = connection.prepareStatement(consultaExistencia)) {
+             try {
+				conectar();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+             
+             // Consultar si el paciente existe
+             String consultaExistenciaPaciente = "SELECT COUNT(*) FROM Paciente WHERE id_paciente = ?";
+             try (PreparedStatement stmt = connection.prepareStatement(consultaExistenciaPaciente)) {
+            	 int id =paciente.getIdPaciente(); 
+                 stmt.setInt(1,id);
+                 System.out.println(id);
+                 try (ResultSet resultSet = stmt.executeQuery()) {
+                     resultSet.next();
+                     int cantidadRegistrosPaciente = resultSet.getInt(1);
+                     if (cantidadRegistrosPaciente == 0) {
+                         System.out.println("El paciente no existe en la base de datos.");
+                         return;
+                     }
+                 }
+             }
+             
+             // Consultar si ya existen registros de dientes para el paciente
+             String consultaExistenciaDientes = "SELECT COUNT(*) FROM Dientes WHERE id_Paciente = ?";
+             try (PreparedStatement statement = connection.prepareStatement(consultaExistenciaDientes)) {
                  statement.setInt(1, paciente.getIdPaciente());
                  try (ResultSet resultSet = statement.executeQuery()) {
                      resultSet.next();
                      int cantidadRegistros = resultSet.getInt(1);
-                     // Si ya existen registros para el paciente, abrir su información
                      if (cantidadRegistros > 0) {
                          abrirInformacionPaciente(paciente);
                      } else {
-                         // Si no existen registros, crear 10 nuevos registros para el paciente
-                         String insercionRegistros = "INSERT INTO Dientes (nDiente, descripcion, idPaciente) VALUES (?, ?, ?)";
+                         // Insertar 10 nuevos registros de dientes para el paciente
+                         String insercionRegistros = "INSERT INTO Dientes (nDiente, descripcion, id_Paciente) VALUES (?, ?, ?)";
                          try (PreparedStatement insertStatement = connection.prepareStatement(insercionRegistros)) {
                              for (int i = 1; i <= 10; i++) {
                                  insertStatement.setInt(1, i);
@@ -323,10 +343,11 @@ public class ConexionMySQL {
                      }
                  }
              }
-         } catch (SQLException | ClassNotFoundException e) {
+         } catch (SQLException e) {
              e.printStackTrace();
          }
      }
+ 
      
      
      

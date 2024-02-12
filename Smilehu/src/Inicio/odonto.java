@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import Conexion.ConexionMySQL;
 import Modelo.ModeloDiente;
-import database.ConectorBBDD;
+
 
 import java.awt.Panel;
 import java.awt.Button;
@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 
-public class VentanaOdontograma extends JFrame {
+public class odonto extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -36,7 +36,6 @@ public class VentanaOdontograma extends JFrame {
 	private int nDientePulsado;
 	protected List<JButton> listaBotonesDiente;
 	protected List<ModeloDiente> listaDientes;
-	public ConectorBBDD conexionBD;
 	private static JFrame VentanaOdontograma;
 	private JTextField textFieldDescrip;
 	private JLabel lblNDiente;
@@ -48,7 +47,7 @@ public class VentanaOdontograma extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaOdontograma = new VentanaOdontograma();
+					VentanaOdontograma = new odonto();
 					VentanaOdontograma.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,7 +59,7 @@ public class VentanaOdontograma extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaOdontograma() {
+	public odonto() {
 		
 		listaBotonesDiente = new LinkedList<JButton>();
 		listaDientes = new LinkedList<ModeloDiente>();
@@ -276,7 +275,7 @@ public class VentanaOdontograma extends JFrame {
 		lblNewLabel_15.setBounds(860, 430, 46, 14);
 		panel.add(lblNewLabel_15);
 
-		conexionBD = new ConectorBBDD();
+		
 
 		// BOTON GUARDAR
 		java.net.URL imgUrl17 = getClass().getResource("/save.png");
@@ -339,7 +338,7 @@ public class VentanaOdontograma extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				setVisible(false);
-				VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+				odonto ventanaPrincipal = new odonto();
 				ventanaPrincipal.setVisible(true);
 				ventanaPrincipal.setLocationRelativeTo(null);
 
@@ -373,11 +372,11 @@ public class VentanaOdontograma extends JFrame {
 	}
 
 	public void mostrar(String numeroDocumento) {
-	    ConectorBBDD conexionBD = new ConectorBBDD();
+	    ConexionMySQL conexionBD = new ConexionMySQL();
 
 	    try {
 	        // Abrir la conexión
-	        conexionBD.conectarConBBDD();
+	        conexionBD.conectar();
 
 	        listaDientes = conexionBD.cargarOdontogramaPorDocumento(Integer.parseInt(numeroDocumento));
 
