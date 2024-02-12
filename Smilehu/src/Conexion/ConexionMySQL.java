@@ -57,6 +57,8 @@ public class ConexionMySQL {
             }
         }
     }
+   
+   
    public Connection conectar1() throws SQLException, ClassNotFoundException{
        if(connection == null || connection.isClosed()){
            try{
@@ -988,9 +990,9 @@ public class ConexionMySQL {
     
 
      public static void insertarCita(ConsultaCita cita) throws SQLException {
-		    String query = "INSERT INTO consulta_cita (id_tratamiento, observaciones, fecha, hora, id_paciente,id_material)" +
+		    String query = "INSERT INTO consulta_cita (id_tratamiento, observaciones, fecha, hora, id_paciente)" +
 		                   "VALUES('" + cita.getId_tratamiento() + "', '" + cita.getObservaciones() 
-		                   + "', '" + cita.getFecha() + "', '" + cita.getHora() + "', '"+cita.getid_paciente()+ "', '"+cita.get()+"')";
+		                   + "', '" + cita.getFecha() + "', '" + cita.getHora() + "', '"+cita.getid_paciente()+"')";
 		    
 		    Statement stmt = connection.createStatement();
 		    stmt.executeUpdate(query);
