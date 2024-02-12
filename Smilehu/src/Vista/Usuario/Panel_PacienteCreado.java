@@ -159,7 +159,7 @@ public class Panel_PacienteCreado extends JInternalFrame {
 					Map<String, Object> parametros = new HashedMap<String, Object>();
 					parametros.put("id_paciente", ConexionMySQL.consultaPaciente(Integer.parseInt(tf_id.getText())));
 					reporte = JasperCompileManager
-							.compileReport("SmileHUb/Smilehu/src/Informs/Informe1.jrxml");
+							.compileReport("src/Informs/Informe1.jrxml");
 					JasperPrint p;
 					p = JasperFillManager.fillReport(reporte, parametros, conexion.conectar1());
 					JasperViewer viewer = new JasperViewer(p, false);

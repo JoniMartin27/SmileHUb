@@ -107,29 +107,9 @@ WHERE p.id_paciente = $P{id_paciente}]]>
 		<property name="com.jaspersoft.studio.field.label" value="id_cita"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="consulta_cita"/>
 	</field>
-	<field name="id_doctor" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="id_doctor"/>
-		<property name="com.jaspersoft.studio.field.label" value="id_doctor"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="consulta_cita"/>
-	</field>
 	<field name="id_tratamiento" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="id_tratamiento"/>
 		<property name="com.jaspersoft.studio.field.label" value="id_tratamiento"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="consulta_cita"/>
-	</field>
-	<field name="id_historial" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="id_historial"/>
-		<property name="com.jaspersoft.studio.field.label" value="id_historial"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="consulta_cita"/>
-	</field>
-	<field name="COLUMN_23" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="id_paciente"/>
-		<property name="com.jaspersoft.studio.field.label" value="id_paciente"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="consulta_cita"/>
-	</field>
-	<field name="id_material" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="id_material"/>
-		<property name="com.jaspersoft.studio.field.label" value="id_material"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="consulta_cita"/>
 	</field>
 	<field name="observaciones" class="java.lang.String">
@@ -137,17 +117,27 @@ WHERE p.id_paciente = $P{id_paciente}]]>
 		<property name="com.jaspersoft.studio.field.label" value="observaciones"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="consulta_cita"/>
 	</field>
-	<field name="COLUMN_26" class="java.sql.Date">
+	<field name="COLUMN_22" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="fecha"/>
 		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="consulta_cita"/>
 	</field>
-	<field name="hora" class="java.sql.Time">
+	<field name="hora" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="hora"/>
 		<property name="com.jaspersoft.studio.field.label" value="hora"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="consulta_cita"/>
 	</field>
-	<field name="COLUMN_28" class="java.lang.Integer">
+	<field name="COLUMN_24" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_paciente"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_paciente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="consulta_cita"/>
+	</field>
+	<field name="nombrePaciente" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombrePaciente"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombrePaciente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="consulta_cita"/>
+	</field>
+	<field name="COLUMN_26" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="id_tratamiento"/>
 		<property name="com.jaspersoft.studio.field.label" value="id_tratamiento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="tratamiento"/>

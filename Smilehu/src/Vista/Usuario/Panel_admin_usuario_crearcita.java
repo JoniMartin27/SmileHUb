@@ -261,7 +261,7 @@ public class Panel_admin_usuario_crearcita extends JInternalFrame {
 					try {
 						Paciente paciente =ConexionMySQL.buscarPacientes(nombre,apellido);
 						
-						Tratamiento tratamiento = ConexionMySQL.buscarTratamiento(nombre);
+						Tratamiento tratamiento = ConexionMySQL.buscarTratamiento(cb_Tratamiento.getSelectedItem().toString());
 						StockMaterial material =ConexionMySQL.buscarMaterial(nombre);
 						Doctor_administrador doctor =ConexionMySQL.buscarDoctor(name, last_name);
 					

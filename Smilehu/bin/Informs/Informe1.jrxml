@@ -6,10 +6,9 @@
 	<parameter name="id_paciente" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT concat(consulta_cita.fecha,' ',consulta_cita.hora) as "Fecha y hora",tratamiento.nombre_tratamiento as "Tratamiento",
-paciente.nombre as "Nombre Paciente",consulta_cita.observaciones,doctor_administrador.nombre as "Nombre Doctor"
+paciente.nombre as "Nombre Paciente",consulta_cita.observaciones
 from consulta_cita
 inner join tratamiento on consulta_cita.id_tratamiento=tratamiento.id_tratamiento
-inner join doctor_administrador on consulta_cita.id_doctor=doctor_administrador.id_doctor_administrador
 inner join historial on consulta_cita.id_historial=historial.id_historial
 inner join paciente on consulta_cita.id_paciente=paciente.id_paciente
 
@@ -33,11 +32,6 @@ where  consulta_cita.id_paciente=$P{id_paciente}]]>
 		<property name="com.jaspersoft.studio.field.name" value="observaciones"/>
 		<property name="com.jaspersoft.studio.field.label" value="observaciones"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="consulta_cita"/>
-	</field>
-	<field name="Nombre Doctor" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
-		<property name="com.jaspersoft.studio.field.label" value="Nombre Doctor"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="doctor_administrador"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -110,16 +104,10 @@ where  consulta_cita.id_paciente=$P{id_paciente}]]>
 				</reportElement>
 				<text><![CDATA[Observaciones]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="460" y="0" width="100" height="36" uuid="aed856c9-10db-4413-9be1-7d0d224c7108">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7613c390-c6a5-49a9-90ce-b0a6df62e738"/>
-				</reportElement>
-				<text><![CDATA[Nombre Doctor]]></text>
-			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="51" splitType="Stretch">
+		<band height="52" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="20" width="100" height="30" uuid="0db3b1be-e6d8-4855-96cc-400d2783feb9">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5d0ce4c7-29d2-49ec-b5b2-3104aed9e29e"/>
@@ -139,26 +127,20 @@ where  consulta_cita.id_paciente=$P{id_paciente}]]>
 				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="470" y="20" width="100" height="30" uuid="6ae8bbe4-5607-448f-8f5b-29666cae85aa">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7613c390-c6a5-49a9-90ce-b0a6df62e738"/>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{Nombre Doctor}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="347" y="20" width="100" height="30" uuid="249ce251-4dff-41aa-ab2e-319d69bc4d59">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b2d99b14-3eed-48c6-8b55-6a0e5caf5434"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{Nombre Paciente}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="-35" y="50" width="610" height="1" uuid="c25baa75-cfbe-4de9-a1f0-3057438b4dec"/>
+				<reportElement x="-20" y="51" width="595" height="1" uuid="c25baa75-cfbe-4de9-a1f0-3057438b4dec"/>
 			</line>
 		</band>
 	</detail>
 	<columnFooter>
 		<band height="67" splitType="Stretch">
 			<line>
-				<reportElement x="-30" y="66" width="605" height="1" uuid="2ef25a12-e10f-42c3-bf41-29e403c621f5"/>
+				<reportElement x="-20" y="66" width="595" height="1" uuid="2ef25a12-e10f-42c3-bf41-29e403c621f5"/>
 			</line>
 		</band>
 	</columnFooter>
