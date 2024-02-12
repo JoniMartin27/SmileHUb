@@ -46,6 +46,20 @@ public class ConsultaCita  {
 		super();
 	}
 
+
+
+	public ConsultaCita(int id_tratamiento, int id_paciente, int id_material, String observaciones,
+			String hora, String fecha) {
+		super();
+		this.id_tratamiento = id_tratamiento;
+		this.id_paciente = id_paciente;
+
+		this.id_material = id_material;
+		this.observaciones = observaciones;
+		this.hora = hora;
+		this.fecha = fecha;
+	}
+
 	public int getId_cita() {
 		return id_cita;
 	}

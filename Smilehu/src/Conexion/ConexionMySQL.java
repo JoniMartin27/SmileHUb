@@ -698,7 +698,7 @@ public class ConexionMySQL {
      public static Tratamiento buscarTratamiento(String nombre) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("SELECT * from tratamiento where nombre  ='"+nombre+"'");//consulta
+         ResultSet rset=stmt.executeQuery("SELECT * from tratamiento where nombre_tratamiento  ='"+nombre+"'");//consulta
 
          Tratamiento tratamiento=null;
          if (rset.next()) {
@@ -725,7 +725,7 @@ public class ConexionMySQL {
      public static StockMaterial buscarMaterial(String nombre) throws SQLException {
 
          Statement stmt=connection.createStatement();
-         ResultSet rset=stmt.executeQuery("SELECT * from tratamiento where nombre  ='"+nombre+"'");//consulta
+         ResultSet rset=stmt.executeQuery("SELECT * from stock_material where nombre  ='"+nombre+"'");//consulta
 
          StockMaterial material=null;
          if (rset.next()) {
@@ -736,7 +736,6 @@ public class ConexionMySQL {
         int solicitado=rset.getInt("solicitado");  
         int bajo_pedido=rset.getInt("bajo_pedido");  
         double precio=rset.getDouble("precio");  
-        int id_paciente=rset.getInt("id_paciente");  
         
         material=new StockMaterial(id_material,id_proveedor,nombre,disponible,solicitado,bajo_pedido,precio);
          }
@@ -892,7 +891,7 @@ public class ConexionMySQL {
     		 while (rset.next()) {
     			 int id_tratamiento=rset.getInt("id_tratamiento");
     		        int id_especialidad=rset.getInt("id_especialidad");
-    		        String nombre=rset.getString("nombre");
+    		        String nombre=rset.getString("nombre_tratamiento");
     		        double precio=rset.getDouble("precio");
     			 
     		        Tratamiento doctor=new Tratamiento(id_tratamiento,id_especialidad,nombre,precio);
@@ -989,9 +988,9 @@ public class ConexionMySQL {
     
 
      public static void insertarCita(ConsultaCita cita) throws SQLException {
-		    String query = "INSERT INTO consulta_cita (id_tratamiento, observaciones, fecha, hora, id_paciente)" +
+		    String query = "INSERT INTO consulta_cita (id_tratamiento, observaciones, fecha, hora, id_paciente,id_material)" +
 		                   "VALUES('" + cita.getId_tratamiento() + "', '" + cita.getObservaciones() 
-		                   + "', '" + cita.getFecha() + "', '" + cita.getHora() + "', '"+cita.getid_paciente()+"')";
+		                   + "', '" + cita.getFecha() + "', '" + cita.getHora() + "', '"+cita.getid_paciente()+ "', '"+cita.get()+"')";
 		    
 		    Statement stmt = connection.createStatement();
 		    stmt.executeUpdate(query);
